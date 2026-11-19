@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% from "_macros.html" import titre_source, licence with context %}
+{% block title %}{{ _("Source") }} · {{ info.editeur_court }}{% endblock %}
+{% block content %}
+{% set roles = {"jeu": _("Jeu de données"), "page": _("Page officielle du jeu"), "metadonnees": _("Fiche de métadonnées"), "catalogue": _("Entrée de catalogue"), "reference": _("Document cité")} %}
+<header class="page">
+  <p class="kicker">{{ _("Source") }}</p>
+  <h1>{{ titre_source(lang, info) }}</h1>
+  <p class="lede">{{ info.editeur }} · <code>{{ info.identifiant }}</code>{% if info.maj %} · {{ _("mise à jour du %(d)s", d=info.maj) }}{% endif %}</p>
+</header>
+<dl class="facts">
+  <dt>{{ _("Adresse du jeu") }}</dt><dd><a class="url" href="{{ info.url }}" rel="external noopener">{{ info.url }}</a></dd>
+  <dt>{{ _("Licence") }}</dt><dd>{{ licence(lang, info.licence) }}{% if info.licence and info.licence.extrait %}<br>« <span lang="{{ info.licence.extrait_lang }}">{{ info.licence.extrait }}</span> »{% endif %}{% if info.licence %}<br><span class="muted">{{ _("Relevé dans") }} <code>{{ info.licence.chemin }}</code> : {{ info.licence.releve }}</span>{% endif %}</dd>
+  <dt>{{ _("Dernière collecte") }}</dt><dd>{{ info.collecte }}</dd>
+  {% if nb %}<dt>{{ _("Montants chargés") }}</dt><dd>{{ integer(nb) }}</dd>{% endif %}
+</dl>
+{% if info.extrait %}
+<section>
+  <h2>{{ _("Description publiée par l'éditeur") }}</h2>
+  <blockquote class="citation" lang="{{ info.extrait_lang }}">{{ info.extrait }}</blockquote>
+</section>
+{% endif %}
+<section>
+  <h2>{{ _("Documents cités") }}</h2>
+  <p>{{ _("Chaque champ ci-dessous est relevé dans un fichier collecté, à l'endroit indiqué : rien n'est saisi à la main.") }}</p>
+  <ul class="docs">{% for d in info.documents %}
+    <li><span class="kicker">{{ roles[d.role] }}</span><br>
+      <strong lang="fr">{{ d.titre }}</strong>{% if d.titre_en %} · <span lang="en">{{ d.titre_en }}</span>{% endif %}<br>
+      {% if d.editeur %}{{ d.editeur }} · {% endif %}<code>{{ d.identifiant }}</code>{% if d.date_publication %} · {{ _("publié le %(d)s", d=d.date_publication) }}{% endif %}{% if d.date_maj %} · {{ _("mise à jour du %(d)s", d=d.date_maj) }}{% endif %}<br>
+      <a class="url" href="{{ d.url }}" rel="external noopener">{{ d.url }}</a><br>
+      <span class="muted">{{ _("Relevé dans") }} <code>{{ d.chemin }}</code> : {{ d.releve }}</span></li>
+  {% endfor %}</ul>
+</section>
+<section>
+  <h2>{{ _("Fichiers collectés") }}</h2>
+  <p>{{ _("Chaque fichier est téléchargé tel quel à l'adresse ci-dessous ; son empreinte sha256 permet de vérifier qu'il n'a pas été modifié depuis.") }}</p>
+  <ul class="files">{% for f in fichiers %}<li><code>{{ f.chemin }}</code><br><a href="{{ f.url }}" rel="external noopener" class="url">{{ f.url }}</a><br><span class="muted">{{ f.collecte }} · sha256 <code class="hash">{{ f.sha256 }}</code></span></li>{% endfor %}</ul>
+</section>
+<p><a href="/{{ lang }}/methode#src-{{ s.id }}">{{ _("Toutes les sources et les contrôles de cohérence") }} →</a></p>
+{% endblock %}

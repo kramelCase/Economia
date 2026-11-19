@@ -1,0 +1,4039 @@
+# English translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-11-19 20:15+0100\n"
+"PO-Revision-Date: 2026-10-27 00:05+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+msgid "Dépenses par fonction"
+msgstr "Expenditure by function"
+
+msgid "Recettes, dépenses, solde, dette"
+msgstr "Revenue, expenditure, balance, debt"
+
+msgid "Régions"
+msgstr "Regions"
+
+msgid "Départements"
+msgstr "Départements"
+
+msgid "Départements, par fonction (M57)"
+msgstr "Departments, by function (M57)"
+
+msgid "Départements, par fonction (M52)"
+msgstr "Departments, by function (M52)"
+
+msgid "Courbes"
+msgstr "Lines"
+
+msgid "Aires empilées"
+msgstr "Stacked areas"
+
+msgid "Aires à 100 %"
+msgstr "100 % areas"
+
+msgid "Barres groupées"
+msgstr "Grouped bars"
+
+msgid "Barres empilées"
+msgstr "Stacked bars"
+
+msgid "Classement"
+msgstr "Ranking"
+
+msgid "Pente (deux années)"
+msgstr "Slope (two years)"
+
+msgid "Points (une année)"
+msgstr "Dots (one year)"
+
+msgid "Petits multiples"
+msgstr "Small multiples"
+
+msgid "Carte de chaleur"
+msgstr "Heatmap"
+
+msgid "Aires"
+msgstr "Areas"
+
+msgid "Parts"
+msgstr "Shares"
+
+msgid "Barres"
+msgstr "Bars"
+
+msgid "Empilées"
+msgstr "Stacked"
+
+msgid "Pente"
+msgstr "Slope"
+
+msgid "Points"
+msgstr "Dots"
+
+msgid "Multiples"
+msgstr "Multiples"
+
+msgid "Chaleur"
+msgstr "Heatmap"
+
+msgid "du PIB"
+msgstr "of GDP"
+
+msgid "du total"
+msgstr "of total"
+
+msgid "courants"
+msgstr "current"
+
+msgid "par habitant"
+msgstr "per capita"
+
+msgid "Carré"
+msgstr "Square"
+
+msgid "Large"
+msgstr "Wide"
+
+msgid "Vertical"
+msgstr "Vertical"
+
+msgid "Empiler n'a de sens que pour les parties d'un même total publié, dans un document dont les parties bouclent sur le total."
+msgstr "Stacking only makes sense for parts of the same published total, in a dataset whose parts add up to the total."
+
+msgid "Pour empiler, un seul périmètre."
+msgstr "To stack, a single scope."
+
+msgid "Il faut au moins deux séries."
+msgstr "At least two series are needed."
+
+msgid "Il faut au moins deux années."
+msgstr "At least two years are needed."
+
+msgid "Cinq séries au plus sur un même graphique."
+msgstr "Five series at most on one chart."
+
+msgid "Chargement des données…"
+msgstr "Loading data…"
+
+msgid "Les données n'ont pas pu être chargées."
+msgstr "The data could not be loaded."
+
+msgid "tous"
+msgstr "all"
+
+#, python-format
+msgid "indice base 100 en %(a)s (calcul du site)"
+msgstr "index, %(a)s = 100 (site calculation)"
+
+msgid "L'axe ne part pas de zéro."
+msgstr "The axis does not start at zero."
+
+msgid "Lien copié."
+msgstr "Link copied."
+
+msgid "Source"
+msgstr "Source"
+
+msgid "Sources"
+msgstr "Sources"
+
+msgid "calcul du site"
+msgstr "site calculation"
+
+msgid "provisoire"
+msgstr "provisional"
+
+msgid "source"
+msgstr "source"
+
+msgid "Aucune valeur publiée pour ce choix."
+msgstr "No published value for this choice."
+
+msgid "Année"
+msgstr "Year"
+
+msgid "Valeur"
+msgstr "Value"
+
+msgid "Série"
+msgstr "Series"
+
+msgid "Retirer"
+msgstr "Remove"
+
+msgid "Pas d'indice base 100 pour une forme empilée ou d'une seule année."
+msgstr "No base-100 index for a stacked or single-year chart."
+
+msgid "Pas d'indice quand la valeur de l'année de base est nulle ou négative"
+msgstr "No index when the base-year value is zero or negative"
+
+msgid "Plusieurs budgets publiés sous un même code, non tracés"
+msgstr "Several budgets published under one code, not plotted"
+
+msgid "Autre SIREN ou population publiée variant de plus de moitié sous un même code : ligne coupée, pas d'évolution à lire à travers"
+msgstr "Another SIREN, or a published population changing by more than half, under one code: line broken, no change to read across it"
+
+msgid "Annotations ajoutées par l'auteur du graphique, pas par la source."
+msgstr "Annotations added by the chart's author, not by the source."
+
+msgid "Recettes"
+msgstr "Revenue"
+
+msgid "Dépenses"
+msgstr "Expenditure"
+
+msgid "Solde"
+msgstr "Balance"
+
+msgid "Dette"
+msgstr "Debt"
+
+msgid "Toutes les administrations"
+msgstr "All general government"
+
+msgid "État et administrations centrales"
+msgstr "State and central government"
+
+msgid "Collectivités locales"
+msgstr "Local government"
+
+msgid "Sécurité sociale"
+msgstr "Social security"
+
+msgid "Pour 100 € dépensés"
+msgstr "Per €100 spent"
+
+msgid "En euros"
+msgstr "In euros"
+
+msgid "Part du PIB (%)"
+msgstr "Share of GDP (%)"
+
+msgid "Dette et épargne"
+msgstr "Debt and savings"
+
+msgid "Par fonction"
+msgstr "By function"
+
+msgid "€/hab."
+msgstr "€ per inhab."
+
+msgid "M€"
+msgstr "€m"
+
+msgid "Md€"
+msgstr "€bn"
+
+msgid "part du total, %"
+msgstr "share of total, %"
+
+msgid "part du PIB, %"
+msgstr "share of GDP, %"
+
+msgid "Recettes : impôts, dotations, subventions…"
+msgstr "Revenue: taxes, grants, subsidies…"
+
+msgid "Dette, épargne et équilibre"
+msgstr "Debt, savings and balance"
+
+msgid "Fonctions (nomenclature M57)"
+msgstr "Functions (M57 nomenclature)"
+
+msgid "Fonctions (nomenclature M52)"
+msgstr "Functions (M52 nomenclature)"
+
+#, python-format
+msgid "%(n)s lignes"
+msgstr "%(n)s lines"
+
+msgid "Montants en euros courants : l'inflation n'est pas déduite."
+msgstr "Amounts in current euros: inflation is not deducted."
+
+msgid "Part publiée par Eurostat, en pourcentage des dépenses totales du périmètre de la colonne."
+msgstr "Share published by Eurostat, as a percentage of total spending of the column's scope."
+
+msgid "Le contexte institutionnel liste qui exerçait les fonctions gouvernementales et les textes budgétaires votés entre ces deux années ; il ne dit pas ce qui explique l'écart."
+msgstr "The institutional context lists who held government office and which budget acts were passed between these two years; it does not say what explains the gap."
+
+msgid "Les fonctions M52 et M57 relèvent de deux nomenclatures différentes : chaque département publie dans l'une ou l'autre, elles ne se comparent pas entre elles."
+msgstr "M52 and M57 functions belong to two different nomenclatures: each département publishes in one or the other, and they cannot be compared with each other."
+
+msgid "« n lignes » : le fichier publie plusieurs budgets sous ce code pour cette année. Ce site ne les additionne pas ; le lien ouvre les lignes publiées."
+msgstr "“n lines”: the file publishes several budgets under this code for this year. This site does not add them up; the link opens the published lines."
+
+msgid "10 dernières années"
+msgstr "Last 10 years"
+
+msgid "Toute la période"
+msgstr "Whole period"
+
+msgid "Comptabilité nationale (SEC 2010)"
+msgstr "National accounts (ESA 2010)"
+
+msgid "Comptabilité budgétaire de l'État (LOLF)"
+msgstr "Central government budget accounting (LOLF)"
+
+msgid "Comptes de gestion des collectivités locales"
+msgstr "Local authorities' management accounts"
+
+msgid "Projet de loi de finances"
+msgstr "Draft finance bill"
+
+msgid "Loi de finances initiale"
+msgstr "Initial finance act"
+
+msgid "Exécution budgétaire"
+msgstr "Budget execution"
+
+msgid "Comptes publiés"
+msgstr "Published accounts"
+
+msgid "Autorisations d'engagement"
+msgstr "Commitment authorisations"
+
+msgid "Crédits de paiement"
+msgstr "Payment appropriations"
+
+msgid "Dépense"
+msgstr "Expenditure"
+
+msgid "Agrégat publié"
+msgstr "Published aggregate"
+
+msgid "Coût estimé"
+msgstr "Estimated cost"
+
+msgid "Coût prévu"
+msgstr "Planned cost"
+
+msgid "Recette"
+msgstr "Revenue"
+
+msgid "millions d'euros"
+msgstr "million euros"
+
+msgid "euros"
+msgstr "euros"
+
+msgid "euros par habitant"
+msgstr "euros per inhabitant"
+
+msgid "pour cent du PIB"
+msgstr "percent of GDP"
+
+msgid "pour cent du total"
+msgstr "percent of total"
+
+msgid "Cadre comptable"
+msgstr "Accounting framework"
+
+msgid "Deux cadres comptables différents, chacun avec ses propres règles d'enregistrement : les deux chiffres ne mesurent pas la même chose."
+msgstr "Two different accounting frameworks, each with its own recording rules: the two figures do not measure the same thing."
+
+msgid "Administrations couvertes"
+msgstr "Government units covered"
+
+msgid "Ils ne couvrent pas les mêmes administrations."
+msgstr "They do not cover the same government units."
+
+msgid "Ils ne portent pas sur la même année."
+msgstr "They do not refer to the same year."
+
+msgid "Stade"
+msgstr "Stage"
+
+msgid "Ils ne sont pas au même stade : un projet, une loi votée, une exécution et des comptes publiés sont des étapes différentes."
+msgstr "They are not at the same stage: a bill, an enacted law, budget outturn and published accounts are different steps."
+
+msgid "Grandeur mesurée"
+msgstr "Quantity measured"
+
+msgid "Ils ne mesurent pas la même grandeur."
+msgstr "They do not measure the same quantity."
+
+msgid "Unité"
+msgstr "Unit"
+
+msgid "Les unités diffèrent : les deux chiffres ne se comparent pas sans conversion."
+msgstr "The units differ: the two figures cannot be compared without conversion."
+
+msgid "Poste"
+msgstr "Item"
+
+msgid "Ils ne classent pas la dépense dans le même poste, ni forcément dans la même nomenclature."
+msgstr "They do not file the spending under the same item, nor necessarily in the same classification."
+
+msgid "Statut"
+msgstr "Status"
+
+msgid "définitif ou non précisé"
+msgstr "final or not specified"
+
+msgid "Au moins l'un des deux est provisoire : il peut encore être révisé."
+msgstr "At least one of the two is provisional: it may still be revised."
+
+msgid "État"
+msgstr "Central government"
+
+msgid "Administrations publiques et leurs sous-secteurs"
+msgstr "General government and its subsectors"
+
+msgid "projet de loi"
+msgstr "draft bill"
+
+msgid "loi votée"
+msgstr "enacted law"
+
+msgid "exécution"
+msgstr "execution"
+
+msgid "comptes"
+msgstr "accounts"
+
+msgid "les dépenses fiscales"
+msgstr "tax expenditures"
+
+msgid "Dépenses fiscales"
+msgstr "Tax expenditures"
+
+msgid "Budget de l'État"
+msgstr "State budget"
+
+msgid "Données non disponibles"
+msgstr "Data not available"
+
+msgid "Construire une vue"
+msgstr "Build a view"
+
+msgid "Indicateurs, périmètres et territoires sur toute la période publiée ; export CSV, JSON, image."
+msgstr "Indicators, scopes and territories over the whole published period; CSV, JSON, image export."
+
+msgid "Où va l'argent ?"
+msgstr "Where does the money go?"
+
+msgid "Toutes les administrations publiques, par fonction COFOG, depuis 1995."
+msgstr "All general government, by COFOG function, since 1995."
+
+msgid "D'où vient l'argent ?"
+msgstr "Where does the money come from?"
+
+msgid "Toutes les administrations publiques, par catégorie de recettes des comptes nationaux, depuis 1995."
+msgstr "All general government, by national-accounts revenue category, since 1995."
+
+msgid "Missions et programmes : exécuté en 2024, voté pour 2025, proposé pour 2026."
+msgstr "Missions and programmes: executed in 2024, voted for 2025, proposed for 2026."
+
+msgid "Montant publié de chaque dépense fiscale, et nombre de dépenses publiées sans montant."
+msgstr "Published amount of each tax expenditure, and number of expenditures published without an amount."
+
+msgid "Ma région, mon département"
+msgstr "My region, my département"
+
+msgid "Par habitant, comparé à la médiane des collectivités du même niveau."
+msgstr "Per inhabitant, compared with the median of local authorities of the same level."
+
+msgid "Données absentes des sources collectées, avec l'organisme producteur."
+msgstr "Data absent from the collected sources, with the producing body."
+
+msgid "Cotisations sociales"
+msgstr "Social contributions"
+
+msgid "Impôts sur la production"
+msgstr "Taxes on production"
+
+msgid "Impôts sur le revenu"
+msgstr "Taxes on income"
+
+msgid "Ventes et production"
+msgstr "Sales and output"
+
+msgid "Revenus de la propriété"
+msgstr "Property income"
+
+msgid "Transferts courants"
+msgstr "Current transfers"
+
+msgid "Transferts en capital"
+msgstr "Capital transfers"
+
+msgid "Subventions reçues"
+msgstr "Subsidies received"
+
+msgid "Autres recettes"
+msgstr "Other revenue"
+
+msgid "Services généraux"
+msgstr "General services"
+
+msgid "Défense"
+msgstr "Defence"
+
+msgid "Ordre et sécurité"
+msgstr "Public order and safety"
+
+msgid "Économie"
+msgstr "Economic affairs"
+
+msgid "Environnement"
+msgstr "Environment"
+
+msgid "Logement"
+msgstr "Housing"
+
+msgid "Santé"
+msgstr "Health"
+
+msgid "Loisirs et culture"
+msgstr "Recreation and culture"
+
+msgid "Enseignement"
+msgstr "Education"
+
+msgid "Protection sociale"
+msgstr "Social protection"
+
+msgid "Autres fonctions"
+msgstr "Other functions"
+
+msgid "TVA"
+msgstr "VAT"
+
+msgid "Autres impôts sur les produits"
+msgstr "Other taxes on products"
+
+msgid "Autres impôts sur la production"
+msgstr "Other taxes on production"
+
+msgid "Ménages"
+msgstr "Households"
+
+msgid "Sociétés"
+msgstr "Corporations"
+
+msgid "Employeurs"
+msgstr "Employers"
+
+msgid "Reste du monde"
+msgstr "Rest of the world"
+
+msgid "Banque centrale"
+msgstr "Central bank"
+
+msgid "Banques"
+msgstr "Banks"
+
+msgid "Assurances, fonds et autres"
+msgstr "Insurers, funds and others"
+
+msgid "Ménages et entreprises"
+msgstr "Households and businesses"
+
+msgid "Administrations centrales"
+msgstr "Central government"
+
+msgid "Administrations locales"
+msgstr "Local government"
+
+msgid "Rémunérations"
+msgstr "Compensation of employees"
+
+msgid "Consommations intermédiaires"
+msgstr "Intermediate consumption"
+
+msgid "Prestations sociales"
+msgstr "Social benefits"
+
+msgid "Subventions"
+msgstr "Subsidies"
+
+msgid "Autres transferts courants"
+msgstr "Other current transfers"
+
+msgid "Revenus de la propriété (dont intérêts)"
+msgstr "Property income (including interest)"
+
+msgid "Impôts et ajustements"
+msgstr "Taxes and adjustments"
+
+msgid "Investissement"
+msgstr "Investment"
+
+msgid "collectivité territoriale unique (reg_is_ctu, OFGL)"
+msgstr "single territorial authority (reg_is_ctu, OFGL)"
+
+msgid "Métropole de Lyon (catégorie ML, OFGL)"
+msgstr "Métropole de Lyon (category ML, OFGL)"
+
+msgid "Ville de Paris (catégorie PARIS, OFGL)"
+msgstr "Ville de Paris (category PARIS, OFGL)"
+
+msgid "Ensemble des administrations publiques"
+msgstr "General government"
+
+msgid "Administrations publiques centrales"
+msgstr "Central government"
+
+msgid "Administrations publiques locales"
+msgstr "Local government"
+
+msgid "Administrations de sécurité sociale"
+msgstr "Social security funds"
+
+msgid "toutes les administrations publiques"
+msgstr "all general government"
+
+msgid "les administrations centrales"
+msgstr "central government"
+
+msgid "les administrations locales"
+msgstr "local government"
+
+msgid "les administrations de sécurité sociale"
+msgstr "social security funds"
+
+msgid "le budget de l'État"
+msgstr "the State budget"
+
+#, python-format
+msgid "Quelle part de la dépense publique va à « %(f)s » ?"
+msgstr "What share of public spending goes to “%(f)s”?"
+
+#, python-format
+msgid "Combien le projet de loi de finances 2026 prévoit-il pour la mission « %(m)s » ?"
+msgstr "How much does the 2026 draft budget bill provide for the mission “%(m)s”?"
+
+msgid "Combien de dépenses fiscales sont publiées sans montant dans le projet de loi de finances 2026 ?"
+msgstr "How many tax expenditures are published without an amount in the 2026 draft budget bill?"
+
+#, python-format
+msgid "Combien dépense le département « %(d)s » par habitant ?"
+msgstr "How much does the département “%(d)s” spend per inhabitant?"
+
+msgid "Qui sont les administrations publiques ?"
+msgstr "Who is general government?"
+
+msgid "Les comptes nationaux publient les comptes de l'ensemble des administrations publiques, et séparément ceux de trois sous-secteurs."
+msgstr "The national accounts publish the accounts of general government as a whole, and separately those of three subsectors."
+
+msgid "Combien entre, combien sort ?"
+msgstr "How much comes in, how much goes out?"
+
+msgid "Chaque année, les comptes nationaux publient les recettes, les dépenses et leur écart, le solde, en part du PIB."
+msgstr "Each year, the national accounts publish revenue, expenditure and the gap between them, the balance, as a share of GDP."
+
+msgid "Les recettes publiées, réparties selon les catégories des comptes nationaux."
+msgstr "Published revenue, broken down by national-accounts category."
+
+msgid "Les dépenses publiées, réparties selon leur fonction : la classification internationale des fonctions des administrations publiques."
+msgstr "Published expenditure, broken down by function: the international classification of the functions of government."
+
+msgid "Qu'est-ce que la dette ?"
+msgstr "What is the debt?"
+
+msgid "Le solde et la dette sont deux séries publiées séparément, chacune avec sa définition officielle, citée plus bas."
+msgstr "The balance and the debt are two series published separately, each with its official definition, quoted below."
+
+msgid "Le budget de l'État, c'est la même chose ?"
+msgstr "Is the State budget the same thing?"
+
+msgid "Ce sont deux publications différentes : le budget de l'État, publié par la Direction du budget, et les comptes des administrations publiques, publiés par Eurostat. Voici un chiffre de chacune, côte à côte, chacun avec sa source."
+msgstr "They are two different publications: the State budget, published by the Budget Directorate, and the general government accounts, published by Eurostat. Here is one figure from each, side by side, each with its source."
+
+#, python-format
+msgid "En %(a)s, les dépenses publiées pour l'ensemble des administrations publiques sont de %(t)s."
+msgstr "In %(a)s, the published expenditure of general government as a whole is %(t)s."
+
+#, python-format
+msgid "Les trois sous-secteurs sont publiés séparément ; la somme de leurs dépenses (%(s)s, calcul du site) dépasse le total publié. Ce site n'additionne donc jamais les sous-secteurs."
+msgstr "The three subsectors are published separately; the sum of their expenditure (%(s)s, computed by this site) exceeds the published total. This site therefore never adds up the subsectors."
+
+#, python-format
+msgid "En %(a)s, les recettes de l'ensemble des administrations publiques représentent %(r)s du PIB et leurs dépenses %(d)s."
+msgstr "In %(a)s, general government revenue amounts to %(r)s of GDP and its expenditure to %(d)s."
+
+#, python-format
+msgid "Le solde publié pour la même année est de %(b)s du PIB : c'est l'écart entre recettes et dépenses, vérifié par ce site pour chaque année."
+msgstr "The published balance for the same year is %(b)s of GDP: it is the gap between revenue and expenditure, checked by this site for every year."
+
+#, python-format
+msgid "La dette publiée de l'ensemble des administrations publiques est de %(v0)s du PIB en %(a0)s et de %(v1)s en %(a1)s."
+msgstr "The published debt of general government is %(v0)s of GDP in %(a0)s and %(v1)s in %(a1)s."
+
+#, python-format
+msgid "Le solde de %(a)s est de %(b)s du PIB."
+msgstr "The balance for %(a)s is %(b)s of GDP."
+
+#, python-format
+msgid "En %(a)s, les recettes publiées de l'ensemble des administrations publiques sont de %(t)s."
+msgstr "In %(a)s, the published revenue of general government as a whole is %(t)s."
+
+#, python-format
+msgid "La catégorie au montant le plus élevé est « %(c)s » : %(v)s, soit %(p)s du total (calcul du site)."
+msgstr "The category with the highest amount is “%(c)s”: %(v)s, i.e. %(p)s of the total (computed by this site)."
+
+#, python-format
+msgid "En %(a)s, la fonction au montant le plus élevé est « %(f)s » : %(v)s pour 100 € de dépense publique."
+msgstr "In %(a)s, the function with the highest amount is “%(f)s”: %(v)s per €100 of public expenditure."
+
+#, python-format
+msgid "Budget de l'État : crédits de paiement exécutés en %(a)s"
+msgstr "State budget: payment appropriations executed in %(a)s"
+
+#, python-format
+msgid "Ensemble des administrations publiques : dépenses en %(a)s (comptes nationaux)"
+msgstr "General government: expenditure in %(a)s (national accounts)"
+
+msgid "Les deux chiffres viennent de deux publications différentes, pour deux périmètres différents ; ce site ne les soustrait pas l'un de l'autre."
+msgstr "The two figures come from two different publications, for two different scopes; this site does not subtract one from the other."
+
+msgid "Accueil"
+msgstr "Home"
+
+msgid "Thèmes"
+msgstr "Topics"
+
+msgid "Ma collectivité"
+msgstr "My local authority"
+
+msgid "D'où viennent les chiffres"
+msgstr "Where the figures come from"
+
+msgid "Chaque chiffre vient d'un fichier officiel. Ici, on peut le vérifier."
+msgstr "Every figure comes from an official file. Check it here."
+
+msgid "Vérifier un chiffre entendu"
+msgstr "Check a figure you heard"
+
+msgid "Pourquoi deux chiffres diffèrent"
+msgstr "Why two figures differ"
+
+msgid "Lexique"
+msgstr "Glossary"
+
+msgid "Méthode et fichiers collectés"
+msgstr "Method and collected files"
+
+msgid "Données couvertes et téléchargements"
+msgstr "Data covered and downloads"
+
+msgid "Fonction, toutes administrations"
+msgstr "Function, all general government"
+
+msgid "Carte"
+msgstr "Map"
+
+msgid "Comparer"
+msgstr "Compare"
+
+msgid "Comptes des administrations publiques"
+msgstr "General government accounts"
+
+msgid "Contexte"
+msgstr "Context"
+
+msgid "Membre du gouvernement"
+msgstr "Member of the government"
+
+msgid "Mission du budget de l'État"
+msgstr "State budget mission"
+
+msgid "Dépense fiscale"
+msgstr "Tax expenditure"
+
+msgid "sans montant publié"
+msgstr "no published amount"
+
+msgid "Région"
+msgstr "Region"
+
+msgid "Département"
+msgstr "Département"
+
+msgid "Régions et départements"
+msgstr "Regions and départements"
+
+msgid "part du PIB (%)"
+msgstr "share of GDP (%)"
+
+msgid "part des dépenses du périmètre (%)"
+msgstr "share of the scope's spending (%)"
+
+msgid "euros courants"
+msgstr "current euros"
+
+msgid "Catégories de recettes"
+msgstr "Revenue categories"
+
+msgid "Grands postes"
+msgstr "Main items"
+
+msgid "Fonctions"
+msgstr "Functions"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Dépenses, toutes fonctions"
+msgstr "Expenditure, all functions"
+
+#, python-format
+msgid "%(v)s pt"
+msgstr "%(v)s pt"
+
+msgid "Part publiée par Eurostat, en pourcentage des dépenses totales du périmètre choisi."
+msgstr "Share published by Eurostat, as a percentage of total spending of the chosen scope."
+
+msgid "Traits verticaux : début de chaque présidence de la République, d'après l'Assemblée nationale (publié depuis 2007). Une date de début ne dit pas ce qui explique une évolution ; les montants sont annuels et les mandats ne suivent pas l'année civile."
+msgstr "Vertical lines: start of each presidency of the Republic, according to the National Assembly (published since 2007). A start date does not say what explains a change; amounts are annual and terms of office do not follow the calendar year."
+
+msgid "Les périmètres sont affichés côte à côte ; ce site ne les additionne pas."
+msgstr "Scopes are shown side by side; this site does not add them up."
+
+#, python-format
+msgid "Pas de point pour %(a)s : le fichier publie plusieurs budgets sous ce code ces années-là ; ce site ne les additionne pas."
+msgstr "No point for %(a)s: the file publishes several budgets under this code in those years; this site does not add them up."
+
+#, python-format
+msgid "La population publiée pour ce code varie de plus de moitié en %(a)s : le périmètre n'est plus le même. Ce site ne calcule pas d'évolution à travers ce changement."
+msgstr "The population published for this code changes by more than half in %(a)s: the scope is no longer the same. This site does not compute a change across it."
+
+#, python-format
+msgid "Le fichier publie un autre numéro SIREN sous ce code à partir de %(a)s : ce n'est plus la même collectivité. Ce site ne calcule pas d'évolution à travers ce changement."
+msgstr "The file publishes another SIREN number under this code from %(a)s: it is no longer the same authority. This site does not compute a change across it."
+
+msgid "Les points creux sont des valeurs marquées provisoires dans la source."
+msgstr "Hollow points are values flagged as provisional in the source."
+
+msgid "Courbe"
+msgstr "Line"
+
+msgid "Aire"
+msgstr "Area"
+
+msgid "Chiffre seul"
+msgstr "Single figure"
+
+msgid "Tableau"
+msgstr "Table"
+
+msgid "Une aire ne montre qu'une seule série."
+msgstr "An area chart shows a single series only."
+
+msgid "Deux séries au plus pour des barres groupées."
+msgstr "Two series at most for grouped bars."
+
+msgid "Il faut un seul indicateur et un seul périmètre."
+msgstr "Requires a single indicator and a single scope."
+
+msgid "Un classement range plusieurs périmètres ou territoires selon un seul indicateur."
+msgstr "A ranking orders several scopes or areas by a single indicator."
+
+msgid "Unité non publiée par cette source."
+msgstr "Unit not published by this source."
+
+msgid "Aucune valeur publiée pour cette sélection."
+msgstr "No value published for this selection."
+
+#, python-format
+msgid "En %(a)s, %(nom)s : %(v)s (%(u)s)."
+msgstr "In %(a)s, %(nom)s: %(v)s (%(u)s)."
+
+#, python-format
+msgid "En %(a)s, sur %(n)s valeurs publiées (%(u)s), la plus élevée est celle de %(h)s (%(vh)s), la plus basse celle de %(b)s (%(vb)s)."
+msgstr "In %(a)s, out of %(n)s published values (%(u)s), the highest is that of %(h)s (%(vh)s) and the lowest that of %(b)s (%(vb)s)."
+
+#, python-format
+msgid "%(nom)s : %(v)s en %(a)s (%(u)s)."
+msgstr "%(nom)s: %(v)s in %(a)s (%(u)s)."
+
+#, python-format
+msgid "%(nom)s : %(v1)s en %(a1)s, %(v2)s en %(a2)s (%(u)s ; écart calculé par ce site : %(e)s)."
+msgstr "%(nom)s: %(v1)s in %(a1)s, %(v2)s in %(a2)s (%(u)s; difference computed by this site: %(e)s)."
+
+msgid "Toutes les régions"
+msgstr "All regions"
+
+msgid "Tous les départements"
+msgstr "All départements"
+
+#, python-format
+msgid "%(ind)s : %(n)s valeurs"
+msgstr "%(ind)s: %(n)s values"
+
+#, python-format
+msgid "%(n)s séries"
+msgstr "%(n)s series"
+
+msgid "Recettes et dépenses depuis 1995"
+msgstr "Revenue and expenditure since 1995"
+
+msgid "Les catégories de recettes dans le temps"
+msgstr "Revenue categories over time"
+
+msgid "Comparer les administrations, une année"
+msgstr "Compare government sectors, one year"
+
+msgid "Classer les départements"
+msgstr "Rank the départements"
+
+msgid "Classer les régions"
+msgstr "Rank the regions"
+
+msgid "Médiane du même niveau"
+msgstr "Median of the same level"
+
+msgid "Dette publique"
+msgstr "Public debt"
+
+msgid "Déficit public"
+msgstr "Public deficit"
+
+msgid "Dépenses publiques"
+msgstr "Public expenditure"
+
+msgid "Recettes publiques"
+msgstr "Public revenue"
+
+msgid "Impôts sur le revenu et le patrimoine"
+msgstr "Taxes on income and wealth"
+
+msgid "Intérêts de la dette"
+msgstr "Interest on the debt"
+
+msgid "valeur publiée négative"
+msgstr "published value is negative"
+
+msgid "valeur publiée positive"
+msgstr "published value is positive"
+
+msgid "identique au nombre saisi"
+msgstr "identical to the number entered"
+
+#, python-format
+msgid "%(e)s pt au-dessus du nombre saisi"
+msgstr "%(e)s pt above the number entered"
+
+#, python-format
+msgid "%(e)s pt au-dessous du nombre saisi"
+msgstr "%(e)s pt below the number entered"
+
+#, python-format
+msgid "%(e)s au-dessus du nombre saisi"
+msgstr "%(e)s above the number entered"
+
+#, python-format
+msgid "%(e)s au-dessous du nombre saisi"
+msgstr "%(e)s below the number entered"
+
+msgid "crédits de paiement"
+msgstr "payment appropriations"
+
+msgid "autorisations d'engagement"
+msgstr "commitment appropriations"
+
+#, python-format
+msgid "La valeur publiée la plus proche pour ces critères est %(v)s (%(q)s, %(a)s) : plus de %(p)s d'écart, elle n'est pas montrée comme proche."
+msgstr "The closest published value for these criteria is %(v)s (%(q)s, %(a)s): more than %(p)s apart, it is not shown as close."
+
+#, python-format
+msgid "Valeurs publiées à moins de %(p)s d'écart du nombre saisi, comparées sans leur signe."
+msgstr "Published values within %(p)s of the number entered, compared without their sign."
+
+msgid "3 000 milliards, 5,8 %, 1 200 € par habitant"
+msgstr "3,000 billion, 5.8 %, €1,200 per capita"
+
+msgid "Page introuvable"
+msgstr "Page not found"
+
+msgid "Cette adresse ne correspond à aucune page du site. Elle a peut-être été mal recopiée, ou la page a changé d'adresse."
+msgstr "This address does not match any page of the site. It may have been mistyped, or the page has moved."
+
+msgid "Retour à l'accueil"
+msgstr "Back to the home page"
+
+#, python-format
+msgid "mise à jour du %(d)s"
+msgstr "updated %(d)s"
+
+#, python-format
+msgid "collecte du %(d)s"
+msgstr "collected %(d)s"
+
+msgid "Description publiée par l'éditeur :"
+msgstr "Description published by the publisher:"
+
+msgid "fiche de la source"
+msgstr "source record"
+
+msgid "licence non publiée dans les métadonnées du jeu"
+msgstr "licence not published in the dataset metadata"
+
+msgid "Voir la source de ce chiffre"
+msgstr "See the source of this figure"
+
+msgid "Voir les lignes sources de ce total"
+msgstr "See the source lines of this total"
+
+msgid "Libellé officiel publié en français uniquement"
+msgstr "Official label published in French only"
+
+msgid "Valeur marquée provisoire dans la source"
+msgstr "Value flagged as provisional in the source"
+
+#, python-format
+msgid "Autres (%(n)s postes)"
+msgstr "Other (%(n)s items)"
+
+msgid "Détail"
+msgstr "Detail"
+
+msgid "Voir les données en tableau"
+msgstr "Show the data as a table"
+
+msgid "Atelier de graphique"
+msgstr "Chart workshop"
+
+msgid "Explorer · atelier"
+msgstr "Explore · workshop"
+
+msgid "Composez votre graphique à partir des séries publiées, annotez-le, puis partagez-le : l'image porte sa source, le lien rouvre la même vue."
+msgstr "Build your chart from the published series, annotate it, then share it: the image carries its source, the link reopens the same view."
+
+msgid "L'atelier a besoin de JavaScript. Le constructeur de vues fonctionne sans."
+msgstr "The workshop needs JavaScript. The view builder works without it."
+
+msgid "Document"
+msgstr "Dataset"
+
+msgid "Indicateurs"
+msgstr "Indicators"
+
+msgid "Filtrer les indicateurs"
+msgstr "Filter indicators"
+
+msgid "Périmètres"
+msgstr "Scopes"
+
+msgid "Filtrer les périmètres"
+msgstr "Filter scopes"
+
+msgid "Période"
+msgstr "Period"
+
+msgid "De"
+msgstr "From"
+
+msgid "à"
+msgstr "to"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Mesure"
+msgstr "Measure"
+
+msgid "Axe à partir de zéro"
+msgstr "Axis from zero"
+
+msgid "Base 100 (année)"
+msgstr "Index = 100 (year)"
+
+msgid "non"
+msgstr "no"
+
+msgid "Texte et annotations"
+msgstr "Text and annotations"
+
+msgid "Titre"
+msgstr "Title"
+
+msgid "Sous-titre"
+msgstr "Subtitle"
+
+msgid "Annotations (année : texte, une par ligne)"
+msgstr "Annotations (year: text, one per line)"
+
+msgid "Format de l'image"
+msgstr "Image format"
+
+msgid "Forme"
+msgstr "Form"
+
+msgid "Séries choisies"
+msgstr "Selected series"
+
+msgid "Partager"
+msgstr "Share"
+
+msgid "Image PNG"
+msgstr "PNG image"
+
+msgid "Copier le lien"
+msgstr "Copy link"
+
+msgid "Voir les données, chacune avec sa source"
+msgstr "See the data, each value with its source"
+
+msgid "Les finances publiques françaises, chaque chiffre relié à sa source officielle."
+msgstr "French public finances, every figure linked to its official source."
+
+msgid "Aller au contenu"
+msgstr "Skip to content"
+
+msgid "Rechercher"
+msgstr "Search"
+
+msgid "Langue"
+msgstr "Language"
+
+msgid "Navigation principale"
+msgstr "Main navigation"
+
+msgid "Fil d'Ariane"
+msgstr "Breadcrumb"
+
+msgid "Aucun chiffre n'est saisi à la main : tout provient de fichiers officiels collectés automatiquement. Cliquez sur « source » à côté d'un chiffre pour remonter jusqu'à la ligne du fichier d'origine."
+msgstr "No figure is typed in by hand: everything comes from official files collected automatically. Click “source” next to a figure to trace it back to the line of the original file."
+
+msgid "Méthode et sources"
+msgstr "Method and sources"
+
+msgid "Mentions et licences"
+msgstr "Legal notice and licences"
+
+msgid "Une collectivité, une fonction, une mission, un terme…"
+msgstr "A local authority, a function, a mission, a term…"
+
+msgid "Fermer"
+msgstr "Close"
+
+msgid "Résultats"
+msgstr "Results"
+
+msgid "choisir"
+msgstr "choose"
+
+msgid "action"
+msgstr "action"
+
+msgid "ouvrir"
+msgstr "open"
+
+msgid "Récents"
+msgstr "Recent"
+
+msgid "Aller à"
+msgstr "Go to"
+
+msgid "Aucun résultat. Entrée : voir la page de recherche."
+msgstr "No result. Enter: see the search page."
+
+msgid "Voir dans le lexique"
+msgstr "See in the glossary"
+
+msgid "Définition officielle pas encore relevée."
+msgstr "Official definition not yet recorded."
+
+msgid "Traduction non officielle."
+msgstr "Unofficial translation."
+
+msgid "Définition disponible en français uniquement."
+msgstr "Definition available in French only."
+
+#, python-format
+msgid "Exécution %(a)s"
+msgstr "Outturn %(a)s"
+
+#, python-format
+msgid "LFI %(a)s"
+msgstr "Initial finance act %(a)s"
+
+#, python-format
+msgid "PLF %(a)s"
+msgstr "Finance bill %(a)s"
+
+msgid "État seul"
+msgstr "State only"
+
+msgid "Que finance le budget de l'État ?"
+msgstr "What does the State budget pay for?"
+
+msgid "Les crédits de paiement par mission, dans les trois colonnes publiées par la source : exécution 2024, loi de finances initiale 2025, projet de loi de finances 2026."
+msgstr "Payment appropriations by mission, in the three columns published by the source: 2024 outturn, 2025 initial finance act, 2026 finance bill."
+
+msgid "Moment du budget"
+msgstr "Budget stage"
+
+msgid "Afficher"
+msgstr "Show"
+
+#, python-format
+msgid "de crédits de paiement, %(vue)s"
+msgstr "in payment appropriations, %(vue)s"
+
+msgid "Répartition par mission"
+msgstr "Breakdown by mission"
+
+msgid "Cliquez sur une mission pour voir ses programmes. Parts calculées par ce site : mission ÷ total des crédits budgétaires."
+msgstr "Click a mission to see its programmes. Shares computed by this site: mission ÷ total budget appropriations."
+
+msgid "L'anneau ne peut montrer que des montants positifs. Il laisse de côté, et le total au centre aussi :"
+msgstr "A ring can only show positive amounts. It leaves out, and so does the total in its centre:"
+
+#, python-format
+msgid "Avec ces lignes, on retrouve le total de %(t)s."
+msgstr "With these lines, the total of %(t)s is restored."
+
+msgid "hors montants négatifs"
+msgstr "excluding negative amounts"
+
+msgid "Zoom"
+msgstr "Zoom"
+
+msgid "fermer"
+msgstr "close"
+
+msgid "Programmes de la mission. Parts calculées par ce site : programme ÷ total de la mission."
+msgstr "Programmes of the mission. Shares computed by this site: programme ÷ mission total."
+
+msgid "Programmes de la mission"
+msgstr "Programmes of the mission"
+
+msgid "Programme"
+msgstr "Programme"
+
+msgid "Toutes les missions"
+msgstr "All missions"
+
+msgid "Crédits budgétaires, en euros courants. Cliquez sur un en-tête pour trier."
+msgstr "Budget appropriations, in current euros. Click a header to sort."
+
+msgid "Mission"
+msgstr "Mission"
+
+msgid "Total des crédits budgétaires"
+msgstr "Total budget appropriations"
+
+msgid "En plus des crédits : taxes affectées plafonnées, publiées dans la même source."
+msgstr "In addition to appropriations: capped earmarked taxes, published in the same source."
+
+msgid "À savoir pour bien lire"
+msgstr "How to read this page"
+
+#, python-format
+msgid "%(n)s lignes n'ont pas un code d'action ou de dépense ; leurs libellés publiés : « Mesure de périmètre/transfert », « Fonds de concours et attributions de produits », « contribution au CAS ». Elles sont comptées dans les totaux, comme dans la source."
+msgstr "%(n)s lines have no action or expenditure code; their published labels: “Mesure de périmètre/transfert”, “Fonds de concours et attributions de produits”, “contribution au CAS”. They are counted in the totals, as in the source."
+
+msgid "Le budget vert publie aussi une cotation environnementale de chaque dépense : elle figure sur la fiche source de chaque ligne."
+msgstr "The green budget also publishes an environmental rating for each expense: it appears on the source sheet of each line."
+
+msgid "Les couleurs restent attachées à une mission quel que soit le moment affiché : les cinq missions mises en avant sont celles dont le montant est le plus élevé dans le PLF 2026."
+msgstr "Colours stay attached to a mission whatever the stage shown: the five highlighted missions are those with the highest amount in the 2026 draft finance bill."
+
+msgid "Détail de"
+msgstr "Breakdown of"
+
+msgid "Outil de comparaison"
+msgstr "Comparison tool"
+
+msgid "Choisissez les lignes, les colonnes et l'année ; triez en cliquant un en-tête, filtrez par nom ou par valeur, épinglez des lignes pour les garder sous les yeux. Chaque valeur ouvre sa ligne source."
+msgstr "Choose the rows, the columns and the year; sort by clicking a header, filter by name or by value, pin rows to keep them in view. Each value opens its source line."
+
+msgid "Jeu de données"
+msgstr "Dataset"
+
+msgid "Collectivités"
+msgstr "Local authorities"
+
+msgid "Régions et départements, comptes publiés par l'OFGL"
+msgstr "Regions and départements, accounts published by OFGL"
+
+msgid "Fonctions publiques"
+msgstr "Government functions"
+
+msgid "Dépense par fonction et par périmètre, Eurostat"
+msgstr "Spending by function and scope, Eurostat"
+
+msgid "Comptes publics"
+msgstr "Public Accounts"
+
+msgid "Recettes, dépenses, solde, intérêts et dette, Eurostat"
+msgstr "Revenue, expenditure, balance, interest and debt, Eurostat"
+
+msgid "Lignes"
+msgstr "Rows"
+
+msgid "Postes"
+msgstr "Items"
+
+msgid "Sous-fonctions"
+msgstr "Groups"
+
+msgid "Comparer à"
+msgstr "Compare with"
+
+msgid "aucune année"
+msgstr "no year"
+
+msgid "Colonnes"
+msgstr "Columns"
+
+#, python-format
+msgid "%(n)s colonnes au plus."
+msgstr "%(n)s columns at most."
+
+msgid "Ces colonnes sont celles que l'OFGL publie pour les régions et les départements. Toutes les fonctions de l'ensemble des administrations publiques (défense, vieillesse, recherche, environnement…), détaillées par Eurostat :"
+msgstr "These columns are the ones OFGL publishes for regions and départements. All functions of general government as a whole (defence, old age, research, environment…), detailed by Eurostat:"
+
+#, python-format
+msgid "Ici, chaque ligne est une fonction (%(n)s lignes : vieillesse, santé, enseignement, défense…) et chaque colonne une administration qui dépense : l'ensemble des administrations publiques et ses trois sous-secteurs, tels que collectés auprès d'Eurostat."
+msgstr "Here each row is a function (%(n)s rows: old age, health, education, defence…) and each column a spending government: general government as a whole and its three subsectors, as collected from Eurostat."
+
+#, python-format
+msgid "Ici, chaque ligne est un poste des comptes (%(n)s lignes : recettes, dépenses, solde, intérêts, dette) et chaque colonne une administration : l'ensemble des administrations publiques et ses trois sous-secteurs, tels que collectés auprès d'Eurostat."
+msgstr "Here each row is an account item (%(n)s rows: revenue, expenditure, balance, interest, debt) and each column a government: general government as a whole and its three subsectors, as collected from Eurostat."
+
+msgid "Chercher une colonne (impôts, RSA, dette…)"
+msgstr "Search a column (taxes, RSA, debt…)"
+
+msgid "Chercher une colonne"
+msgstr "Search a column"
+
+msgid "Familles de colonnes"
+msgstr "Column families"
+
+#, python-format
+msgid "Nomenclature %(m)s : %(n)s départements publient selon elle en %(a)s."
+msgstr "%(m)s nomenclature: %(n)s départements publish under it in %(a)s."
+
+#, python-format
+msgid "Nomenclature %(m)s : %(n)s départements en %(a)s"
+msgstr "%(m)s nomenclature: %(n)s départements in %(a)s"
+
+msgid "Deux nomenclatures différentes : leurs fonctions ne se comparent pas entre elles."
+msgstr "Two different nomenclatures: their functions cannot be compared with each other."
+
+msgid "Appliquer"
+msgstr "Apply"
+
+msgid "Filtrer par nom ou code"
+msgstr "Filter by name or code"
+
+msgid "Filtrer par nom ou code…"
+msgstr "Filter by name or code…"
+
+msgid "Fonction"
+msgstr "Function"
+
+msgid "Toutes les fonctions"
+msgstr "All functions"
+
+msgid "Lignes épinglées seulement"
+msgstr "Pinned rows only"
+
+msgid "Teinter les valeurs"
+msgstr "Shade values"
+
+msgid "Filtrer"
+msgstr "Filter"
+
+msgid "lignes"
+msgstr "rows"
+
+msgid "Lien copié"
+msgstr "Link copied"
+
+msgid "Réinitialiser"
+msgstr "Reset"
+
+msgid "Épingler"
+msgstr "Pin"
+
+msgid "Nom"
+msgstr "Name"
+
+msgid "Écart"
+msgstr "Change"
+
+msgid "Écart calculé par ce site entre les deux années publiées."
+msgstr "Change calculated by this site between the two published years."
+
+msgid "min / max"
+msgstr "min / max"
+
+msgid "Minimum"
+msgstr "Minimum"
+
+msgid "écart"
+msgstr "mismatch"
+
+msgid "Maximum"
+msgstr "Maximum"
+
+msgid "non publié"
+msgstr "not published"
+
+msgid "Médiane"
+msgstr "Median"
+
+msgid "Calculé par ce site sur les lignes affichées."
+msgstr "Calculated by this site over the rows shown."
+
+msgid "Aucune ligne ne correspond aux filtres."
+msgstr "No row matches the filters."
+
+msgid "Retirer les filtres"
+msgstr "Remove filters"
+
+#, python-format
+msgid "Contexte institutionnel de %(de)s à %(a)s"
+msgstr "Institutional context from %(de)s to %(a)s"
+
+#, python-format
+msgid "%(n)s lignes sans valeur publiée pour ces colonnes"
+msgstr "%(n)s rows with no published value for these columns"
+
+msgid "Les grands équilibres"
+msgstr "The big balances"
+
+msgid "Comprendre"
+msgstr "Understand"
+
+msgid "Trois figures des comptes des administrations publiques, d'après les comptes nationaux publiés par Eurostat. Dans chaque figure, seule la hauteur représente un montant ; les valeurs exactes sont écrites à côté et dans le tableau de chaque figure."
+msgstr "Three figures of general government accounts, based on the national accounts published by Eurostat. In each figure, only height represents an amount; exact values are written alongside and in each figure's table."
+
+msgid "Faire défiler les années"
+msgstr "Play through the years"
+
+msgid "Arrêter le défilement"
+msgstr "Stop scrolling"
+
+msgid "Recettes, dépenses et solde"
+msgstr "Revenue, expenditure and balance"
+
+msgid "Ensemble des administrations publiques, en pourcentage du PIB."
+msgstr "General government, as a percentage of GDP."
+
+msgid "Deux colonnes : recettes et dépenses ; l'écart entre leurs sommets est le solde publié."
+msgstr "Two columns: revenue and expenditure; the gap between their tops is the published balance."
+
+msgid "Le site vérifie que le solde publié égale les recettes moins les dépenses publiées, à l’arrondi près (page Méthode)."
+msgstr "This site checks that the published balance equals published revenue minus expenditure, to rounding (Method page)."
+
+msgid "Qui dépense ?"
+msgstr "Who spends?"
+
+msgid "Dépenses totales de l'ensemble des administrations publiques et de chacun de leurs trois sous-secteurs, en euros."
+msgstr "Total expenditure of general government and of each of its three subsectors, in euros."
+
+msgid "Une colonne translucide pour l'ensemble des administrations publiques, trois colonnes pleines pour les sous-secteurs."
+msgstr "A translucent column for general government, three solid columns for the subsectors."
+
+msgid "La somme des sous-secteurs n'est pas le total publié : ce site ne les additionne pas."
+msgstr "The sum of the subsectors is not the published total: this site does not add them up."
+
+msgid "La dette, année après année"
+msgstr "Debt, year by year"
+
+#, python-format
+msgid "Dette brute consolidée de l'ensemble des administrations publiques, en pourcentage du PIB, de %(a)s à %(b)s."
+msgstr "General government consolidated gross debt, as a percentage of GDP, from %(a)s to %(b)s."
+
+msgid "Une colonne par année ; l'année choisie est mise en évidence."
+msgstr "One column per year; the selected year is highlighted."
+
+msgid "Explorer ces séries en détail"
+msgstr "Explore these series in detail"
+
+msgid "Où va la dépense publique ?"
+msgstr "Where does public spending go?"
+
+msgid "Contexte institutionnel"
+msgstr "Institutional context"
+
+msgid "en fonction"
+msgstr "in office"
+
+#, python-format
+msgid "parti de rattachement publié : %(p)s"
+msgstr "published party affiliation: %(p)s"
+
+#, python-format
+msgid "Fonctions et votes budgétaires, %(de)s–%(a)s"
+msgstr "Offices and budget votes, %(de)s–%(a)s"
+
+msgid "Qui exerçait la présidence, la direction du gouvernement et les ministères chargés des finances ; quels textes budgétaires ont été soumis au vote de l'Assemblée nationale et comment chaque groupe a voté ; et, pour chaque exercice, le solde et la dette publiés."
+msgstr "Who held the presidency, led the government and ran the ministries in charge of finance; which budget texts were put to the vote of the National Assembly and how each group voted; and, for each financial year, the published balance and debt."
+
+msgid "Ce sont des faits datés, publiés par l'Assemblée nationale et par Eurostat. Ce site les rapproche dans le temps ; il n'établit aucun lien de cause entre une fonction, un vote et un montant."
+msgstr "These are dated facts, published by the National Assembly and by Eurostat. This site places them side by side in time; it establishes no causal link between an office, a vote and an amount."
+
+msgid "Début"
+msgstr "Start"
+
+msgid "Fin"
+msgstr "End"
+
+msgid "Recettes, dépenses et solde sur la même période"
+msgstr "Revenue, expenditure and balance over the same period"
+
+#, python-format
+msgid "Évolution de chaque fonction de dépense entre %(de)s et %(a)s"
+msgstr "Change in each spending function between %(de)s and %(a)s"
+
+msgid "Fonctions exercées"
+msgstr "Offices held"
+
+msgid "Présidence de la République"
+msgstr "Presidency of the Republic"
+
+msgid "Aucune donnée publiée pour cette période."
+msgstr "No data published for this period."
+
+msgid "Premiers ministres"
+msgstr "Prime ministers"
+
+msgid "Ministres chargés des finances, du budget ou des comptes publics"
+msgstr "Ministers in charge of finance, the budget or public accounts"
+
+msgid "Avant mai 2007, le référentiel de l'Assemblée nationale ne publie ni la présidence ni les gouvernements."
+msgstr "Before May 2007, the National Assembly's reference data publishes neither the presidency nor the governments."
+
+msgid "Voir les données non disponibles"
+msgstr "See unavailable data"
+
+msgid "Ministères retenus selon leur intitulé publié : ceux dont l'objet porte sur les finances, le budget ou les comptes publics. Un secrétariat d'État rattaché au ministre des finances mais chargé d'un autre domaine n'est pas retenu. Source : Assemblée nationale, acteurs, mandats et organes."
+msgstr "Ministries selected by their published title: those whose remit covers finance, the budget or public accounts. A state secretariat attached to the finance minister but in charge of another field is not included. Source: National Assembly, actors, mandates and bodies."
+
+msgid "Par exercice"
+msgstr "By financial year"
+
+msgid "Exercice : l'année inscrite dans le titre publié du texte (« loi de finances pour 2019 » : exercice 2019)."
+msgstr "Financial year: the year written in the published title of the text (“loi de finances pour 2019”: financial year 2019)."
+
+#, python-format
+msgid "Exercice %(a)s"
+msgstr "Financial year %(a)s"
+
+msgid "Scrutins sur les textes budgétaires de cet exercice : non publiés dans les données ouvertes de l'Assemblée nationale."
+msgstr "Votes on this financial year's budget texts: not published in the National Assembly's open data."
+
+#, python-format
+msgid "Loi de finances pour %(a)s : aucun scrutin public sur l'ensemble du texte dans les données de l'Assemblée nationale."
+msgstr "Finance act for %(a)s: no public vote on the whole text in the National Assembly's data."
+
+#, python-format
+msgid "%(p)s pour, %(c)s contre, %(a)s abstentions"
+msgstr "%(p)s for, %(c)s against, %(a)s abstentions"
+
+#, python-format
+msgid "scrutin n° %(n)s"
+msgstr "vote no. %(n)s"
+
+msgid "Dossier législatif :"
+msgstr "Legislative file:"
+
+#, python-format
+msgid "Loi n° %(n)s"
+msgstr "Law no. %(n)s"
+
+#, python-format
+msgid "JO n° %(n)s du %(d)s"
+msgstr "Official Journal no. %(n)s of %(d)s"
+
+msgid "aucune promulgation publiée dans le dossier"
+msgstr "no promulgation published in the file"
+
+msgid "Aucun dossier législatif publié ne cite ce scrutin."
+msgstr "No published legislative file cites this vote."
+
+msgid "Vote des groupes"
+msgstr "Vote by group"
+
+msgid "Groupe"
+msgstr "Group"
+
+msgid "Membres"
+msgstr "Members"
+
+msgid "Pour"
+msgstr "For"
+
+msgid "Contre"
+msgstr "Against"
+
+msgid "Abstention"
+msgstr "Abstention"
+
+msgid "Position majoritaire"
+msgstr "Majority position"
+
+msgid "Scrutins publics de l'Assemblée nationale sur l'ensemble d'un texte budgétaire (loi de finances, loi de financement de la sécurité sociale, lois rectificatives, de fin de gestion, de règlement ou d'approbation des comptes). Les votes du Sénat ne sont pas encore chargés."
+msgstr "Public votes of the National Assembly on a whole budget text (finance act, social security financing act, amending, end-of-year, settlement or accounts approval acts). Senate votes are not loaded yet."
+
+msgid "Dépenses fiscales : montants publiés"
+msgstr "Tax expenditures: published amounts"
+
+msgid "Le montant de chaque dépense fiscale, tel que publié dans le jeu « budget vert » annexé au projet de loi de finances 2026."
+msgstr "The amount of each tax expenditure, as published in the “green budget” dataset annexed to the 2026 draft finance bill."
+
+msgid "Année du chiffrage"
+msgstr "Year of the estimate"
+
+msgid "Impôt concerné"
+msgstr "Tax concerned"
+
+msgid "Tous les impôts"
+msgstr "All taxes"
+
+#, python-format
+msgid "montant publié des %(n)s dépenses fiscales chiffrées en %(annee)s"
+msgstr "published amount of the %(n)s tax expenditures with an amount for %(annee)s"
+
+msgid "dépenses fiscales marquées « nc » (montant non calculé) dans la source pour 2026"
+msgstr "tax expenditures flagged “nc” (amount not calculated) in the source for 2026"
+
+msgid "voir la liste"
+msgstr "see the list"
+
+msgid "Sur quels impôts ?"
+msgstr "On which taxes?"
+
+msgid "Montant publié regroupé par impôt concerné, tel qu'indiqué dans la source. Sommes et parts calculées par ce site. Cliquez sur un impôt pour filtrer la liste."
+msgstr "Published amount grouped by the tax concerned, as stated in the source. Sums and shares computed by this site. Click a tax to filter the list."
+
+#, python-format
+msgid "en %(annee)s"
+msgstr "in %(annee)s"
+
+msgid "Répartition par impôt"
+msgstr "Breakdown by tax"
+
+msgid "Toutes les dépenses fiscales chiffrées"
+msgstr "All costed tax expenditures"
+
+#, python-format
+msgid "%(n)s dépenses fiscales"
+msgstr "%(n)s tax expenditures"
+
+msgid "voir tous les impôts"
+msgstr "see all taxes"
+
+msgid "Rechercher une dépense fiscale…"
+msgstr "Search a tax expenditure…"
+
+msgid "Rechercher une dépense fiscale"
+msgstr "Search a tax expenditure"
+
+msgid "Classement par montant publié ; cliquez sur un en-tête pour trier. Une dépense ventilée sur plusieurs programmes est regroupée en une ligne."
+msgstr "Ranked by published amount; click a header to sort. An expenditure split across several programmes is grouped into one row."
+
+msgid "Montant publié"
+msgstr "Published amount"
+
+msgid "Dépenses fiscales sans montant publié"
+msgstr "Tax expenditures without a published amount"
+
+#, python-format
+msgid "Dans le même document, %(nc)s dépenses fiscales sont marquées « nc » (montant non calculé) et %(eps)s « ε » (moins de 0,5 million d'euros). Elles ne sont pas incluses dans le total."
+msgstr "In the same document, %(nc)s tax expenditures are marked “nc” (amount not calculated) and %(eps)s “ε” (less than €0.5 million). They are not included in the total."
+
+msgid "Sens des marqueurs : intitulé de la colonne dans la source."
+msgstr "Meaning of the markers: column label in the source."
+
+#, python-format
+msgid "Les %(n)s dépenses non chiffrées"
+msgstr "The %(n)s uncosted expenditures"
+
+msgid "Les libellés des dépenses fiscales sont publiés en français uniquement."
+msgstr "Tax expenditure labels are published in French only."
+
+msgid "Le total est une simple addition, faite par ce site, des montants publiés ligne à ligne dans la source."
+msgstr "The total is a simple sum, made by this site, of the amounts published line by line in the source."
+
+msgid "La catégorie « Impôt sur le revenu et impôt sur les sociétés » est publiée telle quelle par la source : ce site ne la répartit pas entre les deux impôts."
+msgstr "The category “Income tax and corporate tax” is published as such by the source: this site does not split it between the two taxes."
+
+msgid "La définition officielle de la dépense fiscale n'est pas encore relevée dans le lexique."
+msgstr "The official definition of a tax expenditure has not yet been recorded in the glossary."
+
+msgid "Où va l'argent public ?"
+msgstr "Where does public money go?"
+
+msgid "Toutes administrations publiques"
+msgstr "All of general government"
+
+msgid "Les dépenses des administrations publiques par fonction (COFOG), d'après Eurostat."
+msgstr "General government expenditure by function (COFOG), from Eurostat."
+
+msgid "Qui dépense"
+msgstr "Who spends"
+
+#, python-format
+msgid "de dépenses en %(annee)s"
+msgstr "spent in %(annee)s"
+
+msgid "Répartition par fonction"
+msgstr "Breakdown by function"
+
+#, python-format
+msgid "Cliquez sur une fonction pour voir son détail et son évolution. Les parts sont publiées par Eurostat (en %% de la dépense totale)."
+msgstr "Click a function to see its detail and trend. Shares are published by Eurostat (as %% of total expenditure)."
+
+msgid "Fiche thématique : tout ce que le site sait de ce sujet"
+msgstr "Topic page: everything this site knows about the subject"
+
+msgid "Ce que recouvre cette fonction"
+msgstr "What this function covers"
+
+msgid "Sous-fonctions COFOG. Parts calculées par ce site : sous-fonction ÷ total de la fonction (les sous-fonctions publiées s'additionnent exactement à la fonction)."
+msgstr "COFOG groups. Shares computed by this site: group ÷ function total (the published groups add up exactly to the function)."
+
+msgid "Aucune sous-fonction publiée pour cette sélection."
+msgstr "No group published for this selection."
+
+msgid "Évolution de sa part"
+msgstr "Trend of its share"
+
+#, python-format
+msgid "Part dans la dépense totale du secteur, en %%, publiée par Eurostat."
+msgstr "Share of the sector's total expenditure, in %%, published by Eurostat."
+
+msgid "Série annuelle"
+msgstr "Annual series"
+
+#, python-format
+msgid "La somme des trois sous-secteurs (%(somme)s, calcul du site) dépasse le total publié pour l'ensemble des administrations (%(total)s) : ce site n'additionne donc jamais les sous-secteurs."
+msgstr "The sum of the three subsectors (%(somme)s, computed by this site) exceeds the published total for general government (%(total)s): this site therefore never adds the subsectors up."
+
+msgid "« Provisoire » : valeur marquée provisoire dans la source."
+msgstr "“Provisional”: value flagged as provisional in the source."
+
+msgid "Les couleurs restent attachées à une fonction quelle que soit l'année affichée : les cinq fonctions mises en avant sont celles dont le montant est le plus élevé pour ce secteur la dernière année publiée."
+msgstr "Colours stay attached to a function whatever the year shown: the five highlighted functions are those with the highest amount for this sector in the latest published year."
+
+msgid "Pourquoi ces deux chiffres diffèrent-ils ?"
+msgstr "Why do these two figures differ?"
+
+msgid "Vérifier"
+msgstr "Verify"
+
+msgid "Deux chiffres sur un même sujet peuvent venir de publications différentes. Cette page les met côte à côte et nomme, critère par critère, ce qui les sépare. Elle ne dit pas lequel est le bon : chacun est juste dans son cadre."
+msgstr "Two figures on the same subject can come from different publications. This page puts them side by side and names, criterion by criterion, what separates them. It does not say which one is right: each is correct within its own framework."
+
+#, python-format
+msgid "Somme de %(n)s montants publiés, calculée par ce site."
+msgstr "Sum of %(n)s published amounts, calculated by this site."
+
+msgid "Ce qui les sépare"
+msgstr "What separates them"
+
+#, python-format
+msgid "Critères qui diffèrent : %(n)s sur %(t)s."
+msgstr "Criteria that differ: %(n)s out of %(t)s."
+
+msgid "Aucun des critères ci-dessous ne diffère : les deux chiffres décrivent la même chose, dans deux collectes ou deux fichiers."
+msgstr "None of the criteria below differ: the two figures describe the same thing, in two collections or two files."
+
+msgid "Critère"
+msgstr "Criterion"
+
+msgid "diffère"
+msgstr "differs"
+
+msgid "Collecte par ce site"
+msgstr "Collected by this site"
+
+#, python-format
+msgid "Écart A − B : %(e)s (calcul du site)."
+msgstr "Gap A − B: %(e)s (site calculation)."
+
+msgid "Ce site ne calcule pas d'écart entre ces deux chiffres : ils n'ont pas le même cadre comptable, les mêmes administrations, la même grandeur ou la même unité. Une soustraction mélangerait des choses différentes."
+msgstr "This site does not calculate a gap between these two figures: they do not share the same accounting framework, government units, quantity or unit. A subtraction would mix different things."
+
+msgid "Exemples"
+msgstr "Examples"
+
+msgid "Pour chaque thème : les administrations centrales dans les comptes nationaux, face à une mission du budget de l'État rattachée au thème par ce site."
+msgstr "For each topic: central government in the national accounts, set against a central government budget mission that this site links to the topic."
+
+msgid "Ce que le site couvre aujourd'hui"
+msgstr "What the site covers today"
+
+msgid "Tableau établi à partir des montants chargés, source par source : années, découpage, stades et date de la dernière collecte."
+msgstr "Table built from the loaded amounts, source by source: years, breakdown, stages and date of the latest collection."
+
+msgid "Années"
+msgstr "Years"
+
+msgid "Qui"
+msgstr "Who"
+
+msgid "Découpage"
+msgstr "Breakdown"
+
+msgid "Stades"
+msgstr "Stages"
+
+msgid "Montants"
+msgstr "Amounts"
+
+msgid "Collecte"
+msgstr "Collected"
+
+msgid "Données manquantes"
+msgstr "Missing data"
+
+#, python-format
+msgid "%(n)s postes"
+msgstr "%(n)s items"
+
+msgid "Pas encore couvert"
+msgstr "Not covered yet"
+
+msgid "Communes et intercommunalités."
+msgstr "Municipalities and inter-municipal bodies."
+
+msgid "Sécurité sociale par branche ou par régime (seul l'ensemble des administrations de sécurité sociale est présent)."
+msgstr "Social security by branch or scheme (only social security funds as a whole are included)."
+
+msgid "Organismes publics un par un, opérateurs de l'État, entreprises à participation publique."
+msgstr "Individual public bodies, State operators, companies with public shareholdings."
+
+msgid "Montants versés d'une administration à une autre."
+msgstr "Amounts paid from one government body to another."
+
+msgid "Exécution du budget de l'État avant 2024."
+msgstr "State budget execution before 2024."
+
+msgid "Engagements hors bilan et garanties."
+msgstr "Off-balance-sheet commitments and guarantees."
+
+msgid "Autres pays de l'Union européenne."
+msgstr "Other European Union countries."
+
+msgid "Ce que les sources collectées ne publient pas est listé dans"
+msgstr "What the collected sources do not publish is listed in"
+
+msgid "Explorer"
+msgstr "Explore"
+
+msgid "Les finances publiques françaises, en données ouvertes"
+msgstr "French public finances, from open data"
+
+msgid "prototype"
+msgstr "prototype"
+
+msgid "Les comptes publics,"
+msgstr "Public accounts,"
+
+msgid "tels que publiés."
+msgstr "as published."
+
+msgid "Chaque chiffre, sa source."
+msgstr "Every figure, its source."
+
+msgid "Dépenses de l'État, des collectivités et de la sécurité sociale, d'après les fichiers officiels. Chaque montant renvoie à sa ligne d'origine ; les données non disponibles sont signalées."
+msgstr "Spending by the State, local authorities and social security, from official files. Every amount links to its source line; data not available is flagged."
+
+msgid "Rechercher un département, une région, une mission, une dépense fiscale, un terme"
+msgstr "Search a département, a region, a mission, a tax expenditure, a term"
+
+msgid "Chercher"
+msgstr "Search"
+
+msgid "Rien de publié sous ce nom dans les sources collectées."
+msgstr "Nothing published under this name in the collected sources."
+
+msgid "Essayer :"
+msgstr "Try:"
+
+msgid "Sujets"
+msgstr "Topics"
+
+msgid "Relancer le défilement"
+msgstr "Resume scrolling"
+
+msgid "Données publiées et données non disponibles"
+msgstr "Published data and data not available"
+
+msgid "Combien pour"
+msgstr "How much for"
+
+msgid "Thème"
+msgstr "Topic"
+
+msgid "dans"
+msgstr "in"
+
+msgid "Périmètre"
+msgstr "Scope"
+
+msgid "Répondre"
+msgstr "Answer"
+
+msgid "Total des dépenses fiscales chiffrées"
+msgstr "Total of costed tax expenditures"
+
+msgid "Projet (PLF)"
+msgstr "Draft (PLF)"
+
+#, python-format
+msgid "Somme des montants publiés pour %(n)s dépenses fiscales. Ce site n'y ajoute aucune estimation."
+msgstr "Sum of the published amounts for %(n)s tax expenditures. This site adds no estimate of its own."
+
+#, python-format
+msgid "%(nc)s dépenses fiscales marquées « nc » (montant non calculé) et %(eps)s « ε » (moins de 0,5 million d'euros)."
+msgstr "%(nc)s tax expenditures marked “nc” (amount not calculated) and %(eps)s “ε” (less than €0.5 million)."
+
+msgid "Ces dépenses ne sont pas incluses dans le total ci-contre."
+msgstr "These expenditures are not included in the total shown."
+
+#, python-format
+msgid "Producteur de la donnée : %(r)s"
+msgstr "Data producer: %(r)s"
+
+msgid "Voir la liste, ligne par ligne"
+msgstr "See the list, line by line"
+
+msgid "Comptes nationaux"
+msgstr "National accounts"
+
+#, python-format
+msgid "Soit %(p)s des dépenses de ces administrations, part publiée par Eurostat."
+msgstr "That is %(p)s of these administrations' spending, share published by Eurostat."
+
+msgid "Pas de montant publié pour cette année."
+msgstr "No amount published for this year."
+
+msgid "Évolution depuis 1995"
+msgstr "Trend since 1995"
+
+msgid "Détail par sous-fonction"
+msgstr "Breakdown by sub-function"
+
+msgid "Fiche thématique"
+msgstr "Topic page"
+
+msgid "Aucune lacune recensée pour cette question dans les sources collectées."
+msgstr "No gap recorded for this question in the collected sources."
+
+msgid "Toutes les données non disponibles"
+msgstr "All data not available"
+
+msgid "Pas de réponse dans les sources collectées"
+msgstr "No answer in the collected sources"
+
+msgid "Les dépenses fiscales collectées ici sont celles que l'État chiffre dans son projet de loi de finances. Aucune source collectée ne les répartit entre administrations."
+msgstr "The tax expenditures collected here are those the State costs in its draft budget bill. No collected source splits them between administrations."
+
+msgid "Le budget de l'État publié ici est classé par missions, pas par fonctions de la COFOG. Ce site ne convertit pas un classement dans l'autre."
+msgstr "The State budget published here is classified by missions, not by COFOG functions. This site does not convert one classification into the other."
+
+msgid "Voir le budget de l'État mission par mission"
+msgstr "See the State budget mission by mission"
+
+#, python-format
+msgid "La question voisine qui a une réponse : %(t)s, dans %(p)s"
+msgstr "The nearest question that has an answer: %(t)s, in %(p)s"
+
+msgid "Et maintenant ?"
+msgstr "What next?"
+
+msgid "D'autres questions"
+msgstr "Other questions"
+
+msgid "Tirées au hasard à chaque visite, chacune avec son chiffre."
+msgstr "Drawn at random on each visit, each with its figure."
+
+msgid "Entrées dans les données"
+msgstr "Ways into the data"
+
+msgid "Les chiffres publiés sur ce sujet. Chaque bloc vient d'une publication différente : ils ne s'additionnent pas."
+msgstr "The figures published on this subject. Each block comes from a different publication: they do not add up."
+
+#, python-format
+msgid "L'essentiel, toutes administrations publiques, en %(a)s"
+msgstr "Key figures, general government, in %(a)s"
+
+msgid "de dépenses"
+msgstr "of spending"
+
+msgid "de la dépense publique"
+msgstr "of public spending"
+
+#, python-format
+msgid "Évolution depuis %(a)s, en part du PIB"
+msgstr "Change since %(a)s, as a share of GDP"
+
+msgid "Dépenses du thème en part du PIB"
+msgstr "Spending on this topic as a share of GDP"
+
+msgid "Quelle administration dépense"
+msgstr "Which government level spends"
+
+#, python-format
+msgid "Montants publiés pour chaque sous-secteur en %(a)s. Les sous-secteurs se versent aussi de l'argent entre eux : leurs montants ne s'additionnent pas."
+msgstr "Amounts published for each subsector in %(a)s. Subsectors also pay money to one another: their amounts do not add up."
+
+msgid "À quoi précisément"
+msgstr "On what exactly"
+
+msgid "Dans le budget de l'État"
+msgstr "In the State budget"
+
+msgid "Missions rattachées à ce thème par ce site (regroupement du site, pas une correspondance officielle). Crédits de paiement, aux trois stades publiés : ce n'est pas le même périmètre que les comptes nationaux ci-dessus."
+msgstr "Missions attached to this topic by this site (the site's grouping, not an official correspondence). Payment appropriations at the three published stages: not the same scope as the national accounts above."
+
+#, python-format
+msgid "Loi votée %(a)s"
+msgstr "%(a)s enacted law"
+
+#, python-format
+msgid "Projet %(a)s"
+msgstr "%(a)s draft"
+
+msgid "Dépenses fiscales rattachées à ces missions"
+msgstr "Tax expenditures attached to these missions"
+
+msgid "Rattachement publié dans le budget vert du PLF 2026. Coût estimé pour 2026 des dépenses fiscales chiffrées ; celles publiées sans montant ne sont pas comptées."
+msgstr "Attachment published in the green budget of the 2026 draft finance bill. Estimated 2026 cost of the costed tax expenditures; those published without an amount are not counted."
+
+#, python-format
+msgid "%(n)s montants"
+msgstr "%(n)s amounts"
+
+msgid "Pourquoi ces chiffres diffèrent"
+msgstr "Why these figures differ"
+
+#, python-format
+msgid "« %(a)s » dans les comptes nationaux et « %(b)s » dans le budget de l'État ne donnent pas le même montant. Ce qui les sépare :"
+msgstr "“%(a)s” in the national accounts and “%(b)s” in the central government budget do not give the same amount. What separates them:"
+
+msgid "Les deux chiffres côte à côte, critère par critère"
+msgstr "The two figures side by side, criterion by criterion"
+
+msgid "Dans les départements"
+msgstr "In the départements"
+
+#, python-format
+msgid "Les départements publient leurs dépenses par fonction (nomenclature M57). La fonction la plus proche de ce thème est « %(f)s »."
+msgstr "Départements publish their spending by function (M57 classification). The function closest to this topic is “%(f)s”."
+
+msgid "Comparer les départements sur cette fonction"
+msgstr "Compare départements on this function"
+
+msgid "Une dépense nationale ne se répartit pas entre les territoires : les comptes nationaux ne publient pas cette ventilation."
+msgstr "National spending cannot be split between territories: the national accounts do not publish that breakdown."
+
+msgid "Limites"
+msgstr "Limits"
+
+msgid "Comptes nationaux et budget de l'État sont deux publications différentes, aux périmètres différents : leurs montants ne se comparent pas directement."
+msgstr "National accounts and the State budget are two different publications with different scopes: their amounts cannot be compared directly."
+
+msgid "Le rattachement des missions et de la fonction des départements à ce thème est un choix du site."
+msgstr "Attaching the missions and the départements' function to this topic is the site's choice."
+
+msgid "Les montants versés d'une administration à une autre ne sont pas encore couverts."
+msgstr "Amounts paid from one government body to another are not covered yet."
+
+msgid "Aller plus loin"
+msgstr "Go further"
+
+msgid "Le même thème parmi toutes les fonctions, année par année."
+msgstr "The same topic among all functions, year by year."
+
+msgid "Obtenir les chiffres"
+msgstr "Get the figures"
+
+msgid "La série par administration, à télécharger avec sa source."
+msgstr "The series by government level, to download with its source."
+
+msgid "Faire un graphique à partager"
+msgstr "Make a chart to share"
+
+msgid "Choisir des séries et une forme, puis télécharger l'image."
+msgstr "Choose series and a chart type, then download the image."
+
+msgid "La machine des comptes publics"
+msgstr "The public accounts machine"
+
+msgid "Le thème parmi les flux de recettes et de dépenses, en 3D."
+msgstr "The topic among revenue and expenditure flows, in 3D."
+
+msgid "Choisissez un sujet : tout ce que le site en sait, sur une page."
+msgstr "Pick a subject: everything this site knows about it, on one page."
+
+msgid "Vues d'ensemble"
+msgstr "Overviews"
+
+msgid "Toutes les dépenses"
+msgstr "All spending"
+
+msgid "Toutes les recettes"
+msgstr "All revenue"
+
+msgid "Les comptes publics, tels que publiés"
+msgstr "The public accounts, as published"
+
+msgid "Où va l'argent public ? Chaque chiffre vient d'un fichier officiel."
+msgstr "Where does public money go? Every figure comes from an official file."
+
+msgid "Rechercher un sujet, un territoire ou un chiffre"
+msgstr "Search a topic, a place or a figure"
+
+msgid "Débutant ?"
+msgstr "New here?"
+
+msgid "Commencer par le parcours guidé"
+msgstr "Start with the guided tour"
+
+#, python-format
+msgid "L'ensemble des administrations publiques en %(a)s, en part du PIB"
+msgstr "General government in %(a)s, as a share of GDP"
+
+#, python-format
+msgid "du PIB en %(a)s"
+msgstr "of GDP in %(a)s"
+
+msgid "Tout le système en 3D"
+msgstr "The whole system in 3D"
+
+msgid "D'où vient l'argent, qui le gère, où il va : sur un seul schéma."
+msgstr "Where the money comes from, who manages it, where it goes: in a single diagram."
+
+msgid "Ouvrir la machine"
+msgstr "Open the machine"
+
+msgid "Plus la case est grande, plus la part est élevée. Touchez une case pour entrer dedans."
+msgstr "The bigger the box, the larger the share. Tap a box to go inside."
+
+msgid "Voir en 3D"
+msgstr "See it in 3D"
+
+msgid "Changer d'administration ou d'unité"
+msgstr "Change sector or unit"
+
+msgid "Niveau de la carte"
+msgstr "Map level"
+
+#, python-format
+msgid "Sur 100 € de dépense publique, %(v)s vont à cette fonction. Voici leur détail."
+msgstr "Out of €100 of public spending, %(v)s go to this function. Here is the breakdown."
+
+#, python-format
+msgid "Dépense totale : %(t)s."
+msgstr "Total spending: %(t)s."
+
+msgid "dont"
+msgstr "including"
+
+msgid "Surface : montant publié en euros. Teinte : même information, pour l'œil."
+msgstr "Area: published amount in euros. Shade: the same information, for the eye."
+
+msgid "* valeur provisoire."
+msgstr "* provisional value."
+
+msgid "La fonction en chiffres"
+msgstr "The function in figures"
+
+msgid "pour 100 € de dépense publique"
+msgstr "per €100 of public spending"
+
+msgid "en euros courants"
+msgstr "in current euros"
+
+#, python-format
+msgid "Part dans la dépense publique, depuis %(a)s"
+msgstr "Share of public spending since %(a)s"
+
+msgid "Tout sur ce thème"
+msgstr "Everything on this topic"
+
+msgid "Comparer, changer d'unité, exporter"
+msgstr "Compare, change unit, export"
+
+msgid "Tableau détaillé"
+msgstr "Detailed table"
+
+msgid "Le détail, chiffre par chiffre"
+msgstr "The breakdown, figure by figure"
+
+msgid "Non publié"
+msgstr "Not published"
+
+msgid "Non chiffré"
+msgstr "Not costed"
+
+msgid "Sous le seuil de chiffrage"
+msgstr "Below the costing threshold"
+
+msgid "Sans définition officielle"
+msgstr "No official definition"
+
+msgid "Publication reportée"
+msgstr "Publication postponed"
+
+msgid "Publié mais inexploitable"
+msgstr "Published but unusable"
+
+msgid "Transparence"
+msgstr "Transparency"
+
+msgid "Les données absentes, non chiffrées ou inexploitables relevées lors de la collecte, avec l'organisme qui les produit et la date du constat."
+msgstr "Missing, uncosted or unusable data found during collection, with the body that produces it and the date it was observed."
+
+msgid "Jeux de données manquants ou inutilisables"
+msgstr "Missing or unusable datasets"
+
+msgid "Organisme producteur :"
+msgstr "Producing body:"
+
+msgid "Constat :"
+msgstr "Found:"
+
+msgid "jeu concerné"
+msgstr "dataset concerned"
+
+msgid "Lacunes ligne à ligne"
+msgstr "Line-by-line gaps"
+
+#, python-format
+msgid "Voir les %(n)s lignes"
+msgstr "See the %(n)s lines"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Lacune"
+msgstr "Gap"
+
+msgid "Organisme producteur"
+msgstr "Producing body"
+
+msgid "ligne"
+msgstr "line"
+
+msgid "Définitions officielles, citées mot pour mot"
+msgstr "Official definitions, quoted word for word"
+
+msgid "Chaque définition est une citation exacte d'un texte officiel (loi organique relative aux lois de finances, INSEE, OFGL), avec son lien. Quand la définition officielle n'a pas encore été relevée, le lexique le dit au lieu d'en inventer une."
+msgstr "Each definition is an exact quotation from an official text (organic law on finance acts, INSEE, OFGL), with its link. When the official definition has not yet been recorded, the glossary says so instead of inventing one."
+
+#, python-format
+msgid "%(n)s termes attendent encore leur définition officielle."
+msgstr "%(n)s terms are still awaiting their official definition."
+
+msgid "Traduction non officielle. Texte original :"
+msgstr "Unofficial translation. Original text:"
+
+msgid "Source :"
+msgstr "Source:"
+
+msgid "Relevé :"
+msgstr "Recorded:"
+
+msgid "Prototype"
+msgstr "Prototype"
+
+msgid "Ce qui entre, ce qui sort, ce qui s'accumule : les comptes de l'ensemble des administrations publiques publiés par Eurostat, dessinés comme une machine à eau."
+msgstr "What comes in, what goes out, what builds up: the accounts of general government published by Eurostat, drawn as a water machine."
+
+msgid "Niveau de lecture"
+msgstr "Reading level"
+
+msgid "Découverte"
+msgstr "Overview"
+
+msgid "Bientôt : isoler un sous-secteur ou une politique et ses flux publiés."
+msgstr "Coming soon: isolate a subsector or a policy and its published flows."
+
+msgid "Exploration"
+msgstr "Exploration"
+
+msgid "Bientôt : flux documentés, périmètres, consolidation et provenance."
+msgstr "Coming soon: documented flows, scopes, consolidation and provenance."
+
+msgid "Analyse"
+msgstr "Analysis"
+
+msgid "Vue d'ensemble : recettes, trois sous-secteurs et les six plus grandes fonctions ; les autres sont regroupées (calcul du site)."
+msgstr "Overview: revenue, three subsectors and the six largest functions; smaller ones are grouped (computed by this site)."
+
+msgid "Administrations publiques"
+msgstr "General government"
+
+msgid "Besoin de financement"
+msgstr "Net borrowing"
+
+msgid "Capacité de financement"
+msgstr "Net lending"
+
+msgid "Autres fonctions (somme calculée par ce site)"
+msgstr "Other functions (sum computed by this site)"
+
+msgid "Tuyau de 100 Md€"
+msgstr "€100bn pipe"
+
+msgid "Ensemble des administrations"
+msgstr "General government"
+
+msgid "Encours en fin d'année, par secteur détenteur"
+msgstr "Outstanding at year end, by holding sector"
+
+msgid "Encours en fin d'année ; ventilation par détenteur publiée depuis 2020"
+msgstr "Outstanding at year end; breakdown by holder published since 2020"
+
+msgid "Besoin de financement de l'ensemble des administrations. Créanciers : dette par secteur détenteur"
+msgstr "Net borrowing of general government. Creditors: debt by holding sector"
+
+msgid "Ce n'est pas une recette : c'est l'écart entre dépenses et recettes publiées, couvert par l'emprunt net de l'année. Il est dessiné à part, sur le côté."
+msgstr "It is not revenue: it is the gap between published expenditure and revenue, covered by the year's net borrowing. It is drawn separately, on the side."
+
+msgid "Écart avec la fin de l'année précédente, calculé par ce site"
+msgstr "Change from the end of the previous year, computed by this site"
+
+msgid "Glisser pour déplacer la vue ou la faire tourner · pincer, molette ou boutons + et − pour zoomer · toucher un bâtiment pour tout son détail, un tuyau pour son montant, un numéro pour son explication"
+msgstr "Drag to move or turn the view · pinch, scroll or use the + and − buttons to zoom · tap a building for its full detail, a pipe for its amount, a number for its explanation"
+
+msgid "Zoomer"
+msgstr "Zoom in"
+
+msgid "Dézoomer"
+msgstr "Zoom out"
+
+msgid "Voir toute la scène"
+msgstr "Show the whole scene"
+
+msgid "Par sous-secteur (ils se versent aussi de l'argent entre eux : leurs montants ne s'additionnent pas)"
+msgstr "By subsector (they also pay money to one another: their amounts do not add up)"
+
+msgid "Qui paie : postes publiés"
+msgstr "Who pays: published items"
+
+msgid "Comment cet argent est dépensé"
+msgstr "How this money is spent"
+
+msgid "Quelle administration le dépense (leurs montants ne s'additionnent pas : elles se versent aussi de l'argent entre elles)"
+msgstr "Which government level spends it (their amounts do not add up: they also pay money to one another)"
+
+msgid "Qui paie, en détail"
+msgstr "Who pays, in detail"
+
+msgid "Masquer le détail"
+msgstr "Hide the detail"
+
+msgid "Autres postes (somme calculée par ce site)"
+msgstr "Other items (sum computed by this site)"
+
+msgid "Reste de la catégorie, non ventilé par payeur (calculé par ce site)"
+msgstr "Rest of the category, not broken down by payer (computed by this site)"
+
+msgid "Part de chaque poste dans le montant publié, calculée par ce site"
+msgstr "Share of each item in the published amount, computed by this site"
+
+msgid "Fiche thématique de ce sujet"
+msgstr "Topic page for this subject"
+
+msgid "Schéma : les recettes entrent par le fond dans les trois sous-secteurs, le besoin de financement arrive à part par le côté, les dépenses sortent par fonction ; la dette est une tour à part. Les montants sont listés sous le schéma."
+msgstr "Diagram: revenue flows in from the back into the three subsectors, net borrowing arrives separately from the side, expenditure flows out by function; debt is a separate tower. The amounts are listed below the diagram."
+
+msgid "Flux : les tuyaux"
+msgstr "Flows: the pipes"
+
+msgid "Ce qui passe pendant l'année choisie. La section d'un tuyau suit le montant publié (comparez au tuyau de 100 Md€) ; les grains montrent seulement le sens du courant."
+msgstr "What flows during the chosen year. A pipe's cross-section follows the published amount (compare with the €100bn pipe); the grains only show the direction of flow."
+
+msgid "Les bandeaux donnent les montants publiés pour l'ensemble des administrations ; les tuyaux, ceux de chaque sous-secteur. Les sous-secteurs se versent aussi de l'argent entre eux : leurs montants ne s'additionnent donc pas."
+msgstr "The banners give the published amounts for general government; the pipes, those of each subsector. Subsectors also pay money to one another, so their amounts do not add up."
+
+msgid "Solde : le déficit public"
+msgstr "Balance: the public deficit"
+
+msgid "Ce n'est pas un acteur mais un montant : le déficit public est le besoin de financement de l'ensemble des administrations, leur emprunt net de l'année (« net borrowing » dans le libellé officiel anglais) quand les dépenses dépassent les recettes. Chaque tuyau orange est le besoin de financement d'un sous-secteur. Eurostat ne publie pas qui a prêté cette année-là seule : la tour dit qui détient la dette."
+msgstr "It is not an actor but an amount: the public deficit is the net borrowing of general government in the year, when expenditure exceeds revenue. Each orange pipe is the net borrowing of one subsector. Eurostat does not publish who lent in that year alone: the tower shows who holds the debt."
+
+msgid "Stock : la tour"
+msgstr "Stock: the tower"
+
+msgid "La dette publique à la fin de l'année : un montant accumulé, pas un montant annuel, à ne pas comparer aux tuyaux. Ses étages disent qui la détient (ses créanciers) ; le chiffre en italique est l'écart avec l'année précédente, calculé par ce site. La somme de ces écarts n'égale pas exactement le besoin de financement : les comptes publiés ne les relient pas un pour un."
+msgstr "Public debt at year end: an accumulated amount, not an annual one, not to be compared with the pipes. Its floors show who holds it (its creditors); the figure in italics is the change from the previous year, computed by this site. The sum of these changes does not exactly equal net borrowing: the published accounts do not link them one to one."
+
+msgid "Ce qui entre"
+msgstr "What comes in"
+
+#, python-format
+msgid "« Autres recettes » : somme calculée par ce site de %(l)s."
+msgstr "“Other revenue”: sum computed by this site of %(l)s."
+
+msgid "Qui paie : postes publiés à l'intérieur des catégories"
+msgstr "Who pays: published items within the categories"
+
+msgid "Ces postes ne couvrent pas toute leur catégorie : le reste n'est pas nommé par payeur dans ce jeu."
+msgstr "These items do not cover their whole category: the rest is not named by payer in this dataset."
+
+msgid "L'écart"
+msgstr "The gap"
+
+msgid "Quand le solde publié est négatif, le besoin de financement (l'emprunt net de l'année) est dessiné à part, sur le côté : ce n'est pas une recette, et il n'entre pas dans le total des recettes."
+msgstr "When the published balance is negative, the year's net borrowing is drawn separately, on the side: it is not revenue, and it is not part of total revenue."
+
+msgid "Ce qui sort, par fonction"
+msgstr "What goes out, by function"
+
+msgid "Ce qui s'accumule"
+msgstr "What builds up"
+
+msgid "Qui la détient (ses créanciers) :"
+msgstr "Who holds it (its creditors):"
+
+msgid "Aucun tuyau ne relie le solde à la dette : le site ne dessine pas de lien entre deux montants que les comptes publiés ne relient pas."
+msgstr "No pipe links the balance to the debt: the site draws no link between two amounts that the published accounts do not link."
+
+msgid "à compléter"
+msgstr "to be completed"
+
+msgid "Qui publie ce site, sous quelles licences sont réutilisés les données et les éléments qu'il affiche, et ce qu'il garde dans votre navigateur."
+msgstr "Who publishes this site, under which licences the data and elements it shows are reused, and what it keeps in your browser."
+
+msgid "Éditeur"
+msgstr "Publisher"
+
+msgid "Éditeur du site"
+msgstr "Site publisher"
+
+msgid "Directeur de la publication"
+msgstr "Publication director"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Hébergeur"
+msgstr "Host"
+
+msgid "Licences des données"
+msgstr "Data licences"
+
+msgid "Chaque chiffre vient d'un jeu de données publié par son éditeur, sous la licence qu'il indique. La fiche de chaque source donne le lien vers le jeu et vers sa licence."
+msgstr "Every figure comes from a dataset published by its publisher, under the licence it states. Each source page links to the dataset and to its licence."
+
+msgid "Fichiers publiés par ce site (/data/)"
+msgstr "Files published by this site (/data/)"
+
+msgid "Code source du site"
+msgstr "Site source code"
+
+msgid "Éléments réutilisés"
+msgstr "Reused elements"
+
+msgid "Les polices sont servies par ce site : aucune requête n'est envoyée à un service de polices."
+msgstr "Fonts are served by this site: no request is sent to a font service."
+
+msgid "Ce que le site garde"
+msgstr "What the site keeps"
+
+msgid "Le site ne dépose aucun cookie et ne mesure pas l'audience. Il garde dans votre navigateur vos dernières recherches et un réglage d'affichage ; ces informations restent sur votre appareil et ne sont pas envoyées au serveur."
+msgstr "The site sets no cookies and does not measure its audience. It keeps your latest searches and one display setting in your browser; this information stays on your device and is not sent to the server."
+
+msgid "Comment ce site est construit"
+msgstr "How this site is built"
+
+msgid "La chaîne de preuve"
+msgstr "The chain of evidence"
+
+msgid "Collecte : chaque jeu de données officiel est téléchargé tel quel, sans modification. On conserve l'adresse exacte, la date et l'empreinte sha256 du fichier."
+msgstr "Collection: each official dataset is downloaded as is, unchanged. We keep the exact address, the date and the sha256 fingerprint of the file."
+
+msgid "Chargement : chaque montant de la base garde le numéro de la ligne du fichier dont il vient. La base refuse un montant sans fichier ni ligne."
+msgstr "Loading: each amount in the database keeps the line number of the file it comes from. The database rejects an amount without a file and a line."
+
+msgid "Contrôles : quand la source publie un total, on vérifie que la somme de ses détails le retrouve. Si un contrôle échoue, la base n'est pas publiée."
+msgstr "Checks: when the source publishes a total, we verify that the sum of its details matches it. If a check fails, the database is not published."
+
+msgid "Affichage : un lien « source » accompagne chaque chiffre et relit la ligne d'origine dans le fichier brut."
+msgstr "Display: a “source” link accompanies every figure and re-reads the original line in the raw file."
+
+msgid "Ce que le site s'interdit"
+msgstr "What the site never does"
+
+msgid "Additionner des montants de sources différentes, de stades différents (projet, loi votée, exécution) ou d'unités différentes."
+msgstr "Add up amounts from different sources, different stages (draft, voted law, execution) or different units."
+
+msgid "Remplacer une donnée absente par zéro."
+msgstr "Replace missing data with zero."
+
+msgid "Rédiger une définition : elles sont toutes citées."
+msgstr "Write its own definitions: they are all quoted."
+
+msgid "Contrôles de cohérence"
+msgstr "Consistency checks"
+
+msgid "Contrôle"
+msgstr "Check"
+
+msgid "Attendu"
+msgstr "Expected"
+
+msgid "Obtenu"
+msgstr "Obtained"
+
+msgid "Résultat"
+msgstr "Result"
+
+msgid "conforme"
+msgstr "passed"
+
+#, python-format
+msgid "%(n)s fichier(s) collecté(s), dernière collecte %(d)s"
+msgstr "%(n)s file(s) collected, last collected %(d)s"
+
+msgid "Source d'un chiffre"
+msgstr "Source of a figure"
+
+#, python-format
+msgid "Publié par %(e)s"
+msgstr "Published by %(e)s"
+
+msgid "dans le jeu de données"
+msgstr "in the dataset"
+
+#, python-format
+msgid "Cadre comptable : %(c)s"
+msgstr "Accounting framework: %(c)s"
+
+#, python-format
+msgid "Téléchargé par ce site le %(d)s"
+msgstr "Downloaded by this site on %(d)s"
+
+msgid "depuis"
+msgstr "from"
+
+msgid "l'adresse officielle du fichier"
+msgstr "the file's official address"
+
+msgid "copie conservée telle quelle"
+msgstr "copy kept as is"
+
+#, python-format
+msgid "Ligne %(n)s du fichier"
+msgstr "Line %(n)s of the file"
+
+msgid "valeur écrite :"
+msgstr "value written:"
+
+#, python-format
+msgid "Affiché ici : %(v)s"
+msgstr "Shown here: %(v)s"
+
+msgid "la même valeur, arrondie pour la lecture"
+msgstr "the same value, rounded for reading"
+
+msgid "d'après la note de révision de l'INSEE"
+msgstr "according to INSEE's revision note"
+
+msgid "Détails techniques : licence, fichier, empreinte, description de l'éditeur"
+msgstr "Technical details: licence, file, hash, publisher's description"
+
+msgid "Description publiée par l'éditeur"
+msgstr "Description published by the publisher"
+
+msgid "Licence"
+msgstr "Licence"
+
+msgid "Fichier collecté"
+msgstr "Collected file"
+
+msgid "Adresse exacte"
+msgstr "Exact address"
+
+msgid "Ligne du fichier"
+msgstr "Line in file"
+
+msgid "Valeur brute"
+msgstr "Raw value"
+
+msgid "La ligne d'origine, relue dans le fichier brut"
+msgstr "The original line, re-read from the raw file"
+
+msgid "Colonne"
+msgstr "Column"
+
+msgid "Ligne introuvable dans le fichier brut : la base est désynchronisée, relancer la construction."
+msgstr "Line not found in the raw file: the database is out of sync, rebuild it."
+
+msgid "Étapes du parcours"
+msgstr "Steps of the guide"
+
+#, python-format
+msgid "Comprendre · étape %(n)s sur %(t)s"
+msgstr "Understand · step %(n)s of %(t)s"
+
+#, python-format
+msgid "Dépenses de l'année %(a)s, en euros courants. Chaque barre est un chiffre publié ; la première est le total publié, pas une somme."
+msgstr "Expenditure for %(a)s, in current euros. Each bar is a published figure; the first is the published total, not a sum."
+
+msgid "Les mots employés, et leur définition officielle"
+msgstr "The words used, and their official definition"
+
+msgid "traduction non officielle"
+msgstr "unofficial translation"
+
+msgid "Définition officielle non encore relevée."
+msgstr "Official definition not yet recorded."
+
+msgid "Suite"
+msgstr "Next"
+
+msgid "Explorer ces chiffres en détail"
+msgstr "Explore these figures in detail"
+
+msgid "Étape suivante"
+msgstr "Next step"
+
+msgid "Un mot, un territoire, un chiffre : dette, Gironde, TVA…"
+msgstr "A word, an area, a figure: debt, Gironde, VAT…"
+
+#, python-format
+msgid "Le parcours, en %(n)s étapes"
+msgstr "The guide, in %(n)s steps"
+
+msgid "Commencer le parcours"
+msgstr "Start the guide"
+
+msgid "Les pages détaillées"
+msgstr "Detailed pages"
+
+msgid "Je veux"
+msgstr "I want to"
+
+msgid "Résultat :"
+msgstr "Result:"
+
+msgid "Preuve"
+msgstr "Proof"
+
+msgid "Loi promulguée"
+msgstr "Promulgated law"
+
+msgid "Journal officiel"
+msgstr "Official Journal"
+
+msgid "Lien Légifrance publié dans le dossier"
+msgstr "Légifrance link published in the file"
+
+msgid "Page officielle du scrutin"
+msgstr "Official page of the vote"
+
+msgid "Entrée dans l'archive"
+msgstr "Entry in the archive"
+
+msgid "L'enregistrement d'origine, relu dans l'archive"
+msgstr "The original record, read back from the archive"
+
+msgid "Extrait du dossier : son titre, l'acte de promulgation et les scrutins qu'il cite, reproduits tels quels."
+msgstr "Extract of the file: its title, the promulgation act and the votes it cites, reproduced as published."
+
+msgid "Les listes nominatives des votants sont omises ici ; la synthèse et le décompte de chaque groupe sont reproduits tels quels."
+msgstr "The lists of individual voters are omitted here; the summary and each group's count are reproduced as published."
+
+msgid "Source d'un total"
+msgstr "Source of a total"
+
+#, python-format
+msgid "Ce total est la somme de %(n)s montants publiés dans la source, ligne par ligne. Chacun renvoie à sa ligne d'origine."
+msgstr "This total is the sum of %(n)s amounts published in the source, line by line. Each one points to its original line."
+
+#, python-format
+msgid "Seuls les %(k)s montants les plus élevés sont listés."
+msgstr "Only the %(k)s highest amounts are listed."
+
+msgid "Ligne budgétaire"
+msgstr "Budget line"
+
+msgid "Fichier, ligne"
+msgstr "File, line"
+
+msgid "Montant"
+msgstr "Amount"
+
+msgid "D'où vient l'argent public ?"
+msgstr "Where does public money come from?"
+
+msgid "Les recettes des administrations publiques par catégorie des comptes nationaux, d'après Eurostat."
+msgstr "General government revenue by national-accounts category, from Eurostat."
+
+msgid "Administrations"
+msgstr "Government sector"
+
+#, python-format
+msgid "de recettes en %(annee)s"
+msgstr "of revenue in %(annee)s"
+
+msgid "Répartition par catégorie"
+msgstr "Breakdown by category"
+
+msgid "Cliquez sur une catégorie pour voir son évolution. Les catégories publiées s'additionnent exactement aux recettes totales (contrôle du site) ; les parts sont calculées par ce site : catégorie ÷ recettes totales."
+msgstr "Click a category to see how it changed over time. The published categories add up exactly to total revenue (checked by this site); shares are computed by this site: category ÷ total revenue."
+
+msgid "Évolution en pourcentage du PIB"
+msgstr "Change over time, as a percentage of GDP"
+
+msgid "Montant de la catégorie rapporté au PIB, publié par Eurostat."
+msgstr "Category amount relative to GDP, published by Eurostat."
+
+msgid "Explorer cette série"
+msgstr "Explore this series"
+
+msgid "Les libellés des catégories sont ceux de la nomenclature des comptes nationaux publiée par Eurostat (NA_ITEM)."
+msgstr "Category labels are those of the national-accounts classification published by Eurostat (NA_ITEM)."
+
+msgid "Les couleurs restent attachées à une catégorie quelle que soit l'année affichée : les cinq catégories mises en avant sont celles dont le montant est le plus élevé pour ce secteur la dernière année publiée."
+msgstr "Colours stay attached to a category whatever the year shown: the five highlighted categories are those with the highest amount for this sector in the latest published year."
+
+msgid "Les dépenses du même périmètre, par fonction"
+msgstr "Expenditure of the same scope, by function"
+
+msgid "Recherche"
+msgstr "Search"
+
+#, python-format
+msgid "« %(q)s »"
+msgstr "“%(q)s”"
+
+msgid "Obtenir les chiffres d'un indicateur"
+msgstr "Get the figures of an indicator"
+
+msgid "Atelier de graphique : tous les types de graphiques, annotations, image prête pour les réseaux"
+msgstr "Chart workshop: every chart type, annotations, image ready for social media"
+
+msgid "Points de départ"
+msgstr "Starting points"
+
+msgid "Réglages"
+msgstr "Settings"
+
+msgid "Quoi"
+msgstr "What"
+
+#, python-format
+msgid "Données : %(j)s"
+msgstr "Data: %(j)s"
+
+#, python-format
+msgid "%(n)s séries au plus sur un graphique"
+msgstr "%(n)s series at most on a chart"
+
+msgid "Territoires"
+msgstr "Territories"
+
+msgid "Ajouter un territoire"
+msgstr "Add a territory"
+
+msgid "Ajouter"
+msgstr "Add"
+
+msgid "Quand"
+msgstr "When"
+
+msgid "Une année"
+msgstr "One year"
+
+msgid "Une période"
+msgstr "A period"
+
+msgid "Repères : débuts de présidence"
+msgstr "Markers: start of presidencies"
+
+msgid "Euros constants et indice base 100 : pas encore disponibles (indice des prix non collecté)."
+msgstr "Constant euros and base-100 index: not yet available (price index not collected)."
+
+msgid "Tableau de travail : plusieurs colonnes, écart entre deux années, filtres"
+msgstr "Worktable: several columns, difference between two years, filters"
+
+msgid "Modifier les choix"
+msgstr "Change the choices"
+
+#, python-format
+msgid "%(n)s combinaison(s) non affichée(s) : 5 séries au plus par graphique."
+msgstr "%(n)s combination(s) not shown: 5 series at most per chart."
+
+msgid "Export"
+msgstr "Export"
+
+#, python-format
+msgid "%(e)s depuis %(a)s"
+msgstr "%(e)s since %(a)s"
+
+msgid "Écart calculé par ce site entre la première et la dernière valeur de la période."
+msgstr "Difference calculated by this site between the first and last value of the period."
+
+msgid "Pas de valeur publiée sur la période."
+msgstr "No value published for the period."
+
+msgid "Pas de valeur publiée pour cette année."
+msgstr "No value published for this year."
+
+msgid "Pistes"
+msgstr "Leads"
+
+#, python-format
+msgid "Fonctions et votes budgétaires de %(de)s à %(a)s"
+msgstr "Offices and budget votes from %(de)s to %(a)s"
+
+msgid "Le même indicateur pour chaque périmètre"
+msgstr "The same indicator for each scope"
+
+msgid "Les recettes par catégorie"
+msgstr "Revenue by category"
+
+msgid "Le détail par sous-fonction"
+msgstr "Breakdown by sub-function"
+
+#, python-format
+msgid "La fiche de %(t)s"
+msgstr "The page for %(t)s"
+
+msgid "Page officielle du jeu"
+msgstr "Official dataset page"
+
+msgid "Fiche de métadonnées"
+msgstr "Metadata file"
+
+msgid "Entrée de catalogue"
+msgstr "Catalogue entry"
+
+msgid "Document cité"
+msgstr "Cited document"
+
+msgid "Adresse du jeu"
+msgstr "Dataset address"
+
+msgid "Relevé dans"
+msgstr "Read from"
+
+msgid "Dernière collecte"
+msgstr "Last collected"
+
+msgid "Montants chargés"
+msgstr "Amounts loaded"
+
+msgid "Documents cités"
+msgstr "Cited documents"
+
+msgid "Chaque champ ci-dessous est relevé dans un fichier collecté, à l'endroit indiqué : rien n'est saisi à la main."
+msgstr "Each field below is read from a collected file, at the place stated: nothing is typed in by hand."
+
+#, python-format
+msgid "publié le %(d)s"
+msgstr "published %(d)s"
+
+msgid "Fichiers collectés"
+msgstr "Collected files"
+
+msgid "Chaque fichier est téléchargé tel quel à l'adresse ci-dessous ; son empreinte sha256 permet de vérifier qu'il n'a pas été modifié depuis."
+msgstr "Each file is downloaded as is from the address below; its sha256 fingerprint lets you check it has not been altered since."
+
+msgid "Toutes les sources et les contrôles de cohérence"
+msgstr "All sources and consistency checks"
+
+msgid "Collectivités territoriales"
+msgstr "Local authorities"
+
+#, python-format
+msgid "Statut particulier publié par l'OFGL : %(s)s. Cette collectivité n'entre pas dans la médiane."
+msgstr "Special status published by OFGL: %(s)s. This authority is not included in the median."
+
+#, python-format
+msgid "Agrégats financiers officiels de l'OFGL. La médiane est calculée par ce site sur les %(n)s collectivités du même niveau sans statut particulier."
+msgstr "Official OFGL financial aggregates. The median is computed by this site over the %(n)s authorities of the same level without special status."
+
+msgid "Le fichier publie plusieurs budgets sous ce code cette année : ce site ne choisit pas entre eux et ne les additionne pas ; chaque lien ouvre une ligne publiée."
+msgstr "The file publishes several budgets under this code for this year: this site does not pick one and does not add them up; each link opens one published row."
+
+#, python-format
+msgid "L'essentiel en %(a)s"
+msgstr "Key figures in %(a)s"
+
+#, python-format
+msgid "soit %(m)s au total"
+msgstr "or %(m)s in total"
+
+#, python-format
+msgid "%(n)s : %(v)s ; médiane : %(m)s"
+msgstr "%(n)s: %(v)s; median: %(m)s"
+
+#, python-format
+msgid "Médiane : %(m)s"
+msgstr "Median: %(m)s"
+
+#, python-format
+msgid "Rang %(r)s sur %(n)s"
+msgstr "Rank %(r)s of %(n)s"
+
+#, python-format
+msgid "%(n)s budgets publiés sous ce code"
+msgstr "%(n)s budgets published under this code"
+
+msgid "Montants par habitant publiés par l'OFGL. Médiane et rang calculés par ce site parmi les collectivités du même niveau sans statut particulier ; rang 1 = montant par habitant le plus élevé."
+msgstr "Per-capita amounts published by OFGL. Median and rank computed by this site among authorities of the same level without special status; rank 1 = highest amount per inhabitant."
+
+msgid "Tous les agrégats publiés"
+msgstr "All published aggregates"
+
+msgid "Agrégat"
+msgstr "Aggregate"
+
+msgid "Par habitant"
+msgstr "Per capita"
+
+msgid "Médiane par habitant"
+msgstr "Median per capita"
+
+msgid "Dépenses totales par habitant, année après année"
+msgstr "Total expenditure per capita, year by year"
+
+msgid "Montants par habitant publiés par l'OFGL. La médiane des collectivités du même niveau est calculée par ce site."
+msgstr "Per capita amounts published by OFGL. The median of authorities of the same level is computed by this site."
+
+msgid "Évolution des dépenses totales par habitant"
+msgstr "Trend of total expenditure per capita"
+
+#, python-format
+msgid "Le fichier publie un autre numéro SIREN sous ce code à partir de %(a)s : ce n'est plus la même collectivité. L'évolution ne se lit pas à travers ce changement."
+msgstr "The file publishes another SIREN number under this code from %(a)s: it is no longer the same authority. The change over time cannot be read across it."
+
+#, python-format
+msgid "La population publiée pour ce code passe de %(p0)s à %(p1)s habitants en %(a)s : le périmètre n'est plus le même. L'évolution ne se lit pas à travers ce changement."
+msgstr "The population published for this code goes from %(p0)s to %(p1)s inhabitants in %(a)s: the scope is no longer the same. The change over time cannot be read across it."
+
+msgid "À quoi servent ces dépenses ?"
+msgstr "What is this spending for?"
+
+#, python-format
+msgid "Dépenses totales hors remboursements de dette, budget principal uniquement (présentation fonctionnelle, nomenclature %(n)s)."
+msgstr "Total expenditure excluding debt repayments, main budget only (functional presentation, %(n)s accounting classification)."
+
+msgid "Parts calculées par ce site : fonction ÷ somme des fonctions publiées."
+msgstr "Shares computed by this site: function ÷ sum of published functions."
+
+msgid "Répartition par fonction : non publiée"
+msgstr "Breakdown by function: not published"
+
+msgid "Les jeux OFGL collectés publient une répartition par fonction pour les départements, aucune pour les régions."
+msgstr "The collected OFGL datasets publish a breakdown by function for départements, none for regions."
+
+msgid "Voir les lacunes"
+msgstr "See the gaps"
+
+msgid "Les agrégats sont emboîtés : les dépenses de fonctionnement font partie des dépenses totales. Ils ne s'additionnent pas entre eux."
+msgstr "Aggregates are nested: operating expenditure is part of total expenditure. They do not add up with each other."
+
+msgid "Selon l'année, un département tient ses comptes en nomenclature M52 ou M57 (indiqué dans la source) : les fonctions n'y sont pas numérotées de la même façon et ne se comparent pas directement."
+msgstr "Depending on the year, a département keeps its accounts under the M52 or M57 classification (shown in the source): functions are not numbered the same way and cannot be compared directly."
+
+msgid "Que dépense ma région, mon département ?"
+msgstr "What does my region, my département spend?"
+
+msgid "Les comptes des collectivités publiés par l'OFGL sur data.ofgl.fr."
+msgstr "Local authority accounts published by the OFGL on data.ofgl.fr."
+
+msgid "Ma région ou mon département"
+msgstr "My region or department"
+
+msgid "Nom ou numéro : Gironde, 33, Bretagne…"
+msgstr "Name or number: Gironde, 33, Bretagne…"
+
+msgid "Ouvrir la fiche"
+msgstr "Open the page"
+
+#, python-format
+msgid "%(n)s collectivités correspondent à « %(q)s » :"
+msgstr "%(n)s local authorities match “%(q)s”:"
+
+#, python-format
+msgid "Aucune région ni aucun département ne correspond à « %(q)s »."
+msgstr "No region or department matches “%(q)s”."
+
+msgid "Les communes et les intercommunalités ne sont pas encore chargées sur ce site : seules les régions et les départements y sont."
+msgstr "Municipalities and inter-municipal bodies are not yet loaded on this site: only regions and departments are."
+
+msgid "Niveau"
+msgstr "Level"
+
+msgid "Ce qu'on compare"
+msgstr "What to compare"
+
+msgid "Agrégats financiers"
+msgstr "Financial aggregates"
+
+#, python-format
+msgid "Dépenses par fonction (nomenclature %(n)s)"
+msgstr "Expenditure by function (%(n)s nomenclature)"
+
+#, python-format
+msgid "Agrégat financier officiel de l'OFGL, comptes consolidés %(annee)s."
+msgstr "Official OFGL financial aggregate, consolidated accounts %(annee)s."
+
+#, python-format
+msgid "Dépenses totales hors remboursements de dette, budget principal, présentation fonctionnelle %(annee)s."
+msgstr "Total expenditure excluding debt repayments, main budget, functional presentation %(annee)s."
+
+#, python-format
+msgid "médiane : %(m)s (calculée par ce site sur les %(n)s collectivités affichées sans statut particulier)."
+msgstr "median: %(m)s (computed by this site over the %(n)s authorities shown without special status)."
+
+msgid "Rechercher une collectivité…"
+msgstr "Search an authority…"
+
+msgid "Rechercher une collectivité"
+msgstr "Search an authority"
+
+msgid "Trier"
+msgstr "Sort"
+
+msgid "Plus élevé"
+msgstr "Highest"
+
+msgid "Plus bas"
+msgstr "Lowest"
+
+msgid "A → Z"
+msgstr "A → Z"
+
+msgid "statut particulier"
+msgstr "special status"
+
+msgid "Plusieurs budgets publiés sous un même code"
+msgstr "Several budgets published under one code"
+
+#, python-format
+msgid "Le fichier publie plusieurs lignes pour ces collectivités en %(annee)s. Ce site ne choisit pas entre elles et ne les additionne pas : elles ne sont pas classées."
+msgstr "The file publishes several rows for these authorities in %(annee)s. This site does not pick one and does not add them up: they are not ranked."
+
+msgid "Sans donnée pour cette sélection"
+msgstr "No data for this selection"
+
+#, python-format
+msgid "Ces départements n'ont pas de montant dans cette nomenclature pour %(annee)s : ils tiennent leurs comptes dans l'autre nomenclature, ou la donnée n'est pas publiée."
+msgstr "These départements have no amount in this nomenclature for %(annee)s: they keep their accounts in the other nomenclature, or the data is not published."
+
+#, python-format
+msgid "Aucun montant publié par l'OFGL pour ces collectivités en %(annee)s."
+msgstr "No amount published by OFGL for these authorities in %(annee)s."
+
+msgid "Un chiffre entendu : le site montre les valeurs publiées les plus proches, avec ce que chacune mesure et sa source. Il ne dit pas si le chiffre entendu est vrai ou faux."
+msgstr "A figure you heard: the site shows the closest published values, with what each one measures and its source. It does not say whether the figure you heard is true or false."
+
+msgid "De quoi parle le chiffre ?"
+msgstr "What is the figure about?"
+
+msgid "Pas besoin de connaître le chiffre : chaque thème montre sa dernière valeur publiée, et toutes ses années une fois choisi."
+msgstr "No need to know the figure: each topic shows its latest published value, and all its years once chosen."
+
+#, python-format
+msgid "%(p)s du PIB"
+msgstr "%(p)s of GDP"
+
+msgid "Autre chose"
+msgstr "Something else"
+
+msgid "un territoire, un poste, un mot"
+msgstr "a place, an item, a word"
+
+msgid "Un mot (facultatif)"
+msgstr "A word (optional)"
+
+msgid "Gironde, enseignement, TVA"
+msgstr "Gironde, education, VAT"
+
+msgid "Valeurs des vignettes : ensemble des administrations publiques"
+msgstr "Tile values: general government"
+
+msgid "Le chiffre entendu (facultatif)"
+msgstr "The figure you heard (optional)"
+
+msgid "Le nombre"
+msgstr "The number"
+
+msgid "Voir les chiffres publiés"
+msgstr "See the published figures"
+
+msgid "Part du PIB"
+msgstr "Share of GDP"
+
+#, python-format
+msgid "Toutes les années (%(n)s)"
+msgstr "All years (%(n)s)"
+
+msgid "Chaque valeur mène à sa source. Un chiffre entendu ? Saisissez-le à l'étape 2 : la page montre les années les plus proches."
+msgstr "Each value links to its source. Heard a figure? Enter it in step 2: the page shows the closest years."
+
+#, python-format
+msgid "Aucun nombre lu dans « %(n)s »."
+msgstr "No number read in “%(n)s”."
+
+#, python-format
+msgid "Nombre lu : %(x)s"
+msgstr "Number read: %(x)s"
+
+#, python-format
+msgid "mot : « %(m)s »"
+msgstr "word: “%(m)s”"
+
+#, python-format
+msgid "année : %(a)s"
+msgstr "year: %(a)s"
+
+#, python-format
+msgid "Aucun libellé publié ne contient « %(m)s » : aucune valeur n'est montrée, pour ne pas en proposer sans rapport. Choisissez un thème ci-dessus, ou essayez un autre mot."
+msgstr "No published label contains “%(m)s”: no value is shown, so as not to offer unrelated ones. Choose a topic above, or try another word."
+
+msgid "Chercher ce mot ailleurs"
+msgstr "Search for this word elsewhere"
+
+msgid "choix du site"
+msgstr "this site's choice"
+
+msgid "Aucune valeur publiée dans cette unité pour ces critères."
+msgstr "No value published in this unit for these criteria."
+
+#~ msgid "Recettes auxquelles l'État renonce"
+#~ msgstr ""
+
+#~ msgid "Combien coûtent les niches fiscales, et à qui profitent-elles ?"
+#~ msgstr ""
+
+#~ msgid "Crédits budgétaires, en euros courants. Source : budget vert annexé au PLF 2026."
+#~ msgstr "Budget appropriations, in current euros. Source: green budget annexed to the 2026 draft finance bill (PLF)."
+
+#~ msgid "Exécution 2024"
+#~ msgstr "2024 execution"
+
+#~ msgid "LFI 2025"
+#~ msgstr "2025 LFI"
+
+#~ msgid "PLF 2026"
+#~ msgstr "2026 PLF"
+
+#~ msgid "Classement par coût estimé. Une dépense ventilée sur plusieurs programmes est regroupée en une ligne."
+#~ msgstr "Ranked by estimated cost. An expenditure split across several programmes is grouped into one line."
+
+#~ msgid "Afficher les %(n)s dépenses"
+#~ msgstr "Show all %(n)s expenditures"
+
+#~ msgid "Évolution : %(f)s"
+#~ msgstr "Trend: %(f)s"
+
+#~ msgid "Part dans la dépense totale du secteur, en %%."
+#~ msgstr "Share of the sector's total expenditure, in %%."
+
+#~ msgid "Explorer les comptes publics"
+#~ msgstr "Explore the public accounts"
+
+#~ msgid "Ou cherchez directement : un département, une région, une mission, une niche, un mot"
+#~ msgstr "Or search directly: a département, a region, a mission, a tax expenditure, a term"
+
+#~ msgid "ex. Gironde, enseignement, TVA"
+#~ msgstr "e.g. Gironde, education, VAT"
+
+#~ msgid "Sommaire"
+#~ msgstr "Contents"
+
+#~ msgid "les niches fiscales"
+#~ msgstr "tax expenditures"
+
+#~ msgid "au moins %(m)s"
+#~ msgstr "at least %(m)s"
+
+#~ msgid "Combien de niches fiscales n'ont aucun coût chiffré dans le projet de loi de finances 2026 ?"
+#~ msgstr "How many tax expenditures have no costing in the 2026 draft budget bill?"
+
+#~ msgid "Niches fiscales"
+#~ msgstr "Tax expenditures"
+
+#~ msgid "Ce qui manque"
+#~ msgstr "What is missing"
+
+#~ msgid "Le coût de chaque dépense fiscale chiffrée, et le compte de celles qui ne le sont pas."
+#~ msgstr "The cost of each costed tax expenditure, and the count of those that are not costed."
+
+#~ msgid "Les données que les sources ne publient pas, et qui devrait les publier."
+#~ msgstr "The data the sources do not publish, and who should publish it."
+
+#~ msgid "Niche fiscale"
+#~ msgstr "Tax expenditure"
+
+#~ msgid "non chiffrée"
+#~ msgstr "not costed"
+
+#~ msgid "Les montants sont des crédits de paiement. Ils ne comprennent ni les dépenses fiscales (voir la page Niches fiscales) ni les dépenses de la sécurité sociale ou des collectivités."
+#~ msgstr "Amounts are payment appropriations. They include neither tax expenditures (see the Tax expenditures page) nor spending by social security or local authorities."
+
+#~ msgid "Combien coûtent les niches fiscales ?"
+#~ msgstr "How much do tax expenditures cost?"
+
+#~ msgid "Ce que l'État ne chiffre pas"
+#~ msgstr "What the State does not cost"
+
+#~ msgid "Dans le même document, %(nc)s dépenses fiscales sont marquées « nc » (montant non calculé) et %(eps)s « ε » (moins de 0,5 million d'euros). Un coût non chiffré n'est pas un coût nul."
+#~ msgstr "In the same document, %(nc)s tax expenditures are marked “nc” (amount not calculated) and %(eps)s “ε” (less than €0.5 million). An uncosted expenditure is not a zero cost."
+
+#~ msgid "Suivre l'argent public."
+#~ msgstr "Follow public money."
+
+#~ msgid "Chaque trou, son responsable."
+#~ msgstr "Every gap, who is accountable."
+
+#~ msgid "Posez une question, nommez un territoire ou une dépense : la réponse vient des fichiers officiels, avec sa ligne d'origine, et ce que l'État ne publie pas est montré comme tel."
+#~ msgstr "Ask a question, name a territory or an expenditure: the answer comes from official files, with its source line, and what the State does not publish is shown as such."
+
+#~ msgid "Rechercher un département, une région, une mission, une niche, un mot"
+#~ msgstr "Search a département, a region, a mission, a tax expenditure, a term"
+
+#~ msgid "Une question, deux réponses : ce qu'on sait, ce qu'on ne sait pas"
+#~ msgstr "One question, two answers: what we know, what we don't"
+
+#~ msgid "Coût des niches fiscales chiffrées"
+#~ msgstr "Cost of costed tax expenditures"
+
+#~ msgid "au moins"
+#~ msgstr "at least"
+
+#~ msgid "Un coût non chiffré n'est pas un coût nul."
+#~ msgstr "An uncosted expenditure is not a zero cost."
+
+#~ msgid "Qui devrait publier : %(r)s"
+#~ msgstr "Who should publish it: %(r)s"
+
+#~ msgid "Ce qu'on ne sait pas"
+#~ msgstr "What we don't know"
+
+#~ msgid "Tout ce qui manque"
+#~ msgstr "Everything that is missing"
+
+#~ msgid "Cinq façons d'entrer dans les comptes"
+#~ msgstr "Five ways into the accounts"
+
+#~ msgid "Ce site part des données ouvertes officielles (Direction du Budget, INSEE, Eurostat, OFGL) et les rend lisibles sans formation en économie. Chaque montant renvoie au fichier et à la ligne d'où il vient. Quand une donnée manque, on le montre."
+#~ msgstr "This site starts from official open data (Budget Directorate, INSEE, Eurostat, OFGL) and makes it readable without training in economics. Every amount points to the file and line it comes from. When data is missing, we show it."
+
+#~ msgid "Combien coûtent les niches fiscales, et sur quels impôts ?"
+#~ msgstr "How much do tax expenditures cost, and on which taxes?"
+
+#~ msgid "Les dépenses fiscales chiffrées par l'État, et celles qu'il ne chiffre pas."
+#~ msgstr "The tax expenditures costed by the State, and those it does not cost."
+
+#~ msgid "Qu'est-ce que l'État ne publie pas ?"
+#~ msgstr "What does the State not publish?"
+
+#~ msgid "Les trous dans les données ouvertes, et qui devrait les combler."
+#~ msgstr "The gaps in open data, and who should fill them."
+
+#~ msgid "Un trou n'est pas un zéro"
+#~ msgstr "A gap is not a zero"
+
+#~ msgid "Une donnée absente, non chiffrée ou non publiée est affichée comme telle, avec le service qui devrait la produire."
+#~ msgstr "Missing, uncosted or unpublished data is shown as such, with the body that should produce it."
+
+#~ msgid "Ce que les données ouvertes ne disent pas"
+#~ msgstr "What open data does not say"
+
+#~ msgid "Chaque trou constaté en construisant ce site est consigné ici, avec le service qui devrait publier l'information. C'est une liste de demandes possibles."
+#~ msgstr "Every gap found while building this site is recorded here, with the body that should publish the information. It is a list of possible requests."
+
+#~ msgid "Responsable :"
+#~ msgstr "Responsible:"
+
+#~ msgid "Responsable"
+#~ msgstr "Responsible"
+
+#~ msgid "Détail et évolution depuis 1995"
+#~ msgstr "Breakdown and trend since 1995"
+
+#~ msgid "Cinq entrées dans les données"
+#~ msgstr "Five ways into the data"
+
+#~ msgid "% du PIB"
+#~ msgstr "% of GDP"
+
+#~ msgid "% des dépenses du périmètre"
+#~ msgstr "% of the scope's spending"
+
+#~ msgid "Part publiée par Eurostat, en % des dépenses totales du périmètre choisi."
+#~ msgstr "Share published by Eurostat, as % of total spending of the chosen scope."
+
+#~ msgid "Accueil"
+#~ msgstr "Home"
+
+#~ msgid "Finances publiques françaises"
+#~ msgstr "French public finances"
+
+#~ msgid "L'argent public, chiffre par chiffre, source par source."
+#~ msgstr "Public money, figure by figure, source by source."
+
+#~ msgid "Ce site part des données ouvertes officielles (Direction du Budget, INSEE, Eurostat, OFGL) et les rend lisibles sans formation en économie. Chaque montant renvoie au fichier et à la ligne d'où il vient. Les données non publiées sont signalées."
+#~ msgstr "This site starts from official open data (Budget Directorate, INSEE, Eurostat, OFGL) and makes it readable without training in economics. Every amount links to the file and line it comes from. Unpublished data is flagged."
+
+#~ msgid "Ce que contient la base"
+#~ msgstr "What the database contains"
+
+#~ msgid "montants sourcés"
+#~ msgstr "sourced amounts"
+
+#~ msgid "sources officielles"
+#~ msgstr "official sources"
+
+#~ msgid "lacunes recensées"
+#~ msgstr "recorded gaps"
+
+#~ msgid "définitions citées"
+#~ msgstr "quoted definitions"
+
+#~ msgid "Des questions simples"
+#~ msgstr "Simple questions"
+
+#~ msgid "Quelle part de la dépense publique va à l'éducation ?"
+#~ msgstr "What share of public spending goes to education?"
+
+#~ msgid "Toutes administrations publiques confondues : État, collectivités, sécurité sociale."
+#~ msgstr "All of general government: State, local authorities, social security."
+
+#~ msgid "Que finance le budget de l'État, mission par mission ?"
+#~ msgstr "What does the State budget pay for, mission by mission?"
+
+#~ msgid "Ce qui a été dépensé en 2024, voté pour 2025, proposé pour 2026."
+#~ msgstr "What was spent in 2024, voted for 2025, proposed for 2026."
+
+#~ msgid "Combien coûtent les dépenses fiscales, et sur quels impôts ?"
+#~ msgstr "How much do tax expenditures cost, and on which taxes?"
+
+#~ msgid "Les coûts publiés dans le projet de loi de finances, et les dépenses publiées sans montant."
+#~ msgstr "The costs published in the draft budget bill, and the expenditures published without an amount."
+
+#~ msgid "Les données absentes des jeux ouverts, avec l'organisme qui les produit."
+#~ msgstr "Data absent from open datasets, with the body that produces it."
+
+#~ msgid "Trois règles"
+#~ msgstr "Three rules"
+
+#~ msgid "Rien sans source"
+#~ msgstr "Nothing without a source"
+
+#~ msgid "Tout montant de la base est rattaché à un fichier officiel collecté (adresse, date, empreinte sha256) et à sa ligne."
+#~ msgstr "Every amount in the database is tied to a collected official file (address, date, sha256 fingerprint) and to its line."
+
+#~ msgid "Aucune méthode inventée"
+#~ msgstr "No invented method"
+
+#~ msgid "On n'additionne que le long des nomenclatures officielles, à l'intérieur d'une même source. Les définitions sont citées mot pour mot."
+#~ msgstr "We only add up along official classifications, within a single source. Definitions are quoted word for word."
+
+#~ msgid "Une absence n'est pas un zéro"
+#~ msgstr "A missing value is not a zero"
+
+#~ msgid "Une donnée absente, non chiffrée ou non publiée est affichée comme absente, avec l'organisme producteur."
+#~ msgstr "Missing, uncosted or unpublished data is shown as missing, with the producing body."
+
+#~ msgid "Chaque case de la carte est une fonction : protection sociale, santé, éducation… Plus la case est grande, plus la part est importante. Touchez une case pour entrer dedans ; faites défiler les années pour voir l'évolution."
+#~ msgstr ""
+
+#~ msgid "Les réductions et crédits d'impôt chiffrés dans le projet de loi de finances, impôt par impôt."
+#~ msgstr ""
+
+#~ msgid "En % du PIB"
+#~ msgstr "As % of GDP"
+
+#~ msgid "% du total"
+#~ msgstr "% of total"
+
+#~ msgid "% PIB"
+#~ msgstr ""
+
+#~ msgid "Gironde, enseignement, TVA…"
+#~ msgstr "Gironde, education, VAT…"
+
+#~ msgid "Chaque case de la carte est une fonction : protection sociale, santé, enseignement… Plus la case est grande, plus la part est importante. Touchez une case pour entrer dedans ; faites défiler les années pour voir l'évolution."
+#~ msgstr "Each box on the map is a function: social protection, health, education… The bigger the box, the larger the share. Tap a box to go inside it; scroll through the years to see how it changed."
+
+#~ msgid "La dette est un encours en fin d'année ; les recettes, les dépenses et le solde sont des montants de l'année."
+#~ msgstr "Debt is an outstanding amount at year end; revenue, expenditure and the balance are amounts for the year."
+
+#~ msgid "Les points creux sont des valeurs provisoires, susceptibles d'être révisées."
+#~ msgstr "Hollow points are provisional values, which may be revised."
+
+#~ msgid "Donnée provisoire, susceptible de révision par l'INSEE"
+#~ msgstr "Provisional figure, may be revised by INSEE"
+
+#~ msgid "Crédits budgétaires, en euros courants. Source : budget vert annexé au PLF 2026. Cliquez sur un en-tête pour trier."
+#~ msgstr "Budget appropriations, in current euros. Source: green budget annexed to the 2026 finance bill. Click a header to sort."
+
+#~ msgid "En plus des crédits : taxes affectées plafonnées (recettes fiscales versées directement à des organismes)."
+#~ msgstr "On top of appropriations: capped earmarked taxes (tax revenue paid directly to public bodies)."
+
+#~ msgid "Une mission regroupe des programmes ; le Parlement vote les crédits mission par mission. Cliquez sur une mission pour voir ses programmes."
+#~ msgstr "A mission groups programmes; Parliament votes appropriations mission by mission. Click a mission to see its programmes."
+
+#~ msgid "Les montants sont des crédits de paiement. Ils ne comprennent ni les dépenses fiscales (voir la page Dépenses fiscales) ni les dépenses de la sécurité sociale ou des collectivités."
+#~ msgstr "Amounts are payment appropriations. They include neither tax expenditures (see the Tax expenditures page) nor social security or local government spending."
+
+#~ msgid "%(n)s lignes sont des lignes techniques (mesures de périmètre ou de transfert, fonds de concours, contribution au compte d'affectation spéciale Pensions) : elles sont comptées dans les totaux, comme dans la source, mais ne correspondent pas à une politique."
+#~ msgstr "%(n)s lines are technical lines (scope or transfer adjustments, assigned revenue funds, contribution to the Pensions special account): they are counted in the totals, as in the source, but do not correspond to a policy."
+
+#~ msgid "L'exercice est l'année que couvre le budget : la loi de finances pour une année est votée l'année précédente."
+#~ msgstr "The financial year is the year the budget covers: the finance act for a year is voted the year before."
+
+#~ msgid "La définition officielle de la dépense fiscale n'est pas encore relevée dans le lexique : elle figure dans l'annexe « Évaluation des voies et moyens, tome II » du projet de loi de finances."
+#~ msgstr "The official definition of a tax expenditure is not yet recorded in the glossary: it appears in the annex “Évaluation des voies et moyens, tome II” of the draft finance bill."
+
+#~ msgid "Ce périmètre couvre toutes les administrations publiques : l'État et les organismes divers d'administration centrale, les administrations publiques locales et la sécurité sociale. Il est bien plus large que le budget de l'État."
+#~ msgstr "This scope covers all of general government: the State and miscellaneous central government bodies, local government and social security. It is much wider than the State budget."
+
+#~ msgid "Les intérêts de la dette de l'État sont classés par convention dans « services généraux des administrations publiques »."
+#~ msgstr "Interest on State debt is classified by convention under “general public services”."
+
+#~ msgid "Si l'on additionne les trois sous-secteurs, on obtient %(somme)s, plus que le total de l'ensemble (%(total)s) : les transferts entre administrations (par exemple de l'État vers les collectivités) seraient comptés deux fois. Le total officiel les retire (comptes consolidés)."
+#~ msgstr "Adding up the three sub-sectors gives %(somme)s, more than the overall total (%(total)s): transfers between administrations (for example from the State to local authorities) would be counted twice. The official total removes them (consolidated accounts)."
+
+#~ msgid "Les années marquées « provisoire » peuvent être révisées par l'INSEE."
+#~ msgstr "Years marked “provisional” may be revised by INSEE."
+
+#~ msgid "Comptes consolidés %(annee)s : budget principal et budgets annexes, sans les flux entre eux."
+#~ msgstr "%(annee)s consolidated accounts: main budget and annexed budgets, without the flows between them."
+
+#~ msgid "Le montant par habitant est publié par l'OFGL, rapporté à la population totale."
+#~ msgstr "The per capita amount is published by the OFGL, relative to the total population."
+
+#~ msgid "« n lignes » : le fichier publie plusieurs budgets sous ce code pour cette année (par exemple, avant 2016, un budget par ancienne région). Ce site ne les additionne pas ; le lien ouvre les lignes publiées."
+#~ msgstr "“n lines”: the file publishes several budgets under this code for that year (for example, before 2016, one budget per former region). This site does not add them up; the link opens the published lines."
+
+#~ msgid "Les crédits de paiement par mission, à trois moments : l'exécution budgétaire 2024 (ce qui a été réellement dépensé), la loi de finances initiale 2025 (ce qui a été voté) et le projet de loi de finances 2026 (ce qui est proposé)."
+#~ msgstr "Payment appropriations by mission, at three points in time: 2024 budget execution (what was actually spent), the 2025 initial finance act (what was voted) and the 2026 draft finance bill (what is proposed)."
+
+#~ msgid "dépenses fiscales que l'État déclare « non chiffrées » pour 2026"
+#~ msgstr "tax expenditures the State reports as “not costed” for 2026"
+
+#~ msgid "Les dépenses publiques classées par grande fonction selon la COFOG, la classification internationale utilisée par l'INSEE et Eurostat."
+#~ msgstr "Public expenditure by main function according to COFOG, the international classification used by INSEE and Eurostat."
+
+#~ msgid "L'OFGL publie la répartition par fonction des dépenses des départements, mais pas celle des régions."
+#~ msgstr "The OFGL publishes the functional breakdown of spending for départements, but not for regions."
+
+#~ msgid "Les comptes des collectivités, consolidés par l'Observatoire des finances et de la gestion publique locales (OFGL) à partir des balances comptables de la DGFiP."
+#~ msgstr "Local authority accounts, consolidated by the Observatory of Local Public Finance and Management (OFGL) from DGFiP accounting balances."
+
+#~ msgid "Périmètre de la source :"
+#~ msgstr "Scope stated by the source:"
+
+#~ msgid "Périmètre :"
+#~ msgstr "Scope:"
+
+#~ msgid "Document de référence :"
+#~ msgstr "Reference document:"
+
+#~ msgid "Page officielle"
+#~ msgstr "Official page"
+
+#~ msgid "Document de référence"
+#~ msgstr "Reference document"
+
+#~ msgid "Les comptes des collectivités publiés par l'Observatoire des finances et de la gestion publique locales (OFGL)."
+#~ msgstr "Local authority accounts published by the Observatoire des finances et de la gestion publique locales (OFGL)."
+
+#~ msgid "Dette brute consolidée de l'ensemble des administrations publiques, en part du PIB (%), de %(a)s à %(b)s."
+#~ msgstr ""
+
+#~ msgid "Ensemble des administrations publiques, en part du PIB (%)."
+#~ msgstr "General government, as a share of GDP (%)."
+
+#~ msgid "Coût publié de chaque dépense fiscale, et nombre de dépenses publiées sans montant."
+#~ msgstr "Published cost of each tax expenditure, and number of expenditures published without an amount."
+
+#~ msgid "Les couleurs restent attachées à une mission quel que soit le moment affiché : les cinq missions mises en avant sont les plus importantes du PLF 2026."
+#~ msgstr "Colours stay attached to a mission whatever the stage shown: the five highlighted missions are the largest in the 2026 finance bill."
+
+#~ msgid "Combien coûtent les dépenses fiscales ?"
+#~ msgstr "How much do tax expenditures cost?"
+
+#~ msgid "Le coût estimé de chaque dépense fiscale, tel que publié par l'administration dans le budget vert annexé au projet de loi de finances 2026."
+#~ msgstr "The estimated cost of each tax expenditure, as published by the administration in the green budget annexed to the 2026 draft finance bill."
+
+#~ msgid "coût estimé des %(n)s dépenses fiscales chiffrées en %(annee)s"
+#~ msgstr "estimated cost of the %(n)s tax expenditures costed for %(annee)s"
+
+#~ msgid "Coût estimé regroupé par impôt concerné, tel qu'indiqué dans la source. Sommes et parts calculées par ce site. Cliquez sur un impôt pour filtrer la liste."
+#~ msgstr "Estimated cost grouped by the tax concerned, as stated in the source. Sums and shares computed by this site. Click a tax to filter the list."
+
+#~ msgid "Classement par coût estimé ; cliquez sur un en-tête pour trier. Une dépense ventilée sur plusieurs programmes est regroupée en une ligne."
+#~ msgstr "Ranked by estimated cost; click a header to sort. An expenditure split across several programmes is grouped into one row."
+
+#~ msgid "Coût estimé"
+#~ msgstr "Estimated cost"
+
+#~ msgid "Le total est une simple addition, faite par ce site, des coûts publiés ligne à ligne dans la source."
+#~ msgstr "The total is a simple sum, made by this site, of the costs published line by line in the source."
+
+#~ msgid "Les couleurs restent attachées à une fonction quelle que soit l'année affichée : les cinq fonctions mises en avant sont les plus importantes du secteur la dernière année publiée."
+#~ msgstr "Colours stay attached to a function whatever the year shown: the five highlighted functions are the sector's largest in the latest published year."
+
+#~ msgid "Somme des coûts estimés par l'État pour %(n)s dépenses fiscales. Ce site n'y ajoute aucune estimation."
+#~ msgstr "Sum of the costs estimated by the State for %(n)s tax expenditures. This site adds no estimate of its own."
+
+#~ msgid "Chaque case de la carte est une fonction de la dépense publique, selon la classification publiée par Eurostat. Plus la case est grande, plus la part est importante. Touchez une case pour entrer dedans ; faites défiler les années pour voir l'évolution."
+#~ msgstr "Each tile of the map is a function of public spending, following the classification published by Eurostat. The larger the tile, the larger the share. Tap a tile to go inside it; scroll through the years to see the change."
+
+#~ msgid "Leur coût estimé dans le projet de loi de finances, impôt par impôt, et celles publiées sans montant."
+#~ msgstr "Their estimated cost in the draft budget act, tax by tax, and those published without an amount."
+
+#~ msgid "Seuls les %(k)s plus importants sont listés."
+#~ msgstr "Only the %(k)s largest are listed."
+
+#~ msgid "%(n)s séries au plus"
+#~ msgstr "%(n)s series at most"
+
+#~ msgid "Période"
+#~ msgstr "Period"
+
+#~ msgid "Modifier les indicateurs, le périmètre, la période"
+#~ msgstr "Change indicators, scope, period"
+
+#~ msgid "Forme et export"
+#~ msgstr "Form and export"
+
+#~ msgid "Une seule série pour une aire ; deux au plus pour des barres."
+#~ msgstr "One series only for an area; two at most for bars."
+
+#~ msgid "Quelles fonctions de dépense ont changé entre %(de)s et %(a)s"
+#~ msgstr "Which spending functions changed between %(de)s and %(a)s"
+
+#~ msgid "Le classement de toutes les collectivités"
+#~ msgstr "Ranking of all local authorities"
+
+#~ msgid "Séries"
+#~ msgstr "Series"
+
+#~ msgid "Explorer une série"
+#~ msgstr "Explore a series"
+
+#~ msgid "Un chiffre seul : un indicateur et un périmètre."
+#~ msgstr "A single figure: one indicator and one scope."
+
+#~ msgid "Séries et exports"
+#~ msgstr "Series and exports"
+
+#~ msgid "Plusieurs indicateurs et périmètres sur un graphique ; CSV, JSON, SVG, PNG avec la source."
+#~ msgstr "Several indicators and scopes on one chart; CSV, JSON, SVG, PNG with the source."
+
+#~ msgid "Solde et dette"
+#~ msgstr "Balance and debt"
+
+#~ msgid "Analyser"
+#~ msgstr "Analyse"
+
+#~ msgid "Menu"
+#~ msgstr "Menu"
+
+#~ msgid "Finances publiques françaises, d'après les fichiers officiels"
+#~ msgstr "French public finances, from the official files"
+
+#~ msgid "Où va"
+#~ msgstr "Where does"
+
+#~ msgid "la dépense publique"
+#~ msgstr "public spending go"
+
+#~ msgid "Chaque case de la carte est une fonction de la dépense publique, selon la classification publiée par Eurostat. Plus la case est grande, plus la part est élevée. Touchez une case pour entrer dedans ; faites défiler les années pour voir l'évolution."
+#~ msgstr "Each tile of the map is a function of public spending, following the classification published by Eurostat. The larger the tile, the higher the share. Tap a tile to go inside it; scroll through the years to see the change."
+
+#~ msgid "Combien les administrations perçoivent-elles, dépensent-elles, empruntent-elles ?"
+#~ msgstr "How much does government collect, spend and borrow?"
+
+#~ msgid "Recettes, dépenses, solde et dette, année par année, pour toutes les administrations publiques et chaque sous-secteur."
+#~ msgstr "Revenue, expenditure, balance and debt, year by year, for general government and each subsector."
+
+#~ msgid "Qui exerçait les fonctions, qui a voté les budgets ?"
+#~ msgstr "Who held office, who voted the budgets?"
+
+#~ msgid "Présidence, gouvernements, ministres chargés des finances, et le vote de chaque groupe sur les textes budgétaires."
+#~ msgstr "Presidency, governments, ministers in charge of finance, and each group's vote on budget texts."
+
+#~ msgid "Mission par mission : dépensé en 2024, voté pour 2025, proposé pour 2026."
+#~ msgstr "Mission by mission: spent in 2024, voted for 2025, proposed for 2026."
+
+#~ msgid "Par habitant, comparé aux autres collectivités du même niveau."
+#~ msgstr "Per capita, compared with other authorities of the same level."
+
+#~ msgid "Leur montant publié dans le projet de loi de finances, impôt par impôt, et celles publiées sans montant."
+#~ msgstr "Their published amount in the draft finance bill, tax by tax, and those published without an amount."
+
+#~ msgid "Quelles données ne sont pas publiées ?"
+#~ msgstr "Which data is not published?"
+
+#~ msgid "Pour analyser"
+#~ msgstr "For analysis"
+
+#~ msgid "Un tableau de travail : collectivités ou fonctions en lignes, indicateurs en colonnes, deux années, tri, filtres, épingles, export."
+#~ msgstr "A working table: local authorities or functions as rows, indicators as columns, two years, sorting, filters, pins, export."
+
+#~ msgid "Quoi, qui, quand, unité, forme : un chiffre, un classement, un tableau ou une courbe, avec sa phrase descriptive ; CSV, JSON, SVG, PNG avec la source."
+#~ msgstr "What, who, when, unit, form: a figure, a ranking, a table or a line, with its descriptive sentence; CSV, JSON, SVG, PNG with the source."
+
+#~ msgid "Fichiers collectés, date, empreinte, contrôles de cohérence avec les totaux publiés."
+#~ msgstr "Files collected, date, fingerprint, consistency checks against published totals."
+
+#~ msgid "Aucun chiffre n'est saisi à la main. Le badge « source » à côté d'un chiffre ouvre la ligne exacte du fichier officiel d'où il vient."
+#~ msgstr "No figure is typed in by hand. The “source” badge next to a figure opens the exact line of the official file it comes from."
+
+#~ msgid "L'État n'est qu'une partie des administrations publiques : ses crédits mission par mission, du projet à l'exécution."
+#~ msgstr ""
+
+#~ msgid "Les montants publiés des réductions et exonérations d'impôt, et celles publiées sans montant."
+#~ msgstr ""
+
+#~ msgid "Valeurs publiées par Eurostat (comptes nationaux). Le solde est l'écart publié entre recettes et dépenses ; la dette est un encours, pas un flux de l'année."
+#~ msgstr ""
+
+#~ msgid "Comptes nationaux, par fonction"
+#~ msgstr "National accounts, by function"
+
+#~ msgid "Tapez un mot, un territoire ou un nombre : le site cherche parmi les chiffres publiés. Chaque chiffre renvoie à la ligne du fichier officiel d'où il vient."
+#~ msgstr "Type a word, an area or a number: the site searches the published figures. Each figure links to the line of the official file it comes from."
+
+#~ msgid "Le schéma, commenté, est dans le dépôt : db/schema.sql."
+#~ msgstr ""
+
+#~ msgid "Carré (1080 × 1080)"
+#~ msgstr "Square (1080 × 1080)"
+
+#~ msgid "Large (1200 × 675)"
+#~ msgstr "Wide (1200 × 675)"
+
+#~ msgid "Vertical (1080 × 1920)"
+#~ msgstr "Vertical (1080 × 1920)"
+
+#~ msgid "Qui exerçait les fonctions gouvernementales et quels textes budgétaires ont été votés entre ces deux années : voir le contexte institutionnel."
+#~ msgstr "Who held government office and which budget texts were voted between these two years: see the institutional context."
+
+#~ msgid "Traits verticaux : début de chaque présidence de la République, d'après l'Assemblée nationale (publié depuis 2007)."
+#~ msgstr "Vertical lines: start of each presidency of the Republic, according to the National Assembly (published since 2007)."
+
+#~ msgid "Agrégats financiers officiels de l'OFGL. La médiane est calculée par ce site sur les %(n)s collectivités du même niveau."
+#~ msgstr "Official OFGL financial aggregates. The median is calculated by this site over the %(n)s authorities of the same level."
+
+#~ msgid "Le fichier publie plusieurs budgets sous ce code cette année : ce site ne choisit pas entre eux et ne les additionne pas ; chaque lien ouvre une ligne publiée."
+#~ msgstr "The file publishes several budgets under this code for this year: this site does not pick one and does not add them up; each link opens one published row."
+
+#~ msgid "Agrégat"
+#~ msgstr "Aggregate"
+
+#~ msgid "Médiane par habitant"
+#~ msgstr "Median per capita"
+
+#~ msgid "%(n)s budgets publiés sous ce code"
+#~ msgstr "%(n)s budgets published under this code"
+
+#~ msgid "Dépenses totales par habitant, année après année"
+#~ msgstr "Total expenditure per capita, year by year"
+
+#~ msgid "Montants par habitant publiés par l'OFGL. La médiane des collectivités du même niveau est calculée par ce site."
+#~ msgstr "Per capita amounts published by OFGL. The median of authorities of the same level is computed by this site."
+
+#~ msgid "Évolution des dépenses totales par habitant"
+#~ msgstr "Trend of total expenditure per capita"
+
+#~ msgid "À quoi servent ces dépenses ?"
+#~ msgstr "What is this spending for?"
+
+#~ msgid "Dépenses totales hors remboursements de dette, budget principal uniquement (présentation fonctionnelle, nomenclature %(n)s)."
+#~ msgstr "Total expenditure excluding debt repayments, main budget only (functional presentation, %(n)s accounting classification)."
+
+#~ msgid "Parts calculées par ce site : fonction ÷ somme des fonctions publiées."
+#~ msgstr "Shares computed by this site: function ÷ sum of published functions."
+
+#~ msgid "Répartition par fonction : non publiée"
+#~ msgstr "Breakdown by function: not published"
+
+#~ msgid "Les jeux OFGL collectés publient une répartition par fonction pour les départements, aucune pour les régions."
+#~ msgstr "The collected OFGL datasets publish a breakdown by function for départements, none for regions."
+
+#~ msgid "Voir les lacunes"
+#~ msgstr "See the gaps"
+
+#~ msgid "médiane : %(m)s (calculée par ce site sur les %(n)s collectivités affichées)."
+#~ msgstr "median: %(m)s (computed by this site over the %(n)s authorities shown)."
+
+#~ msgid "Composer sa propre vue : un chiffre, un classement, une courbe ; exporter avec la source."
+#~ msgstr "Build your own view: a figure, a ranking, a line; export it with its source."
+
+#~ msgid "Dépenses des administrations publiques par fonction"
+#~ msgstr "General government expenditure by function"
+
+#~ msgid "%(n)s des départements, classés par leur valeur en %(a)s"
+#~ msgstr "%(n)s of the départements, ranked by their %(a)s value"
+
+#~ msgid "hauteur = valeur publiée"
+#~ msgstr "height = published value"
+
+#~ msgid "Ce navigateur n'affiche pas la 3D (WebGL)."
+#~ msgstr "This browser cannot display 3D (WebGL)."
+
+#~ msgid "Essais de rendus 3D"
+#~ msgstr "3D rendering trials"
+
+#~ msgid "Explorer · atelier · essais"
+#~ msgstr "Explore · chart studio · trials"
+
+#~ msgid "Trois rendus en volume des séries de l'atelier, à évaluer. Faites tourner la vue au doigt ou à la souris, zoomez avec la molette ou deux doigts ; le survol donne la valeur publiée, un clic ouvre sa source."
+#~ msgstr "Three 3D renderings of the chart studio's series, to be evaluated. Rotate the view with a finger or the mouse, zoom with the wheel or two fingers; hovering shows the published value, a click opens its source."
+
+#~ msgid "Ces essais ont besoin de JavaScript."
+#~ msgstr "These trials need JavaScript."
+
+#~ msgid "Rendu"
+#~ msgstr "Rendering"
+
+#~ msgid "Fonctions × années, barres"
+#~ msgstr "Functions × years, bars"
+
+#~ msgid "Fonctions × années, rubans"
+#~ msgstr "Functions × years, ribbons"
+
+#~ msgid "Départements × années, barres"
+#~ msgstr "Départements × years, bars"
+
+#~ msgid "Recentrer la vue"
+#~ msgstr "Reset the view"
+
+#~ msgid "Agrégats"
+#~ msgstr "Aggregates"
+
+#~ msgid "Des outils pour composer sa propre lecture des séries publiées : chaque chiffre garde sa source."
+#~ msgstr "Tools to build your own reading of the published series: every figure keeps its source."
+
+#~ msgid "Dix formes de graphique, annotations, image prête pour les réseaux et lien qui rouvre la même vue."
+#~ msgstr "Ten chart types, annotations, an image ready for social media and a link that reopens the same view."
+
+#~ msgid "Un indicateur, des périmètres, une période : un chiffre, un classement ou une courbe, exportable en CSV ou JSON."
+#~ msgstr "An indicator, scopes, a period: a figure, a ranking or a line, exportable as CSV or JSON."
+
+#~ msgid "dette, Gironde, recettes"
+#~ msgstr "debt, Gironde, revenue"
+
+#~ msgid "Année (facultatif)"
+#~ msgstr "Year (optional)"
+
+#~ msgid "Aucun libellé publié ne contient « %(m)s » : ce mot n'a pas été utilisé."
+#~ msgstr "No published label contains “%(m)s”: this word was not used."
+
+#~ msgid "Les comptes publics, tels que publiés."
+#~ msgstr "The public accounts, as published."
+
+#~ msgid "Les recettes, les dépenses et la dette de l'État, des collectivités et de la sécurité sociale. Chaque chiffre renvoie à la ligne du fichier officiel d'où il vient."
+#~ msgstr "Revenue, expenditure and debt of central government, local authorities and social security. Each figure links to the line of the official file it comes from."
+
+#~ msgid "Voir les sources"
+#~ msgstr "See the sources"
+
+#~ msgid "Qu'est-ce que c'est ?"
+#~ msgstr "What is it?"
+
+#~ msgid "Valeurs publiées par Eurostat (comptes nationaux). Les définitions officielles de chaque terme sont dans le lexique."
+#~ msgstr "Values published by Eurostat (national accounts). The official definition of each term is in the glossary."
+
+#~ msgid "Que voulez-vous faire ?"
+#~ msgstr "What would you like to do?"
+
+#~ msgid "%(num)s jeu de données collecté"
+#~ msgid_plural "%(num)s jeux de données collectés"
+#~ msgstr[0] ""
+#~ msgstr[1] ""
+
+#~ msgid "Trois maquettes des comptes des administrations publiques, d'après les comptes nationaux publiés par Eurostat. Dans chaque maquette, seule la hauteur représente un montant ; les valeurs exactes sont écrites à côté et dans le tableau de chaque figure."
+#~ msgstr "Three models of general government accounts, based on the national accounts published by Eurostat. In each model, only height represents an amount; exact values are written alongside and in each figure's table."
+
+#~ msgid "Lecture"
+#~ msgstr "Play"
+
+#~ msgid "Pause"
+#~ msgstr "Pause"
+
+#~ msgid "La base entière"
+#~ msgstr "The whole database"
+
+#~ msgid "Le fichier SQLite construit par ce site à partir des fichiers collectés. Chaque montant y porte le fichier et la ligne d'où il vient ; chaque source garde sa licence, indiquée sur sa page."
+#~ msgstr "The SQLite file built by this site from the collected files. Each amount carries the file and line it comes from; each source keeps its licence, shown on its page."
+
+#~ msgid "Télécharger %(f)s"
+#~ msgstr "Download %(f)s"
+
+#~ msgid "Méthode, lacunes, lexique, exports"
+#~ msgstr "Method, gaps, glossary, exports"
+
+#~ msgid "Aucun tuyau ne relie le solde à la dette : d'une année à l'autre, la dette publiée ne varie pas exactement du montant du solde publié."
+#~ msgstr ""
+
+#~ msgid "Glisser pour tourner · toucher un tuyau pour son montant"
+#~ msgstr "Drag to turn · tap a pipe for its amount"
+
+#~ msgid "La section de chaque tuyau est proportionnelle au montant publié, tout comme le niveau du réservoir de dette. Les grains qui circulent montrent seulement le sens du courant : ni leur nombre ni leur vitesse ne représentent un montant."
+#~ msgstr "The cross-section of each pipe is proportional to the published amount, as is the level of the debt tank. The moving grains only show the direction of flow: neither their number nor their speed represents an amount."
+
+#~ msgid "Schéma : les recettes et le besoin de financement entrent dans un réservoir, les dépenses en sortent par fonction ; la dette est un réservoir à part. Les montants sont listés sous le schéma."
+#~ msgstr "Diagram: revenue and net borrowing flow into a tank, expenditure flows out by function; debt is a separate tank. The amounts are listed below the diagram."
+
+#~ msgid "Quand le solde publié est négatif, il est dessiné comme une entrée qui complète les recettes pour couvrir les dépenses."
+#~ msgstr "When the published balance is negative, it is drawn as an inflow that tops up revenue to cover expenditure."
+
+#~ msgid "%(num)s critère diffère."
+#~ msgid_plural "%(num)s critères diffèrent."
+#~ msgstr[0] ""
+#~ msgstr[1] ""
+
+#~ msgid "Écart A − B : %(e)s (calcul du site). Cet écart ne s'explique pas par un seul poste : il additionne toutes les différences ci-dessus."
+#~ msgstr "Gap A − B: %(e)s (site calculation). This gap is not explained by a single item: it adds up all the differences above."
+
+#~ msgid "Les unités diffèrent : ce site ne calcule pas d'écart."
+#~ msgstr "The units differ: this site does not calculate a gap."
+
+#~ msgid "Les notions de base"
+#~ msgstr "The basics"
+
+#~ msgid "Retrouver un chiffre"
+#~ msgstr "Find a figure"
+
+#~ msgid "Les finances locales"
+#~ msgstr "Local finances"
+
+#~ msgid "Les outils"
+#~ msgstr "The tools"
+
+#~ msgid "Le répertoire des sources"
+#~ msgstr "Source directory"
+
+#~ msgid "Les notions de base, une à la fois : qui sont les administrations publiques, ce qui entre, ce qui sort, la dette."
+#~ msgstr "The basics, one at a time: who general government is, what comes in, what goes out, the debt."
+
+#~ msgid "Comprendre les comptes publics"
+#~ msgstr "Understanding the public accounts"
+
+#~ msgid "Des pages courtes, chacune sur une notion, avec ses chiffres publiés et la définition officielle de chaque terme."
+#~ msgstr "Short pages, each on one notion, with its published figures and the official definition of each term."
+
+#~ msgid "Ce qui entre (recettes), ce qui sort (dépenses), l'écart entre les deux (solde) et la dette, année par année."
+#~ msgstr "What comes in (revenue), what goes out (expenditure), the gap between them (balance) and the debt, year by year."
+
+#~ msgid "Les recettes des administrations publiques : impôts, cotisations sociales et autres catégories."
+#~ msgstr "General government revenue: taxes, social contributions and other categories."
+
+#~ msgid "Les dépenses des administrations publiques par fonction : protection sociale, santé, enseignement…"
+#~ msgstr "General government expenditure by function: social protection, health, education…"
+
+#~ msgid "Les crédits de l'État, mission par mission, du projet de loi à l'exécution."
+#~ msgstr "Central government appropriations, mission by mission, from the draft bill to outturn."
+
+#~ msgid "Le montant publié de chaque dépense fiscale, impôt par impôt, et celles publiées sans montant."
+#~ msgstr "The published amount of each tax expenditure, tax by tax, and those published without an amount."
+
+#~ msgid "Fiches thématiques"
+#~ msgstr "Topic pages"
+
+#~ msgid "Une page par politique publique : ce que chaque publication en dit, côte à côte, avec ses limites."
+#~ msgstr "One page per public policy: what each publication says about it, side by side, with its limits."
+
+#~ msgid "Chaque terme technique, avec sa définition officielle citée."
+#~ msgstr "Every technical term, with its official definition quoted."
+
+#~ msgid "Retrouver un chiffre entendu et sa source exacte."
+#~ msgstr "Find a figure you heard and its exact source."
+
+#~ msgid "Vérifier un chiffre"
+#~ msgstr "Check a figure"
+
+#~ msgid "Deux chiffres d'un même sujet côte à côte, et ce qui les sépare : cadre comptable, administrations couvertes, année, stade."
+#~ msgstr "Two figures on the same subject side by side, and what separates them: accounting framework, government units covered, year, stage."
+
+#~ msgid "Comment un chiffre est relié à sa source"
+#~ msgstr "How a figure is linked to its source"
+
+#~ msgid "Les fichiers collectés, leur date, leur empreinte, et les contrôles avec les totaux publiés."
+#~ msgstr "The files collected, their date, their fingerprint, and the checks against published totals."
+
+#~ msgid "Ce que les sources collectées ne publient pas, avec l'organisme qui produit la donnée."
+#~ msgstr "What the collected sources do not publish, with the body that produces the data."
+
+#~ msgid "Les comptes de sa région ou de son département, par habitant, face aux autres."
+#~ msgstr "The accounts of your region or département, per inhabitant, compared with the others."
+
+#~ msgid "Composer ses propres graphiques, vues et tableaux à partir des séries publiées, et les partager avec leur source."
+#~ msgstr "Build your own charts, views and tables from the published series, and share them with their source."
+
+#~ msgid "Explorer les données"
+#~ msgstr "Explore the data"
+
+#~ msgid "Que voulez-vous faire ? Chaque outil donne un résultat différent ; tous gardent la source de chaque chiffre."
+#~ msgstr "What do you want to do? Each tool gives a different result; all keep the source of every figure."
+
+#~ msgid "Une image et un lien"
+#~ msgstr "An image and a link"
+
+#~ msgid "Choisir des séries et une forme (courbe, barres, carte de chaleur…), ajouter un titre et des annotations, puis télécharger l'image ou copier le lien."
+#~ msgstr "Pick series and a form (line, bars, heatmap…), add a title and annotations, then download the image or copy the link."
+
+#~ msgid "Des valeurs à télécharger"
+#~ msgstr "Values to download"
+
+#~ msgid "Un indicateur, un ou plusieurs périmètres, une période : les valeurs année par année, en CSV ou JSON avec la ligne source de chacune."
+#~ msgstr "One indicator, one or more scopes, a period: the values year by year, as CSV or JSON with the source line of each."
+
+#~ msgid "Exemple : la dette publique, année par année"
+#~ msgstr "Example: public debt, year by year"
+
+#~ msgid "Comparer des collectivités côte à côte"
+#~ msgstr "Compare local authorities side by side"
+
+#~ msgid "Tableau de travail"
+#~ msgstr "Worktable"
+
+#~ msgid "Un tableau triable"
+#~ msgstr "A sortable table"
+
+#~ msgid "Les départements ou les régions en lignes, les postes choisis en colonnes (dépenses, recettes, dette, fonctions) : trier, filtrer, exporter."
+#~ msgstr "Departments or regions as rows, the chosen items as columns (expenditure, revenue, debt, functions): sort, filter, export."
+
+#~ msgid "Exemple : les régions"
+#~ msgstr "Example: the regions"
+
+#~ msgid "Situer une année"
+#~ msgstr "Place a year in context"
+
+#~ msgid "Une chronologie"
+#~ msgstr "A timeline"
+
+#~ msgid "Qui exerçait les fonctions gouvernementales et quels textes budgétaires ont été votés, année par année."
+#~ msgstr "Who held government office and which budget acts were passed, year by year."
+
+#~ msgid "Données"
+#~ msgstr "Data"
+
+#~ msgid "Les sources, la méthode, ce qui manque, et les fichiers à réutiliser."
+#~ msgstr "The sources, the method, what is missing, and files to reuse."
+
+#~ msgid "Les données et leur méthode"
+#~ msgstr "The data and its method"
+
+#~ msgid "D'où viennent les chiffres, comment ils sont vérifiés, ce qui n'est pas publié, et comment les réutiliser."
+#~ msgstr "Where the figures come from, how they are checked, what is not published, and how to reuse them."
+
+#~ msgid "Sources et méthode"
+#~ msgstr "Sources and method"
+
+#~ msgid "Chaque fichier collecté, avec sa date, son empreinte et les contrôles avec les totaux publiés."
+#~ msgstr "Each file collected, with its date, its fingerprint and the checks against published totals."
+
+#~ msgid "Ce qui manque dans les jeux ouverts, avec l'organisme qui produit la donnée."
+#~ msgstr "What is missing from the open datasets, with the body that produces the data."
+
+#~ msgid "Les définitions officielles citées, avec leur source."
+#~ msgstr "The official definitions quoted, with their source."
+
+#~ msgid "Exporter une série"
+#~ msgstr "Export a series"
+
+#~ msgid "Toute vue du constructeur s'exporte en CSV ou JSON, chaque valeur avec son fichier, sa ligne et son empreinte."
+#~ msgstr "Any view from the builder can be exported as CSV or JSON, each value with its file, line and fingerprint."
+
+#~ msgid "Collectivités, fonctions ou comptes en lignes, indicateurs en colonnes, export CSV."
+#~ msgstr "Local authorities, functions or accounts in rows, indicators in columns, CSV export."
+
+#~ msgid "Ce que les publications collectées disent de ce sujet, chacune avec son périmètre. Les blocs viennent de publications différentes : ils ne s'additionnent pas."
+#~ msgstr "What the collected publications say about this topic, each with its own scope. The blocks come from different publications: they do not add up."
+
+#~ msgid "Une page par politique publique : ce que chaque publication collectée en dit, côte à côte, avec ses limites."
+#~ msgstr "One page per public policy: what each collected publication says about it, side by side, with its limits."
+
+#~ msgid "Finances publiques françaises · sources officielles"
+#~ msgstr "French public finances · official sources"
+
+#~ msgid "Comprendre les recettes, les dépenses et la dette. Retrouver les données publiées, leur périmètre et leur source officielle."
+#~ msgstr "Understand revenue, expenditure and debt. Find the published data, its scope and its official source."
+
+#~ msgid "Ensemble des administrations publiques, valeurs publiées par Eurostat. Touchez une carte pour comprendre le terme."
+#~ msgstr "General government, values published by Eurostat. Tap a card to understand the term."
+
+#~ msgid "Par périmètre"
+#~ msgstr "By scope"
+
+#~ msgid "Consulter les finances publiques"
+#~ msgstr "Browse public finances"
+
+#~ msgid "Comprendre avant de comparer"
+#~ msgstr "Understand before comparing"
+
+#~ msgid "Une exigence simple"
+#~ msgstr "A simple standard"
+
+#~ msgid "Lire et comparer les données"
+#~ msgstr "Reading and comparing data"
+
+#~ msgid "Le bon périmètre"
+#~ msgstr "The right scope"
+
+#~ msgid "L'État seul n'est pas l'ensemble des administrations publiques. Chaque chiffre dit de quel périmètre il parle, et le site n'additionne pas des périmètres différents."
+#~ msgstr "Central government alone is not general government. Each figure states its scope, and the site does not add up different scopes."
+
+#~ msgid "Le statut de la donnée"
+#~ msgstr "The status of the data"
+
+#~ msgid "Prévision ou exécution, année, unité, valeur provisoire : ces précisions restent attachées au montant."
+#~ msgstr "Forecast or outturn, year, unit, provisional value: these details stay attached to the amount."
+
+#~ msgid "La trace du fichier"
+#~ msgstr "The file trail"
+
+#~ msgid "Chaque valeur mène à son fichier officiel et à la ligne dont elle provient."
+#~ msgstr "Every value leads back to its official file and the exact line it comes from."
+
+#~ msgid "La méthode"
+#~ msgstr "The method"
+
+#~ msgid "Les manques aussi"
+#~ msgstr "Missing data, too"
+
+#~ msgid "Une donnée absente n'est pas un zéro : ce que les sources ne publient pas est listé."
+#~ msgstr "Missing data is not zero: what the sources do not publish is listed."
+
+#~ msgid "Un exemple : où va la dépense publique ?"
+#~ msgstr "An example: where does public spending go?"
+
+#~ msgid "Chaque case est une fonction de la dépense publique, selon la classification publiée par Eurostat. Plus la case est grande, plus la part est élevée. Touchez une case pour entrer dedans."
+#~ msgstr "Each box is a function of public expenditure, according to the classification published by Eurostat. The bigger the box, the higher the share. Tap a box to open it."
+
+#~ msgid "Sources officielles"
+#~ msgstr "Official sources"
+
+#~ msgid "Les éditeurs dont le site collecte les fichiers"
+#~ msgstr "The publishers whose files the site collects"
+
+#~ msgid "Jeux de données collectés : %(n)s"
+#~ msgstr "Datasets collected: %(n)s"
+
+#~ msgid "Retour au parcours"
+#~ msgstr "Back to the guide"
+
+#~ msgid "Pour aller plus loin"
+#~ msgstr "Going further"
+

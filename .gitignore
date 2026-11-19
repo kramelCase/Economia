@@ -1,0 +1,37 @@
+# --- Généré par le projet (se recrée avec make fetch / make build) ---
+# raw/ : collectes brutes des sources officielles (~550 Mo) ; data/ : fichiers des graphiques
+raw/
+data/
+comptes.sqlite
+comptes.sqlite.tmp
+*.sqlite-journal
+
+# --- Python ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- Brouillons et sorties locales ---
+tmp/
+*.log
+
+# --- Secrets et configuration personnelle : ne jamais versionner ---
+.env
+.env.*
+*.pem
+*.key
+.netrc
+.mcp.json
+.claude/settings.local.json
+
+# --- Éditeurs et systèmes ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

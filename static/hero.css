@@ -1,0 +1,115 @@
+/* Accueil : hero d'après la maquette d'interface : fond sombre teinté, lueur, titre centré, recherche en pilule,
+   les quatre grands équilibres en cartes, puis les périmètres. Suit le thème clair ou sombre du site. */
+body.c { overflow-x: clip; }
+.h-hero { position: relative; width: 100vw; margin-left: calc(50% - 50vw); margin-bottom: 24px; padding: 56px 16px 40px;
+  --h-bg: color-mix(in srgb, var(--accent) 6%, var(--paper));
+  --h-glow: color-mix(in srgb, var(--accent) 22%, transparent);
+  --h-carte: color-mix(in srgb, var(--ink) 4%, transparent);
+  background: radial-gradient(60% 55% at 22% 18%, var(--h-glow), transparent 70%),
+              radial-gradient(45% 50% at 85% 55%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+              linear-gradient(to bottom, var(--h-bg), var(--paper)); }
+@media (min-width: 640px) { .h-hero { padding: 96px 32px 56px; } }
+.h-in { max-width: 58rem; margin: 0 auto; text-align: center; }
+.h-kicker { font: 600 .72rem/1.4 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--accent); margin: 0 0 18px; }
+.h-titre { margin: 0 0 18px; font: 600 clamp(3rem, 13vw, 6.2rem)/1 var(--sans); letter-spacing: -.035em;
+  background: linear-gradient(180deg, var(--ink) 30%, color-mix(in srgb, var(--ink) 55%, var(--paper)));
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+.h-lede { margin: 0 auto 32px; max-width: 36rem; font: 400 clamp(1rem, 3.4vw, 1.2rem)/1.55 var(--sans); color: var(--ink-2); }
+.h-cherche { display: flex; align-items: center; gap: 10px; max-width: 42rem; margin: 0 auto 48px; padding: 6px 6px 6px 18px;
+  border: 1px solid var(--rule); border-radius: 999px; background: color-mix(in srgb, var(--paper) 70%, transparent);
+  box-shadow: 0 10px 40px rgb(0 0 0 / .18); color: var(--accent); }
+.h-cherche:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.h-cherche input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--ink); font: 400 1.02rem/1.3 var(--sans); padding: 12px 0; outline: none; }
+.h-cherche input::placeholder { color: var(--muted); }
+.h-cherche button { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: var(--accent); color: var(--paper); cursor: pointer; }
+.h-hero .h-cartes { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; text-align: left; }
+@media (min-width: 640px) { .h-hero .h-cartes { grid-template-columns: 1fr 1fr; } }
+.h-hero .h-carte { position: relative; display: grid; gap: 4px; padding: 20px; border: 1px solid var(--rule); border-radius: 16px;
+  background: var(--h-carte); transition: border-color .15s, transform .15s; }
+.h-carte:hover { border-color: var(--accent); transform: translateY(-2px); }
+.h-carte:nth-child(2) { background: linear-gradient(135deg, var(--h-carte), color-mix(in srgb, var(--accent) 12%, transparent)); }
+.h-ico { display: grid; place-items: center; width: 40px; height: 40px; margin-bottom: 14px; border: 1px solid var(--rule);
+  border-radius: 10px; background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.h-ico .k-ico { color: var(--accent); }
+.h-carte-t { font: 600 1.05rem/1.3 var(--sans); color: var(--ink); text-decoration: none; }
+.h-carte-t::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }  /* toute la carte est cliquable */
+.h-carte-t:focus-visible { outline: none; }
+.h-carte:has(.h-carte-t:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.h-carte p { margin: 0; }
+.h-carte-v { color: var(--ink-2); font-size: .92rem; }
+.h-carte-v strong { font: 600 1.5rem/1.2 var(--sans); color: var(--ink); font-variant-numeric: tabular-nums; margin-right: 2px; }
+.h-carte-o { font-size: .8rem; color: var(--muted); }
+.h-carte-s { position: relative; z-index: 1; font-size: .8rem; margin-top: 4px !important; }  /* au-dessus du lien de carte */
+.h-note { font-size: .8rem; color: var(--muted); margin: 14px 0 0; }
+.h-perimetres { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 28px; margin-top: 28px; }
+.h-perimetres a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); font-size: .88rem; text-decoration: none; }
+.h-perimetres a:hover { color: var(--ink); text-decoration: underline; }
+.h-perimetres .k-ico { color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .h-carte { transition: none; } .h-carte:hover { transform: none; } }
+@media (max-width: 480px) { .h-kicker { letter-spacing: .12em; font-size: .66rem; } }
+
+/* Maquette v2 : le fond à lueurs et le verre sont dans theme.css (tout le site). */
+.h-hero { background: none; }
+.h-hero .h-carte { border-radius: 18px; transition: transform .45s cubic-bezier(.2, .8, .2, 1), border-color .45s; }
+.h-hero .h-carte:nth-child(2) { background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 14%, transparent), color-mix(in srgb, var(--ink) 2%, transparent)); }
+@media (min-width: 1024px) { .h-hero .h-cartes { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } .h-in { max-width: 72rem; } }
+.h-ico { border-radius: 12px; border-color: color-mix(in srgb, var(--accent) 22%, transparent); }
+/* Icônes qui bougent au survol : l'entrée, la sortie, la balance, les couches. */
+.h-t0:hover .k-ico { animation: h-entree 1.4s cubic-bezier(.45, 0, .25, 1) both; }
+.h-t1:hover .k-ico { animation: h-sortie 1.4s cubic-bezier(.45, 0, .25, 1) both; }
+.h-t2:hover .k-ico { transform-origin: 50% 22%; animation: h-balance 1.6s ease-in-out both; }
+.h-t3:hover .k-ico path { animation: h-couche 1.6s ease-in-out both; }
+.h-t3:hover .k-ico path:nth-child(2) { animation-delay: -.3s; } .h-t3:hover .k-ico path:nth-child(3) { animation-delay: -.6s; }
+@keyframes h-entree { 0%, 18%, 65%, 100% { transform: none; } 36% { transform: translate(-3px, 3px); } 48% { transform: translate(1px, -1px); } }
+@keyframes h-sortie { 0%, 18%, 65%, 100% { transform: none; } 36% { transform: translate(3px, -3px); } 48% { transform: translate(-1px, 1px); } }
+@keyframes h-balance { 0%, 15%, 75%, 100% { transform: rotate(0); } 32% { transform: rotate(-7deg); } 48% { transform: rotate(5deg); } 62% { transform: rotate(-2deg); } }
+@keyframes h-couche { 0%, 20%, 75%, 100% { transform: none; } 42% { transform: translateY(-1.5px); } 58% { transform: translateY(.5px); } }
+.h-sec { margin: 0 0 56px; }
+.h-sec-tete { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 6px 16px; margin-bottom: 22px; }
+.h-h2 { font: 500 clamp(1.5rem, 4.5vw, 1.9rem)/1.2 var(--sans); margin: 0; letter-spacing: -.01em; }
+.h-sec-note { font-size: .8rem; color: var(--muted); }
+.h-portes, .h-sources { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.h-portes { grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr)); }
+.h-sources { grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+.h-porte { position: relative; padding: 24px; transition: transform .45s cubic-bezier(.2, .8, .2, 1), border-color .45s; }
+.h-porte:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.h-porte .h-ico { margin-bottom: 20px; }
+.h-porte h3 { margin: 0; font: 500 1.2rem/1.3 var(--sans); }
+.h-porte h3 a { color: var(--ink); text-decoration: none; }
+.h-porte h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.h-porte:has(a:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.h-porte h3 a:focus-visible { outline: none; }
+.h-porte p { margin: 10px 0 0; font-size: .9rem; line-height: 1.55; color: var(--ink-2); }
+.h-porte-action { display: block; margin-top: 16px; font-size: .9rem; color: var(--accent); }
+.h-source { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; color: var(--muted); }
+.h-source p { margin-top: 4px; }
+.h-regles { display: grid; gap: 32px; padding: 28px; }
+@media (min-width: 640px) { .h-regles { padding: 44px; } }
+@media (min-width: 1024px) { .h-regles { grid-template-columns: 1fr 1.2fr; gap: 72px; } }
+.h-regles .h-kicker { margin-bottom: 12px; }
+.h-regles-g { display: grid; gap: 26px; }
+@media (min-width: 640px) { .h-regles-g { grid-template-columns: 1fr 1fr; } }
+.h-regles h3 { margin: 0; font: 500 1rem/1.3 var(--sans); }
+.h-regles p { margin: 8px 0 0; font-size: .9rem; line-height: 1.6; color: var(--ink-2); }
+@media (prefers-reduced-motion: reduce) { .h-porte, .h-hero .h-carte { transition: none; } .h-porte:hover { transform: none; }
+  .h-t0:hover .k-ico, .h-t1:hover .k-ico, .h-t2:hover .k-ico, .h-t3:hover .k-ico path { animation: none; } }
+.h-hero .h-cartes { border-top: 0; }
+@media (min-width: 640px) { .h-portes { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .h-portes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.c-carte + .h-sec { margin-top: 64px; }
+
+/* Accueil : encart vers la machine 3D (aperçu cliquable, toute la largeur du bloc). */
+.h-3d { display: grid; grid-template-columns: 1fr; gap: 0; margin: 22px 0 0; border-radius: 18px; overflow: hidden; text-decoration: none; color: inherit; text-align: left; }
+.h-3d img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 40%; }
+.h-3d-t { display: grid; gap: 4px; padding: 14px 16px 4px; }
+.h-3d-t b { font-size: 1.25rem; }
+.h-3d-t span { opacity: .8; }
+.h-3d-go { padding: 6px 16px 16px; font-weight: 600; color: var(--accent, #7cc4d4); }
+.h-3d:hover img, .h-3d:focus-visible img { transform: scale(1.02); }
+.h-3d img { transition: transform .4s ease; }
+@media (min-width: 760px) {
+  .h-3d { grid-template-columns: 1.6fr 1fr; align-items: center; }
+  .h-3d img { grid-row: span 2; aspect-ratio: auto; height: 100%; max-height: 360px; }
+  .h-3d-t { padding: 20px 22px 6px; } .h-3d-go { padding: 6px 22px 20px; }
+}

@@ -1,0 +1,48 @@
+# Lacunes constatées à l'échelle des catalogues (les lacunes ligne à ligne, comme les dépenses
+# fiscales « nc », sont produites automatiquement par les loaders).
+# Chaque entrée dit COMMENT on l'a constaté ; le producteur affiché est l'éditeur de `source_id`, tel qu'il
+# se nomme dans ses métadonnées (sauf `responsable_source`, autre source collectée).
+
+lacunes:
+  - type: non_publie
+    titre: "Budget de l'État voté (LFI 2024, 2025, 2026) non publié par destination"
+    description: "Le dernier jeu « dépenses selon destination » (mission, programme, action, sous-action) sur data.economie.gouv.fr est celui du PLF 2025, c'est-à-dire le projet, avant le vote. Les lois de finances votées depuis n'y figurent pas à ce niveau de détail."
+    constat: "Recherche dans le catalogue data.economie.gouv.fr (« destination », « LFI 2025 », « LFI 2026 »), 2026-10-26"
+    source_id: etat_plf2025_destination
+
+  - type: donnee_inexploitable
+    titre: "Dépenses fiscales du PLF 2024 publiées sans montants"
+    description: "Le jeu « PLF 2024 VM tome 2 - Dépenses fiscales » liste 467 dépenses fiscales avec libellé et finalité, mais toutes les colonnes de chiffrage sont vides et les en-têtes sont cassés (colonnes « empty »)."
+    constat: "Profil automatique du fichier, 2026-10-26"
+    source_id: etat_depenses_fiscales_plf2024
+
+  - type: non_publie
+    titre: "Pas de présentation fonctionnelle des comptes régionaux"
+    description: "data.ofgl.fr publie les dépenses des départements par fonction (social, collèges, routes...), mais rien d'équivalent pour les régions (lycées, transports, formation professionnelle)."
+    constat: "Recherche dans le catalogue data.ofgl.fr (« fonctionnelle »), 2026-10-26"
+    source_id: ofgl_regions
+
+  - type: publication_reportee
+    titre: "Tableaux INSEE des dépenses publiques par fonction : édition 2025 reportée"
+    description: "L'INSEE annonce la publication des tableaux 3.301 à 3.307 (dépenses des administrations publiques par fonction) pour décembre 2026. En attendant, les chiffres viennent de la diffusion Eurostat, avec 2023 et 2024 marqués provisoires."
+    responsable_source: insee_definitions
+    constat: "Page insee.fr/fr/statistiques/8988847, consultée le 2026-10-26"
+    source_id: eurostat_cofog_fr
+
+  - type: non_publie
+    titre: "Scrutins de l'Assemblée nationale antérieurs à juin 2012 absents des données ouvertes"
+    description: "Le portail des données ouvertes de l'Assemblée nationale publie les votes de la législature en cours et les archives des XVIe, XVe et XIVe législatures. Les scrutins sur les lois de finances votées avant juin 2012 n'y figurent pas : ce site ne peut pas montrer comment les groupes ont voté ces textes."
+    constat: "Rubriques « Votes » et « Archives antérieures » de data.assemblee-nationale.fr, 2026-10-27"
+    source_id: an_scrutins_14
+
+  - type: non_publie
+    titre: "Présidence de la République et gouvernements antérieurs à mai 2007 absents du référentiel"
+    description: "Le fichier « acteurs, mandats et organes » de l'Assemblée nationale couvre les députés depuis la XIe législature, mais ses organes de type présidence de la République et gouvernement commencent en mai 2007. Pour les années 1995 à 2007 des séries, ce site ne peut pas indiquer qui exerçait ces fonctions."
+    constat: "Profil du fichier AMO30 (organes PRESREP et GOUVERNEMENT), 2026-10-27"
+    source_id: an_acteurs_organes
+
+  - type: non_publie
+    titre: "Rattachement à un parti politique publié pour les seuls parlementaires"
+    description: "Le rattachement à un parti politique figure dans les données de l'Assemblée nationale pour les députés. Un membre du gouvernement qui n'a jamais été député n'a pas de rattachement dans ce fichier : ce site l'affiche sans parti plutôt que d'en déduire un."
+    constat: "Mandats PARPOL du fichier AMO30, 2026-10-27"
+    source_id: an_acteurs_organes

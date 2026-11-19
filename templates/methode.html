@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Méthode et sources") }}{% endblock %}
+{% from "_macros.html" import fig_src, titre_source, licence with context %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Comment ce site est construit") }}</p>
+  <h1>{{ _("Méthode et sources") }}</h1>
+</header>
+
+<section class="prose">
+  <h2>{{ _("La chaîne de preuve") }}</h2>
+  <ol>
+    <li>{{ _("Collecte : chaque jeu de données officiel est téléchargé tel quel, sans modification. On conserve l'adresse exacte, la date et l'empreinte sha256 du fichier.") }}</li>
+    <li>{{ _("Chargement : chaque montant de la base garde le numéro de la ligne du fichier dont il vient. La base refuse un montant sans fichier ni ligne.") }}</li>
+    <li>{{ _("Contrôles : quand la source publie un total, on vérifie que la somme de ses détails le retrouve. Si un contrôle échoue, la base n'est pas publiée.") }}</li>
+    <li>{{ _("Affichage : un lien « source » accompagne chaque chiffre et relit la ligne d'origine dans le fichier brut.") }}</li>
+  </ol>
+  <h2>{{ _("Ce que le site s'interdit") }}</h2>
+  <ul>
+    <li>{{ _("Additionner des montants de sources différentes, de stades différents (projet, loi votée, exécution) ou d'unités différentes.") }}</li>
+    <li>{{ _("Remplacer une donnée absente par zéro.") }}</li>
+    <li>{{ _("Rédiger une définition : elles sont toutes citées.") }}</li>
+  </ul>
+</section>
+
+<section>
+  <h2>{{ _("Contrôles de cohérence") }}</h2>
+  <div class="table-wrap"><table>
+    {{ fig_src(lang, sources_controles, "caption") }}
+    <thead><tr><th scope="col">{{ _("Contrôle") }}</th><th scope="col" class="num">{{ _("Attendu") }}</th><th scope="col" class="num">{{ _("Obtenu") }}</th><th scope="col">{{ _("Résultat") }}</th></tr></thead>
+    <tbody>{% for c in controles %}
+      <tr><td lang="fr">{{ c.nom }}<br><span class="muted">{{ c.detail }}</span></td>
+        <td class="num">{{ integer(c.attendu|round|int) }}</td><td class="num">{{ c.obtenu }}</td>
+        <td>{% if c.ok %}<span class="ok">✔ {{ _("conforme") }}</span>{% else %}<span class="ko">✘ {{ _("écart") }}</span>{% endif %}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2>{{ _("Sources") }}</h2>
+  {% for item in sources %}{% set s = item.s %}
+  <article class="source" id="src-{{ s.id }}">
+    {% set si = source_info(s.id) %}
+    <h3><a href="/{{ lang }}/source/{{ s.id }}">{{ titre_source(lang, si) }}</a></h3>
+    <p class="meta">{{ s.editeur }} · <code>{{ si.identifiant }}</code>{% if si.maj %} · {{ _("mise à jour du %(d)s", d=si.maj) }}{% endif %} · {{ licence(lang, si.licence) }}</p>
+    {% if si.extrait %}<p>{{ _("Description publiée par l'éditeur :") }} « <span lang="{{ si.extrait_lang }}">{{ si.extrait }}</span> »</p>{% endif %}
+    {% if item.fichiers %}
+    <details><summary>{{ _("%(n)s fichier(s) collecté(s), dernière collecte %(d)s", n=item.fichiers|length, d=s.collecte) }}</summary>
+      <ul class="files">{% for f in item.fichiers %}<li><code>{{ f.chemin }}</code><br><a href="{{ f.url }}" rel="noopener" class="url">{{ f.url }}</a><br><span class="muted">sha256 {{ f.sha256 }}</span></li>{% endfor %}</ul>
+    </details>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,134 @@
+/* Le style de l'accueil (maquette d'interface) étendu à tout le site : fond à lueurs fixe, surfaces en verre,
+   titres sans empattement, boutons et champs arrondis. Chargé après style.css ; ne redéfinit ni la palette ni les marges
+   latérales (autorité : :root et .wrap de style.css), seulement l'habillage. */
+
+:root {
+  --v-bg: linear-gradient(160deg, color-mix(in srgb, var(--ink) 6%, transparent), color-mix(in srgb, var(--ink) 2%, transparent));
+  --v-bord: color-mix(in srgb, var(--ink) 10%, transparent);
+  --v-ombre: inset 0 1px 0 color-mix(in srgb, var(--ink) 10%, transparent), 0 20px 50px -30px rgb(0 0 0 / .6);
+  --v-r: 18px;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --v-bg: linear-gradient(160deg, rgb(255 255 255 / .75), rgb(255 255 255 / .45));
+  --v-bord: rgb(255 255 255 / .8);
+  --v-ombre: inset 0 1px 0 rgb(255 255 255 / .9), 0 20px 50px -30px color-mix(in srgb, var(--accent) 45%, transparent);
+} }
+
+body { overflow-x: clip; background: var(--paper); }
+.h-fond { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.h-fond::before, .h-fond::after { content: ""; position: absolute; border-radius: 50%; filter: blur(90px); }
+.h-fond::before { width: 60vw; height: 60vw; max-width: 820px; max-height: 820px; left: -12vw; top: -18vw;
+  background: color-mix(in srgb, var(--accent) 20%, transparent); }
+.h-fond::after { width: 50vw; height: 50vw; max-width: 700px; max-height: 700px; right: -14vw; top: 22vh;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); }
+body { position: relative; z-index: 0; }
+
+/* Surfaces en verre : la classe .verre, et les blocs existants qui portent un contenu à part. */
+.verre, .note, .table-wrap, .gap-cards li, .stats li, .outil, .v-etape, .v-serie, .v-res, .lexique .entry, details.technique,
+.c-plus, .zoom, .ctx-an, .pc-phrase, .pc-mots, .pc-chiffres figure, .chaine li, .facts, .d-base, .cmd {
+  border: 1px solid var(--v-bord); border-radius: var(--v-r); background: var(--v-bg);
+  -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%); box-shadow: var(--v-ombre); }
+.note, .gap-cards li, .v-res, .lexique .entry, details.technique, .c-plus, .zoom, .ctx-an, .pc-phrase, .pc-mots, .facts, .d-base { padding: 20px 22px; }
+.table-wrap { padding: 4px 8px; }
+.stats li { padding: 16px 18px; border-top: 1px solid var(--v-bord); }
+.note.gap, .gaps { background: linear-gradient(160deg, color-mix(in srgb, var(--gap) 14%, transparent), color-mix(in srgb, var(--gap) 4%, transparent)); }
+
+/* En-tête : barre en verre collante, menu en pilules avec icône. */
+header.site { position: sticky; top: 0; z-index: 5; border-bottom: 1px solid var(--v-bord);
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(160%); backdrop-filter: blur(18px) saturate(160%); }
+.brand { font: 600 1.2rem/1 var(--sans); letter-spacing: -.02em; }
+.cmd-open { border-radius: 999px; padding: 7px 14px; background: transparent; border-color: var(--v-bord); }
+.menu { gap: 6px; padding-bottom: 10px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+.menu::-webkit-scrollbar { display: none; }
+.menu a { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; border: 1px solid transparent; border-radius: 999px; }
+.menu a .k-ico { color: var(--muted); }
+.menu a:hover { background: color-mix(in srgb, var(--ink) 5%, transparent); }
+.menu a[aria-current="page"] { border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.menu a[aria-current="page"] .k-ico { color: var(--accent); }
+@media (min-width: 900px) { .menu { flex-wrap: wrap; } }
+
+/* Typo : celle de l'accueil, sans empattement. */
+h1, h2, h3 { font-family: var(--sans); letter-spacing: -.02em; }
+h1 { font-weight: 600; font-size: clamp(2rem, 7vw, 3.4rem); line-height: 1.05; letter-spacing: -.03em; }
+h2 { font-weight: 500; }
+h3 { font-weight: 600; }
+.lede { font-family: var(--sans); font-size: clamp(1rem, 2.6vw, 1.18rem); line-height: 1.6; }
+.kicker { font-family: var(--mono, var(--sans)); letter-spacing: .18em; font-size: .72rem; }
+.page { border-bottom: 0; padding: 16px 0 8px; margin-bottom: 28px; }
+.big strong, .stats strong, .pc-cv strong, .v-fig strong { font-family: var(--sans); font-weight: 600; letter-spacing: -.02em; }
+.portes-t, .outil-t { font-family: var(--sans); font-weight: 500; }
+
+/* Pages d'entrée : les listes de pages deviennent des cartes, comme les portes de l'accueil. */
+.portes { border-top: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); }
+.portes li { position: relative; border: 1px solid var(--v-bord); border-radius: var(--v-r); background: var(--v-bg);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); box-shadow: var(--v-ombre);
+  transition: transform .45s cubic-bezier(.2, .8, .2, 1), border-color .45s; }
+.portes li:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.portes a { display: grid !important; grid-template-columns: none !important; gap: 8px; padding: 22px; height: 100%; align-content: start; }
+.portes .h-ico { margin-bottom: 8px; }
+.portes-t { font-size: 1.12rem; }
+.portes-t::after { content: ""; }
+.portes-d { font-size: .9rem; line-height: 1.55; }
+.portes-go { color: var(--accent); font-size: .88rem; margin-top: 6px; }
+.pc-ol { grid-template-columns: 1fr; }
+@media (min-width: 760px) { .pc-ol { grid-template-columns: 1fr 1fr; } }
+.h-ico { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+  border-radius: 12px; background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.h-ico .k-ico { color: var(--accent); }
+
+/* En-tête de page : icône de la rubrique devant le surtitre. */
+.p-tete { display: flex; align-items: center; gap: 12px; margin: 0 0 6px; }
+.p-tete .h-ico { width: 36px; height: 36px; }
+
+/* Contrôles arrondis. */
+button, .button, select, input[type=search], input[type=text], input[type=number], .filters select { border-radius: 12px; }
+button, .button { border-radius: 999px; }
+.seg-btns button { border-radius: 999px; }
+.porte-cherche input { border-radius: 999px; padding-left: 18px; background: transparent; border-color: var(--v-bord); }
+.porte-cherche button { border-radius: 999px; }
+
+footer.site { border-top: 1px solid var(--v-bord); background: color-mix(in srgb, var(--paper) 60%, transparent); }
+
+@media (prefers-reduced-motion: reduce) { .portes li { transition: none; } .portes li:hover { transform: none; } }
+
+/* Pastilles des outils (vue série, atelier) : arrondies, en verre, avec icône. */
+.chip { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 4%, transparent); }
+.chip .k-ico { color: var(--accent); }
+.chip.is-on { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.chip.is-on .k-ico { color: var(--paper); }
+
+/* Accueil : l'entrée du parcours guidé, juste sous la recherche. */
+.h-parcours { display: inline-flex; align-items: center; gap: 10px; margin: -28px auto 40px; padding: 10px 18px 10px 12px; border-radius: 999px;
+  color: var(--ink); text-decoration: none; font-size: .95rem; }
+.h-parcours .h-ico { width: 30px; height: 30px; border-radius: 999px; }
+.h-parcours:hover { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.h-parcours b { color: var(--accent); font-weight: 600; }
+/* Sur téléphone, le menu défile : un fondu à droite montre qu'il continue. */
+@media (max-width: 899px) { .menu { -webkit-mask-image: linear-gradient(to right, #000 82%, transparent); mask-image: linear-gradient(to right, #000 82%, transparent); padding-right: 32px; } }
+
+/* Fiche d'un territoire : l'essentiel en quatre cartes, chacune située face à la médiane. */
+.t-essentiel h2 { margin-top: 1.2em; }
+.t-cartes { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 14px; }
+@media (min-width: 640px) { .t-cartes { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .t-cartes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.t-carte { padding: 20px; display: grid; gap: 8px; align-content: start; }
+.t-carte p { margin: 0; }
+.t-tete { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.t-v strong { font: 600 1.7rem/1.1 var(--sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.t-tot { font-size: .85rem; color: var(--ink-2); }
+.t-comp { display: grid; grid-template-columns: 1fr; gap: 2px; margin-top: 6px; font-size: .78rem; color: var(--muted); }
+.t-b { display: block; height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 7%, transparent); overflow: hidden; }
+.t-b i { display: block; height: 100%; width: var(--w); border-radius: 999px; background: var(--accent); }
+.t-b.is-med i { background: var(--muted); }
+.t-bn { margin-bottom: 6px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.t-rang { font-size: .88rem; }
+.t-tout { margin: 24px 0; }
+.t-tout summary { display: flex; align-items: center; gap: 8px; font-weight: 600; cursor: pointer; }
+.t-tout .table-wrap { margin-top: 14px; }
+/* Quatre entrées : elles tiennent sur un téléphone sans défiler (icône au-dessus du nom) */
+@media (max-width: 480px) {
+  .menu { justify-content: space-between; gap: 2px; }
+  .menu a { flex: 1 1 0; min-width: 0; flex-direction: column; gap: 2px; padding: 6px 4px; border-radius: 12px; font-size: .78rem; text-align: center; white-space: normal; }
+}

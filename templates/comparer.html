@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, fig_src with context %}
+{% block title %}{{ _("Comparer") }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/comparer.css?v=9">{% endblock %}
+{% block bodyattr %} class="k"{% endblock %}
+{% macro noeud_col(n) -%}
+  <div class="k-n" data-n>
+    <div class="k-ligne">
+      <label class="k-check"><input type="checkbox" value="{{ n.c.key }}" data-col{% if n.c.key in e["keys"] %} checked{% endif %}>{{ icone(n.ico) }}<span>{{ n.c.texte }}</span></label>
+      {%- if n.enfants %}<button type="button" class="k-dep" aria-expanded="{{ 'true' if n.ouvert else 'false' }}" data-dep>
+        <span class="sr">{{ _("Détail de") }} {{ n.c.texte }}</span><span class="k-dep-n">{{ n.n_sous }}</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></button>{% endif %}
+    </div>
+    {%- if n.enfants %}<div class="k-sous"{% if not n.ouvert %} hidden{% endif %}>{% for x in n.enfants %}{{ noeud_col(x) }}{% endfor %}</div>{% endif %}
+  </div>
+{%- endmacro %}
+{% macro icone_groupe(gk) -%}
+  {%- set d = {"depenses": '<path d="M4 12h12m-4-4 4 4-4 4"/><path d="M20 5v14"/>',
+               "recettes": '<path d="M20 12H8m4-4-4 4 4 4"/><path d="M4 5v14"/>',
+               "dette": '<rect x="4" y="5" width="16" height="4" rx="1"/><rect x="4" y="10" width="16" height="4" rx="1"/><rect x="4" y="15" width="16" height="4" rx="1"/>',
+               "fonctions": '<rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/>'} -%}
+  {%- if gk in d %}<svg class="k-ico" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">{{ d[gk]|safe }}</svg>{% endif -%}
+{%- endmacro %}
+{% macro garde(sauf) -%}
+  {#- L'état courant en champs cachés, sauf ce que le formulaire modifie. -#}
+  {%- set etat = {"jeu": e.jeu, "niveau": e.niveau, "unite": e.unite, "cols": e["keys"]|join(","), "annee": e.annee,
+                  "ref": e.ref or "", "tri": e.tri, "sens": e.sens, "q": e.q, "groupe": e.groupe, "sel": e.sel|join(","),
+                  "vue": e.vue if e.vue == "sel" else "", "teinte": "1" if e.teinte else ""} -%}
+  {%- for k, v in etat.items() if k not in sauf and v %}<input type="hidden" name="{{ k }}" value="{{ v }}">{% endfor %}
+  {%- for k, b in e.bornes.items() if "bornes" not in sauf %}{% if b[0] %}<input type="hidden" name="min_{{ k }}" value="{{ b[0] }}">{% endif %}{% if b[1] %}<input type="hidden" name="max_{{ k }}" value="{{ b[1] }}">{% endif %}{% endfor %}
+{%- endmacro %}
+{% block content %}
+<header class="k-head">
+  <p class="k-kicker">{{ _("Outil de comparaison") }}</p>
+  <h1>{{ _("Comparer") }}</h1>
+  <p class="k-lede">{{ _("Choisissez les lignes, les colonnes et l'année ; triez en cliquant un en-tête, filtrez par nom ou par valeur, épinglez des lignes pour les garder sous les yeux. Chaque valeur ouvre sa ligne source.") }}</p>
+</header>
+
+<nav class="k-jeux" aria-label="{{ _("Jeu de données") }}">
+  <a href="/{{ lang }}/comparer" class="{% if e.jeu == 'collectivites' %}is-on{% endif %}"{% if e.jeu == 'collectivites' %} aria-current="page"{% endif %}>
+    <strong>{{ _("Collectivités") }}</strong><span>{{ _("Régions et départements, comptes publiés par l'OFGL") }}</span></a>
+  <a href="/{{ lang }}/comparer?jeu=fonctions" class="{% if e.jeu == 'fonctions' %}is-on{% endif %}"{% if e.jeu == 'fonctions' %} aria-current="page"{% endif %}>
+    <strong>{{ _("Fonctions publiques") }}</strong><span>{{ _("Dépense par fonction et par périmètre, Eurostat") }}</span></a>
+  <a href="/{{ lang }}/comparer?jeu=comptes" class="{% if e.jeu == 'comptes' %}is-on{% endif %}"{% if e.jeu == 'comptes' %} aria-current="page"{% endif %}>
+    <strong>{{ _("Comptes publics") }}</strong><span>{{ _("Recettes, dépenses, solde, intérêts et dette, Eurostat") }}</span></a>
+</nav>
+
+<form class="k-reglages" method="get" action="/{{ lang }}/comparer" data-auto>
+  {{ garde(["niveau", "unite", "annee", "ref", "cols"]) }}
+  <input type="hidden" name="cols" value="{{ e['keys']|join(',') }}" data-cols>
+  <label><span>{{ _("Lignes") }}</span>
+    <select name="niveau">{% for n in ("departement", "region") if e.jeu == "collectivites" %}<option value="{{ n }}"{% if n == e.niveau %} selected{% endif %}>{{ {"departement": _("Départements"), "region": _("Régions")}[n] }}</option>{% endfor %}
+      {% if e.jeu == "comptes" %}<option value="poste" selected>{{ _("Postes") }}</option>{% endif %}
+      {% for n in ("fonction", "sous-fonction") if e.jeu == "fonctions" %}<option value="{{ n }}"{% if n == e.niveau %} selected{% endif %}>{{ {"fonction": _("Fonctions"), "sous-fonction": _("Sous-fonctions")}[n] }}</option>{% endfor %}</select></label>
+  <label><span>{{ _("Unité") }}</span>
+    <select name="unite">{% for u, nom in unites %}<option value="{{ u }}"{% if u == e.unite %} selected{% endif %}>{{ nom }}</option>{% endfor %}</select></label>
+  <label><span>{{ _("Année") }}</span>
+    <select name="annee">{% for a in e.annees|reverse %}<option{% if a == e.annee %} selected{% endif %}>{{ a }}</option>{% endfor %}</select></label>
+  <label><span>{{ _("Comparer à") }}</span>
+    <select name="ref"><option value="">{{ _("aucune année") }}</option>{% for a in e.annees|reverse if a != e.annee %}<option{% if a == e.ref %} selected{% endif %}>{{ a }}</option>{% endfor %}</select></label>
+  <details class="k-cols">
+    <summary>{{ _("Colonnes") }} <b data-nb-cols>{{ e["keys"]|length }}</b></summary>
+    <div class="k-cols-in" data-nolink>
+      <p class="k-note">{{ _("%(n)s colonnes au plus.", n=8) }}</p>
+      {% if e.jeu == "collectivites" %}<p class="k-note k-ailleurs">{{ _("Ces colonnes sont celles que l'OFGL publie pour les régions et les départements. Toutes les fonctions de l'ensemble des administrations publiques (défense, vieillesse, recherche, environnement…), détaillées par Eurostat :") }} <a href="/{{ lang }}/comparer?jeu=fonctions&amp;niveau=sous-fonction">{{ _("Fonctions publiques") }} →</a></p>{% endif %}
+      {% if e.jeu != "collectivites" %}<p class="k-note k-ailleurs">{% if e.jeu == "fonctions" %}{{ _("Ici, chaque ligne est une fonction (%(n)s lignes : vieillesse, santé, enseignement, défense…) et chaque colonne une administration qui dépense : l'ensemble des administrations publiques et ses trois sous-secteurs, tels que collectés auprès d'Eurostat.", n=t.total) }}{% else %}{{ _("Ici, chaque ligne est un poste des comptes (%(n)s lignes : recettes, dépenses, solde, intérêts, dette) et chaque colonne une administration : l'ensemble des administrations publiques et ses trois sous-secteurs, tels que collectés auprès d'Eurostat.", n=t.total) }}{% endif %}</p>{% endif %}
+      {% if groupes_cols|length > 1 %}<input type="search" class="k-cols-q" placeholder="{{ _("Chercher une colonne (impôts, RSA, dette…)") }}" aria-label="{{ _("Chercher une colonne") }}" data-cols-q>{% endif %}
+      {% if onglets %}
+      {# Collectivités : une famille par onglet, rubriques de premier niveau d'abord, détail dépliable. #}
+      <div class="k-onglets" role="tablist" aria-label="{{ _("Familles de colonnes") }}">
+        {% for o in onglets %}<button type="button" role="tab" class="k-onglet" id="k-ong-{{ o.cle }}" aria-controls="k-pan-{{ o.cle }}" aria-selected="{{ 'true' if loop.first else 'false' }}" data-onglet="{{ o.cle }}">{{ icone(o.ico, 20) }}<span>{{ o.titre }}</span><b class="k-on-n" data-on-n>{{ o.n or "" }}</b></button>{% endfor %}
+      </div>
+      {% for o in onglets %}
+      <div class="k-panneau" role="tabpanel" id="k-pan-{{ o.cle }}" aria-labelledby="k-ong-{{ o.cle }}" data-panneau="{{ o.cle }}"{% if not loop.first %} data-cache{% endif %}>
+        {% if o.racines %}{% for n in o.racines %}{{ noeud_col(n) }}{% endfor %}{% endif %}
+        {% for x in o.nomens or [] %}
+        {% if loop.first %}
+        <p class="k-nomen">{{ _("Nomenclature %(m)s : %(n)s départements publient selon elle en %(a)s.", m=x.nomen, n=x.n_dep, a=e.annee) }}</p>
+        <div class="k-grille">{% for n in x.racines %}{{ noeud_col(n) }}{% endfor %}</div>
+        {% else %}
+        <details class="k-autre"{% if x.coche %} open{% endif %}><summary>{{ _("Nomenclature %(m)s : %(n)s départements en %(a)s", m=x.nomen, n=x.n_dep, a=e.annee) }}</summary>
+          <p class="k-note">{{ _("Deux nomenclatures différentes : leurs fonctions ne se comparent pas entre elles.") }}</p>
+          <div class="k-grille">{% for n in x.racines %}{{ noeud_col(n) }}{% endfor %}</div></details>
+        {% endif %}
+        {% endfor %}
+      </div>
+      {% endfor %}
+      {% else %}
+      {% for g, cs in groupes_cols.items() %}
+      <fieldset data-groupe-cols{% if cs[0].gk in ("depenses", "recettes", "dette") %} class="k-arbre"{% endif %}>{% if g %}<legend>{{ icone_groupe(cs[0].gk) }}{{ g }}</legend>{% endif %}
+        {% for c in cs %}<label class="k-check"{% if c.niv %} style="--niv:{{ c.niv }}"{% endif %}><input type="checkbox" value="{{ c.key }}" data-col{% if c.key in e["keys"] %} checked{% endif %}>{% if c.ico %}{{ icone(c.ico) }}{% endif %} <span>{{ c.texte }}</span></label>{% endfor %}
+      </fieldset>
+      {% endfor %}
+      {% endif %}
+      <button type="submit" class="k-btn" data-appliquer>{{ _("Appliquer") }}</button>
+    </div>
+  </details>
+  <noscript><button type="submit" class="k-btn">{{ _("Afficher") }}</button></noscript>
+</form>
+
+<form class="k-outils" method="get" action="/{{ lang }}/comparer" role="search" data-filtres>
+  {{ garde(["q", "groupe", "vue", "teinte"]) }}
+  <label class="k-q"><span class="sr">{{ _("Filtrer par nom ou code") }}</span>
+    <input type="search" name="q" value="{{ e.q }}" placeholder="{{ _("Filtrer par nom ou code…") }}" autocomplete="off"></label>
+  {% if t.groupes %}
+  <label><span class="sr">{{ _("Fonction") }}</span>
+    <select name="groupe"><option value="">{{ _("Toutes les fonctions") }}</option>{% for g in t.groupes %}<option{% if g == e.groupe %} selected{% endif %}>{{ g }}</option>{% endfor %}</select></label>
+  {% endif %}
+  <label class="k-check"><input type="checkbox" name="vue" value="sel"{% if e.vue == "sel" %} checked{% endif %} data-vue> {{ _("Lignes épinglées seulement") }} (<span data-nsel>{{ e.sel|length }}</span>)</label>
+  <label class="k-check"><input type="checkbox" name="teinte" value="1"{% if e.teinte %} checked{% endif %} data-teinte> {{ _("Teinter les valeurs") }}</label>
+  <noscript><button type="submit" class="k-btn">{{ _("Filtrer") }}</button></noscript>
+  <span class="k-compte" aria-live="polite"><b data-nvis>{{ t.lignes|length }}</b> / {{ t.total }} {{ _("lignes") }}</span>
+  <span class="k-actions">
+    <a class="k-btn" href="{{ csv_href }}" data-csv download>CSV</a>
+    <button type="button" class="k-btn" data-copy data-done="{{ _("Lien copié") }}" hidden>{{ _("Copier le lien") }}</button>
+    <a class="k-btn k-btn-plat" href="{{ reinit }}">{{ _("Réinitialiser") }}</a>
+  </span>
+</form>
+
+<div class="table-wrap k-wrap">
+<table class="k-table{% if e.teinte %} is-teinte{% endif %}" data-unite="{{ e.unite }}" data-lang="{{ lang }}">
+  {% if sources %}{{ fig_src(lang, sources, "caption") }}{% endif %}
+  <thead>
+    <tr>
+      <th scope="col" class="k-pin"><span class="sr">{{ _("Épingler") }}</span></th>
+      <th scope="col" class="k-rang">#</th>
+      <th scope="col" class="k-nom" {% if e.tri == "nom" %}aria-sort="{{ 'ascending' if e.sens == 'asc' else 'descending' }}"{% endif %}>
+        <a href="{{ lien(tri='nom', sens='desc' if e.tri == 'nom' and e.sens == 'asc' else 'asc') }}" data-tri="nom">{{ _("Nom") }}</a></th>
+      {% for c in e.cols %}
+      {% for kind in (("v", "d") if e.ref else ("v",)) %}{% set k = kind ~ ":" ~ c.key %}
+      <th scope="col" class="num{% if kind == 'd' %} k-d{% endif %}"{% if e.tri == k %} aria-sort="{{ 'ascending' if e.sens == 'asc' else 'descending' }}"{% endif %}>
+        <a href="{{ lien(tri=k, sens='asc' if e.tri == k and e.sens == 'desc' else 'desc') }}" data-tri="{{ k }}">
+          {% if kind == "v" %}<span class="k-th">{{ c.texte }}</span><span class="k-u">{{ unite_courte }} · {{ e.annee }}</span>
+          {% else %}<span class="k-th">{{ _("Écart") }}</span><span class="k-u">{{ e.ref }} → {{ e.annee }} · <abbr title="{{ _("Écart calculé par ce site entre les deux années publiées.") }}">{{ _("calcul du site") }}</abbr></span>{% endif %}</a></th>
+      {% endfor %}{% endfor %}
+    </tr>
+    <tr class="k-bornes">
+      <td></td><td></td><td class="k-nom"><span class="k-bl">{{ _("min / max") }}</span></td>
+      {% for c in e.cols %}{% for kind in (("v", "d") if e.ref else ("v",)) %}{% set k = kind ~ ":" ~ c.key %}{% set b = e.bornes.get(k, ("", "")) %}
+      <td class="num"><input form="k-f-bornes" name="min_{{ k }}" value="{{ b[0] }}" inputmode="decimal" placeholder="min" aria-label="{{ _("Minimum") }} : {{ c.texte }}{% if kind == 'd' %} ({{ _("écart") }}){% endif %}" data-min="{{ k }}">
+        <input form="k-f-bornes" name="max_{{ k }}" value="{{ b[1] }}" inputmode="decimal" placeholder="max" aria-label="{{ _("Maximum") }} : {{ c.texte }}{% if kind == 'd' %} ({{ _("écart") }}){% endif %}" data-max="{{ k }}"></td>
+      {% endfor %}{% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for l in t.lignes %}
+    <tr data-key="{{ l.key }}" data-nom="{{ l.nom }} {{ l.code }}"{% if l.groupe %} data-groupe="{{ l.groupe }}"{% endif %}{% if l.key in e.sel %} class="is-pin"{% endif %}>
+      <td class="k-pin"><input type="checkbox" aria-label="{{ _("Épingler") }} {{ l.nom }}" data-pin{% if l.key in e.sel %} checked{% endif %}></td>
+      <td class="k-rang">{{ l.rang }}</td>
+      <th scope="row" class="k-nom"><a href="{{ l.href }}">{{ l.nom }}</a>{% if l.code %} <span class="k-code">{{ l.code }}</span>{% endif %}{% if l.groupe %}<span class="k-g">{{ l.groupe }}</span>{% endif %}</th>
+      {% for c in e.cols %}{% set x = l.cells[c.key] %}
+      <td class="num k-{{ x.etat }}" data-k="v:{{ c.key }}"{% if x.v is not none %} data-v="{{ x.v }}" style="--k:{{ '%.3f'|format((x.v|abs) / vmax[c.key] if vmax[c.key] else 0) }}"{% endif %}>
+        {%- if x.etat == "ok" %}<a href="/{{ lang }}/montant/{{ x.id }}" title="{{ _("Voir la source de ce chiffre") }}">{{ x.f }}<span class="k-sym"> {{ symbole }}</span></a>{% if x.prov %}<span class="k-prov" title="{{ _("provisoire") }}">*</span>{% endif %}
+        {%- elif x.etat == "multi" %}<a href="/{{ lang }}/provenance?ids={{ x.ids|join(',') }}" class="k-multi">{{ x.f }}</a>
+        {%- else %}<span class="k-abs" title="{{ _("non publié") }}">—</span>{% endif -%}
+      </td>
+      {% if e.ref %}<td class="num k-d" data-k="d:{{ c.key }}"{% if x.d is not none %} data-v="{{ x.d }}"{% endif %} title="{{ e.ref }} : {{ x.ref.f }}">
+        {%- if x.d is not none %}{{ x.df }}{% elif x.ref.etat == "multi" %}<a href="/{{ lang }}/provenance?ids={{ x.ref.ids|join(',') }}" class="k-multi">{{ e.ref }} : {{ x.ref.f }}</a>{% else %}—{% endif -%}
+      </td>{% endif %}
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+  {# Comptes des APU : des postes de nature différente (flux, encours, solde) ; une médiane entre eux n'aurait pas de sens. #}
+  {% if e.jeu != "comptes" %}<tfoot>
+    {% for s, nom in (("med", _("Médiane")), ("min", _("Minimum")), ("max", _("Maximum"))) %}
+    <tr data-stat="{{ s }}">
+      <td></td><td></td><th scope="row" class="k-nom">{{ nom }} <abbr title="{{ _("Calculé par ce site sur les lignes affichées.") }}">{{ _("calcul du site") }}</abbr></th>
+      {% for c in e.cols %}{% for kind in (("v", "d") if e.ref else ("v",)) %}{% set st = t.stats.get(kind ~ ":" ~ c.key) %}
+      <td class="num" data-k="{{ kind }}:{{ c.key }}">{% if st %}{{ (nombre(st[s]) ~ " " ~ symbole) if kind == "v" else ("%+.1f"|format(st[s])).replace(".", "," if lang == "fr" else ".") }}{% else %}—{% endif %}</td>
+      {% endfor %}{% endfor %}
+    </tr>
+    {% endfor %}
+  </tfoot>{% endif %}
+</table>
+</div>
+<form id="k-f-bornes" method="get" action="/{{ lang }}/comparer" data-bornes>{{ garde(["bornes"]) }}<noscript><button type="submit" class="k-btn">{{ _("Filtrer") }}</button></noscript></form>
+{% if not t.lignes %}<p class="k-vide">{{ _("Aucune ligne ne correspond aux filtres.") }} <a href="{{ sans_filtres }}">{{ _("Retirer les filtres") }}</a></p>{% endif %}
+
+{% if notes %}<ul class="k-notes">{% for n in notes %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
+{% if contexte_href %}<p class="k-notes"><a href="{{ contexte_href }}">{{ _("Contexte institutionnel de %(de)s à %(a)s", de=[e.annee, e.ref]|min, a=[e.annee, e.ref]|max) }} →</a></p>{% endif %}
+{% if t.vides %}<details class="k-sans"><summary>{{ _("%(n)s lignes sans valeur publiée pour ces colonnes", n=t.vides|length) }}</summary>
+  <p>{% for l in t.vides %}{{ l.nom }}{% if not loop.last %} · {% endif %}{% endfor %}</p></details>{% endif %}
+{% endblock %}
+{% block scripts %}<script src="/static/comparer.js?v=5" defer></script>{% endblock %}

@@ -1,0 +1,24 @@
+[project]
+name = "economia"
+version = "0.1.0"
+description = "Transparence des finances publiques françaises, chaque chiffre relié à sa source officielle."
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.27",
+    "pyyaml>=6",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "jinja2>=3.1",
+    "babel>=2.16",
+    "pypdf>=6.21.3",
+]
+
+[dependency-groups]
+dev = [
+    "playwright>=1.64.1",
+    "pytest>=8",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

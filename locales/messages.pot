@@ -1,0 +1,3522 @@
+msgid "Dépenses par fonction"
+msgstr ""
+
+msgid "Recettes, dépenses, solde, dette"
+msgstr ""
+
+msgid "Régions"
+msgstr ""
+
+msgid "Départements"
+msgstr ""
+
+msgid "Départements, par fonction (M57)"
+msgstr ""
+
+msgid "Départements, par fonction (M52)"
+msgstr ""
+
+msgid "Courbes"
+msgstr ""
+
+msgid "Aires empilées"
+msgstr ""
+
+msgid "Aires à 100 %"
+msgstr ""
+
+msgid "Barres groupées"
+msgstr ""
+
+msgid "Barres empilées"
+msgstr ""
+
+msgid "Classement"
+msgstr ""
+
+msgid "Pente (deux années)"
+msgstr ""
+
+msgid "Points (une année)"
+msgstr ""
+
+msgid "Petits multiples"
+msgstr ""
+
+msgid "Carte de chaleur"
+msgstr ""
+
+msgid "Aires"
+msgstr ""
+
+msgid "Parts"
+msgstr ""
+
+msgid "Barres"
+msgstr ""
+
+msgid "Empilées"
+msgstr ""
+
+msgid "Pente"
+msgstr ""
+
+msgid "Points"
+msgstr ""
+
+msgid "Multiples"
+msgstr ""
+
+msgid "Chaleur"
+msgstr ""
+
+msgid "du PIB"
+msgstr ""
+
+msgid "du total"
+msgstr ""
+
+msgid "courants"
+msgstr ""
+
+msgid "par habitant"
+msgstr ""
+
+msgid "Carré"
+msgstr ""
+
+msgid "Large"
+msgstr ""
+
+msgid "Vertical"
+msgstr ""
+
+msgid ""
+"Empiler n'a de sens que pour les parties d'un même total publié, dans un "
+"document dont les parties bouclent sur le total."
+msgstr ""
+
+msgid "Pour empiler, un seul périmètre."
+msgstr ""
+
+msgid "Il faut au moins deux séries."
+msgstr ""
+
+msgid "Il faut au moins deux années."
+msgstr ""
+
+msgid "Cinq séries au plus sur un même graphique."
+msgstr ""
+
+msgid "Chargement des données…"
+msgstr ""
+
+msgid "Les données n'ont pas pu être chargées."
+msgstr ""
+
+msgid "tous"
+msgstr ""
+
+#, python-format
+msgid "indice base 100 en %(a)s (calcul du site)"
+msgstr ""
+
+msgid "L'axe ne part pas de zéro."
+msgstr ""
+
+msgid "Lien copié."
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Sources"
+msgstr ""
+
+msgid "calcul du site"
+msgstr ""
+
+msgid "provisoire"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "Aucune valeur publiée pour ce choix."
+msgstr ""
+
+msgid "Année"
+msgstr ""
+
+msgid "Valeur"
+msgstr ""
+
+msgid "Série"
+msgstr ""
+
+msgid "Retirer"
+msgstr ""
+
+msgid "Pas d'indice base 100 pour une forme empilée ou d'une seule année."
+msgstr ""
+
+msgid "Pas d'indice quand la valeur de l'année de base est nulle ou négative"
+msgstr ""
+
+msgid "Plusieurs budgets publiés sous un même code, non tracés"
+msgstr ""
+
+msgid ""
+"Autre SIREN ou population publiée variant de plus de moitié sous un même "
+"code : ligne coupée, pas d'évolution à lire à travers"
+msgstr ""
+
+msgid "Annotations ajoutées par l'auteur du graphique, pas par la source."
+msgstr ""
+
+msgid "Recettes"
+msgstr ""
+
+msgid "Dépenses"
+msgstr ""
+
+msgid "Solde"
+msgstr ""
+
+msgid "Dette"
+msgstr ""
+
+msgid "Toutes les administrations"
+msgstr ""
+
+msgid "État et administrations centrales"
+msgstr ""
+
+msgid "Collectivités locales"
+msgstr ""
+
+msgid "Sécurité sociale"
+msgstr ""
+
+msgid "Pour 100 € dépensés"
+msgstr ""
+
+msgid "En euros"
+msgstr ""
+
+msgid "Part du PIB (%)"
+msgstr ""
+
+msgid "Dette et épargne"
+msgstr ""
+
+msgid "Par fonction"
+msgstr ""
+
+msgid "€/hab."
+msgstr ""
+
+msgid "M€"
+msgstr ""
+
+msgid "Md€"
+msgstr ""
+
+msgid "part du total, %"
+msgstr ""
+
+msgid "part du PIB, %"
+msgstr ""
+
+msgid "Recettes : impôts, dotations, subventions…"
+msgstr ""
+
+msgid "Dette, épargne et équilibre"
+msgstr ""
+
+msgid "Fonctions (nomenclature M57)"
+msgstr ""
+
+msgid "Fonctions (nomenclature M52)"
+msgstr ""
+
+#, python-format
+msgid "%(n)s lignes"
+msgstr ""
+
+msgid "Montants en euros courants : l'inflation n'est pas déduite."
+msgstr ""
+
+msgid ""
+"Part publiée par Eurostat, en pourcentage des dépenses totales du "
+"périmètre de la colonne."
+msgstr ""
+
+msgid ""
+"Le contexte institutionnel liste qui exerçait les fonctions "
+"gouvernementales et les textes budgétaires votés entre ces deux années ; "
+"il ne dit pas ce qui explique l'écart."
+msgstr ""
+
+msgid ""
+"Les fonctions M52 et M57 relèvent de deux nomenclatures différentes : "
+"chaque département publie dans l'une ou l'autre, elles ne se comparent "
+"pas entre elles."
+msgstr ""
+
+msgid ""
+"« n lignes » : le fichier publie plusieurs budgets sous ce code pour "
+"cette année. Ce site ne les additionne pas ; le lien ouvre les lignes "
+"publiées."
+msgstr ""
+
+msgid "10 dernières années"
+msgstr ""
+
+msgid "Toute la période"
+msgstr ""
+
+msgid "Comptabilité nationale (SEC 2010)"
+msgstr ""
+
+msgid "Comptabilité budgétaire de l'État (LOLF)"
+msgstr ""
+
+msgid "Comptes de gestion des collectivités locales"
+msgstr ""
+
+msgid "Projet de loi de finances"
+msgstr ""
+
+msgid "Loi de finances initiale"
+msgstr ""
+
+msgid "Exécution budgétaire"
+msgstr ""
+
+msgid "Comptes publiés"
+msgstr ""
+
+msgid "Autorisations d'engagement"
+msgstr ""
+
+msgid "Crédits de paiement"
+msgstr ""
+
+msgid "Dépense"
+msgstr ""
+
+msgid "Agrégat publié"
+msgstr ""
+
+msgid "Coût estimé"
+msgstr ""
+
+msgid "Coût prévu"
+msgstr ""
+
+msgid "Recette"
+msgstr ""
+
+msgid "millions d'euros"
+msgstr ""
+
+msgid "euros"
+msgstr ""
+
+msgid "euros par habitant"
+msgstr ""
+
+msgid "pour cent du PIB"
+msgstr ""
+
+msgid "pour cent du total"
+msgstr ""
+
+msgid "Cadre comptable"
+msgstr ""
+
+msgid ""
+"Deux cadres comptables différents, chacun avec ses propres règles "
+"d'enregistrement : les deux chiffres ne mesurent pas la même chose."
+msgstr ""
+
+msgid "Administrations couvertes"
+msgstr ""
+
+msgid "Ils ne couvrent pas les mêmes administrations."
+msgstr ""
+
+msgid "Ils ne portent pas sur la même année."
+msgstr ""
+
+msgid "Stade"
+msgstr ""
+
+msgid ""
+"Ils ne sont pas au même stade : un projet, une loi votée, une exécution "
+"et des comptes publiés sont des étapes différentes."
+msgstr ""
+
+msgid "Grandeur mesurée"
+msgstr ""
+
+msgid "Ils ne mesurent pas la même grandeur."
+msgstr ""
+
+msgid "Unité"
+msgstr ""
+
+msgid ""
+"Les unités diffèrent : les deux chiffres ne se comparent pas sans "
+"conversion."
+msgstr ""
+
+msgid "Poste"
+msgstr ""
+
+msgid ""
+"Ils ne classent pas la dépense dans le même poste, ni forcément dans la "
+"même nomenclature."
+msgstr ""
+
+msgid "Statut"
+msgstr ""
+
+msgid "définitif ou non précisé"
+msgstr ""
+
+msgid "Au moins l'un des deux est provisoire : il peut encore être révisé."
+msgstr ""
+
+msgid "État"
+msgstr ""
+
+msgid "Administrations publiques et leurs sous-secteurs"
+msgstr ""
+
+msgid "projet de loi"
+msgstr ""
+
+msgid "loi votée"
+msgstr ""
+
+msgid "exécution"
+msgstr ""
+
+msgid "comptes"
+msgstr ""
+
+msgid "les dépenses fiscales"
+msgstr ""
+
+msgid "Dépenses fiscales"
+msgstr ""
+
+msgid "Budget de l'État"
+msgstr ""
+
+msgid "Données non disponibles"
+msgstr ""
+
+msgid "Construire une vue"
+msgstr ""
+
+msgid ""
+"Indicateurs, périmètres et territoires sur toute la période publiée ; "
+"export CSV, JSON, image."
+msgstr ""
+
+msgid "Où va l'argent ?"
+msgstr ""
+
+msgid "Toutes les administrations publiques, par fonction COFOG, depuis 1995."
+msgstr ""
+
+msgid "D'où vient l'argent ?"
+msgstr ""
+
+msgid ""
+"Toutes les administrations publiques, par catégorie de recettes des "
+"comptes nationaux, depuis 1995."
+msgstr ""
+
+msgid ""
+"Missions et programmes : exécuté en 2024, voté pour 2025, proposé pour "
+"2026."
+msgstr ""
+
+msgid ""
+"Montant publié de chaque dépense fiscale, et nombre de dépenses publiées "
+"sans montant."
+msgstr ""
+
+msgid "Ma région, mon département"
+msgstr ""
+
+msgid "Par habitant, comparé à la médiane des collectivités du même niveau."
+msgstr ""
+
+msgid "Données absentes des sources collectées, avec l'organisme producteur."
+msgstr ""
+
+msgid "Cotisations sociales"
+msgstr ""
+
+msgid "Impôts sur la production"
+msgstr ""
+
+msgid "Impôts sur le revenu"
+msgstr ""
+
+msgid "Ventes et production"
+msgstr ""
+
+msgid "Revenus de la propriété"
+msgstr ""
+
+msgid "Transferts courants"
+msgstr ""
+
+msgid "Transferts en capital"
+msgstr ""
+
+msgid "Subventions reçues"
+msgstr ""
+
+msgid "Autres recettes"
+msgstr ""
+
+msgid "Services généraux"
+msgstr ""
+
+msgid "Défense"
+msgstr ""
+
+msgid "Ordre et sécurité"
+msgstr ""
+
+msgid "Économie"
+msgstr ""
+
+msgid "Environnement"
+msgstr ""
+
+msgid "Logement"
+msgstr ""
+
+msgid "Santé"
+msgstr ""
+
+msgid "Loisirs et culture"
+msgstr ""
+
+msgid "Enseignement"
+msgstr ""
+
+msgid "Protection sociale"
+msgstr ""
+
+msgid "Autres fonctions"
+msgstr ""
+
+msgid "TVA"
+msgstr ""
+
+msgid "Autres impôts sur les produits"
+msgstr ""
+
+msgid "Autres impôts sur la production"
+msgstr ""
+
+msgid "Ménages"
+msgstr ""
+
+msgid "Sociétés"
+msgstr ""
+
+msgid "Employeurs"
+msgstr ""
+
+msgid "Reste du monde"
+msgstr ""
+
+msgid "Banque centrale"
+msgstr ""
+
+msgid "Banques"
+msgstr ""
+
+msgid "Assurances, fonds et autres"
+msgstr ""
+
+msgid "Ménages et entreprises"
+msgstr ""
+
+msgid "Administrations centrales"
+msgstr ""
+
+msgid "Administrations locales"
+msgstr ""
+
+msgid "Rémunérations"
+msgstr ""
+
+msgid "Consommations intermédiaires"
+msgstr ""
+
+msgid "Prestations sociales"
+msgstr ""
+
+msgid "Subventions"
+msgstr ""
+
+msgid "Autres transferts courants"
+msgstr ""
+
+msgid "Revenus de la propriété (dont intérêts)"
+msgstr ""
+
+msgid "Impôts et ajustements"
+msgstr ""
+
+msgid "Investissement"
+msgstr ""
+
+msgid "collectivité territoriale unique (reg_is_ctu, OFGL)"
+msgstr ""
+
+msgid "Métropole de Lyon (catégorie ML, OFGL)"
+msgstr ""
+
+msgid "Ville de Paris (catégorie PARIS, OFGL)"
+msgstr ""
+
+msgid "Ensemble des administrations publiques"
+msgstr ""
+
+msgid "Administrations publiques centrales"
+msgstr ""
+
+msgid "Administrations publiques locales"
+msgstr ""
+
+msgid "Administrations de sécurité sociale"
+msgstr ""
+
+msgid "toutes les administrations publiques"
+msgstr ""
+
+msgid "les administrations centrales"
+msgstr ""
+
+msgid "les administrations locales"
+msgstr ""
+
+msgid "les administrations de sécurité sociale"
+msgstr ""
+
+msgid "le budget de l'État"
+msgstr ""
+
+#, python-format
+msgid "Quelle part de la dépense publique va à « %(f)s » ?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Combien le projet de loi de finances 2026 prévoit-il pour la mission « "
+"%(m)s » ?"
+msgstr ""
+
+msgid ""
+"Combien de dépenses fiscales sont publiées sans montant dans le projet de"
+" loi de finances 2026 ?"
+msgstr ""
+
+#, python-format
+msgid "Combien dépense le département « %(d)s » par habitant ?"
+msgstr ""
+
+msgid "Qui sont les administrations publiques ?"
+msgstr ""
+
+msgid ""
+"Les comptes nationaux publient les comptes de l'ensemble des "
+"administrations publiques, et séparément ceux de trois sous-secteurs."
+msgstr ""
+
+msgid "Combien entre, combien sort ?"
+msgstr ""
+
+msgid ""
+"Chaque année, les comptes nationaux publient les recettes, les dépenses "
+"et leur écart, le solde, en part du PIB."
+msgstr ""
+
+msgid ""
+"Les recettes publiées, réparties selon les catégories des comptes "
+"nationaux."
+msgstr ""
+
+msgid ""
+"Les dépenses publiées, réparties selon leur fonction : la classification "
+"internationale des fonctions des administrations publiques."
+msgstr ""
+
+msgid "Qu'est-ce que la dette ?"
+msgstr ""
+
+msgid ""
+"Le solde et la dette sont deux séries publiées séparément, chacune avec "
+"sa définition officielle, citée plus bas."
+msgstr ""
+
+msgid "Le budget de l'État, c'est la même chose ?"
+msgstr ""
+
+msgid ""
+"Ce sont deux publications différentes : le budget de l'État, publié par "
+"la Direction du budget, et les comptes des administrations publiques, "
+"publiés par Eurostat. Voici un chiffre de chacune, côte à côte, chacun "
+"avec sa source."
+msgstr ""
+
+#, python-format
+msgid ""
+"En %(a)s, les dépenses publiées pour l'ensemble des administrations "
+"publiques sont de %(t)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Les trois sous-secteurs sont publiés séparément ; la somme de leurs "
+"dépenses (%(s)s, calcul du site) dépasse le total publié. Ce site "
+"n'additionne donc jamais les sous-secteurs."
+msgstr ""
+
+#, python-format
+msgid ""
+"En %(a)s, les recettes de l'ensemble des administrations publiques "
+"représentent %(r)s du PIB et leurs dépenses %(d)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Le solde publié pour la même année est de %(b)s du PIB : c'est l'écart "
+"entre recettes et dépenses, vérifié par ce site pour chaque année."
+msgstr ""
+
+#, python-format
+msgid ""
+"La dette publiée de l'ensemble des administrations publiques est de "
+"%(v0)s du PIB en %(a0)s et de %(v1)s en %(a1)s."
+msgstr ""
+
+#, python-format
+msgid "Le solde de %(a)s est de %(b)s du PIB."
+msgstr ""
+
+#, python-format
+msgid ""
+"En %(a)s, les recettes publiées de l'ensemble des administrations "
+"publiques sont de %(t)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"La catégorie au montant le plus élevé est « %(c)s » : %(v)s, soit %(p)s "
+"du total (calcul du site)."
+msgstr ""
+
+#, python-format
+msgid ""
+"En %(a)s, la fonction au montant le plus élevé est « %(f)s » : %(v)s pour"
+" 100 € de dépense publique."
+msgstr ""
+
+#, python-format
+msgid "Budget de l'État : crédits de paiement exécutés en %(a)s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Ensemble des administrations publiques : dépenses en %(a)s (comptes "
+"nationaux)"
+msgstr ""
+
+msgid ""
+"Les deux chiffres viennent de deux publications différentes, pour deux "
+"périmètres différents ; ce site ne les soustrait pas l'un de l'autre."
+msgstr ""
+
+msgid "Accueil"
+msgstr ""
+
+msgid "Thèmes"
+msgstr ""
+
+msgid "Ma collectivité"
+msgstr ""
+
+msgid "D'où viennent les chiffres"
+msgstr ""
+
+msgid "Chaque chiffre vient d'un fichier officiel. Ici, on peut le vérifier."
+msgstr ""
+
+msgid "Vérifier un chiffre entendu"
+msgstr ""
+
+msgid "Pourquoi deux chiffres diffèrent"
+msgstr ""
+
+msgid "Lexique"
+msgstr ""
+
+msgid "Méthode et fichiers collectés"
+msgstr ""
+
+msgid "Données couvertes et téléchargements"
+msgstr ""
+
+msgid "Fonction, toutes administrations"
+msgstr ""
+
+msgid "Carte"
+msgstr ""
+
+msgid "Comparer"
+msgstr ""
+
+msgid "Comptes des administrations publiques"
+msgstr ""
+
+msgid "Contexte"
+msgstr ""
+
+msgid "Membre du gouvernement"
+msgstr ""
+
+msgid "Mission du budget de l'État"
+msgstr ""
+
+msgid "Dépense fiscale"
+msgstr ""
+
+msgid "sans montant publié"
+msgstr ""
+
+msgid "Région"
+msgstr ""
+
+msgid "Département"
+msgstr ""
+
+msgid "Régions et départements"
+msgstr ""
+
+msgid "part du PIB (%)"
+msgstr ""
+
+msgid "part des dépenses du périmètre (%)"
+msgstr ""
+
+msgid "euros courants"
+msgstr ""
+
+msgid "Catégories de recettes"
+msgstr ""
+
+msgid "Grands postes"
+msgstr ""
+
+msgid "Fonctions"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Dépenses, toutes fonctions"
+msgstr ""
+
+#, python-format
+msgid "%(v)s pt"
+msgstr ""
+
+msgid ""
+"Part publiée par Eurostat, en pourcentage des dépenses totales du "
+"périmètre choisi."
+msgstr ""
+
+msgid ""
+"Traits verticaux : début de chaque présidence de la République, d'après "
+"l'Assemblée nationale (publié depuis 2007). Une date de début ne dit pas "
+"ce qui explique une évolution ; les montants sont annuels et les mandats "
+"ne suivent pas l'année civile."
+msgstr ""
+
+msgid "Les périmètres sont affichés côte à côte ; ce site ne les additionne pas."
+msgstr ""
+
+#, python-format
+msgid ""
+"Pas de point pour %(a)s : le fichier publie plusieurs budgets sous ce "
+"code ces années-là ; ce site ne les additionne pas."
+msgstr ""
+
+#, python-format
+msgid ""
+"La population publiée pour ce code varie de plus de moitié en %(a)s : le "
+"périmètre n'est plus le même. Ce site ne calcule pas d'évolution à "
+"travers ce changement."
+msgstr ""
+
+#, python-format
+msgid ""
+"Le fichier publie un autre numéro SIREN sous ce code à partir de %(a)s : "
+"ce n'est plus la même collectivité. Ce site ne calcule pas d'évolution à "
+"travers ce changement."
+msgstr ""
+
+msgid "Les points creux sont des valeurs marquées provisoires dans la source."
+msgstr ""
+
+msgid "Courbe"
+msgstr ""
+
+msgid "Aire"
+msgstr ""
+
+msgid "Chiffre seul"
+msgstr ""
+
+msgid "Tableau"
+msgstr ""
+
+msgid "Une aire ne montre qu'une seule série."
+msgstr ""
+
+msgid "Deux séries au plus pour des barres groupées."
+msgstr ""
+
+msgid "Il faut un seul indicateur et un seul périmètre."
+msgstr ""
+
+msgid ""
+"Un classement range plusieurs périmètres ou territoires selon un seul "
+"indicateur."
+msgstr ""
+
+msgid "Unité non publiée par cette source."
+msgstr ""
+
+msgid "Aucune valeur publiée pour cette sélection."
+msgstr ""
+
+#, python-format
+msgid "En %(a)s, %(nom)s : %(v)s (%(u)s)."
+msgstr ""
+
+#, python-format
+msgid ""
+"En %(a)s, sur %(n)s valeurs publiées (%(u)s), la plus élevée est celle de"
+" %(h)s (%(vh)s), la plus basse celle de %(b)s (%(vb)s)."
+msgstr ""
+
+#, python-format
+msgid "%(nom)s : %(v)s en %(a)s (%(u)s)."
+msgstr ""
+
+#, python-format
+msgid ""
+"%(nom)s : %(v1)s en %(a1)s, %(v2)s en %(a2)s (%(u)s ; écart calculé par "
+"ce site : %(e)s)."
+msgstr ""
+
+msgid "Toutes les régions"
+msgstr ""
+
+msgid "Tous les départements"
+msgstr ""
+
+#, python-format
+msgid "%(ind)s : %(n)s valeurs"
+msgstr ""
+
+#, python-format
+msgid "%(n)s séries"
+msgstr ""
+
+msgid "Recettes et dépenses depuis 1995"
+msgstr ""
+
+msgid "Les catégories de recettes dans le temps"
+msgstr ""
+
+msgid "Comparer les administrations, une année"
+msgstr ""
+
+msgid "Classer les départements"
+msgstr ""
+
+msgid "Classer les régions"
+msgstr ""
+
+msgid "Médiane du même niveau"
+msgstr ""
+
+msgid "Dette publique"
+msgstr ""
+
+msgid "Déficit public"
+msgstr ""
+
+msgid "Dépenses publiques"
+msgstr ""
+
+msgid "Recettes publiques"
+msgstr ""
+
+msgid "Impôts sur le revenu et le patrimoine"
+msgstr ""
+
+msgid "Intérêts de la dette"
+msgstr ""
+
+msgid "valeur publiée négative"
+msgstr ""
+
+msgid "valeur publiée positive"
+msgstr ""
+
+msgid "identique au nombre saisi"
+msgstr ""
+
+#, python-format
+msgid "%(e)s pt au-dessus du nombre saisi"
+msgstr ""
+
+#, python-format
+msgid "%(e)s pt au-dessous du nombre saisi"
+msgstr ""
+
+#, python-format
+msgid "%(e)s au-dessus du nombre saisi"
+msgstr ""
+
+#, python-format
+msgid "%(e)s au-dessous du nombre saisi"
+msgstr ""
+
+msgid "crédits de paiement"
+msgstr ""
+
+msgid "autorisations d'engagement"
+msgstr ""
+
+#, python-format
+msgid ""
+"La valeur publiée la plus proche pour ces critères est %(v)s (%(q)s, "
+"%(a)s) : plus de %(p)s d'écart, elle n'est pas montrée comme proche."
+msgstr ""
+
+#, python-format
+msgid ""
+"Valeurs publiées à moins de %(p)s d'écart du nombre saisi, comparées sans"
+" leur signe."
+msgstr ""
+
+msgid "3 000 milliards, 5,8 %, 1 200 € par habitant"
+msgstr ""
+
+msgid "Page introuvable"
+msgstr ""
+
+msgid ""
+"Cette adresse ne correspond à aucune page du site. Elle a peut-être été "
+"mal recopiée, ou la page a changé d'adresse."
+msgstr ""
+
+msgid "Retour à l'accueil"
+msgstr ""
+
+#, python-format
+msgid "mise à jour du %(d)s"
+msgstr ""
+
+#, python-format
+msgid "collecte du %(d)s"
+msgstr ""
+
+msgid "Description publiée par l'éditeur :"
+msgstr ""
+
+msgid "fiche de la source"
+msgstr ""
+
+msgid "licence non publiée dans les métadonnées du jeu"
+msgstr ""
+
+msgid "Voir la source de ce chiffre"
+msgstr ""
+
+msgid "Voir les lignes sources de ce total"
+msgstr ""
+
+msgid "Libellé officiel publié en français uniquement"
+msgstr ""
+
+msgid "Valeur marquée provisoire dans la source"
+msgstr ""
+
+#, python-format
+msgid "Autres (%(n)s postes)"
+msgstr ""
+
+msgid "Détail"
+msgstr ""
+
+msgid "Voir les données en tableau"
+msgstr ""
+
+msgid "Atelier de graphique"
+msgstr ""
+
+msgid "Explorer · atelier"
+msgstr ""
+
+msgid ""
+"Composez votre graphique à partir des séries publiées, annotez-le, puis "
+"partagez-le : l'image porte sa source, le lien rouvre la même vue."
+msgstr ""
+
+msgid "L'atelier a besoin de JavaScript. Le constructeur de vues fonctionne sans."
+msgstr ""
+
+msgid "Document"
+msgstr ""
+
+msgid "Indicateurs"
+msgstr ""
+
+msgid "Filtrer les indicateurs"
+msgstr ""
+
+msgid "Périmètres"
+msgstr ""
+
+msgid "Filtrer les périmètres"
+msgstr ""
+
+msgid "Période"
+msgstr ""
+
+msgid "De"
+msgstr ""
+
+msgid "à"
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Mesure"
+msgstr ""
+
+msgid "Axe à partir de zéro"
+msgstr ""
+
+msgid "Base 100 (année)"
+msgstr ""
+
+msgid "non"
+msgstr ""
+
+msgid "Texte et annotations"
+msgstr ""
+
+msgid "Titre"
+msgstr ""
+
+msgid "Sous-titre"
+msgstr ""
+
+msgid "Annotations (année : texte, une par ligne)"
+msgstr ""
+
+msgid "Format de l'image"
+msgstr ""
+
+msgid "Forme"
+msgstr ""
+
+msgid "Séries choisies"
+msgstr ""
+
+msgid "Partager"
+msgstr ""
+
+msgid "Image PNG"
+msgstr ""
+
+msgid "Copier le lien"
+msgstr ""
+
+msgid "Voir les données, chacune avec sa source"
+msgstr ""
+
+msgid ""
+"Les finances publiques françaises, chaque chiffre relié à sa source "
+"officielle."
+msgstr ""
+
+msgid "Aller au contenu"
+msgstr ""
+
+msgid "Rechercher"
+msgstr ""
+
+msgid "Langue"
+msgstr ""
+
+msgid "Navigation principale"
+msgstr ""
+
+msgid "Fil d'Ariane"
+msgstr ""
+
+msgid ""
+"Aucun chiffre n'est saisi à la main : tout provient de fichiers officiels"
+" collectés automatiquement. Cliquez sur « source » à côté d'un chiffre "
+"pour remonter jusqu'à la ligne du fichier d'origine."
+msgstr ""
+
+msgid "Méthode et sources"
+msgstr ""
+
+msgid "Mentions et licences"
+msgstr ""
+
+msgid "Une collectivité, une fonction, une mission, un terme…"
+msgstr ""
+
+msgid "Fermer"
+msgstr ""
+
+msgid "Résultats"
+msgstr ""
+
+msgid "choisir"
+msgstr ""
+
+msgid "action"
+msgstr ""
+
+msgid "ouvrir"
+msgstr ""
+
+msgid "Récents"
+msgstr ""
+
+msgid "Aller à"
+msgstr ""
+
+msgid "Aucun résultat. Entrée : voir la page de recherche."
+msgstr ""
+
+msgid "Voir dans le lexique"
+msgstr ""
+
+msgid "Définition officielle pas encore relevée."
+msgstr ""
+
+msgid "Traduction non officielle."
+msgstr ""
+
+msgid "Définition disponible en français uniquement."
+msgstr ""
+
+#, python-format
+msgid "Exécution %(a)s"
+msgstr ""
+
+#, python-format
+msgid "LFI %(a)s"
+msgstr ""
+
+#, python-format
+msgid "PLF %(a)s"
+msgstr ""
+
+msgid "État seul"
+msgstr ""
+
+msgid "Que finance le budget de l'État ?"
+msgstr ""
+
+msgid ""
+"Les crédits de paiement par mission, dans les trois colonnes publiées par"
+" la source : exécution 2024, loi de finances initiale 2025, projet de loi"
+" de finances 2026."
+msgstr ""
+
+msgid "Moment du budget"
+msgstr ""
+
+msgid "Afficher"
+msgstr ""
+
+#, python-format
+msgid "de crédits de paiement, %(vue)s"
+msgstr ""
+
+msgid "Répartition par mission"
+msgstr ""
+
+msgid ""
+"Cliquez sur une mission pour voir ses programmes. Parts calculées par ce "
+"site : mission ÷ total des crédits budgétaires."
+msgstr ""
+
+msgid ""
+"L'anneau ne peut montrer que des montants positifs. Il laisse de côté, et"
+" le total au centre aussi :"
+msgstr ""
+
+#, python-format
+msgid "Avec ces lignes, on retrouve le total de %(t)s."
+msgstr ""
+
+msgid "hors montants négatifs"
+msgstr ""
+
+msgid "Zoom"
+msgstr ""
+
+msgid "fermer"
+msgstr ""
+
+msgid ""
+"Programmes de la mission. Parts calculées par ce site : programme ÷ total"
+" de la mission."
+msgstr ""
+
+msgid "Programmes de la mission"
+msgstr ""
+
+msgid "Programme"
+msgstr ""
+
+msgid "Toutes les missions"
+msgstr ""
+
+msgid "Crédits budgétaires, en euros courants. Cliquez sur un en-tête pour trier."
+msgstr ""
+
+msgid "Mission"
+msgstr ""
+
+msgid "Total des crédits budgétaires"
+msgstr ""
+
+msgid ""
+"En plus des crédits : taxes affectées plafonnées, publiées dans la même "
+"source."
+msgstr ""
+
+msgid "À savoir pour bien lire"
+msgstr ""
+
+#, python-format
+msgid ""
+"%(n)s lignes n'ont pas un code d'action ou de dépense ; leurs libellés "
+"publiés : « Mesure de périmètre/transfert », « Fonds de concours et "
+"attributions de produits », « contribution au CAS ». Elles sont comptées "
+"dans les totaux, comme dans la source."
+msgstr ""
+
+msgid ""
+"Le budget vert publie aussi une cotation environnementale de chaque "
+"dépense : elle figure sur la fiche source de chaque ligne."
+msgstr ""
+
+msgid ""
+"Les couleurs restent attachées à une mission quel que soit le moment "
+"affiché : les cinq missions mises en avant sont celles dont le montant "
+"est le plus élevé dans le PLF 2026."
+msgstr ""
+
+msgid "Détail de"
+msgstr ""
+
+msgid "Outil de comparaison"
+msgstr ""
+
+msgid ""
+"Choisissez les lignes, les colonnes et l'année ; triez en cliquant un en-"
+"tête, filtrez par nom ou par valeur, épinglez des lignes pour les garder "
+"sous les yeux. Chaque valeur ouvre sa ligne source."
+msgstr ""
+
+msgid "Jeu de données"
+msgstr ""
+
+msgid "Collectivités"
+msgstr ""
+
+msgid "Régions et départements, comptes publiés par l'OFGL"
+msgstr ""
+
+msgid "Fonctions publiques"
+msgstr ""
+
+msgid "Dépense par fonction et par périmètre, Eurostat"
+msgstr ""
+
+msgid "Comptes publics"
+msgstr ""
+
+msgid "Recettes, dépenses, solde, intérêts et dette, Eurostat"
+msgstr ""
+
+msgid "Lignes"
+msgstr ""
+
+msgid "Postes"
+msgstr ""
+
+msgid "Sous-fonctions"
+msgstr ""
+
+msgid "Comparer à"
+msgstr ""
+
+msgid "aucune année"
+msgstr ""
+
+msgid "Colonnes"
+msgstr ""
+
+#, python-format
+msgid "%(n)s colonnes au plus."
+msgstr ""
+
+msgid ""
+"Ces colonnes sont celles que l'OFGL publie pour les régions et les "
+"départements. Toutes les fonctions de l'ensemble des administrations "
+"publiques (défense, vieillesse, recherche, environnement…), détaillées "
+"par Eurostat :"
+msgstr ""
+
+#, python-format
+msgid ""
+"Ici, chaque ligne est une fonction (%(n)s lignes : vieillesse, santé, "
+"enseignement, défense…) et chaque colonne une administration qui dépense "
+": l'ensemble des administrations publiques et ses trois sous-secteurs, "
+"tels que collectés auprès d'Eurostat."
+msgstr ""
+
+#, python-format
+msgid ""
+"Ici, chaque ligne est un poste des comptes (%(n)s lignes : recettes, "
+"dépenses, solde, intérêts, dette) et chaque colonne une administration : "
+"l'ensemble des administrations publiques et ses trois sous-secteurs, tels"
+" que collectés auprès d'Eurostat."
+msgstr ""
+
+msgid "Chercher une colonne (impôts, RSA, dette…)"
+msgstr ""
+
+msgid "Chercher une colonne"
+msgstr ""
+
+msgid "Familles de colonnes"
+msgstr ""
+
+#, python-format
+msgid "Nomenclature %(m)s : %(n)s départements publient selon elle en %(a)s."
+msgstr ""
+
+#, python-format
+msgid "Nomenclature %(m)s : %(n)s départements en %(a)s"
+msgstr ""
+
+msgid ""
+"Deux nomenclatures différentes : leurs fonctions ne se comparent pas "
+"entre elles."
+msgstr ""
+
+msgid "Appliquer"
+msgstr ""
+
+msgid "Filtrer par nom ou code"
+msgstr ""
+
+msgid "Filtrer par nom ou code…"
+msgstr ""
+
+msgid "Fonction"
+msgstr ""
+
+msgid "Toutes les fonctions"
+msgstr ""
+
+msgid "Lignes épinglées seulement"
+msgstr ""
+
+msgid "Teinter les valeurs"
+msgstr ""
+
+msgid "Filtrer"
+msgstr ""
+
+msgid "lignes"
+msgstr ""
+
+msgid "Lien copié"
+msgstr ""
+
+msgid "Réinitialiser"
+msgstr ""
+
+msgid "Épingler"
+msgstr ""
+
+msgid "Nom"
+msgstr ""
+
+msgid "Écart"
+msgstr ""
+
+msgid "Écart calculé par ce site entre les deux années publiées."
+msgstr ""
+
+msgid "min / max"
+msgstr ""
+
+msgid "Minimum"
+msgstr ""
+
+msgid "écart"
+msgstr ""
+
+msgid "Maximum"
+msgstr ""
+
+msgid "non publié"
+msgstr ""
+
+msgid "Médiane"
+msgstr ""
+
+msgid "Calculé par ce site sur les lignes affichées."
+msgstr ""
+
+msgid "Aucune ligne ne correspond aux filtres."
+msgstr ""
+
+msgid "Retirer les filtres"
+msgstr ""
+
+#, python-format
+msgid "Contexte institutionnel de %(de)s à %(a)s"
+msgstr ""
+
+#, python-format
+msgid "%(n)s lignes sans valeur publiée pour ces colonnes"
+msgstr ""
+
+msgid "Les grands équilibres"
+msgstr ""
+
+msgid "Comprendre"
+msgstr ""
+
+msgid ""
+"Trois figures des comptes des administrations publiques, d'après les "
+"comptes nationaux publiés par Eurostat. Dans chaque figure, seule la "
+"hauteur représente un montant ; les valeurs exactes sont écrites à côté "
+"et dans le tableau de chaque figure."
+msgstr ""
+
+msgid "Faire défiler les années"
+msgstr ""
+
+msgid "Arrêter le défilement"
+msgstr ""
+
+msgid "Recettes, dépenses et solde"
+msgstr ""
+
+msgid "Ensemble des administrations publiques, en pourcentage du PIB."
+msgstr ""
+
+msgid ""
+"Deux colonnes : recettes et dépenses ; l'écart entre leurs sommets est le"
+" solde publié."
+msgstr ""
+
+msgid ""
+"Le site vérifie que le solde publié égale les recettes moins les dépenses"
+" publiées, à l’arrondi près (page Méthode)."
+msgstr ""
+
+msgid "Qui dépense ?"
+msgstr ""
+
+msgid ""
+"Dépenses totales de l'ensemble des administrations publiques et de chacun"
+" de leurs trois sous-secteurs, en euros."
+msgstr ""
+
+msgid ""
+"Une colonne translucide pour l'ensemble des administrations publiques, "
+"trois colonnes pleines pour les sous-secteurs."
+msgstr ""
+
+msgid ""
+"La somme des sous-secteurs n'est pas le total publié : ce site ne les "
+"additionne pas."
+msgstr ""
+
+msgid "La dette, année après année"
+msgstr ""
+
+#, python-format
+msgid ""
+"Dette brute consolidée de l'ensemble des administrations publiques, en "
+"pourcentage du PIB, de %(a)s à %(b)s."
+msgstr ""
+
+msgid "Une colonne par année ; l'année choisie est mise en évidence."
+msgstr ""
+
+msgid "Explorer ces séries en détail"
+msgstr ""
+
+msgid "Où va la dépense publique ?"
+msgstr ""
+
+msgid "Contexte institutionnel"
+msgstr ""
+
+msgid "en fonction"
+msgstr ""
+
+#, python-format
+msgid "parti de rattachement publié : %(p)s"
+msgstr ""
+
+#, python-format
+msgid "Fonctions et votes budgétaires, %(de)s–%(a)s"
+msgstr ""
+
+msgid ""
+"Qui exerçait la présidence, la direction du gouvernement et les "
+"ministères chargés des finances ; quels textes budgétaires ont été soumis"
+" au vote de l'Assemblée nationale et comment chaque groupe a voté ; et, "
+"pour chaque exercice, le solde et la dette publiés."
+msgstr ""
+
+msgid ""
+"Ce sont des faits datés, publiés par l'Assemblée nationale et par "
+"Eurostat. Ce site les rapproche dans le temps ; il n'établit aucun lien "
+"de cause entre une fonction, un vote et un montant."
+msgstr ""
+
+msgid "Début"
+msgstr ""
+
+msgid "Fin"
+msgstr ""
+
+msgid "Recettes, dépenses et solde sur la même période"
+msgstr ""
+
+#, python-format
+msgid "Évolution de chaque fonction de dépense entre %(de)s et %(a)s"
+msgstr ""
+
+msgid "Fonctions exercées"
+msgstr ""
+
+msgid "Présidence de la République"
+msgstr ""
+
+msgid "Aucune donnée publiée pour cette période."
+msgstr ""
+
+msgid "Premiers ministres"
+msgstr ""
+
+msgid "Ministres chargés des finances, du budget ou des comptes publics"
+msgstr ""
+
+msgid ""
+"Avant mai 2007, le référentiel de l'Assemblée nationale ne publie ni la "
+"présidence ni les gouvernements."
+msgstr ""
+
+msgid "Voir les données non disponibles"
+msgstr ""
+
+msgid ""
+"Ministères retenus selon leur intitulé publié : ceux dont l'objet porte "
+"sur les finances, le budget ou les comptes publics. Un secrétariat d'État"
+" rattaché au ministre des finances mais chargé d'un autre domaine n'est "
+"pas retenu. Source : Assemblée nationale, acteurs, mandats et organes."
+msgstr ""
+
+msgid "Par exercice"
+msgstr ""
+
+msgid ""
+"Exercice : l'année inscrite dans le titre publié du texte (« loi de "
+"finances pour 2019 » : exercice 2019)."
+msgstr ""
+
+#, python-format
+msgid "Exercice %(a)s"
+msgstr ""
+
+msgid ""
+"Scrutins sur les textes budgétaires de cet exercice : non publiés dans "
+"les données ouvertes de l'Assemblée nationale."
+msgstr ""
+
+#, python-format
+msgid ""
+"Loi de finances pour %(a)s : aucun scrutin public sur l'ensemble du texte"
+" dans les données de l'Assemblée nationale."
+msgstr ""
+
+#, python-format
+msgid "%(p)s pour, %(c)s contre, %(a)s abstentions"
+msgstr ""
+
+#, python-format
+msgid "scrutin n° %(n)s"
+msgstr ""
+
+msgid "Dossier législatif :"
+msgstr ""
+
+#, python-format
+msgid "Loi n° %(n)s"
+msgstr ""
+
+#, python-format
+msgid "JO n° %(n)s du %(d)s"
+msgstr ""
+
+msgid "aucune promulgation publiée dans le dossier"
+msgstr ""
+
+msgid "Aucun dossier législatif publié ne cite ce scrutin."
+msgstr ""
+
+msgid "Vote des groupes"
+msgstr ""
+
+msgid "Groupe"
+msgstr ""
+
+msgid "Membres"
+msgstr ""
+
+msgid "Pour"
+msgstr ""
+
+msgid "Contre"
+msgstr ""
+
+msgid "Abstention"
+msgstr ""
+
+msgid "Position majoritaire"
+msgstr ""
+
+msgid ""
+"Scrutins publics de l'Assemblée nationale sur l'ensemble d'un texte "
+"budgétaire (loi de finances, loi de financement de la sécurité sociale, "
+"lois rectificatives, de fin de gestion, de règlement ou d'approbation des"
+" comptes). Les votes du Sénat ne sont pas encore chargés."
+msgstr ""
+
+msgid "Dépenses fiscales : montants publiés"
+msgstr ""
+
+msgid ""
+"Le montant de chaque dépense fiscale, tel que publié dans le jeu « budget"
+" vert » annexé au projet de loi de finances 2026."
+msgstr ""
+
+msgid "Année du chiffrage"
+msgstr ""
+
+msgid "Impôt concerné"
+msgstr ""
+
+msgid "Tous les impôts"
+msgstr ""
+
+#, python-format
+msgid "montant publié des %(n)s dépenses fiscales chiffrées en %(annee)s"
+msgstr ""
+
+msgid ""
+"dépenses fiscales marquées « nc » (montant non calculé) dans la source "
+"pour 2026"
+msgstr ""
+
+msgid "voir la liste"
+msgstr ""
+
+msgid "Sur quels impôts ?"
+msgstr ""
+
+msgid ""
+"Montant publié regroupé par impôt concerné, tel qu'indiqué dans la "
+"source. Sommes et parts calculées par ce site. Cliquez sur un impôt pour "
+"filtrer la liste."
+msgstr ""
+
+#, python-format
+msgid "en %(annee)s"
+msgstr ""
+
+msgid "Répartition par impôt"
+msgstr ""
+
+msgid "Toutes les dépenses fiscales chiffrées"
+msgstr ""
+
+#, python-format
+msgid "%(n)s dépenses fiscales"
+msgstr ""
+
+msgid "voir tous les impôts"
+msgstr ""
+
+msgid "Rechercher une dépense fiscale…"
+msgstr ""
+
+msgid "Rechercher une dépense fiscale"
+msgstr ""
+
+msgid ""
+"Classement par montant publié ; cliquez sur un en-tête pour trier. Une "
+"dépense ventilée sur plusieurs programmes est regroupée en une ligne."
+msgstr ""
+
+msgid "Montant publié"
+msgstr ""
+
+msgid "Dépenses fiscales sans montant publié"
+msgstr ""
+
+#, python-format
+msgid ""
+"Dans le même document, %(nc)s dépenses fiscales sont marquées « nc » "
+"(montant non calculé) et %(eps)s « ε » (moins de 0,5 million d'euros). "
+"Elles ne sont pas incluses dans le total."
+msgstr ""
+
+msgid "Sens des marqueurs : intitulé de la colonne dans la source."
+msgstr ""
+
+#, python-format
+msgid "Les %(n)s dépenses non chiffrées"
+msgstr ""
+
+msgid "Les libellés des dépenses fiscales sont publiés en français uniquement."
+msgstr ""
+
+msgid ""
+"Le total est une simple addition, faite par ce site, des montants publiés"
+" ligne à ligne dans la source."
+msgstr ""
+
+msgid ""
+"La catégorie « Impôt sur le revenu et impôt sur les sociétés » est "
+"publiée telle quelle par la source : ce site ne la répartit pas entre les"
+" deux impôts."
+msgstr ""
+
+msgid ""
+"La définition officielle de la dépense fiscale n'est pas encore relevée "
+"dans le lexique."
+msgstr ""
+
+msgid "Où va l'argent public ?"
+msgstr ""
+
+msgid "Toutes administrations publiques"
+msgstr ""
+
+msgid ""
+"Les dépenses des administrations publiques par fonction (COFOG), d'après "
+"Eurostat."
+msgstr ""
+
+msgid "Qui dépense"
+msgstr ""
+
+#, python-format
+msgid "de dépenses en %(annee)s"
+msgstr ""
+
+msgid "Répartition par fonction"
+msgstr ""
+
+#, python-format
+msgid ""
+"Cliquez sur une fonction pour voir son détail et son évolution. Les parts"
+" sont publiées par Eurostat (en %% de la dépense totale)."
+msgstr ""
+
+msgid "Fiche thématique : tout ce que le site sait de ce sujet"
+msgstr ""
+
+msgid "Ce que recouvre cette fonction"
+msgstr ""
+
+msgid ""
+"Sous-fonctions COFOG. Parts calculées par ce site : sous-fonction ÷ total"
+" de la fonction (les sous-fonctions publiées s'additionnent exactement à "
+"la fonction)."
+msgstr ""
+
+msgid "Aucune sous-fonction publiée pour cette sélection."
+msgstr ""
+
+msgid "Évolution de sa part"
+msgstr ""
+
+#, python-format
+msgid "Part dans la dépense totale du secteur, en %%, publiée par Eurostat."
+msgstr ""
+
+msgid "Série annuelle"
+msgstr ""
+
+#, python-format
+msgid ""
+"La somme des trois sous-secteurs (%(somme)s, calcul du site) dépasse le "
+"total publié pour l'ensemble des administrations (%(total)s) : ce site "
+"n'additionne donc jamais les sous-secteurs."
+msgstr ""
+
+msgid "« Provisoire » : valeur marquée provisoire dans la source."
+msgstr ""
+
+msgid ""
+"Les couleurs restent attachées à une fonction quelle que soit l'année "
+"affichée : les cinq fonctions mises en avant sont celles dont le montant "
+"est le plus élevé pour ce secteur la dernière année publiée."
+msgstr ""
+
+msgid "Pourquoi ces deux chiffres diffèrent-ils ?"
+msgstr ""
+
+msgid "Vérifier"
+msgstr ""
+
+msgid ""
+"Deux chiffres sur un même sujet peuvent venir de publications "
+"différentes. Cette page les met côte à côte et nomme, critère par "
+"critère, ce qui les sépare. Elle ne dit pas lequel est le bon : chacun "
+"est juste dans son cadre."
+msgstr ""
+
+#, python-format
+msgid "Somme de %(n)s montants publiés, calculée par ce site."
+msgstr ""
+
+msgid "Ce qui les sépare"
+msgstr ""
+
+#, python-format
+msgid "Critères qui diffèrent : %(n)s sur %(t)s."
+msgstr ""
+
+msgid ""
+"Aucun des critères ci-dessous ne diffère : les deux chiffres décrivent la"
+" même chose, dans deux collectes ou deux fichiers."
+msgstr ""
+
+msgid "Critère"
+msgstr ""
+
+msgid "diffère"
+msgstr ""
+
+msgid "Collecte par ce site"
+msgstr ""
+
+#, python-format
+msgid "Écart A − B : %(e)s (calcul du site)."
+msgstr ""
+
+msgid ""
+"Ce site ne calcule pas d'écart entre ces deux chiffres : ils n'ont pas le"
+" même cadre comptable, les mêmes administrations, la même grandeur ou la "
+"même unité. Une soustraction mélangerait des choses différentes."
+msgstr ""
+
+msgid "Exemples"
+msgstr ""
+
+msgid ""
+"Pour chaque thème : les administrations centrales dans les comptes "
+"nationaux, face à une mission du budget de l'État rattachée au thème par "
+"ce site."
+msgstr ""
+
+msgid "Ce que le site couvre aujourd'hui"
+msgstr ""
+
+msgid ""
+"Tableau établi à partir des montants chargés, source par source : années,"
+" découpage, stades et date de la dernière collecte."
+msgstr ""
+
+msgid "Années"
+msgstr ""
+
+msgid "Qui"
+msgstr ""
+
+msgid "Découpage"
+msgstr ""
+
+msgid "Stades"
+msgstr ""
+
+msgid "Montants"
+msgstr ""
+
+msgid "Collecte"
+msgstr ""
+
+msgid "Données manquantes"
+msgstr ""
+
+#, python-format
+msgid "%(n)s postes"
+msgstr ""
+
+msgid "Pas encore couvert"
+msgstr ""
+
+msgid "Communes et intercommunalités."
+msgstr ""
+
+msgid ""
+"Sécurité sociale par branche ou par régime (seul l'ensemble des "
+"administrations de sécurité sociale est présent)."
+msgstr ""
+
+msgid ""
+"Organismes publics un par un, opérateurs de l'État, entreprises à "
+"participation publique."
+msgstr ""
+
+msgid "Montants versés d'une administration à une autre."
+msgstr ""
+
+msgid "Exécution du budget de l'État avant 2024."
+msgstr ""
+
+msgid "Engagements hors bilan et garanties."
+msgstr ""
+
+msgid "Autres pays de l'Union européenne."
+msgstr ""
+
+msgid "Ce que les sources collectées ne publient pas est listé dans"
+msgstr ""
+
+msgid "Explorer"
+msgstr ""
+
+msgid "Les finances publiques françaises, en données ouvertes"
+msgstr ""
+
+msgid "prototype"
+msgstr ""
+
+msgid "Les comptes publics,"
+msgstr ""
+
+msgid "tels que publiés."
+msgstr ""
+
+msgid "Chaque chiffre, sa source."
+msgstr ""
+
+msgid ""
+"Dépenses de l'État, des collectivités et de la sécurité sociale, d'après "
+"les fichiers officiels. Chaque montant renvoie à sa ligne d'origine ; les"
+" données non disponibles sont signalées."
+msgstr ""
+
+msgid ""
+"Rechercher un département, une région, une mission, une dépense fiscale, "
+"un terme"
+msgstr ""
+
+msgid "Chercher"
+msgstr ""
+
+msgid "Rien de publié sous ce nom dans les sources collectées."
+msgstr ""
+
+msgid "Essayer :"
+msgstr ""
+
+msgid "Sujets"
+msgstr ""
+
+msgid "Relancer le défilement"
+msgstr ""
+
+msgid "Données publiées et données non disponibles"
+msgstr ""
+
+msgid "Combien pour"
+msgstr ""
+
+msgid "Thème"
+msgstr ""
+
+msgid "dans"
+msgstr ""
+
+msgid "Périmètre"
+msgstr ""
+
+msgid "Répondre"
+msgstr ""
+
+msgid "Total des dépenses fiscales chiffrées"
+msgstr ""
+
+msgid "Projet (PLF)"
+msgstr ""
+
+#, python-format
+msgid ""
+"Somme des montants publiés pour %(n)s dépenses fiscales. Ce site n'y "
+"ajoute aucune estimation."
+msgstr ""
+
+#, python-format
+msgid ""
+"%(nc)s dépenses fiscales marquées « nc » (montant non calculé) et %(eps)s"
+" « ε » (moins de 0,5 million d'euros)."
+msgstr ""
+
+msgid "Ces dépenses ne sont pas incluses dans le total ci-contre."
+msgstr ""
+
+#, python-format
+msgid "Producteur de la donnée : %(r)s"
+msgstr ""
+
+msgid "Voir la liste, ligne par ligne"
+msgstr ""
+
+msgid "Comptes nationaux"
+msgstr ""
+
+#, python-format
+msgid "Soit %(p)s des dépenses de ces administrations, part publiée par Eurostat."
+msgstr ""
+
+msgid "Pas de montant publié pour cette année."
+msgstr ""
+
+msgid "Évolution depuis 1995"
+msgstr ""
+
+msgid "Détail par sous-fonction"
+msgstr ""
+
+msgid "Fiche thématique"
+msgstr ""
+
+msgid "Aucune lacune recensée pour cette question dans les sources collectées."
+msgstr ""
+
+msgid "Toutes les données non disponibles"
+msgstr ""
+
+msgid "Pas de réponse dans les sources collectées"
+msgstr ""
+
+msgid ""
+"Les dépenses fiscales collectées ici sont celles que l'État chiffre dans "
+"son projet de loi de finances. Aucune source collectée ne les répartit "
+"entre administrations."
+msgstr ""
+
+msgid ""
+"Le budget de l'État publié ici est classé par missions, pas par fonctions"
+" de la COFOG. Ce site ne convertit pas un classement dans l'autre."
+msgstr ""
+
+msgid "Voir le budget de l'État mission par mission"
+msgstr ""
+
+#, python-format
+msgid "La question voisine qui a une réponse : %(t)s, dans %(p)s"
+msgstr ""
+
+msgid "Et maintenant ?"
+msgstr ""
+
+msgid "D'autres questions"
+msgstr ""
+
+msgid "Tirées au hasard à chaque visite, chacune avec son chiffre."
+msgstr ""
+
+msgid "Entrées dans les données"
+msgstr ""
+
+msgid ""
+"Les chiffres publiés sur ce sujet. Chaque bloc vient d'une publication "
+"différente : ils ne s'additionnent pas."
+msgstr ""
+
+#, python-format
+msgid "L'essentiel, toutes administrations publiques, en %(a)s"
+msgstr ""
+
+msgid "de dépenses"
+msgstr ""
+
+msgid "de la dépense publique"
+msgstr ""
+
+#, python-format
+msgid "Évolution depuis %(a)s, en part du PIB"
+msgstr ""
+
+msgid "Dépenses du thème en part du PIB"
+msgstr ""
+
+msgid "Quelle administration dépense"
+msgstr ""
+
+#, python-format
+msgid ""
+"Montants publiés pour chaque sous-secteur en %(a)s. Les sous-secteurs se "
+"versent aussi de l'argent entre eux : leurs montants ne s'additionnent "
+"pas."
+msgstr ""
+
+msgid "À quoi précisément"
+msgstr ""
+
+msgid "Dans le budget de l'État"
+msgstr ""
+
+msgid ""
+"Missions rattachées à ce thème par ce site (regroupement du site, pas une"
+" correspondance officielle). Crédits de paiement, aux trois stades "
+"publiés : ce n'est pas le même périmètre que les comptes nationaux ci-"
+"dessus."
+msgstr ""
+
+#, python-format
+msgid "Loi votée %(a)s"
+msgstr ""
+
+#, python-format
+msgid "Projet %(a)s"
+msgstr ""
+
+msgid "Dépenses fiscales rattachées à ces missions"
+msgstr ""
+
+msgid ""
+"Rattachement publié dans le budget vert du PLF 2026. Coût estimé pour "
+"2026 des dépenses fiscales chiffrées ; celles publiées sans montant ne "
+"sont pas comptées."
+msgstr ""
+
+#, python-format
+msgid "%(n)s montants"
+msgstr ""
+
+msgid "Pourquoi ces chiffres diffèrent"
+msgstr ""
+
+#, python-format
+msgid ""
+"« %(a)s » dans les comptes nationaux et « %(b)s » dans le budget de "
+"l'État ne donnent pas le même montant. Ce qui les sépare :"
+msgstr ""
+
+msgid "Les deux chiffres côte à côte, critère par critère"
+msgstr ""
+
+msgid "Dans les départements"
+msgstr ""
+
+#, python-format
+msgid ""
+"Les départements publient leurs dépenses par fonction (nomenclature M57)."
+" La fonction la plus proche de ce thème est « %(f)s »."
+msgstr ""
+
+msgid "Comparer les départements sur cette fonction"
+msgstr ""
+
+msgid ""
+"Une dépense nationale ne se répartit pas entre les territoires : les "
+"comptes nationaux ne publient pas cette ventilation."
+msgstr ""
+
+msgid "Limites"
+msgstr ""
+
+msgid ""
+"Comptes nationaux et budget de l'État sont deux publications différentes,"
+" aux périmètres différents : leurs montants ne se comparent pas "
+"directement."
+msgstr ""
+
+msgid ""
+"Le rattachement des missions et de la fonction des départements à ce "
+"thème est un choix du site."
+msgstr ""
+
+msgid ""
+"Les montants versés d'une administration à une autre ne sont pas encore "
+"couverts."
+msgstr ""
+
+msgid "Aller plus loin"
+msgstr ""
+
+msgid "Le même thème parmi toutes les fonctions, année par année."
+msgstr ""
+
+msgid "Obtenir les chiffres"
+msgstr ""
+
+msgid "La série par administration, à télécharger avec sa source."
+msgstr ""
+
+msgid "Faire un graphique à partager"
+msgstr ""
+
+msgid "Choisir des séries et une forme, puis télécharger l'image."
+msgstr ""
+
+msgid "La machine des comptes publics"
+msgstr ""
+
+msgid "Le thème parmi les flux de recettes et de dépenses, en 3D."
+msgstr ""
+
+msgid "Choisissez un sujet : tout ce que le site en sait, sur une page."
+msgstr ""
+
+msgid "Vues d'ensemble"
+msgstr ""
+
+msgid "Toutes les dépenses"
+msgstr ""
+
+msgid "Toutes les recettes"
+msgstr ""
+
+msgid "Les comptes publics, tels que publiés"
+msgstr ""
+
+msgid "Où va l'argent public ? Chaque chiffre vient d'un fichier officiel."
+msgstr ""
+
+msgid "Rechercher un sujet, un territoire ou un chiffre"
+msgstr ""
+
+msgid "Débutant ?"
+msgstr ""
+
+msgid "Commencer par le parcours guidé"
+msgstr ""
+
+#, python-format
+msgid "L'ensemble des administrations publiques en %(a)s, en part du PIB"
+msgstr ""
+
+#, python-format
+msgid "du PIB en %(a)s"
+msgstr ""
+
+msgid "Tout le système en 3D"
+msgstr ""
+
+msgid "D'où vient l'argent, qui le gère, où il va : sur un seul schéma."
+msgstr ""
+
+msgid "Ouvrir la machine"
+msgstr ""
+
+msgid ""
+"Plus la case est grande, plus la part est élevée. Touchez une case pour "
+"entrer dedans."
+msgstr ""
+
+msgid "Voir en 3D"
+msgstr ""
+
+msgid "Changer d'administration ou d'unité"
+msgstr ""
+
+msgid "Niveau de la carte"
+msgstr ""
+
+#, python-format
+msgid ""
+"Sur 100 € de dépense publique, %(v)s vont à cette fonction. Voici leur "
+"détail."
+msgstr ""
+
+#, python-format
+msgid "Dépense totale : %(t)s."
+msgstr ""
+
+msgid "dont"
+msgstr ""
+
+msgid "Surface : montant publié en euros. Teinte : même information, pour l'œil."
+msgstr ""
+
+msgid "* valeur provisoire."
+msgstr ""
+
+msgid "La fonction en chiffres"
+msgstr ""
+
+msgid "pour 100 € de dépense publique"
+msgstr ""
+
+msgid "en euros courants"
+msgstr ""
+
+#, python-format
+msgid "Part dans la dépense publique, depuis %(a)s"
+msgstr ""
+
+msgid "Tout sur ce thème"
+msgstr ""
+
+msgid "Comparer, changer d'unité, exporter"
+msgstr ""
+
+msgid "Tableau détaillé"
+msgstr ""
+
+msgid "Le détail, chiffre par chiffre"
+msgstr ""
+
+msgid "Non publié"
+msgstr ""
+
+msgid "Non chiffré"
+msgstr ""
+
+msgid "Sous le seuil de chiffrage"
+msgstr ""
+
+msgid "Sans définition officielle"
+msgstr ""
+
+msgid "Publication reportée"
+msgstr ""
+
+msgid "Publié mais inexploitable"
+msgstr ""
+
+msgid "Transparence"
+msgstr ""
+
+msgid ""
+"Les données absentes, non chiffrées ou inexploitables relevées lors de la"
+" collecte, avec l'organisme qui les produit et la date du constat."
+msgstr ""
+
+msgid "Jeux de données manquants ou inutilisables"
+msgstr ""
+
+msgid "Organisme producteur :"
+msgstr ""
+
+msgid "Constat :"
+msgstr ""
+
+msgid "jeu concerné"
+msgstr ""
+
+msgid "Lacunes ligne à ligne"
+msgstr ""
+
+#, python-format
+msgid "Voir les %(n)s lignes"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Lacune"
+msgstr ""
+
+msgid "Organisme producteur"
+msgstr ""
+
+msgid "ligne"
+msgstr ""
+
+msgid "Définitions officielles, citées mot pour mot"
+msgstr ""
+
+msgid ""
+"Chaque définition est une citation exacte d'un texte officiel (loi "
+"organique relative aux lois de finances, INSEE, OFGL), avec son lien. "
+"Quand la définition officielle n'a pas encore été relevée, le lexique le "
+"dit au lieu d'en inventer une."
+msgstr ""
+
+#, python-format
+msgid "%(n)s termes attendent encore leur définition officielle."
+msgstr ""
+
+msgid "Traduction non officielle. Texte original :"
+msgstr ""
+
+msgid "Source :"
+msgstr ""
+
+msgid "Relevé :"
+msgstr ""
+
+msgid "Prototype"
+msgstr ""
+
+msgid ""
+"Ce qui entre, ce qui sort, ce qui s'accumule : les comptes de l'ensemble "
+"des administrations publiques publiés par Eurostat, dessinés comme une "
+"machine à eau."
+msgstr ""
+
+msgid "Niveau de lecture"
+msgstr ""
+
+msgid "Découverte"
+msgstr ""
+
+msgid "Bientôt : isoler un sous-secteur ou une politique et ses flux publiés."
+msgstr ""
+
+msgid "Exploration"
+msgstr ""
+
+msgid "Bientôt : flux documentés, périmètres, consolidation et provenance."
+msgstr ""
+
+msgid "Analyse"
+msgstr ""
+
+msgid ""
+"Vue d'ensemble : recettes, trois sous-secteurs et les six plus grandes "
+"fonctions ; les autres sont regroupées (calcul du site)."
+msgstr ""
+
+msgid "Administrations publiques"
+msgstr ""
+
+msgid "Besoin de financement"
+msgstr ""
+
+msgid "Capacité de financement"
+msgstr ""
+
+msgid "Autres fonctions (somme calculée par ce site)"
+msgstr ""
+
+msgid "Tuyau de 100 Md€"
+msgstr ""
+
+msgid "Ensemble des administrations"
+msgstr ""
+
+msgid "Encours en fin d'année, par secteur détenteur"
+msgstr ""
+
+msgid "Encours en fin d'année ; ventilation par détenteur publiée depuis 2020"
+msgstr ""
+
+msgid ""
+"Besoin de financement de l'ensemble des administrations. Créanciers : "
+"dette par secteur détenteur"
+msgstr ""
+
+msgid ""
+"Ce n'est pas une recette : c'est l'écart entre dépenses et recettes "
+"publiées, couvert par l'emprunt net de l'année. Il est dessiné à part, "
+"sur le côté."
+msgstr ""
+
+msgid "Écart avec la fin de l'année précédente, calculé par ce site"
+msgstr ""
+
+msgid ""
+"Glisser pour déplacer la vue ou la faire tourner · pincer, molette ou "
+"boutons + et − pour zoomer · toucher un bâtiment pour tout son détail, un"
+" tuyau pour son montant, un numéro pour son explication"
+msgstr ""
+
+msgid "Zoomer"
+msgstr ""
+
+msgid "Dézoomer"
+msgstr ""
+
+msgid "Voir toute la scène"
+msgstr ""
+
+msgid ""
+"Par sous-secteur (ils se versent aussi de l'argent entre eux : leurs "
+"montants ne s'additionnent pas)"
+msgstr ""
+
+msgid "Qui paie : postes publiés"
+msgstr ""
+
+msgid "Comment cet argent est dépensé"
+msgstr ""
+
+msgid ""
+"Quelle administration le dépense (leurs montants ne s'additionnent pas : "
+"elles se versent aussi de l'argent entre elles)"
+msgstr ""
+
+msgid "Qui paie, en détail"
+msgstr ""
+
+msgid "Masquer le détail"
+msgstr ""
+
+msgid "Autres postes (somme calculée par ce site)"
+msgstr ""
+
+msgid "Reste de la catégorie, non ventilé par payeur (calculé par ce site)"
+msgstr ""
+
+msgid "Part de chaque poste dans le montant publié, calculée par ce site"
+msgstr ""
+
+msgid "Fiche thématique de ce sujet"
+msgstr ""
+
+msgid ""
+"Schéma : les recettes entrent par le fond dans les trois sous-secteurs, "
+"le besoin de financement arrive à part par le côté, les dépenses sortent "
+"par fonction ; la dette est une tour à part. Les montants sont listés "
+"sous le schéma."
+msgstr ""
+
+msgid "Flux : les tuyaux"
+msgstr ""
+
+msgid ""
+"Ce qui passe pendant l'année choisie. La section d'un tuyau suit le "
+"montant publié (comparez au tuyau de 100 Md€) ; les grains montrent "
+"seulement le sens du courant."
+msgstr ""
+
+msgid ""
+"Les bandeaux donnent les montants publiés pour l'ensemble des "
+"administrations ; les tuyaux, ceux de chaque sous-secteur. Les sous-"
+"secteurs se versent aussi de l'argent entre eux : leurs montants ne "
+"s'additionnent donc pas."
+msgstr ""
+
+msgid "Solde : le déficit public"
+msgstr ""
+
+msgid ""
+"Ce n'est pas un acteur mais un montant : le déficit public est le besoin "
+"de financement de l'ensemble des administrations, leur emprunt net de "
+"l'année (« net borrowing » dans le libellé officiel anglais) quand les "
+"dépenses dépassent les recettes. Chaque tuyau orange est le besoin de "
+"financement d'un sous-secteur. Eurostat ne publie pas qui a prêté cette "
+"année-là seule : la tour dit qui détient la dette."
+msgstr ""
+
+msgid "Stock : la tour"
+msgstr ""
+
+msgid ""
+"La dette publique à la fin de l'année : un montant accumulé, pas un "
+"montant annuel, à ne pas comparer aux tuyaux. Ses étages disent qui la "
+"détient (ses créanciers) ; le chiffre en italique est l'écart avec "
+"l'année précédente, calculé par ce site. La somme de ces écarts n'égale "
+"pas exactement le besoin de financement : les comptes publiés ne les "
+"relient pas un pour un."
+msgstr ""
+
+msgid "Ce qui entre"
+msgstr ""
+
+#, python-format
+msgid "« Autres recettes » : somme calculée par ce site de %(l)s."
+msgstr ""
+
+msgid "Qui paie : postes publiés à l'intérieur des catégories"
+msgstr ""
+
+msgid ""
+"Ces postes ne couvrent pas toute leur catégorie : le reste n'est pas "
+"nommé par payeur dans ce jeu."
+msgstr ""
+
+msgid "L'écart"
+msgstr ""
+
+msgid ""
+"Quand le solde publié est négatif, le besoin de financement (l'emprunt "
+"net de l'année) est dessiné à part, sur le côté : ce n'est pas une "
+"recette, et il n'entre pas dans le total des recettes."
+msgstr ""
+
+msgid "Ce qui sort, par fonction"
+msgstr ""
+
+msgid "Ce qui s'accumule"
+msgstr ""
+
+msgid "Qui la détient (ses créanciers) :"
+msgstr ""
+
+msgid ""
+"Aucun tuyau ne relie le solde à la dette : le site ne dessine pas de lien"
+" entre deux montants que les comptes publiés ne relient pas."
+msgstr ""
+
+msgid "à compléter"
+msgstr ""
+
+msgid ""
+"Qui publie ce site, sous quelles licences sont réutilisés les données et "
+"les éléments qu'il affiche, et ce qu'il garde dans votre navigateur."
+msgstr ""
+
+msgid "Éditeur"
+msgstr ""
+
+msgid "Éditeur du site"
+msgstr ""
+
+msgid "Directeur de la publication"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Hébergeur"
+msgstr ""
+
+msgid "Licences des données"
+msgstr ""
+
+msgid ""
+"Chaque chiffre vient d'un jeu de données publié par son éditeur, sous la "
+"licence qu'il indique. La fiche de chaque source donne le lien vers le "
+"jeu et vers sa licence."
+msgstr ""
+
+msgid "Fichiers publiés par ce site (/data/)"
+msgstr ""
+
+msgid "Code source du site"
+msgstr ""
+
+msgid "Éléments réutilisés"
+msgstr ""
+
+msgid ""
+"Les polices sont servies par ce site : aucune requête n'est envoyée à un "
+"service de polices."
+msgstr ""
+
+msgid "Ce que le site garde"
+msgstr ""
+
+msgid ""
+"Le site ne dépose aucun cookie et ne mesure pas l'audience. Il garde dans"
+" votre navigateur vos dernières recherches et un réglage d'affichage ; "
+"ces informations restent sur votre appareil et ne sont pas envoyées au "
+"serveur."
+msgstr ""
+
+msgid "Comment ce site est construit"
+msgstr ""
+
+msgid "La chaîne de preuve"
+msgstr ""
+
+msgid ""
+"Collecte : chaque jeu de données officiel est téléchargé tel quel, sans "
+"modification. On conserve l'adresse exacte, la date et l'empreinte sha256"
+" du fichier."
+msgstr ""
+
+msgid ""
+"Chargement : chaque montant de la base garde le numéro de la ligne du "
+"fichier dont il vient. La base refuse un montant sans fichier ni ligne."
+msgstr ""
+
+msgid ""
+"Contrôles : quand la source publie un total, on vérifie que la somme de "
+"ses détails le retrouve. Si un contrôle échoue, la base n'est pas "
+"publiée."
+msgstr ""
+
+msgid ""
+"Affichage : un lien « source » accompagne chaque chiffre et relit la "
+"ligne d'origine dans le fichier brut."
+msgstr ""
+
+msgid "Ce que le site s'interdit"
+msgstr ""
+
+msgid ""
+"Additionner des montants de sources différentes, de stades différents "
+"(projet, loi votée, exécution) ou d'unités différentes."
+msgstr ""
+
+msgid "Remplacer une donnée absente par zéro."
+msgstr ""
+
+msgid "Rédiger une définition : elles sont toutes citées."
+msgstr ""
+
+msgid "Contrôles de cohérence"
+msgstr ""
+
+msgid "Contrôle"
+msgstr ""
+
+msgid "Attendu"
+msgstr ""
+
+msgid "Obtenu"
+msgstr ""
+
+msgid "Résultat"
+msgstr ""
+
+msgid "conforme"
+msgstr ""
+
+#, python-format
+msgid "%(n)s fichier(s) collecté(s), dernière collecte %(d)s"
+msgstr ""
+
+msgid "Source d'un chiffre"
+msgstr ""
+
+#, python-format
+msgid "Publié par %(e)s"
+msgstr ""
+
+msgid "dans le jeu de données"
+msgstr ""
+
+#, python-format
+msgid "Cadre comptable : %(c)s"
+msgstr ""
+
+#, python-format
+msgid "Téléchargé par ce site le %(d)s"
+msgstr ""
+
+msgid "depuis"
+msgstr ""
+
+msgid "l'adresse officielle du fichier"
+msgstr ""
+
+msgid "copie conservée telle quelle"
+msgstr ""
+
+#, python-format
+msgid "Ligne %(n)s du fichier"
+msgstr ""
+
+msgid "valeur écrite :"
+msgstr ""
+
+#, python-format
+msgid "Affiché ici : %(v)s"
+msgstr ""
+
+msgid "la même valeur, arrondie pour la lecture"
+msgstr ""
+
+msgid "d'après la note de révision de l'INSEE"
+msgstr ""
+
+msgid "Détails techniques : licence, fichier, empreinte, description de l'éditeur"
+msgstr ""
+
+msgid "Description publiée par l'éditeur"
+msgstr ""
+
+msgid "Licence"
+msgstr ""
+
+msgid "Fichier collecté"
+msgstr ""
+
+msgid "Adresse exacte"
+msgstr ""
+
+msgid "Ligne du fichier"
+msgstr ""
+
+msgid "Valeur brute"
+msgstr ""
+
+msgid "La ligne d'origine, relue dans le fichier brut"
+msgstr ""
+
+msgid "Colonne"
+msgstr ""
+
+msgid ""
+"Ligne introuvable dans le fichier brut : la base est désynchronisée, "
+"relancer la construction."
+msgstr ""
+
+msgid "Étapes du parcours"
+msgstr ""
+
+#, python-format
+msgid "Comprendre · étape %(n)s sur %(t)s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Dépenses de l'année %(a)s, en euros courants. Chaque barre est un chiffre"
+" publié ; la première est le total publié, pas une somme."
+msgstr ""
+
+msgid "Les mots employés, et leur définition officielle"
+msgstr ""
+
+msgid "traduction non officielle"
+msgstr ""
+
+msgid "Définition officielle non encore relevée."
+msgstr ""
+
+msgid "Suite"
+msgstr ""
+
+msgid "Explorer ces chiffres en détail"
+msgstr ""
+
+msgid "Étape suivante"
+msgstr ""
+
+msgid "Un mot, un territoire, un chiffre : dette, Gironde, TVA…"
+msgstr ""
+
+#, python-format
+msgid "Le parcours, en %(n)s étapes"
+msgstr ""
+
+msgid "Commencer le parcours"
+msgstr ""
+
+msgid "Les pages détaillées"
+msgstr ""
+
+msgid "Je veux"
+msgstr ""
+
+msgid "Résultat :"
+msgstr ""
+
+msgid "Preuve"
+msgstr ""
+
+msgid "Loi promulguée"
+msgstr ""
+
+msgid "Journal officiel"
+msgstr ""
+
+msgid "Lien Légifrance publié dans le dossier"
+msgstr ""
+
+msgid "Page officielle du scrutin"
+msgstr ""
+
+msgid "Entrée dans l'archive"
+msgstr ""
+
+msgid "L'enregistrement d'origine, relu dans l'archive"
+msgstr ""
+
+msgid ""
+"Extrait du dossier : son titre, l'acte de promulgation et les scrutins "
+"qu'il cite, reproduits tels quels."
+msgstr ""
+
+msgid ""
+"Les listes nominatives des votants sont omises ici ; la synthèse et le "
+"décompte de chaque groupe sont reproduits tels quels."
+msgstr ""
+
+msgid "Source d'un total"
+msgstr ""
+
+#, python-format
+msgid ""
+"Ce total est la somme de %(n)s montants publiés dans la source, ligne par"
+" ligne. Chacun renvoie à sa ligne d'origine."
+msgstr ""
+
+#, python-format
+msgid "Seuls les %(k)s montants les plus élevés sont listés."
+msgstr ""
+
+msgid "Ligne budgétaire"
+msgstr ""
+
+msgid "Fichier, ligne"
+msgstr ""
+
+msgid "Montant"
+msgstr ""
+
+msgid "D'où vient l'argent public ?"
+msgstr ""
+
+msgid ""
+"Les recettes des administrations publiques par catégorie des comptes "
+"nationaux, d'après Eurostat."
+msgstr ""
+
+msgid "Administrations"
+msgstr ""
+
+#, python-format
+msgid "de recettes en %(annee)s"
+msgstr ""
+
+msgid "Répartition par catégorie"
+msgstr ""
+
+msgid ""
+"Cliquez sur une catégorie pour voir son évolution. Les catégories "
+"publiées s'additionnent exactement aux recettes totales (contrôle du "
+"site) ; les parts sont calculées par ce site : catégorie ÷ recettes "
+"totales."
+msgstr ""
+
+msgid "Évolution en pourcentage du PIB"
+msgstr ""
+
+msgid "Montant de la catégorie rapporté au PIB, publié par Eurostat."
+msgstr ""
+
+msgid "Explorer cette série"
+msgstr ""
+
+msgid ""
+"Les libellés des catégories sont ceux de la nomenclature des comptes "
+"nationaux publiée par Eurostat (NA_ITEM)."
+msgstr ""
+
+msgid ""
+"Les couleurs restent attachées à une catégorie quelle que soit l'année "
+"affichée : les cinq catégories mises en avant sont celles dont le montant"
+" est le plus élevé pour ce secteur la dernière année publiée."
+msgstr ""
+
+msgid "Les dépenses du même périmètre, par fonction"
+msgstr ""
+
+msgid "Recherche"
+msgstr ""
+
+#, python-format
+msgid "« %(q)s »"
+msgstr ""
+
+msgid "Obtenir les chiffres d'un indicateur"
+msgstr ""
+
+msgid ""
+"Atelier de graphique : tous les types de graphiques, annotations, image "
+"prête pour les réseaux"
+msgstr ""
+
+msgid "Points de départ"
+msgstr ""
+
+msgid "Réglages"
+msgstr ""
+
+msgid "Quoi"
+msgstr ""
+
+#, python-format
+msgid "Données : %(j)s"
+msgstr ""
+
+#, python-format
+msgid "%(n)s séries au plus sur un graphique"
+msgstr ""
+
+msgid "Territoires"
+msgstr ""
+
+msgid "Ajouter un territoire"
+msgstr ""
+
+msgid "Ajouter"
+msgstr ""
+
+msgid "Quand"
+msgstr ""
+
+msgid "Une année"
+msgstr ""
+
+msgid "Une période"
+msgstr ""
+
+msgid "Repères : débuts de présidence"
+msgstr ""
+
+msgid ""
+"Euros constants et indice base 100 : pas encore disponibles (indice des "
+"prix non collecté)."
+msgstr ""
+
+msgid "Tableau de travail : plusieurs colonnes, écart entre deux années, filtres"
+msgstr ""
+
+msgid "Modifier les choix"
+msgstr ""
+
+#, python-format
+msgid "%(n)s combinaison(s) non affichée(s) : 5 séries au plus par graphique."
+msgstr ""
+
+msgid "Export"
+msgstr ""
+
+#, python-format
+msgid "%(e)s depuis %(a)s"
+msgstr ""
+
+msgid ""
+"Écart calculé par ce site entre la première et la dernière valeur de la "
+"période."
+msgstr ""
+
+msgid "Pas de valeur publiée sur la période."
+msgstr ""
+
+msgid "Pas de valeur publiée pour cette année."
+msgstr ""
+
+msgid "Pistes"
+msgstr ""
+
+#, python-format
+msgid "Fonctions et votes budgétaires de %(de)s à %(a)s"
+msgstr ""
+
+msgid "Le même indicateur pour chaque périmètre"
+msgstr ""
+
+msgid "Les recettes par catégorie"
+msgstr ""
+
+msgid "Le détail par sous-fonction"
+msgstr ""
+
+#, python-format
+msgid "La fiche de %(t)s"
+msgstr ""
+
+msgid "Page officielle du jeu"
+msgstr ""
+
+msgid "Fiche de métadonnées"
+msgstr ""
+
+msgid "Entrée de catalogue"
+msgstr ""
+
+msgid "Document cité"
+msgstr ""
+
+msgid "Adresse du jeu"
+msgstr ""
+
+msgid "Relevé dans"
+msgstr ""
+
+msgid "Dernière collecte"
+msgstr ""
+
+msgid "Montants chargés"
+msgstr ""
+
+msgid "Documents cités"
+msgstr ""
+
+msgid ""
+"Chaque champ ci-dessous est relevé dans un fichier collecté, à l'endroit "
+"indiqué : rien n'est saisi à la main."
+msgstr ""
+
+#, python-format
+msgid "publié le %(d)s"
+msgstr ""
+
+msgid "Fichiers collectés"
+msgstr ""
+
+msgid ""
+"Chaque fichier est téléchargé tel quel à l'adresse ci-dessous ; son "
+"empreinte sha256 permet de vérifier qu'il n'a pas été modifié depuis."
+msgstr ""
+
+msgid "Toutes les sources et les contrôles de cohérence"
+msgstr ""
+
+msgid "Collectivités territoriales"
+msgstr ""
+
+#, python-format
+msgid ""
+"Statut particulier publié par l'OFGL : %(s)s. Cette collectivité n'entre "
+"pas dans la médiane."
+msgstr ""
+
+#, python-format
+msgid ""
+"Agrégats financiers officiels de l'OFGL. La médiane est calculée par ce "
+"site sur les %(n)s collectivités du même niveau sans statut particulier."
+msgstr ""
+
+msgid ""
+"Le fichier publie plusieurs budgets sous ce code cette année : ce site ne"
+" choisit pas entre eux et ne les additionne pas ; chaque lien ouvre une "
+"ligne publiée."
+msgstr ""
+
+#, python-format
+msgid "L'essentiel en %(a)s"
+msgstr ""
+
+#, python-format
+msgid "soit %(m)s au total"
+msgstr ""
+
+#, python-format
+msgid "%(n)s : %(v)s ; médiane : %(m)s"
+msgstr ""
+
+#, python-format
+msgid "Médiane : %(m)s"
+msgstr ""
+
+#, python-format
+msgid "Rang %(r)s sur %(n)s"
+msgstr ""
+
+#, python-format
+msgid "%(n)s budgets publiés sous ce code"
+msgstr ""
+
+msgid ""
+"Montants par habitant publiés par l'OFGL. Médiane et rang calculés par ce"
+" site parmi les collectivités du même niveau sans statut particulier ; "
+"rang 1 = montant par habitant le plus élevé."
+msgstr ""
+
+msgid "Tous les agrégats publiés"
+msgstr ""
+
+msgid "Agrégat"
+msgstr ""
+
+msgid "Par habitant"
+msgstr ""
+
+msgid "Médiane par habitant"
+msgstr ""
+
+msgid "Dépenses totales par habitant, année après année"
+msgstr ""
+
+msgid ""
+"Montants par habitant publiés par l'OFGL. La médiane des collectivités du"
+" même niveau est calculée par ce site."
+msgstr ""
+
+msgid "Évolution des dépenses totales par habitant"
+msgstr ""
+
+#, python-format
+msgid ""
+"Le fichier publie un autre numéro SIREN sous ce code à partir de %(a)s : "
+"ce n'est plus la même collectivité. L'évolution ne se lit pas à travers "
+"ce changement."
+msgstr ""
+
+#, python-format
+msgid ""
+"La population publiée pour ce code passe de %(p0)s à %(p1)s habitants en "
+"%(a)s : le périmètre n'est plus le même. L'évolution ne se lit pas à "
+"travers ce changement."
+msgstr ""
+
+msgid "À quoi servent ces dépenses ?"
+msgstr ""
+
+#, python-format
+msgid ""
+"Dépenses totales hors remboursements de dette, budget principal "
+"uniquement (présentation fonctionnelle, nomenclature %(n)s)."
+msgstr ""
+
+msgid "Parts calculées par ce site : fonction ÷ somme des fonctions publiées."
+msgstr ""
+
+msgid "Répartition par fonction : non publiée"
+msgstr ""
+
+msgid ""
+"Les jeux OFGL collectés publient une répartition par fonction pour les "
+"départements, aucune pour les régions."
+msgstr ""
+
+msgid "Voir les lacunes"
+msgstr ""
+
+msgid ""
+"Les agrégats sont emboîtés : les dépenses de fonctionnement font partie "
+"des dépenses totales. Ils ne s'additionnent pas entre eux."
+msgstr ""
+
+msgid ""
+"Selon l'année, un département tient ses comptes en nomenclature M52 ou "
+"M57 (indiqué dans la source) : les fonctions n'y sont pas numérotées de "
+"la même façon et ne se comparent pas directement."
+msgstr ""
+
+msgid "Que dépense ma région, mon département ?"
+msgstr ""
+
+msgid "Les comptes des collectivités publiés par l'OFGL sur data.ofgl.fr."
+msgstr ""
+
+msgid "Ma région ou mon département"
+msgstr ""
+
+msgid "Nom ou numéro : Gironde, 33, Bretagne…"
+msgstr ""
+
+msgid "Ouvrir la fiche"
+msgstr ""
+
+#, python-format
+msgid "%(n)s collectivités correspondent à « %(q)s » :"
+msgstr ""
+
+#, python-format
+msgid "Aucune région ni aucun département ne correspond à « %(q)s »."
+msgstr ""
+
+msgid ""
+"Les communes et les intercommunalités ne sont pas encore chargées sur ce "
+"site : seules les régions et les départements y sont."
+msgstr ""
+
+msgid "Niveau"
+msgstr ""
+
+msgid "Ce qu'on compare"
+msgstr ""
+
+msgid "Agrégats financiers"
+msgstr ""
+
+#, python-format
+msgid "Dépenses par fonction (nomenclature %(n)s)"
+msgstr ""
+
+#, python-format
+msgid "Agrégat financier officiel de l'OFGL, comptes consolidés %(annee)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"Dépenses totales hors remboursements de dette, budget principal, "
+"présentation fonctionnelle %(annee)s."
+msgstr ""
+
+#, python-format
+msgid ""
+"médiane : %(m)s (calculée par ce site sur les %(n)s collectivités "
+"affichées sans statut particulier)."
+msgstr ""
+
+msgid "Rechercher une collectivité…"
+msgstr ""
+
+msgid "Rechercher une collectivité"
+msgstr ""
+
+msgid "Trier"
+msgstr ""
+
+msgid "Plus élevé"
+msgstr ""
+
+msgid "Plus bas"
+msgstr ""
+
+msgid "A → Z"
+msgstr ""
+
+msgid "statut particulier"
+msgstr ""
+
+msgid "Plusieurs budgets publiés sous un même code"
+msgstr ""
+
+#, python-format
+msgid ""
+"Le fichier publie plusieurs lignes pour ces collectivités en %(annee)s. "
+"Ce site ne choisit pas entre elles et ne les additionne pas : elles ne "
+"sont pas classées."
+msgstr ""
+
+msgid "Sans donnée pour cette sélection"
+msgstr ""
+
+#, python-format
+msgid ""
+"Ces départements n'ont pas de montant dans cette nomenclature pour "
+"%(annee)s : ils tiennent leurs comptes dans l'autre nomenclature, ou la "
+"donnée n'est pas publiée."
+msgstr ""
+
+#, python-format
+msgid "Aucun montant publié par l'OFGL pour ces collectivités en %(annee)s."
+msgstr ""
+
+msgid ""
+"Un chiffre entendu : le site montre les valeurs publiées les plus "
+"proches, avec ce que chacune mesure et sa source. Il ne dit pas si le "
+"chiffre entendu est vrai ou faux."
+msgstr ""
+
+msgid "De quoi parle le chiffre ?"
+msgstr ""
+
+msgid ""
+"Pas besoin de connaître le chiffre : chaque thème montre sa dernière "
+"valeur publiée, et toutes ses années une fois choisi."
+msgstr ""
+
+#, python-format
+msgid "%(p)s du PIB"
+msgstr ""
+
+msgid "Autre chose"
+msgstr ""
+
+msgid "un territoire, un poste, un mot"
+msgstr ""
+
+msgid "Un mot (facultatif)"
+msgstr ""
+
+msgid "Gironde, enseignement, TVA"
+msgstr ""
+
+msgid "Valeurs des vignettes : ensemble des administrations publiques"
+msgstr ""
+
+msgid "Le chiffre entendu (facultatif)"
+msgstr ""
+
+msgid "Le nombre"
+msgstr ""
+
+msgid "Voir les chiffres publiés"
+msgstr ""
+
+msgid "Part du PIB"
+msgstr ""
+
+#, python-format
+msgid "Toutes les années (%(n)s)"
+msgstr ""
+
+msgid ""
+"Chaque valeur mène à sa source. Un chiffre entendu ? Saisissez-le à "
+"l'étape 2 : la page montre les années les plus proches."
+msgstr ""
+
+#, python-format
+msgid "Aucun nombre lu dans « %(n)s »."
+msgstr ""
+
+#, python-format
+msgid "Nombre lu : %(x)s"
+msgstr ""
+
+#, python-format
+msgid "mot : « %(m)s »"
+msgstr ""
+
+#, python-format
+msgid "année : %(a)s"
+msgstr ""
+
+#, python-format
+msgid ""
+"Aucun libellé publié ne contient « %(m)s » : aucune valeur n'est montrée,"
+" pour ne pas en proposer sans rapport. Choisissez un thème ci-dessus, ou "
+"essayez un autre mot."
+msgstr ""
+
+msgid "Chercher ce mot ailleurs"
+msgstr ""
+
+msgid "choix du site"
+msgstr ""
+
+msgid "Aucune valeur publiée dans cette unité pour ces critères."
+msgstr ""
+

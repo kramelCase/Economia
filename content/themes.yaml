@@ -1,0 +1,56 @@
+# Fiches thématiques (/fr/theme/<clé>) : ce que chaque thème rassemble, nomenclature par nomenclature.
+# Ces rattachements sont un REGROUPEMENT DU SITE : aucune table officielle ne relie une fonction COFOG à des missions du
+# budget de l'État ou à des fonctions des départements. La fiche les affiche côte à côte, chacun avec sa source, et ne
+# les additionne jamais. Ajouter un thème = ajouter une entrée ici (docs/ROADMAP.md, chantier C).
+#
+#   cofog    : code de la division COFOG (comptes nationaux, Eurostat)
+#   missions : missions du budget de l'État, libellé publié dans le budget vert du PLF 2026 (crédits et dépenses fiscales)
+#   m57      : code de la fonction des départements (nomenclature M57, OFGL)
+
+enseignement:
+  cofog: GF09
+  missions: ["Enseignement scolaire", "Recherche et enseignement supérieur"]
+  m57: "2"
+
+sante:
+  cofog: GF07
+  missions: ["Santé"]
+
+protection-sociale:
+  cofog: GF10
+  missions: ["Solidarité, insertion et égalité des chances", "Régimes sociaux et de retraite", "Travail, emploi et administration des ministères sociaux"]
+  m57: "4"
+
+defense:
+  cofog: GF02
+  missions: ["Défense", "Monde combattant, mémoire et liens avec la Nation"]
+
+securite:
+  cofog: GF03
+  missions: ["Sécurités", "Justice", "Immigration, asile et intégration"]
+  m57: "1"
+
+affaires-economiques:
+  cofog: GF04
+  missions: ["Économie", "Agriculture, alimentation, forêt et affaires rurales", "Investir pour la France de 2030"]
+  m57: "6"
+
+environnement:
+  cofog: GF05
+  missions: ["Écologie, développement et mobilité durables"]
+  m57: "7"
+
+logement:
+  cofog: GF06
+  missions: ["Cohésion des territoires"]
+  m57: "5"
+
+culture:
+  cofog: GF08
+  missions: ["Culture", "Sport, jeunesse et vie associative", "Médias, livre et industries culturelles"]
+  m57: "3"
+
+services-generaux:
+  cofog: GF01
+  missions: ["Engagements financiers de l'État", "Gestion des finances publiques", "Administration générale et territoriale de l'État", "Action extérieure de l'État"]
+  m57: "0"

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, lbl, donut, courbe, fig_src, description with context %}
+{% block title %}{{ ent.nom }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="p-tete"><span class="h-ico">{{ icone("lieu", 18) }}</span><span class="kicker"><a href="/{{ lang }}/territoires">{{ _("Collectivités territoriales") }}</a> · {{ _("Région") if ent.niveau == "region" else _("Département") }}</span></p>
+  <h1>{{ ent.nom }}</h1>
+  {{ description(lang, description) }}
+</header>
+
+<form class="filters" method="get">
+  <label>{{ _("Année") }}
+    <select name="annee">{% for a in annees|reverse %}<option {% if a == annee %}selected{% endif %}>{{ a }}</option>{% endfor %}</select>
+  </label>
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+
+{% if statut %}<p class="caption">{{ _("Statut particulier publié par l'OFGL : %(s)s. Cette collectivité n'entre pas dans la médiane.", s=statuts_noms[statut]) }}</p>{% endif %}
+<p class="caption">{{ _("Agrégats financiers officiels de l'OFGL. La médiane est calculée par ce site sur les %(n)s collectivités du même niveau sans statut particulier.", n=(lignes[0].nb if lignes else 0)) }}{% if lignes and lignes[0].plusieurs %} {{ _("Le fichier publie plusieurs budgets sous ce code cette année : ce site ne choisit pas entre eux et ne les additionne pas ; chaque lien ouvre une ligne publiée.") }}{% endif %}</p>
+
+{# L'essentiel, pour un débutant : quatre agrégats publiés, par habitant, situés face à la médiane et au rang du même
+   niveau (calculés par ce site). Le tableau complet reste dessous, déplié à la demande. #}
+{% set essentiels = {"Dépenses totales": "sortie", "Recettes totales": "entree", "Epargne brute": "epargne", "Encours de dette": "dette"} %}
+<section class="t-essentiel" aria-labelledby="t-eh">
+  <h2 id="t-eh">{{ _("L'essentiel en %(a)s", a=annee) }}</h2>
+  <ul class="t-cartes" data-nolink>{% for l in lignes if l.nom in essentiels %}
+    <li class="t-carte verre">
+      <p class="t-tete"><span class="h-ico">{{ icone(essentiels[l.nom], 18) }}</span>{{ lbl(l.label) }}</p>
+      {% if l.hab %}
+      <p class="t-v"><strong>{{ money(l.hab.valeur, "EUR_HAB") }}</strong> {{ src(lang, l.hab.id) }}</p>
+      {% if l.eur %}<p class="t-tot">{{ _("soit %(m)s au total", m=money(l.eur.valeur)) }} {{ src(lang, l.eur.id) }}</p>{% endif %}
+      {% if l.mediane is not none %}
+      {% set haut = [l.hab.valeur|abs, l.mediane|abs]|max or 1 %}
+      <div class="t-comp" role="img" aria-label="{{ _("%(n)s : %(v)s ; médiane : %(m)s", n=ent.nom, v=money(l.hab.valeur, "EUR_HAB"), m=money(l.mediane, "EUR_HAB")) }}">
+        <span class="t-b"><i style="--w: {{ (l.hab.valeur|abs / haut * 100)|round(1) }}%"></i></span><span class="t-bn">{{ ent.nom }}</span>
+        <span class="t-b is-med"><i style="--w: {{ (l.mediane|abs / haut * 100)|round(1) }}%"></i></span><span class="t-bn">{{ _("Médiane : %(m)s", m=money(l.mediane, "EUR_HAB")) }}</span>
+      </div>
+      {% endif %}
+      {% if l.rang %}<p class="t-rang"><a href="{{ l.href }}">{{ _("Rang %(r)s sur %(n)s", r=l.rang, n=l.nb) }} →</a></p>{% endif %}
+      {% elif l.plusieurs %}<p class="gap-mark">{{ _("%(n)s budgets publiés sous ce code", n=l.plusieurs|length) }}</p>
+      {% else %}<p class="gap-mark">{{ _("non publié") }}</p>{% endif %}
+    </li>
+  {% endfor %}</ul>
+  <p class="caption">{{ _("Montants par habitant publiés par l'OFGL. Médiane et rang calculés par ce site parmi les collectivités du même niveau sans statut particulier ; rang 1 = montant par habitant le plus élevé.") }}</p>
+</section>
+
+<details class="technique t-tout">
+  <summary>{{ icone("tableau", 16) }} {{ _("Tous les agrégats publiés") }}</summary>
+<div class="table-wrap">
+<table>
+  {{ fig_src(lang, sources_table, "caption") }}
+  <thead><tr><th scope="col">{{ _("Agrégat") }}</th><th scope="col" class="num">{{ _("Montant") }}</th>
+    <th scope="col" class="num">{{ _("Par habitant") }}</th><th scope="col" class="num">{{ _("Médiane par habitant") }}</th></tr></thead>
+  <tbody>
+  {% for l in lignes %}
+  <tr><th scope="row">{{ lbl(l.label) }}</th>
+    <td class="num">{% if l.eur %}{{ money(l.eur.valeur) }} {{ src(lang, l.eur.id) }}{% elif l.plusieurs %}<span class="gap-mark">{{ _("%(n)s budgets publiés sous ce code", n=l.plusieurs|length) }}</span> {% for x in l.plusieurs %}{{ src(lang, x.id) }} {% endfor %}{% else %}<span class="gap-mark">{{ _("non publié") }}</span>{% endif %}</td>
+    <td class="num">{% if l.hab %}{{ money(l.hab.valeur, "EUR_HAB") }} {{ src(lang, l.hab.id) }}{% else %}—{% endif %}</td>
+    <td class="num muted">{{ money(l.mediane, "EUR_HAB") if l.mediane is not none else "—" }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+</details>
+
+<section>
+  <h2>{{ _("Dépenses totales par habitant, année après année") }}</h2>
+  <p class="caption">{{ _("Montants par habitant publiés par l'OFGL. La médiane des collectivités du même niveau est calculée par ce site.") }}</p>
+  {{ courbe(lang, evolution, _("Évolution des dépenses totales par habitant")) }}
+  {% for x in rupture %}<p class="caption">{% if x.motif == "siren" %}{{ _("Le fichier publie un autre numéro SIREN sous ce code à partir de %(a)s : ce n'est plus la même collectivité. L'évolution ne se lit pas à travers ce changement.", a=x.a) }}{% else %}{{ _("La population publiée pour ce code passe de %(p0)s à %(p1)s habitants en %(a)s : le périmètre n'est plus le même. L'évolution ne se lit pas à travers ce changement.", p0=integer(x.avant), p1=integer(x.apres), a=x.a) }}{% endif %}</p>{% endfor %}
+  {% if sans_point %}<p class="caption">{{ _("Pas de point pour %(a)s : le fichier publie plusieurs budgets sous ce code ces années-là ; ce site ne les additionne pas.", a=sans_point|join(", ")) }}</p>{% endif %}
+</section>
+
+{% if fonctions %}
+<section>
+  <h2>{{ _("À quoi servent ces dépenses ?") }}</h2>
+  <p class="muted">{{ _("Dépenses totales hors remboursements de dette, budget principal uniquement (présentation fonctionnelle, nomenclature %(n)s).", n=nomen) }}</p>
+  {{ donut(lang, camembert, "EUR", _("en %(annee)s", annee=annee), _("Répartition par fonction")) }}
+  <p class="caption">{{ _("Parts calculées par ce site : fonction ÷ somme des fonctions publiées.") }}</p>
+</section>
+{% elif ent.niveau == "region" %}
+<aside class="note gap">
+  <h2>{{ _("Répartition par fonction : non publiée") }}</h2>
+  <p>{{ _("Les jeux OFGL collectés publient une répartition par fonction pour les départements, aucune pour les régions.") }} <a href="/{{ lang }}/lacunes">{{ _("Voir les lacunes") }}</a></p>
+</aside>
+{% endif %}
+
+<aside class="note">
+  <h2>{{ _("À savoir pour bien lire") }}</h2>
+  <ul>
+    <li>{{ _("Les agrégats sont emboîtés : les dépenses de fonctionnement font partie des dépenses totales. Ils ne s'additionnent pas entre eux.") }}</li>
+    <li>{{ _("Selon l'année, un département tient ses comptes en nomenclature M52 ou M57 (indiqué dans la source) : les fonctions n'y sont pas numérotées de la même façon et ne se comparent pas directement.") }}</li>
+  </ul>
+</aside>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, provisoire, courbe, fig_src with context %}
+{% block title %}{{ c.label.texte }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker"><a href="/{{ lang }}/theme">{{ _("Thèmes") }}</a></p>
+  <h1>{{ c.label.texte }}</h1>
+  <p class="lede">{{ _("Les chiffres publiés sur ce sujet. Chaque bloc vient d'une publication différente : ils ne s'additionnent pas.") }}</p>
+</header>
+
+<section class="fi-bloc" id="essentiel">
+  <h2>{{ _("L'essentiel, toutes administrations publiques, en %(a)s", a=c.annee) }}</h2>
+  <div class="fi-chiffres">
+    {% if c.m %}<p class="fi-c"><strong>{{ money(c.m.valeur, "MIO_EUR") }}</strong>{{ src(lang, c.m.id) }}{{ provisoire(c.m.provisoire) }}<span>{{ _("de dépenses") }}</span></p>{% endif %}
+    {% if c.part %}<p class="fi-c"><strong>{{ money(c.part.valeur, "PC_TOT") }}</strong>{{ src(lang, c.part.id) }}{{ provisoire(c.part.provisoire) }}<span>{{ _("de la dépense publique") }}</span></p>{% endif %}
+    {% if c.pib %}<p class="fi-c"><strong>{{ money(c.pib.valeur, "PC_GDP") }}</strong>{{ src(lang, c.pib.id) }}{{ provisoire(c.pib.provisoire) }}<span>{{ _("du PIB") }}</span></p>{% endif %}
+  </div>
+  {{ fig_src(lang, c.sources) }}
+</section>
+
+<section class="fi-bloc" id="evolution">
+  <h2>{{ _("Évolution depuis %(a)s, en part du PIB", a=c.debut) }}</h2>
+  {{ courbe(lang, c.evolution, _("Dépenses du thème en part du PIB")) }}
+</section>
+
+<section class="fi-bloc" id="qui">
+  <h2>{{ _("Quelle administration dépense") }}</h2>
+  <p class="caption">{{ _("Montants publiés pour chaque sous-secteur en %(a)s. Les sous-secteurs se versent aussi de l'argent entre eux : leurs montants ne s'additionnent pas.", a=c.annee) }}</p>
+  <ol class="rank">{% for s in c.secteurs %}
+    <li><span>{{ s.nom }}</span> <span class="num">{{ money(s.m.valeur, "MIO_EUR") }}{{ src(lang, s.m.id) }}{{ provisoire(s.m.provisoire) }}</span></li>
+  {% endfor %}</ol>
+  {{ fig_src(lang, sources_secteurs) }}
+</section>
+
+<section class="fi-bloc" id="detail">
+  <h2>{{ _("À quoi précisément") }}</h2>
+  <ol class="rank">{% for d in c.detail %}
+    <li><span>{{ d.label.texte }}</span> <span class="num">{{ money(d.m.valeur, "MIO_EUR") }}{{ src(lang, d.m.id) }}{{ provisoire(d.m.provisoire) }}</span></li>
+  {% endfor %}</ol>
+  {{ fig_src(lang, sources_detail) }}
+</section>
+
+{% if etat %}
+<section class="fi-bloc" id="etat">
+  <h2>{{ _("Dans le budget de l'État") }}</h2>
+  <p class="caption">{{ _("Missions rattachées à ce thème par ce site (regroupement du site, pas une correspondance officielle). Crédits de paiement, aux trois stades publiés : ce n'est pas le même périmètre que les comptes nationaux ci-dessus.") }}</p>
+  <div class="table-wrap"><table>
+    {{ fig_src(lang, sources_etat, "caption") }}
+    <thead><tr><th scope="col">{{ _("Mission") }}</th>{% for a, s in stades %}<th scope="col" class="num">{% if s == "execution" %}{{ _("Exécution %(a)s", a=a) }}{% elif s == "lfi" %}{{ _("Loi votée %(a)s", a=a) }}{% else %}{{ _("Projet %(a)s", a=a) }}{% endif %}</th>{% endfor %}</tr></thead>
+    <tbody>{% for m in etat %}
+      <tr><th scope="row"><a href="/{{ lang }}/budget-etat?mission={{ m.id }}#zoom">{{ m.label.texte }}</a></th>
+        {% for col in m.cols %}<td class="num">{% if col.v is not none %}{{ money(col.v) }}{{ src(lang, href=col.href) }}{% else %}—{% endif %}</td>{% endfor %}</tr>
+    {% endfor %}</tbody>
+  </table></div>
+  {% set avec = etat|selectattr("niches")|list %}
+  {% if avec %}
+  <h3>{{ _("Dépenses fiscales rattachées à ces missions") }}</h3>
+  <p class="caption">{{ _("Rattachement publié dans le budget vert du PLF 2026. Coût estimé pour 2026 des dépenses fiscales chiffrées ; celles publiées sans montant ne sont pas comptées.") }}</p>
+  <ul class="ctx-list">{% for m in avec %}
+    <li>{{ m.label.texte }} : <strong>{{ money(m.niches.v) }}</strong>{{ src(lang, href=m.niches.href) }} <span class="muted">({{ _("%(n)s montants", n=integer(m.niches.n)) }})</span></li>
+  {% endfor %}</ul>
+  {{ fig_src(lang, sources_etat) }}
+  {% endif %}
+</section>
+{% endif %}
+
+{% if paire %}
+<details class="fi-bloc fi-plus" id="differences">
+  <summary><h2>{{ _("Pourquoi ces chiffres diffèrent") }}</h2></summary>
+  <p>{{ _("« %(a)s » dans les comptes nationaux et « %(b)s » dans le budget de l'État ne donnent pas le même montant. Ce qui les sépare :", a=paire.a.entite_nom ~ " · " ~ paire.a.label.texte, b=paire.b.label.texte) }}</p>
+  <ul class="dif-court">{% for x in paire.crit if x.differe %}
+    <li><strong>{{ x.nom }}</strong> : {{ x.a }} / {{ x.b }}</li>
+  {% endfor %}</ul>
+  <p><a href="{{ paire.href }}">{{ _("Les deux chiffres côte à côte, critère par critère") }} →</a></p>
+</details>
+{% endif %}
+
+{% if m57 %}
+<section class="fi-bloc" id="territoires">
+  <h2>{{ _("Dans les départements") }}</h2>
+  <p>{{ _("Les départements publient leurs dépenses par fonction (nomenclature M57). La fonction la plus proche de ce thème est « %(f)s ».", f=m57.label.texte) }}</p>
+  <p><a class="button" href="/{{ lang }}/territoires?niveau=departement&amp;indicateur=f57:{{ m57.code }}">{{ _("Comparer les départements sur cette fonction") }}</a></p>
+  <p class="caption">{{ _("Une dépense nationale ne se répartit pas entre les territoires : les comptes nationaux ne publient pas cette ventilation.") }}</p>
+</section>
+{% endif %}
+
+<details class="fi-bloc fi-plus" id="limites">
+  <summary><h2>{{ _("Limites") }}</h2></summary>
+  <ul>
+    <li>{{ _("Comptes nationaux et budget de l'État sont deux publications différentes, aux périmètres différents : leurs montants ne se comparent pas directement.") }}</li>
+    <li>{{ _("Le rattachement des missions et de la fonction des départements à ce thème est un choix du site.") }}</li>
+    <li>{{ _("Les montants versés d'une administration à une autre ne sont pas encore couverts.") }}</li>
+    {% for l in c.lacunes %}<li><a href="/{{ lang }}/lacunes">{{ l.titre }}</a></li>{% endfor %}
+  </ul>
+</details>
+
+<section class="fi-bloc" id="aller-plus-loin">
+  <h2>{{ _("Aller plus loin") }}</h2>
+  <ul class="portes">
+    <li><a href="/{{ lang }}/depenses-publiques?fonction={{ c.noeud.code }}"><span class="portes-t">{{ _("Où va l'argent ?") }}</span><span class="portes-d">{{ _("Le même thème parmi toutes les fonctions, année par année.") }}</span></a></li>
+    <li><a href="/{{ lang }}/serie?ind={{ c.noeud.code }}"><span class="portes-t">{{ _("Obtenir les chiffres") }}</span><span class="portes-d">{{ _("La série par administration, à télécharger avec sa source.") }}</span></a></li>
+    <li><a href="/{{ lang }}/atelier"><span class="portes-t">{{ _("Faire un graphique à partager") }}</span><span class="portes-d">{{ _("Choisir des séries et une forme, puis télécharger l'image.") }}</span></a></li>
+    <li><a href="/{{ lang }}/machine"><span class="portes-t">{{ _("La machine des comptes publics") }}</span><span class="portes-d">{{ _("Le thème parmi les flux de recettes et de dépenses, en 3D.") }}</span></a></li>
+  </ul>
+</section>
+{% endblock %}

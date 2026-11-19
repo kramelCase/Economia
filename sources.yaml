@@ -1,0 +1,407 @@
+# Catalogue des sources officielles. Chaque entrée = un jeu de données brut, collecté tel quel.
+# Ajouter une source ici, puis `make fetch` et `make profile` : le modèle se déduit des profils.
+#
+# type: ods      -> API Opendatasoft explore v2.1 (export CSV intégral, `where` optionnel)
+# type: http_csv -> URL CSV directe
+#
+# perimetre: ce que le chiffre couvre (affiché à côté de chaque montant dans l'interface).
+# referentiel: le cadre comptable dans lequel la source publie (obligatoire pour une source qui porte des montants) :
+#   comptes_nationaux -> comptabilité nationale (SEC 2010), Eurostat et Insee
+#   budget_etat       -> comptabilité budgétaire de l'État (LOLF) : crédits votés et consommés
+#   comptes_locaux    -> comptes de gestion des collectivités locales (instructions budgétaires M52, M57...), OFGL
+
+sources:
+  - id: etat_budget_vert_plf2026
+    titre: "PLF 2026 - Budget vert"
+    editeur: "DB"
+    type: ods
+    portail: https://data.economie.gouv.fr
+    dataset: plf-2026-budget-vert
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Budget de l'État : crédits budgétaires, dépenses fiscales et taxes affectées (exécution 2024, LFI 2025, PLF 2026)"
+    referentiel: budget_etat
+    document_reference: "Rapport sur l'impact environnemental du budget de l'État, annexe au PLF 2026"
+
+  - id: etat_plf2025_destination
+    titre: "PLF 2025 - Dépenses 2025 selon destination"
+    editeur: "DB"
+    type: ods
+    portail: https://data.economie.gouv.fr
+    dataset: plf25-depenses-2025-selon-destination
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Budget de l'État : crédits prévus au PLF 2025 (AE/CP) par mission, programme, action, sous-action"
+    referentiel: budget_etat
+    document_reference: "Projet de loi de finances pour 2025, projets annuels de performances"
+
+  - id: etat_depenses_fiscales_plf2024
+    titre: "PLF 2024 - Voies et moyens tome II - Dépenses fiscales"
+    editeur: "DB"
+    type: ods
+    portail: https://data.economie.gouv.fr
+    dataset: plf-2024-vm-tome-2_depenses-fiscales
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Dépenses fiscales de l'État recensées au PLF 2024"
+    referentiel: budget_etat
+    document_reference: "Évaluation des voies et moyens, tome II, annexe au PLF 2024"
+
+  - id: eurostat_cofog_fr
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    page: https://ec.europa.eu/eurostat/cache/metadata/en/gov_10a_exp_esms.htm
+    titre: "Dépenses des administrations publiques par fonction (COFOG) - France"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/gov_10a_exp/A.MIO_EUR+PC_TOT+PC_GDP.S13+S1311+S1313+S1314..TE.FR?format=SDMX-CSV&startPeriod=1995"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Toutes les administrations publiques (S13) et sous-secteurs : centrales (S1311), locales (S1313), sécurité sociale (S1314)"
+    referentiel: comptes_nationaux
+    document_reference: "INSEE, Comptes nationaux annuels base 2020 - Dépenses des administrations publiques ventilées par fonction"
+
+  # Libellés officiels de la nomenclature COFOG, une source par langue (traductions officielles).
+  - id: eurostat_cofog_libelles_fr
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+      structure.xml: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/COFOG99
+    titre: "Nomenclature COFOG 1999 - libellés officiels (français)"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/COFOG99?format=TSV&lang=fr"
+    entete: false
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Libellés de la classification des fonctions des administrations publiques"
+    document_reference: "Classification of the Functions of Government (COFOG), ONU / Eurostat"
+
+  - id: eurostat_cofog_libelles_en
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+      structure.xml: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/COFOG99
+    titre: "COFOG 1999 classification - official labels (English)"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/COFOG99?format=TSV&lang=en"
+    entete: false
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Libellés de la classification des fonctions des administrations publiques"
+    document_reference: "Classification of the Functions of Government (COFOG), ONU / Eurostat"
+
+  # Versions « consolidées » : budget principal + budgets annexes, flux internes retirés par l'OFGL.
+  # C'est le chiffre officiel « combien dépense ma collectivité » sans double compte.
+  - id: ofgl_regions
+    titre: "Comptes consolidés des régions 2012-2025"
+    editeur: "OFGL, calcul OFGL - source DGFiP"
+    type: ods
+    portail: https://data.ofgl.fr
+    dataset: ofgl-base-regions-consolidee
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Régions et collectivités territoriales uniques : agrégats financiers consolidés (budget principal + annexes)"
+    referentiel: comptes_locaux
+    document_reference: "OFGL, Méthodologie - définitions et formules des agrégats financiers"
+
+  - id: ofgl_departements
+    titre: "Comptes consolidés des départements 2012-2025"
+    editeur: "OFGL, calcul OFGL - source DGFiP"
+    type: ods
+    portail: https://data.ofgl.fr
+    dataset: ofgl-base-departements-consolidee
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Départements : agrégats financiers consolidés (budget principal + annexes)"
+    referentiel: comptes_locaux
+    document_reference: "OFGL, Méthodologie - définitions et formules des agrégats financiers"
+
+  - id: ofgl_departements_fonctionnelle
+    titre: "Comptes des départements 2012-2025 - Présentation fonctionnelle"
+    editeur: "OFGL, calcul OFGL - source DGFiP"
+    type: ods
+    portail: https://data.ofgl.fr
+    dataset: ofgl-base-departements-fonctionnelle
+    # 865 000 lignes au total : la v1 se limite aux exercices récents (filtre conservé dans la provenance).
+    where: "exer >= date'2020'"
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Départements : dépenses et recettes par fonction (social, routes, collèges...)"
+    referentiel: comptes_locaux
+    document_reference: "OFGL, Méthodologie - définitions et formules des agrégats financiers"
+
+  # Pages de définition INSEE (FR + EN) des concepts listés dans content/concepts.yaml (clé `insee`).
+  - id: insee_definitions
+    annexes:
+      mentions.html: https://www.insee.fr/fr/information/2008466
+    page: https://www.insee.fr/fr/metadonnees/definitions
+    titre: "INSEE - Définitions, méthodes et qualité"
+    editeur: "Insee"
+    type: insee_definitions
+    portail: https://www.insee.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Définitions officielles des concepts statistiques (sert au lexique)"
+    document_reference: "https://www.insee.fr/fr/metadonnees/definitions"
+
+  - id: ofgl_definitions_agregats
+    titre: "Méthodologie OFGL - Définitions des agrégats financiers"
+    editeur: "OFGL"
+    type: ods
+    portail: https://data.ofgl.fr
+    dataset: methodologie-ofgl-definitions-agregats-financiers
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Définitions officielles des agrégats financiers locaux (sert au lexique)"
+    document_reference: "OFGL, Méthodologie"
+
+  # --- Comptes des administrations publiques : recettes, dépenses, solde, intérêts, dette (Eurostat d'après l'INSEE) ---
+  - id: eurostat_apu_principaux
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    page: https://ec.europa.eu/eurostat/cache/metadata/en/gov_10a_main_esms.htm
+    titre: "Principaux agrégats des administrations publiques - France"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/gov_10a_main/A.MIO_EUR+PC_GDP.S13+S1311+S1313+S1314.TE+TR+B9+D41PAY+P11_P12_P131+D2REC+D39REC+D4REC+D5REC+D61REC+D7REC+D9REC.FR?format=SDMX-CSV&startPeriod=1995"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Toutes les administrations publiques (S13) et sous-secteurs : recettes totales et leurs catégories, dépenses totales, capacité ou besoin de financement, intérêts versés"
+    referentiel: comptes_nationaux
+    document_reference: "Eurostat, gov_10a_main - Government revenue, expenditure and main aggregates"
+
+  # Calendrier des comptes nationaux annuels (compte provisoire, semi-définitif, définitif) : la note de révision de la
+  # dernière campagne. Eurostat ne marque pas ces années dans gov_10a_main ; le statut vient de cette note, citée.
+  - id: insee_note_revisions
+    annexes:
+      mentions.html: https://www.insee.fr/fr/information/2008466
+    page: https://www.insee.fr/fr/statistiques/8988934
+    titre: "Les principales révisions intervenues sur les comptes de la Nation (note de révision de la campagne annuelle)"
+    editeur: "Insee"
+    type: http_file
+    fichier: note.pdf
+    url: "https://www.insee.fr/fr/statistiques/fichier/8988934/Note_revisions_2023a2025.pdf"
+    portail: https://www.insee.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Statut (provisoire, semi-définitif, définitif) des trois dernières années des comptes nationaux annuels"
+    document_reference: "Insee, note de révision des comptes nationaux annuels"
+
+  - id: eurostat_dette_maastricht
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    page: https://ec.europa.eu/eurostat/cache/metadata/en/gov_10dd_esms.htm
+    titre: "Dette publique au sens de Maastricht - France"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/gov_10dd_edpt1/A.MIO_EUR+PC_GDP.S13+S1311+S1313+S1314.GD.FR?format=SDMX-CSV&startPeriod=1995"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Dette brute consolidée des administrations publiques (S13) et de leurs sous-secteurs, en fin d'année"
+    referentiel: comptes_nationaux
+    document_reference: "Eurostat, gov_10dd_edpt1 - Government deficit/surplus, debt and associated data"
+
+  # Qui détient la dette : ventilation de la dette publique par secteur détenteur (contrepartie), publiée depuis 2020.
+  - id: eurostat_dette_detenteurs
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    page: https://ec.europa.eu/eurostat/cache/metadata/en/gov_10dd_sgd_esms.htm
+    titre: "Dette publique par secteur détenteur - France"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/gov_10dd_ggd/A.GD.S1+S11_S14_S15+S121+S122_S123+S124-S129+S1_S2+S2.S13.TOTAL.MIO_EUR.FR?format=SDMX-CSV&startPeriod=1995"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Dette brute de l'ensemble des administrations publiques (S13) ventilée par secteur qui la détient (contrepartie)"
+    referentiel: comptes_nationaux
+    document_reference: "Eurostat, gov_10dd_ggd - Government debt by counterpart sector"
+
+  # Qui paie : détail des impôts et cotisations reçus par les administrations, dont les postes nommés par payeur.
+  - id: eurostat_prelevements_detail
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    page: https://ec.europa.eu/eurostat/cache/metadata/en/gov_10a_taxag_esms.htm
+    titre: "Principaux agrégats fiscaux des administrations publiques - France"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/gov_10a_taxag/A.MIO_EUR.S13.D2+D211+D214+D29+D5+D51A+D51B+D61+D611+D613.FR?format=SDMX-CSV&startPeriod=1995"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Impôts et cotisations reçus par l'ensemble des administrations publiques (S13), dont impôts sur le revenu des ménages et des sociétés, cotisations à la charge des employeurs et des ménages"
+    referentiel: comptes_nationaux
+    document_reference: "Eurostat, gov_10a_taxag - Main national accounts tax aggregates"
+
+  # Comment c'est dépensé : dépenses de chaque fonction COFOG par nature (rémunérations, consommations intermédiaires,
+  # prestations sociales, subventions, investissement...) ; ces neuf postes s'additionnent au total TE de la fonction.
+  - id: eurostat_depenses_nature
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    page: https://ec.europa.eu/eurostat/cache/metadata/en/gov_10a_exp_esms.htm
+    titre: "Dépenses des administrations publiques par fonction (COFOG) et par nature - France"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/data/gov_10a_exp/A.MIO_EUR.S13.GF01+GF02+GF03+GF04+GF05+GF06+GF07+GF08+GF09+GF10.TE+D1+P2+D29_D5_D8+D3+D4+D62_D632+D7+D9+OP5ANP.FR?format=SDMX-CSV&startPeriod=1995"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Ensemble des administrations publiques (S13) : dépenses de chaque fonction COFOG ventilées par nature d'opération (SEC 2010)"
+    referentiel: comptes_nationaux
+    document_reference: "Eurostat, gov_10a_exp - General government expenditure by function (COFOG)"
+
+  - id: eurostat_secteurs_fr
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+      structure.xml: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/SECTOR
+    titre: "Nomenclature des secteurs institutionnels (SECTOR) - libellés officiels (français)"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/SECTOR?format=TSV&lang=fr"
+    entete: false
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Libellés des secteurs institutionnels (ménages, sociétés, banque centrale, reste du monde...)"
+    document_reference: "Système européen des comptes (SEC 2010)"
+
+  - id: eurostat_secteurs_en
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+      structure.xml: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/SECTOR
+    titre: "Institutional sectors (SECTOR) - official labels (English)"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/SECTOR?format=TSV&lang=en"
+    entete: false
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Libellés des secteurs institutionnels (ménages, sociétés, banque centrale, reste du monde...)"
+    document_reference: "European system of accounts (ESA 2010)"
+
+  - id: eurostat_na_item_fr
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+      structure.xml: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/NA_ITEM
+    titre: "Nomenclature des postes des comptes nationaux (NA_ITEM) - libellés officiels (français)"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/NA_ITEM?format=TSV&lang=fr"
+    entete: false
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Libellés des postes des comptes nationaux (recettes, dépenses, solde, dette...)"
+    document_reference: "Système européen des comptes (SEC 2010)"
+
+  - id: eurostat_na_item_en
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+      structure.xml: https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/NA_ITEM
+    titre: "National accounts items (NA_ITEM) - official labels (English)"
+    editeur: "Eurostat"
+    type: http_csv
+    url: "https://ec.europa.eu/eurostat/api/dissemination/sdmx/2.1/codelist/ESTAT/NA_ITEM?format=TSV&lang=en"
+    entete: false
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Libellés des postes des comptes nationaux (recettes, dépenses, solde, dette...)"
+    document_reference: "European system of accounts (ESA 2010)"
+
+  # --- Vie institutionnelle : fonctions exercées et votes des textes budgétaires (Assemblée nationale) ---
+  # Des faits datés : qui exerçait quelle fonction, quel texte a été voté, comment chaque groupe a voté.
+  # Le site n'établit aucun lien de cause entre ces faits et les montants.
+  - id: an_acteurs_organes
+    page: https://data.assemblee-nationale.fr/acteurs/historique-des-deputes
+    titre: "Acteurs, mandats et organes depuis la XIe législature"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: amo.zip
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/17/amo/tous_acteurs_mandats_organes_xi_legislature/AMO30_tous_acteurs_tous_mandats_tous_organes_historique.json.zip"
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Présidence de la République, gouvernements et ministères (depuis 2007), groupes et partis politiques, mandats de leurs membres"
+    document_reference: "Assemblée nationale, open data - Acteurs, mandats et organes"
+
+  - id: an_scrutins_14
+    page: https://data.assemblee-nationale.fr/archives-anterieures/archives-14e/scrutins
+    titre: "Scrutins publics de la XIVe législature (2012-2017)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: scrutins.zip
+    pages_scrutins: true  # page d'analyse de chaque scrutin retenu, collectée avec l'archive
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/14/loi/scrutins/Scrutins_XIV.json.zip"
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Scrutins publics de l'Assemblée nationale, avec la position de chaque groupe"
+    document_reference: "Assemblée nationale, open data - Scrutins"
+
+  - id: an_scrutins_15
+    page: https://data.assemblee-nationale.fr/archives-anterieures/archives-15e/scrutins
+    titre: "Scrutins publics de la XVe législature (2017-2022)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: scrutins.zip
+    pages_scrutins: true  # page d'analyse de chaque scrutin retenu, collectée avec l'archive
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/15/loi/scrutins/Scrutins_XV.json.zip"
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Scrutins publics de l'Assemblée nationale, avec la position de chaque groupe"
+    document_reference: "Assemblée nationale, open data - Scrutins"
+
+  - id: an_scrutins_16
+    page: https://data.assemblee-nationale.fr/archives-16e/votes
+    titre: "Scrutins publics de la XVIe législature (2022-2024)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: scrutins.zip
+    pages_scrutins: true  # page d'analyse de chaque scrutin retenu, collectée avec l'archive
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/16/loi/scrutins/Scrutins.json.zip"
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Scrutins publics de l'Assemblée nationale, avec la position de chaque groupe"
+    document_reference: "Assemblée nationale, open data - Scrutins"
+
+  - id: an_scrutins_17
+    page: https://data.assemblee-nationale.fr/travaux-parlementaires/votes
+    titre: "Scrutins publics de la XVIIe législature (depuis 2024)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: scrutins.zip
+    pages_scrutins: true  # page d'analyse de chaque scrutin retenu, collectée avec l'archive
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/17/loi/scrutins/Scrutins.json.zip"
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Scrutins publics de l'Assemblée nationale, avec la position de chaque groupe"
+    document_reference: "Assemblée nationale, open data - Scrutins"
+
+  # Dossiers législatifs : relient chaque scrutin (voteRef) à son texte et à la loi promulguée (n°, JO, NOR, Légifrance).
+  - id: an_dossiers_14
+    titre: "Dossiers législatifs de la XIVe législature (2012-2017)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: dossiers.zip
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/14/loi/dossiers_legislatifs/Dossiers_Legislatifs_XIV.json.zip"
+    page: https://data.assemblee-nationale.fr/archives-anterieures/archives-14e/dossiers-legislatifs
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Dossiers législatifs de l'Assemblée nationale : actes, scrutins, promulgation"
+
+  - id: an_dossiers_15
+    titre: "Dossiers législatifs de la XVe législature (2017-2022)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: dossiers.zip
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/15/loi/dossiers_legislatifs/Dossiers_Legislatifs_XV.json.zip"
+    page: https://data.assemblee-nationale.fr/archives-anterieures/archives-15e/dossiers-legislatifs
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Dossiers législatifs de l'Assemblée nationale : actes, scrutins, promulgation"
+
+  - id: an_dossiers_16
+    titre: "Dossiers législatifs de la XVIe législature (2022-2024)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: dossiers.zip
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/16/loi/dossiers_legislatifs/Dossiers_Legislatifs.json.zip"
+    page: https://data.assemblee-nationale.fr/archives-16e/dossiers-legislatifs
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Dossiers législatifs de l'Assemblée nationale : actes, scrutins, promulgation"
+
+  - id: an_dossiers_17
+    titre: "Dossiers législatifs de la XVIIe législature (depuis 2024)"
+    editeur: "Assemblée nationale"
+    type: http_file
+    fichier: dossiers.zip
+    url: "https://data.assemblee-nationale.fr/static/openData/repository/17/loi/dossiers_legislatifs/Dossiers_Legislatifs.json.zip"
+    page: https://data.assemblee-nationale.fr/travaux-parlementaires/dossiers-legislatifs
+    portail: https://data.assemblee-nationale.fr
+    licence: "Licence Ouverte v2.0 (Etalab)"
+    perimetre: "Dossiers législatifs de l'Assemblée nationale : actes, scrutins, promulgation"
+
+  # Catalogue officiel d'Eurostat : titre FR/EN, date de dernière mise à jour des données, lien des métadonnées.
+  - id: eurostat_catalogue
+    annexes:
+      copyright.html: https://ec.europa.eu/eurostat/web/main/help/copyright-notice
+    titre: "Catalogue des jeux de données Eurostat (table des matières)"
+    editeur: "Eurostat"
+    type: http_file
+    fichier: toc.xml
+    url: "https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/xml"
+    licence: "Réutilisation libre avec mention de la source (politique de copyright Eurostat)"
+    perimetre: "Titres, codes, dates de mise à jour et métadonnées de chaque jeu publié par Eurostat"

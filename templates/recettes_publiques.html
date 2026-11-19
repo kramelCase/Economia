@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, lbl, provisoire, donut, courbe, description with context %}
+{% block title %}{{ _("D'où vient l'argent public ?") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Toutes administrations publiques") }}</p>
+  <h1>{{ _("D'où vient l'argent public ?") }}</h1>
+  <p class="lede">{{ _("Les recettes des administrations publiques par catégorie des comptes nationaux, d'après Eurostat.") }}</p>
+</header>
+
+<form class="filters" method="get">
+  <label>{{ _("Administrations") }}
+    <select name="secteur">{% for s in secteurs %}<option value="{{ s.code }}" {% if s.code == secteur %}selected{% endif %}>{{ nom_entite(s.nom) }}</option>{% endfor %}</select>
+  </label>
+  <label>{{ _("Année") }}
+    <select name="annee">{% for a in annees|reverse %}<option {% if a == annee %}selected{% endif %}>{{ a }}</option>{% endfor %}</select>
+  </label>
+  <input type="hidden" name="categorie" value="{{ categorie }}">
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+
+<p class="big">
+  {% if tot %}<strong>{{ money(tot.valeur, "MIO_EUR") }}</strong> {{ src(lang, tot.id) }}{{ provisoire(tot.provisoire) }}{% endif %}
+  <span>{{ _("de recettes en %(annee)s", annee=annee) }}</span>
+</p>
+
+<section>
+  <h2>{{ _("Répartition par catégorie") }}</h2>
+  <p class="caption">{{ _("Cliquez sur une catégorie pour voir son évolution. Les catégories publiées s'additionnent exactement aux recettes totales (contrôle du site) ; les parts sont calculées par ce site : catégorie ÷ recettes totales.") }}</p>
+  {{ description(lang, source_info("eurostat_apu_principaux")) }}
+  {{ donut(lang, anneau, "MIO_EUR", _("en %(annee)s", annee=annee), _("Répartition par catégorie")) }}
+</section>
+
+<section id="zoom" class="zoom">
+  <p class="kicker">{{ _("Zoom") }}</p>
+  <h2>{{ lbl(categorie_label) }}</h2>
+  {% if categorie_m %}<p class="big small"><strong>{{ money(categorie_m.valeur, "MIO_EUR") }}</strong> {{ src(lang, categorie_m.id) }}{{ provisoire(categorie_m.provisoire) }} <span>{{ _("en %(annee)s", annee=annee) }}</span></p>{% endif %}
+  <h3>{{ _("Évolution en pourcentage du PIB") }}</h3>
+  <p class="caption">{{ _("Montant de la catégorie rapporté au PIB, publié par Eurostat.") }}</p>
+  {{ courbe(lang, evolution, _("Série annuelle")) }}
+  <p><a href="/{{ lang }}/serie?dom=apu&amp;ind={{ categorie }}&amp;qui={{ secteur }}">{{ _("Explorer cette série") }} →</a></p>
+</section>
+
+<aside class="note">
+  <h2>{{ _("À savoir pour bien lire") }}</h2>
+  <ul>
+    {% if tot_s13 %}
+    <li>{{ _("La somme des trois sous-secteurs (%(somme)s, calcul du site) dépasse le total publié pour l'ensemble des administrations (%(total)s) : ce site n'additionne donc jamais les sous-secteurs.", somme=money(somme_sous_secteurs, "MIO_EUR"), total=money(tot_s13.valeur, "MIO_EUR")) }}</li>
+    {% endif %}
+    <li>{{ _("Les libellés des catégories sont ceux de la nomenclature des comptes nationaux publiée par Eurostat (NA_ITEM).") }}</li>
+    <li>{{ _("« Provisoire » : valeur marquée provisoire dans la source.") }}</li>
+    <li>{{ _("Les couleurs restent attachées à une catégorie quelle que soit l'année affichée : les cinq catégories mises en avant sont celles dont le montant est le plus élevé pour ce secteur la dernière année publiée.") }}</li>
+  </ul>
+  <p><a href="/{{ lang }}/depenses-publiques?secteur={{ secteur }}&amp;annee={{ annee }}">{{ _("Les dépenses du même périmètre, par fonction") }} →</a></p>
+</aside>
+{% endblock %}

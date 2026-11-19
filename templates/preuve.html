@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "_macros.html" import fig_src with context %}
+{% block title %}{{ _("Preuve") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Preuve") }}</p>
+  <h1 lang="fr">{% if genre == "scrutin" %}{{ r.titre[0]|upper }}{{ r.titre[1:] }}{% elif genre == "loi" %}{{ r.titre_dossier }}{% elif genre == "fonction" %}{{ r.nom }}{% if r.qualite %} · {{ r.qualite }}{% endif %}{% else %}{{ r.libelle }}{% endif %}</h1>
+  {% if genre == "fonction" %}<p class="lede" lang="fr">{{ r.libelle }}</p>{% endif %}
+</header>
+<dl class="facts">
+  <dt>{{ _("Source") }}</dt><dd><a href="/{{ lang }}/source/{{ info.id }}" lang="fr">{{ info.titre }}</a></dd>
+  <dt>{{ _("Éditeur") }}</dt><dd>{{ info.editeur }}</dd>
+  {% if genre == "loi" and r.code_loi %}<dt>{{ _("Loi promulguée") }}</dt><dd lang="fr">{{ r.code_loi }} · {{ r.titre_loi }}</dd>
+  <dt>{{ _("Journal officiel") }}</dt><dd>{{ _("JO n° %(n)s du %(d)s", n=r.num_jo, d=r.date_jo) }} · NOR <code>{{ r.nor }}</code></dd>{% endif %}
+  {% if officiel %}<dt>{% if genre == "loi" %}{{ _("Lien Légifrance publié dans le dossier") }}{% else %}{{ _("Page officielle du scrutin") }}{% endif %}</dt><dd><a class="url" href="{{ officiel }}" rel="external noopener">{{ officiel }}</a></dd>{% endif %}
+  <dt>{{ _("Fichier collecté") }}</dt><dd><code>{{ fi.chemin }}</code></dd>
+  <dt>{{ _("Adresse exacte") }}</dt><dd><a class="url" href="{{ fi.url }}" rel="external noopener">{{ fi.url }}</a></dd>
+  <dt>{{ _("Collecte") }}</dt><dd>{{ fi.collecte }}</dd>
+  <dt>sha256</dt><dd><code class="hash">{{ fi.sha256 }}</code></dd>
+  <dt>{{ _("Entrée dans l'archive") }}</dt><dd><code>{{ r.entree }}</code></dd>
+</dl>
+<section>
+  <h2>{{ _("L'enregistrement d'origine, relu dans l'archive") }}</h2>
+  {% if genre == "loi" %}<p class="caption">{{ _("Extrait du dossier : son titre, l'acte de promulgation et les scrutins qu'il cite, reproduits tels quels.") }}</p>{% endif %}
+  {% if genre == "scrutin" %}<p class="caption">{{ _("Les listes nominatives des votants sont omises ici ; la synthèse et le décompte de chaque groupe sont reproduits tels quels.") }}</p>{% endif %}
+  <pre class="brut" data-nolink>{{ brut }}</pre>
+  {{ fig_src(lang, [info.id]) }}
+</section>
+{% endblock %}

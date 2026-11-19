@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, provisoire, lbl, fig_src with context %}
+{% block title %}{{ _("La machine des comptes publics") }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/machine.css?v=20">{% endblock %}
+{% macro val(p) -%}
+<b class="mc-v">{{ p.t }}</b>{{ provisoire(p.prov) }} {% if p.m %}{{ src(lang, p.m) }}{% endif %}
+{%- endmacro %}
+{% block content %}
+<header class="page">
+  <p class="p-tete"><span class="h-ico">{{ icone("balance", 18) }}</span><span class="kicker">{{ _("Prototype") }}</span></p>
+  <h1>{{ _("La machine des comptes publics") }}</h1>
+  <p class="lede">{{ _("Ce qui entre, ce qui sort, ce qui s'accumule : les comptes de l'ensemble des administrations publiques publiés par Eurostat, dessinés comme une machine à eau.") }}</p>
+</header>
+
+<form class="mc-an" method="get" action="/{{ lang }}/machine" data-mc-an>
+  <fieldset class="mc-niv" data-mc-niveau>
+    <legend>{{ _("Niveau de lecture") }}</legend>
+    <label class="mc-niv-o"><input type="radio" name="niveau" value="decouverte" {% if niveau == "decouverte" %}checked{% endif %}> {{ _("Découverte") }}</label>
+    <label class="mc-niv-o is-bientot" title="{{ _("Bientôt : isoler un sous-secteur ou une politique et ses flux publiés.") }}"><input type="radio" name="niveau" value="exploration" disabled> {{ _("Exploration") }}</label>
+    <label class="mc-niv-o is-bientot" title="{{ _("Bientôt : flux documentés, périmètres, consolidation et provenance.") }}"><input type="radio" name="niveau" value="analyse" disabled> {{ _("Analyse") }}</label>
+    <p class="caption mc-niv-d">{{ _("Vue d'ensemble : recettes, trois sous-secteurs et les six plus grandes fonctions ; les autres sont regroupées (calcul du site).") }}</p>
+  </fieldset>
+  <label for="annee">{{ _("Année") }}</label>
+  <input id="annee" name="annee" type="range" min="{{ annees[0] }}" max="{{ annees[-1] }}" step="1" value="{{ annee }}"
+    aria-valuetext="{{ annee }}">
+  <output for="annee" class="mc-an-o">{{ annee }}</output>
+  <button type="button" class="mc-play" data-mc-play hidden aria-pressed="false">{{ _("Faire défiler les années") }}</button>
+  <noscript><button type="submit">{{ _("Afficher") }}</button></noscript>
+</form>
+
+<script id="mc-data" type="application/json">{{ data | safe }}</script>
+<script id="mc-i18n" type="application/json">{{ {"lecture": _("Faire défiler les années"), "pause": _("Arrêter le défilement"), "apu": _("Administrations publiques"), "recettes": _("Recettes"), "depenses": _("Dépenses"), "dette": _("Dette"), "emprunt": _("Besoin de financement"), "deficit": _("Déficit public"), "excedent": _("Capacité de financement"), "autres": _("Autres recettes"), "autresFonctions": _("Autres fonctions (somme calculée par ce site)"), "etalon": _("Tuyau de 100 Md€"), "ensemble": _("Ensemble des administrations"), "dont": _("dont"), "detenue": _("Encours en fin d'année, par secteur détenteur"), "nondetenue": _("Encours en fin d'année ; ventilation par détenteur publiée depuis 2020"), "pretes": _("Besoin de financement de l'ensemble des administrations. Créanciers : dette par secteur détenteur"), "pasRecette": _("Ce n'est pas une recette : c'est l'écart entre dépenses et recettes publiées, couvert par l'emprunt net de l'année. Il est dessiné à part, sur le côté."), "variation": _("Écart avec la fin de l'année précédente, calculé par ce site"), "glisser": _("Glisser pour déplacer la vue ou la faire tourner · pincer, molette ou boutons + et − pour zoomer · toucher un bâtiment pour tout son détail, un tuyau pour son montant, un numéro pour son explication"), "fermer": _("Fermer"), "zoomPlus": _("Zoomer"), "zoomMoins": _("Dézoomer"), "zoomTout": _("Voir toute la scène"), "parSecteur": _("Par sous-secteur (ils se versent aussi de l'argent entre eux : leurs montants ne s'additionnent pas)"), "quiPaie": _("Qui paie : postes publiés"), "voirDep": _("Comment cet argent est dépensé"), "voirQuoi": _("À quoi précisément"), "quiDepense": _("Quelle administration le dépense (leurs montants ne s'additionnent pas : elles se versent aussi de l'argent entre elles)"), "voirRec": _("Qui paie, en détail"), "masquer": _("Masquer le détail"), "autresPostes": _("Autres postes (somme calculée par ce site)"), "reste": _("Reste de la catégorie, non ventilé par payeur (calculé par ce site)"), "parts": _("Part de chaque poste dans le montant publié, calculée par ce site"), "voirFiche": _("Fiche thématique de ce sujet")} | tojson }}</script>
+
+<figure class="mc-fig">
+  <div class="mc-defil" data-mc-defil>
+  <div class="mc-stage" data-mc-stage role="img"
+    aria-label="{{ _("Schéma : les recettes entrent par le fond dans les trois sous-secteurs, le besoin de financement arrive à part par le côté, les dépenses sortent par fonction ; la dette est une tour à part. Les montants sont listés sous le schéma.") }}">
+    <p class="mc-tip" data-mc-tip hidden></p>
+  </div>
+  </div>
+  <figcaption>
+    <ol class="mc-notions" data-mc-notions>
+      <li><strong>{{ _("Flux : les tuyaux") }}</strong><span>{{ _("Ce qui passe pendant l'année choisie. La section d'un tuyau suit le montant publié (comparez au tuyau de 100 Md€) ; les grains montrent seulement le sens du courant.") }} {{ _("Les bandeaux donnent les montants publiés pour l'ensemble des administrations ; les tuyaux, ceux de chaque sous-secteur. Les sous-secteurs se versent aussi de l'argent entre eux : leurs montants ne s'additionnent donc pas.") }}</span></li>
+      <li><strong>{{ _("Solde : le déficit public") }}</strong><span>{{ _("Ce n'est pas un acteur mais un montant : le déficit public est le besoin de financement de l'ensemble des administrations, leur emprunt net de l'année (« net borrowing » dans le libellé officiel anglais) quand les dépenses dépassent les recettes. Chaque tuyau orange est le besoin de financement d'un sous-secteur. Eurostat ne publie pas qui a prêté cette année-là seule : la tour dit qui détient la dette.") }}</span></li>
+      <li><strong>{{ _("Stock : la tour") }}</strong><span>{{ _("La dette publique à la fin de l'année : un montant accumulé, pas un montant annuel, à ne pas comparer aux tuyaux. Ses étages disent qui la détient (ses créanciers) ; le chiffre en italique est l'écart avec l'année précédente, calculé par ce site. La somme de ces écarts n'égale pas exactement le besoin de financement : les comptes publiés ne les relient pas un pour un.") }}</span></li>
+    </ol>
+  </figcaption>
+</figure>
+
+<div class="mc-leg" aria-live="polite">
+  <section class="mc-col verre">
+    <h2 class="mc-h"><i class="mc-sw is-rec" aria-hidden="true"></i>{{ _("Ce qui entre") }} <span class="mc-an-t" data-an>{{ annee }}</span></h2>
+    <p class="mc-tot">{{ lbl(noms.TR) }} : <span data-v="TR">{{ val(a.TR) }}</span></p>
+    <ul class="mc-l" data-liste="entrees">{% for e in a.entrees %}
+      <li><span>{% if e.k == "AUTRES" %}{{ _("Autres recettes") }}{% else %}{{ lbl(noms[e.k]) }}{% endif %}</span> <span>{{ val(e) }}</span></li>{% endfor %}
+    </ul>
+    <p class="caption">{{ _("« Autres recettes » : somme calculée par ce site de %(l)s.", l=autres|map(attribute="texte")|join(", ")) }}</p>
+    <h3 class="mc-h3">{{ _("Qui paie : postes publiés à l'intérieur des catégories") }}</h3>
+    {% for k in ("D5REC", "D61REC", "D2REC") %}
+    <p class="mc-sous">{{ lbl(noms[k]) }}, {{ _("dont") }} :</p>
+    <ul class="mc-l" data-liste="detail.{{ k }}">{% for x in a.detail[k] %}
+      <li><span>{{ lbl(noms[x.k]) }}</span> <span>{{ val(x) }}</span></li>{% endfor %}
+    </ul>{% endfor %}
+    <p class="caption">{{ _("Ces postes ne couvrent pas toute leur catégorie : le reste n'est pas nommé par payeur dans ce jeu.") }}</p>
+  </section>
+  <section class="mc-col verre">
+    <h2 class="mc-h"><i class="mc-sw is-emp" aria-hidden="true"></i>{{ _("L'écart") }}</h2>
+    <p class="mc-tot">{{ lbl(noms.B9) }} : <span data-v="B9">{{ val(a.B9) }}</span></p>
+    <p class="caption">{{ _("Quand le solde publié est négatif, le besoin de financement (l'emprunt net de l'année) est dessiné à part, sur le côté : ce n'est pas une recette, et il n'entre pas dans le total des recettes.") }}</p>
+  </section>
+  <section class="mc-col verre">
+    <h2 class="mc-h"><i class="mc-sw is-dep" aria-hidden="true"></i>{{ _("Ce qui sort, par fonction") }}</h2>
+    <p class="mc-tot">{{ lbl(noms.TE) }} : <span data-v="TE">{{ val(a.TE) }}</span></p>
+    <ul class="mc-l" data-liste="sorties">{% for s in a.sorties %}
+      <li><span>{{ lbl(noms[s.k]) }}</span> <span>{{ val(s) }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  <section class="mc-col verre">
+    <h2 class="mc-h"><i class="mc-sw is-det" aria-hidden="true"></i>{{ _("Ce qui s'accumule") }}</h2>
+    <p class="mc-tot">{{ lbl(noms.GD) }} : <span data-v="GD">{{ val(a.GD) }}</span></p>
+    <div data-si {% if not a.detenteurs %}hidden{% endif %}>
+      <p class="mc-sous">{{ _("Qui la détient (ses créanciers) :") }}</p>
+      <ul class="mc-l" data-liste="detenteurs">{% for x in a.detenteurs %}
+        <li><span>{{ lbl(noms[x.k]) }}</span> <span>{{ val(x) }}</span></li>{% endfor %}
+      </ul>
+    </div>
+    <p class="caption">{{ _("Aucun tuyau ne relie le solde à la dette : le site ne dessine pas de lien entre deux montants que les comptes publiés ne relient pas.") }}</p>
+  </section>
+</div>
+{{ fig_src(lang, sources) }}
+<script type="module" src="/static/machine.js?v=45"></script>
+{% endblock %}

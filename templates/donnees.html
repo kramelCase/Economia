@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Données couvertes et téléchargements") }}{% endblock %}
+{% from "_macros.html" import fig_src, titre_source with context %}
+{% block content %}
+<header class="page">
+  <h1>{{ _("Données couvertes et téléchargements") }}</h1>
+</header>
+
+<section id="couverture">
+  <h2>{{ _("Ce que le site couvre aujourd'hui") }}</h2>
+  <p>{{ _("Tableau établi à partir des montants chargés, source par source : années, découpage, stades et date de la dernière collecte.") }}</p>
+  <div class="table-wrap"><table class="couv">
+    {{ fig_src(lang, couv|map(attribute="id")|list, "caption") }}
+    <thead><tr><th scope="col">{{ _("Source") }}</th><th scope="col">{{ _("Années") }}</th><th scope="col">{{ _("Qui") }}</th>
+      <th scope="col">{{ _("Découpage") }}</th><th scope="col">{{ _("Stades") }}</th><th scope="col" class="num">{{ _("Montants") }}</th>
+      <th scope="col">{{ _("Collecte") }}</th><th scope="col" class="num">{{ _("Données manquantes") }}</th></tr></thead>
+    <tbody>{% for c in couv %}
+      <tr><td><a href="/{{ lang }}/source/{{ c.id }}">{{ titre_source(lang, source_info(c.id)) }}</a><br><span class="muted">{{ c.editeur }}</span></td>
+        <td>{% if c.de == c.a %}{{ c.de }}{% else %}{{ c.de }}–{{ c.a }}{% endif %}</td>
+        <td>{{ c.niveaux|join(", ") }}</td>
+        <td><span lang="fr">{{ c.nomenclatures|join(" ; ") }}</span><br><span class="muted">{{ _("%(n)s postes", n=integer(c.postes)) }}</span></td>
+        <td>{{ c.stades|join(", ") }}</td>
+        <td class="num">{{ integer(c.n) }}</td>
+        <td>{{ c.collecte }}</td>
+        <td class="num">{% if c.lacunes %}<a href="/{{ lang }}/lacunes">{{ c.lacunes }}</a>{% else %}0{% endif %}</td></tr>
+    {% endfor %}</tbody>
+  </table></div>
+  <h3>{{ _("Pas encore couvert") }}</h3>
+  <ul>
+    <li>{{ _("Communes et intercommunalités.") }}</li>
+    <li>{{ _("Sécurité sociale par branche ou par régime (seul l'ensemble des administrations de sécurité sociale est présent).") }}</li>
+    <li>{{ _("Organismes publics un par un, opérateurs de l'État, entreprises à participation publique.") }}</li>
+    <li>{{ _("Montants versés d'une administration à une autre.") }}</li>
+    <li>{{ _("Exécution du budget de l'État avant 2024.") }}</li>
+    <li>{{ _("Engagements hors bilan et garanties.") }}</li>
+    <li>{{ _("Autres pays de l'Union européenne.") }}</li>
+  </ul>
+  <p class="muted">{{ _("Ce que les sources collectées ne publient pas est listé dans") }} <a href="/{{ lang }}/lacunes">{{ _("Données non disponibles") }}</a>.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% from "_macros.html" import lbl, provisoire, fig_src with context %}
+{% block title %}{{ _("Pourquoi ces deux chiffres diffèrent-ils ?") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Vérifier") }}</p>
+  <h1>{{ _("Pourquoi ces deux chiffres diffèrent-ils ?") }}</h1>
+  <p class="lede">{{ _("Deux chiffres sur un même sujet peuvent venir de publications différentes. Cette page les met côte à côte et nomme, critère par critère, ce qui les sépare. Elle ne dit pas lequel est le bon : chacun est juste dans son cadre.") }}</p>
+</header>
+
+{% if ca %}
+<section class="dif-duo">
+  {% for c in (ca, cb) %}
+  <div class="dif-c">
+    <p class="dif-k">{{ "A" if loop.first else "B" }}</p>
+    <p class="dif-v"><strong>{{ money(c.v, c.unite) }}</strong> <a class="src" href="{{ c.href }}">{{ _("source") }}</a>{{ provisoire(c.prov) }}</p>
+    <p>{{ lbl(c.label) }}</p>
+    <p class="muted">{{ c.entite_nom }} · {{ c.exercice }}</p>
+    {% if c.nb > 1 %}<p class="caption">{{ _("Somme de %(n)s montants publiés, calculée par ce site.", n=integer(c.nb)) }}</p>{% endif %}
+  </div>
+  {% endfor %}
+</section>
+
+<section>
+  <h2>{{ _("Ce qui les sépare") }}</h2>
+  <p>{% if nb_diff %}{{ _("Critères qui diffèrent : %(n)s sur %(t)s.", n=nb_diff, t=crit|length) }}{% else %}{{ _("Aucun des critères ci-dessous ne diffère : les deux chiffres décrivent la même chose, dans deux collectes ou deux fichiers.") }}{% endif %}</p>
+  <div class="table-wrap"><table class="dif-t">
+    {{ fig_src(lang, (ca.sources + cb.sources)|unique|list, "caption") }}
+    <thead><tr><th scope="col">{{ _("Critère") }}</th><th scope="col">A</th><th scope="col">B</th></tr></thead>
+    <tbody>{% for x in crit %}
+      <tr class="{{ 'dif-oui' if x.differe else 'dif-non' }}"><th scope="row">{{ x.nom }}{% if x.differe %} <span class="dif-badge">{{ _("diffère") }}</span>{% endif %}</th>
+        <td>{{ x.a }}</td><td>{{ x.b }}</td></tr>
+      {% if x.differe %}<tr class="dif-sens"><td colspan="3">{{ x.sens }}</td></tr>{% endif %}
+    {% endfor %}
+      <tr><th scope="row">{{ _("Collecte par ce site") }}</th><td>{{ ca.collecte }}</td><td>{{ cb.collecte }}</td></tr>
+    </tbody>
+  </table></div>
+  {% if ecart is not none %}
+  <p>{{ _("Écart A − B : %(e)s (calcul du site).", e=money(ecart, ca.unite)) }}</p>
+  {% else %}
+  <p>{{ _("Ce site ne calcule pas d'écart entre ces deux chiffres : ils n'ont pas le même cadre comptable, les mêmes administrations, la même grandeur ou la même unité. Une soustraction mélangerait des choses différentes.") }}</p>
+  {% endif %}
+</section>
+{% endif %}
+
+{% if exemples %}
+<section>
+  <h2>{{ _("Exemples") }}</h2>
+  <p>{{ _("Pour chaque thème : les administrations centrales dans les comptes nationaux, face à une mission du budget de l'État rattachée au thème par ce site.") }}</p>
+  <ul class="portes">{% for e in exemples %}
+    <li><a href="{{ e.href }}"><span class="portes-t">{{ e.a.label.texte }}</span><span class="portes-d">{{ money(e.a.v, e.a.unite) }} · {{ e.b.label.texte }} : {{ money(e.b.v, e.b.unite) }}</span></a></li>
+  {% endfor %}</ul>
+</section>
+{% endif %}
+{% endblock %}

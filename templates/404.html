@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Page introuvable") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">404</p>
+  <h1>{{ _("Page introuvable") }}</h1>
+  <p class="lede">{{ _("Cette adresse ne correspond à aucune page du site. Elle a peut-être été mal recopiée, ou la page a changé d'adresse.") }}</p>
+</header>
+<ul class="portes">{% for p in menu %}
+  <li><a href="{{ p.href }}"><span class="portes-t">{{ p.t }}</span><span class="portes-d">{{ p.d }}</span></a></li>
+{% endfor %}</ul>
+<p><a class="button" href="/{{ lang }}/">{{ _("Retour à l'accueil") }}</a></p>
+{% endblock %}

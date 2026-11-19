@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, provisoire with context %}
+{% block title %}{{ _("Explorer") }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/explorer.css">
+{% endblock %}
+{% block bodyattr %} class="x"{% endblock %}
+{% block content %}
+{# Prototype : la phrase-requête et sa réponse, face à ce qu'on ne sait pas (docs/vision/SYNTHESE.md §8). #}
+<section class="x-hero" aria-labelledby="x-titre">
+  <div class="x-hero-in">
+    <p class="x-kicker">{{ _("Les finances publiques françaises, en données ouvertes") }} · <span class="x-proto">{{ _("prototype") }}</span></p>
+    <h1 id="x-titre" class="x-titre">{{ _("Les comptes publics,") }}<br>
+      {{ _("tels que publiés.") }}<br>
+      <em>{{ _("Chaque chiffre, sa source.") }}</em></h1>
+    <p class="x-lede">{{ _("Dépenses de l'État, des collectivités et de la sécurité sociale, d'après les fichiers officiels. Chaque montant renvoie à sa ligne d'origine ; les données non disponibles sont signalées.") }}</p>
+
+    <form class="x-search" role="search" method="get" action="/{{ lang }}/recherche">
+      <label for="x-s" class="sr">{{ _("Rechercher un département, une région, une mission, une dépense fiscale, un terme") }}</label>
+      <div class="x-combo">
+        <span class="x-loupe" aria-hidden="true"></span>
+        <input id="x-s" name="q" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="x-list"
+               autocomplete="off" spellcheck="false" placeholder="{{ _("Une collectivité, une fonction, une mission, un terme…") }}" data-src="/{{ lang }}/suggest">
+        <kbd class="x-kbd" aria-hidden="true">/</kbd>
+        <button type="submit" class="x-go">{{ _("Chercher") }} <span aria-hidden="true">→</span></button>
+        <ul id="x-list" role="listbox" hidden data-nolink></ul>
+      </div>
+      <p class="x-hint" hidden data-empty="{{ _("Rien de publié sous ce nom dans les sources collectées.") }}"></p>
+    </form>
+    <p class="x-essayer"><span>{{ _("Essayer :") }}</span>
+      {% for a in amorces[:3] %}<a href="{{ a.href }}">{{ a.q }}</a>{% endfor %}</p>
+  </div>
+
+  <div class="x-sujets" aria-label="{{ _("Sujets") }}">
+    <button type="button" class="x-pause" aria-pressed="false" data-pause="{{ _("Arrêter le défilement") }}" data-play="{{ _("Relancer le défilement") }}">{{ _("Arrêter le défilement") }}</button>
+    {% for rangee in sujets %}
+    <div class="x-rangee">
+      <ul class="x-ruban{% if loop.index == 2 %} is-rev{% endif %}">
+        {% for s in rangee %}<li><a href="{{ s.href }}"{% if s.gap %} class="is-gap"{% endif %}>{{ s.t }}</a></li>{% endfor %}
+        {% for s in rangee %}<li aria-hidden="true"><a href="{{ s.href }}" tabindex="-1"{% if s.gap %} class="is-gap"{% endif %}>{{ s.t }}</a></li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="x-question" id="question" aria-labelledby="x-q">
+  <p class="x-kicker">{{ _("Données publiées et données non disponibles") }}</p>
+  <form class="x-phrase" method="get" action="/{{ lang }}/explorer#question">
+    <h2 id="x-q">
+      <span class="x-w">{{ _("Combien pour") }}</span>
+      <label class="x-slot"><span class="sr">{{ _("Thème") }}</span>
+        <select name="theme">{% for t in themes %}<option value="{{ t.code }}" {% if t.code == theme %}selected{% endif %}>{{ t.texte }}</option>{% endfor %}</select><span class="x-w">,</span></label>
+      <span class="x-w">{{ _("dans") }}</span>
+      <label class="x-slot"><span class="sr">{{ _("Périmètre") }}</span>
+        <select name="qui">{% for p in perimetres %}<option value="{{ p.code }}" {% if p.code == qui %}selected{% endif %}>{{ p.texte }}{% if not p.ok and p.code != qui %} — {{ _("non publié") }}{% endif %}</option>{% endfor %}</select><span class="x-w">&#8239;?</span></label>
+    </h2>
+    <noscript><button type="submit">{{ _("Répondre") }}</button></noscript>
+  </form>
+
+  <div class="x-face" id="reponse" aria-live="polite">
+  {% if r.kind == "niches" %}{% set d = r.d %}
+    <article class="x-known">
+      <p class="x-label">{{ _("Total des dépenses fiscales chiffrées") }} · {{ _("Projet (PLF)") }} 2026</p>
+      <p class="x-fig"><strong>{{ money(d.total) }}</strong></p>
+      <p class="x-read">{{ _("Somme des montants publiés pour %(n)s dépenses fiscales. Ce site n'y ajoute aucune estimation.", n=integer(d.n)) }}</p>
+      <p class="x-cote"><span aria-hidden="true">↳</span> {{ d.source.editeur }} · {{ d.source.titre }} {{ src(lang, href=d.href) }}</p>
+    </article>
+    <article class="x-gap">
+      <p class="x-label">{{ _("Dépenses fiscales sans montant publié") }}</p>
+      <p class="x-gap-main">{{ _("%(nc)s dépenses fiscales marquées « nc » (montant non calculé) et %(eps)s « ε » (moins de 0,5 million d'euros).", nc=integer(d.nc), eps=integer(d.eps)) }}</p>
+      <p class="x-read">{{ _("Ces dépenses ne sont pas incluses dans le total ci-contre.") }}</p>
+      {% if d.responsable %}<p class="x-cote">{{ _("Producteur de la donnée : %(r)s", r=d.responsable) }}</p>{% endif %}
+      <p><a href="/{{ lang }}/lacunes">{{ _("Voir la liste, ligne par ligne") }} →</a></p>
+    </article>
+  {% elif r.kind == "cofog" %}{% set d = r.d %}
+    <article class="x-known">
+      <p class="x-label">{{ d.label.texte }} · {{ nom_entite(d.entite.nom) }} · {{ _("Comptes nationaux") }} {{ d.annee }}</p>
+      {% if d.m %}
+      <p class="x-fig"><strong>{{ money(d.m.valeur, "MIO_EUR") }}</strong>{{ provisoire(d.m.provisoire) }}</p>
+      {% if d.p %}<p class="x-read">{{ _("Soit %(p)s des dépenses de ces administrations, part publiée par Eurostat.", p=money(d.p.valeur, "PC_TOT")) }} {{ src(lang, d.p.id) }}</p>{% endif %}
+      <p class="x-cote"><span aria-hidden="true">↳</span> {{ d.source.editeur }} · COFOG {{ src(lang, d.m.id) }}</p>
+      {% else %}<p class="x-read">{{ _("Pas de montant publié pour cette année.") }}</p>{% endif %}
+      <p><a href="/{{ lang }}/serie?dom=cofog&amp;ind={{ theme }}&amp;qui={{ qui }}">{{ _("Évolution depuis 1995") }} →</a>
+        · <a href="/{{ lang }}/depenses-publiques?secteur={{ qui }}&amp;fonction={{ theme }}#zoom">{{ _("Détail par sous-fonction") }} →</a>{% set fc = fiche_cofog(theme) %}{% if fc %}
+        · <a href="/{{ lang }}/theme/{{ fc }}">{{ _("Fiche thématique") }} →</a>{% endif %}</p>
+    </article>
+    <article class="x-gap">
+      <p class="x-label">{{ _("Données non disponibles") }}</p>
+      {% if r.lacunes %}
+        {% for l in r.lacunes %}<p class="x-gap-main">{{ l.titre }}</p><p class="x-read">{{ l.description }}</p>
+        <p class="x-cote">{{ _("Producteur de la donnée : %(r)s", r=l.responsable) }}</p>{% endfor %}
+      {% else %}<p class="x-gap-main">{{ _("Aucune lacune recensée pour cette question dans les sources collectées.") }}</p>{% endif %}
+      <p><a href="/{{ lang }}/lacunes">{{ _("Toutes les données non disponibles") }} →</a></p>
+    </article>
+  {% else %}
+    <article class="x-gap x-wide">
+      <p class="x-label">{{ _("Pas de réponse dans les sources collectées") }}</p>
+      {% if theme == "depenses-fiscales" %}
+        <p class="x-gap-main">{{ _("Les dépenses fiscales collectées ici sont celles que l'État chiffre dans son projet de loi de finances. Aucune source collectée ne les répartit entre administrations.") }}</p>
+      {% else %}
+        <p class="x-gap-main">{{ _("Le budget de l'État publié ici est classé par missions, pas par fonctions de la COFOG. Ce site ne convertit pas un classement dans l'autre.") }}</p>
+        <p><a href="/{{ lang }}/budget-etat">{{ _("Voir le budget de l'État mission par mission") }} →</a></p>
+      {% endif %}
+      <p><a class="x-voisin" href="/{{ lang }}/explorer?theme={{ theme }}&amp;qui={{ r.voisin }}#question">{{ _("La question voisine qui a une réponse : %(t)s, dans %(p)s", t=theme_nom, p=r.voisin_nom) }} →</a></p>
+    </article>
+  {% endif %}
+  </div>
+
+</section>
+
+{% if voisins %}
+<section class="x-next" aria-labelledby="x-next">
+  <h2 id="x-next">{{ _("Et maintenant ?") }}</h2>
+  <ul>{% for v in voisins %}
+    <li><a href="/{{ lang }}/explorer?theme={{ v.theme }}&amp;qui={{ v.qui }}#question"><span class="x-nq">{{ v.texte }}, {{ _("dans") }} {{ v.qui_nom }}</span> <span class="x-nf">{{ v.fig }}<small>{{ v.an }}</small></span></a></li>
+  {% endfor %}</ul>
+</section>
+{% endif %}
+
+<section class="x-amorces" aria-labelledby="x-am">
+  <h2 id="x-am">{{ _("D'autres questions") }}</h2>
+  <p class="caption">{{ _("Tirées au hasard à chaque visite, chacune avec son chiffre.") }}</p>
+  <ol>{% for a in amorces %}
+    <li{% if a.gap %} class="is-gap"{% endif %}><a href="{{ a.href }}"><span class="x-aq">{{ a.q }}</span><span class="x-af">{{ a.fig }}<small>{{ a.an }}</small></span></a></li>
+  {% endfor %}</ol>
+</section>
+
+<section class="x-entrees" aria-labelledby="x-en">
+  <p class="x-kicker" id="x-en">{{ _("Entrées dans les données") }}</p>
+  <ol>{% for e in entrees %}
+    <li{% if e.gap %} class="is-gap"{% endif %}><a href="{{ e.href }}">
+      <span class="x-en-n" aria-hidden="true">{{ "%02d" % loop.index }}</span>
+      <span class="x-en-t">{{ e.t }}</span>
+      <span class="x-en-d">{{ e.d }}</span>
+      <span class="x-en-a" aria-hidden="true">↗</span></a></li>
+  {% endfor %}</ol>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/explorer.js" defer></script>{% endblock %}

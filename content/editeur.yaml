@@ -1,0 +1,8 @@
+# Identité affichée sur la page « Mentions et licences » (/fr/mentions). À remplir par l'éditeur du site avant la mise
+# en ligne : un champ vide est affiché « à compléter ». Rien ici n'est déduit ni deviné.
+editeur: ""            # nom de la personne ou de l'organisme qui publie le site
+contact: ""            # adresse électronique de contact
+directeur_publication: ""
+hebergeur: ""          # nom, adresse et téléphone de l'hébergeur
+licence_code: ""       # licence du code source (ex. une licence libre choisie par l'éditeur)
+licence_donnees_derivees: ""  # licence des fichiers publiés dans /data/

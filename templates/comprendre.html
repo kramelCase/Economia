@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, provisoire, lbl, fig_src with context %}
+{% block title %}{{ _("Les grands équilibres") }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/volumes.css?v=3">{% endblock %}
+{% macro val(scene, code, p) -%}
+<span class="vol-vv" data-v="{{ scene }}.{{ code }}"><b class="vol-v">{{ p.t }}</b>{{ provisoire(p.prov) }} {{ src(lang, p.m) }}</span>
+{%- endmacro %}
+{% block content %}
+<header class="vol-head">
+  <p class="kicker">{{ _("Comprendre") }}</p>
+  <h1>{{ _("Les grands équilibres") }}</h1>
+  <p class="lede">{{ _("Trois figures des comptes des administrations publiques, d'après les comptes nationaux publiés par Eurostat. Dans chaque figure, seule la hauteur représente un montant ; les valeurs exactes sont écrites à côté et dans le tableau de chaque figure.") }}</p>
+</header>
+
+<form class="vol-an" method="get" action="/{{ lang }}/grands-equilibres" data-vol-an>
+  <label for="annee">{{ _("Année") }}</label>
+  <input id="annee" name="annee" type="range" min="{{ annees[0] }}" max="{{ annees[-1] }}" step="1" value="{{ annee }}"
+    aria-valuetext="{{ annee }}">
+  <output for="annee" class="vol-an-o">{{ annee }}</output>
+  <button type="button" class="vol-play" data-vol-play hidden aria-pressed="false">{{ _("Faire défiler les années") }}</button>
+  <noscript><button type="submit">{{ _("Afficher") }}</button></noscript>
+</form>
+
+<script id="vol-data" type="application/json">{{ data | safe }}</script>
+<script id="vol-i18n" type="application/json">{{ {"lecture": _("Faire défiler les années"), "pause": _("Arrêter le défilement"), "prov": _("provisoire"), "prov_t": _("Valeur marquée provisoire dans la source"), "src": _("source"), "src_t": _("Voir la source de ce chiffre")} | tojson }}</script>
+
+<section class="vol" aria-labelledby="t-eq">
+  <h2 id="t-eq">{{ _("Recettes, dépenses et solde") }}</h2>
+  <p class="vol-sub">{{ _("Ensemble des administrations publiques, en pourcentage du PIB.") }}</p>
+  <figure class="vol-fig">
+    <div class="vol-stage" data-scene="eq" role="img"
+      aria-label="{{ _("Deux colonnes : recettes et dépenses ; l'écart entre leurs sommets est le solde publié.") }}"></div>
+    <figcaption class="vol-cap" aria-live="polite">
+      <span class="vol-an-t" data-an>{{ annee }}</span>
+      <span class="vol-k"><i class="sw sw-1" aria-hidden="true"></i>{{ lbl(eq.TR.label) }} : {{ val("eq", "TR", eq.TR.points[annee]) }}</span>
+      <span class="vol-k"><i class="sw sw-0" aria-hidden="true"></i>{{ lbl(eq.TE.label) }} : {{ val("eq", "TE", eq.TE.points[annee]) }}</span>
+      <span class="vol-k"><i class="sw sw-gap" aria-hidden="true"></i>{{ lbl(eq.B9.label) }} : {{ val("eq", "B9", eq.B9.points[annee]) }}</span>
+    </figcaption>
+    <details class="twin"><summary>{{ _("Voir les données en tableau") }}</summary>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">{{ _("Année") }}</th>{% for c in ("TR", "TE", "B9") %}<th scope="col" class="num">{{ lbl(eq[c].label) }}</th>{% endfor %}</tr></thead>
+        <tbody>{% for a in annees|reverse %}<tr><th scope="row">{{ a }}</th>{% for c in ("TR", "TE", "B9") %}{% set p = eq[c].points[a] %}<td class="num">{{ p.t }}{{ provisoire(p.prov) }} {{ src(lang, p.m) }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+    {{ fig_src(lang, src_eq, note=_("Le site vérifie que le solde publié égale les recettes moins les dépenses publiées, à l’arrondi près (page Méthode).")) }}
+  </figure>
+</section>
+
+<section class="vol" aria-labelledby="t-sect">
+  <h2 id="t-sect">{{ _("Qui dépense ?") }}</h2>
+  <p class="vol-sub">{{ _("Dépenses totales de l'ensemble des administrations publiques et de chacun de leurs trois sous-secteurs, en euros.") }}</p>
+  <figure class="vol-fig">
+    <div class="vol-stage" data-scene="sect" role="img"
+      aria-label="{{ _("Une colonne translucide pour l'ensemble des administrations publiques, trois colonnes pleines pour les sous-secteurs.") }}"></div>
+    <figcaption class="vol-cap" aria-live="polite">
+      <span class="vol-an-t" data-an>{{ annee }}</span>
+      {% for s in secteurs %}<span class="vol-k"><i class="sw {{ 'sw-ghost' if loop.first else 'sw-' ~ loop.index0 }}" aria-hidden="true"></i>{{ sect[s].nom }} : {{ val("sect", s, sect[s].points[annee]) }}</span>{% endfor %}
+    </figcaption>
+    <details class="twin"><summary>{{ _("Voir les données en tableau") }}</summary>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">{{ _("Année") }}</th>{% for s in secteurs %}<th scope="col" class="num">{{ sect[s].nom }}</th>{% endfor %}</tr></thead>
+        <tbody>{% for a in annees|reverse %}<tr><th scope="row">{{ a }}</th>{% for s in secteurs %}{% set p = sect[s].points[a] %}<td class="num">{{ p.t }}{{ provisoire(p.prov) }} {{ src(lang, p.m) }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+    {{ fig_src(lang, src_sect, note=_("La somme des sous-secteurs n'est pas le total publié : ce site ne les additionne pas.")) }}
+  </figure>
+</section>
+
+<section class="vol" aria-labelledby="t-dette">
+  <h2 id="t-dette">{{ _("La dette, année après année") }}</h2>
+  <p class="vol-sub">{{ _("Dette brute consolidée de l'ensemble des administrations publiques, en pourcentage du PIB, de %(a)s à %(b)s.", a=annees[0], b=annees[-1]) }}</p>
+  <figure class="vol-fig">
+    <div class="vol-stage vol-stage-l" data-scene="dette" role="img"
+      aria-label="{{ _("Une colonne par année ; l'année choisie est mise en évidence.") }}"></div>
+    <figcaption class="vol-cap" aria-live="polite">
+      <span class="vol-an-t" data-an>{{ annee }}</span>
+      <span class="vol-k"><i class="sw sw-1" aria-hidden="true"></i>{{ lbl(dette.label) }} : {{ val("dette", "GD", dette.points[annee]) }}</span>
+    </figcaption>
+    <details class="twin"><summary>{{ _("Voir les données en tableau") }}</summary>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">{{ _("Année") }}</th><th scope="col" class="num">{{ lbl(dette.label) }}</th></tr></thead>
+        <tbody>{% for a in annees|reverse %}{% set p = dette.points[a] %}<tr><th scope="row">{{ a }}</th><td class="num">{{ p.t }}{{ provisoire(p.prov) }} {{ src(lang, p.m) }}</td></tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+    {{ fig_src(lang, src_dette) }}
+  </figure>
+</section>
+
+<p class="vol-more"><a href="/{{ lang }}/serie?dom=apu">{{ _("Explorer ces séries en détail") }}</a> · <a href="/{{ lang }}/depenses-publiques">{{ _("Où va la dépense publique ?") }}</a></p>
+<script type="module" src="/static/volumes.js?v=5"></script>
+{% endblock %}

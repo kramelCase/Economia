@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, donut, fig_src with context %}
+{% block title %}{{ _("Dépenses fiscales") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Budget de l'État") }}</p>
+  <h1>{{ _("Dépenses fiscales : montants publiés") }}</h1>
+  <p class="lede">{{ _("Le montant de chaque dépense fiscale, tel que publié dans le jeu « budget vert » annexé au projet de loi de finances 2026.") }}</p>
+</header>
+
+<form class="filters" method="get">
+  <label>{{ _("Année du chiffrage") }}
+    <select name="annee">{% for a in (2026, 2025, 2024) %}<option {% if a == annee %}selected{% endif %}>{{ a }}</option>{% endfor %}</select>
+  </label>
+  <label>{{ _("Impôt concerné") }}
+    <select name="impot"><option value="">{{ _("Tous les impôts") }}</option>
+      {% for i in impots %}<option value="{{ i.key }}" lang="fr" {% if i.key == impot %}selected{% endif %}>{{ i.label.texte }}</option>{% endfor %}</select>
+  </label>
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+
+<div class="duo">
+  <p class="big"><strong>{{ money(total) }}</strong> {{ src(lang, href=total_href) }} <span>{{ _("montant publié des %(n)s dépenses fiscales chiffrées en %(annee)s", n=nb, annee=annee) }}</span></p>
+  <p class="big gap"><strong>{{ nc|length }}</strong> <span>{{ _("dépenses fiscales marquées « nc » (montant non calculé) dans la source pour 2026") }}</span>
+    <a href="#non-chiffrees">{{ _("voir la liste") }}</a></p>
+</div>
+
+<section>
+  <h2>{{ _("Sur quels impôts ?") }}</h2>
+  <p class="caption">{{ _("Montant publié regroupé par impôt concerné, tel qu'indiqué dans la source. Sommes et parts calculées par ce site. Cliquez sur un impôt pour filtrer la liste.") }}</p>
+  {{ donut(lang, camembert, "EUR", _("en %(annee)s", annee=annee), _("Répartition par impôt")) }}
+</section>
+
+<section id="liste">
+  <h2>{% if impot %}<span lang="fr">{{ impot }}</span>{% else %}{{ _("Toutes les dépenses fiscales chiffrées") }}{% endif %}</h2>
+  {% if impot %}<p class="big small"><strong>{{ money(total_impot) }}</strong> {{ src(lang, href="provenance?ids=" ~ ids_impot|join(',')) }}
+    <span>{{ _("%(n)s dépenses fiscales", n=liste|length) }} · <a href="?annee={{ annee }}#liste">{{ _("voir tous les impôts") }}</a></span></p>{% endif %}
+  <div class="rank-tools">
+    <input type="search" data-filter="#df-table" data-count="#df-count" placeholder="{{ _("Rechercher une dépense fiscale…") }}" aria-label="{{ _("Rechercher une dépense fiscale") }}">
+    <span class="muted"><span id="df-count">{{ liste|length }}</span> {{ _("lignes") }}</span>
+  </div>
+  <p class="caption">{{ _("Classement par montant publié ; cliquez sur un en-tête pour trier. Une dépense ventilée sur plusieurs programmes est regroupée en une ligne.") }}</p>
+  <div class="table-wrap">
+  <table id="df-table" class="sortable">
+    {{ fig_src(lang, sources, "caption") }}
+    <thead><tr><th scope="col" data-sort>{{ _("Dépense fiscale") }}</th><th scope="col" data-sort>{{ _("Impôt concerné") }}</th>
+      <th scope="col" class="num" data-sort aria-sort="descending">{{ _("Montant publié") }}</th></tr></thead>
+    <tbody>
+    {% for d in liste %}
+      <tr><td><span lang="fr">{{ d.libelle }}</span> <span class="code">{{ d.code }}</span></td>
+        <td><span lang="fr">{{ d.impot }}</span></td>
+        <td class="num" data-v="{{ d.valeur }}">{{ money(d.valeur) }} <a class="src" href="/{{ lang }}/provenance?ids={{ d.montants|join(',') }}">{{ _("source") }}</a>
+          {%- if vmax and d.valeur > 0 %}<span class="cell-bar" style="--w: {{ (d.valeur / vmax * 100)|round(1) }}%" aria-hidden="true"></span>{% endif %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="non-chiffrees" class="gaps">
+  <h2>{{ _("Dépenses fiscales sans montant publié") }}</h2>
+  <p>{{ _("Dans le même document, %(nc)s dépenses fiscales sont marquées « nc » (montant non calculé) et %(eps)s « ε » (moins de 0,5 million d'euros). Elles ne sont pas incluses dans le total.", nc=nc|length, eps=eps|length) }}
+    {{ _("Sens des marqueurs : intitulé de la colonne dans la source.") }}</p>
+  {{ fig_src(lang, ["etat_budget_vert_plf2026"]) }}
+  <details><summary>{{ _("Les %(n)s dépenses non chiffrées", n=nc|length) }}</summary>
+    <ul class="gap-list">{% for l in nc %}<li><span lang="fr">{{ l.description }}</span></li>{% endfor %}</ul>
+  </details>
+</section>
+
+<aside class="note">
+  <h2>{{ _("À savoir pour bien lire") }}</h2>
+  <ul>
+    <li>{{ _("Les libellés des dépenses fiscales sont publiés en français uniquement.") }}</li>
+    <li>{{ _("Le total est une simple addition, faite par ce site, des montants publiés ligne à ligne dans la source.") }}</li>
+    <li>{{ _("La catégorie « Impôt sur le revenu et impôt sur les sociétés » est publiée telle quelle par la source : ce site ne la répartit pas entre les deux impôts.") }}</li>
+    <li>{{ _("La définition officielle de la dépense fiscale n'est pas encore relevée dans le lexique.") }}</li>
+  </ul>
+</aside>
+{% endblock %}

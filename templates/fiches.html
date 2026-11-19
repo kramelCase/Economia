@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Thèmes") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <h1>{{ _("Thèmes") }}</h1>
+  <p class="lede">{{ _("Choisissez un sujet : tout ce que le site en sait, sur une page.") }}</p>
+</header>
+<ul class="th-grille">{% for f in liste %}
+  <li><a href="/{{ lang }}/theme/{{ f.cle }}"><span class="h-ico">{{ icone(f.ico, 22) }}</span><span>{{ f.label.texte }}</span></a></li>
+{% endfor %}</ul>
+
+<h2 class="a-h">{{ _("Vues d'ensemble") }}</h2>
+<ul class="th-grille th-vues">
+  <li><a href="/{{ lang }}/depenses-publiques"><span class="h-ico">{{ icone("sortie", 22) }}</span><span>{{ _("Toutes les dépenses") }}</span></a></li>
+  <li><a href="/{{ lang }}/recettes-publiques"><span class="h-ico">{{ icone("entree", 22) }}</span><span>{{ _("Toutes les recettes") }}</span></a></li>
+  <li><a href="/{{ lang }}/budget-etat"><span class="h-ico">{{ icone("etat", 22) }}</span><span>{{ _("Budget de l'État") }}</span></a></li>
+  <li><a href="/{{ lang }}/depenses-fiscales"><span class="h-ico">{{ icone("impots", 22) }}</span><span>{{ _("Dépenses fiscales") }}</span></a></li>
+  <li><a href="/{{ lang }}/grands-equilibres"><span class="h-ico">{{ icone("balance", 22) }}</span><span>{{ _("Les grands équilibres") }}</span></a></li>
+</ul>
+{% endblock %}

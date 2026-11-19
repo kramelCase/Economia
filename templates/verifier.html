@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% from "_macros.html" import fig_src, provisoire with context %}
+{% block title %}{{ _("Vérifier un chiffre entendu") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <h1>{{ _("Vérifier un chiffre entendu") }}</h1>
+  <p class="lede">{{ _("Un chiffre entendu : le site montre les valeurs publiées les plus proches, avec ce que chacune mesure et sa source. Il ne dit pas si le chiffre entendu est vrai ou faux.") }}</p>
+</header>
+
+<form class="v-form" method="get" action="/{{ lang }}/verifier#v-resultat" role="search" data-verifier>
+  <fieldset class="v-etape">
+    <legend><span class="v-num">1</span> {{ _("De quoi parle le chiffre ?") }}</legend>
+    <p class="v-aide">{{ _("Pas besoin de connaître le chiffre : chaque thème montre sa dernière valeur publiée, et toutes ses années une fois choisi.") }}</p>
+    <div class="v-themes" data-nolink>
+      {% for t in themes %}<label class="v-theme"><input type="radio" name="theme" value="{{ t.cle }}"{% if th and th.cle == t.cle %} checked{% endif %}>
+        {{ icone(t.ico, 22) }}<span class="v-theme-t">{{ t.t }}</span>
+        {% if t.a %}<span class="v-theme-v">{{ t.eur_fig }} · {{ _("%(p)s du PIB", p=t.pct_fig) }} <span class="muted">{{ t.a }}</span></span>{% endif %}</label>
+      {% endfor %}
+      <label class="v-theme v-autre"><input type="radio" name="theme" value=""{% if not th %} checked{% endif %}>
+        {{ icone("point", 22) }}<span class="v-theme-t">{{ _("Autre chose") }}</span>
+        <span class="v-theme-v">{{ _("un territoire, un poste, un mot") }}</span></label>
+    </div>
+    <label class="v-mot"><span>{{ _("Un mot (facultatif)") }}</span>
+      <input name="mot" value="{{ mot }}" autocomplete="off" placeholder="{{ _("Gironde, enseignement, TVA") }}"></label>
+    {{ fig_src(lang, sources_th, "p", _("Valeurs des vignettes : ensemble des administrations publiques")) }}
+  </fieldset>
+  <fieldset class="v-etape">
+    <legend><span class="v-num">2</span> {{ _("Le chiffre entendu (facultatif)") }}</legend>
+    <div class="v-ligne">
+      <label class="v-n"><span>{{ _("Le nombre") }}</span>
+        <input name="n" value="{{ n }}" autocomplete="off" inputmode="text" placeholder="{{ exemple }}"></label>
+      <label class="v-an"><span>{{ _("Année") }}</span>
+        <input name="annee" value="{{ annee }}" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="2024"></label>
+    </div>
+  </fieldset>
+  <button type="submit">{{ _("Voir les chiffres publiés") }}</button>
+</form>
+<script>
+  // Choisir un thème sans avoir saisi de nombre affiche directement ses années publiées.
+  document.querySelectorAll("[data-verifier] input[name=theme]").forEach((r) => r.addEventListener("change", () => {
+    const f = r.form;
+    if (r.value && !f.n.value.trim()) f.submit();
+    else if (!r.value) f.mot.focus();
+  }));
+</script>
+
+<div id="v-resultat"></div>
+{% if th and serie_th and not lu %}
+<section class="v-serie" aria-labelledby="v-serie-h">
+  <h2 id="v-serie-h" class="a-h">{{ icone(th.ico, 22) }} {{ th.t }}</h2>
+  <p class="v-quoi"><span{% if th.label.fr_only %} lang="fr"{% endif %}>{{ th.label.texte }}</span> · {{ nom_entite(ent_nom) }}</p>
+  <div class="tbl-wrap"><table class="v-tab">
+    <thead><tr><th scope="col">{{ _("Année") }}</th><th scope="col">{{ _("Montant") }}</th><th scope="col">{{ _("Part du PIB") }}</th></tr></thead>
+    <tbody>{% for x in serie_th %}<tr{% if loop.index > 10 %} data-plus hidden{% endif %}>
+      <th scope="row">{{ x.a }}</th>
+      <td>{% if x.MIO_EUR %}<a href="/{{ lang }}/montant/{{ x.MIO_EUR.id }}">{{ x.MIO_EUR.fig }}</a>{{ provisoire(x.MIO_EUR.provisoire) }}{% else %}—{% endif %}</td>
+      <td>{% if x.PC_GDP %}<a href="/{{ lang }}/montant/{{ x.PC_GDP.id }}">{{ x.PC_GDP.fig }}</a>{% else %}—{% endif %}</td>
+    </tr>{% endfor %}</tbody>
+  </table></div>
+  {% if serie_th|length > 10 %}<p><button type="button" class="v-plus" onclick="this.closest('section').querySelectorAll('[data-plus]').forEach((t) => t.hidden = false); this.remove()">{{ _("Toutes les années (%(n)s)", n=serie_th|length) }}</button></p>{% endif %}
+  <p class="caption">{{ _("Chaque valeur mène à sa source. Un chiffre entendu ? Saisissez-le à l'étape 2 : la page montre les années les plus proches.") }}</p>
+</section>
+{% endif %}
+
+{% if n and not lu %}
+<p class="v-lu">{{ _("Aucun nombre lu dans « %(n)s ».", n=n) }}</p>
+{% elif lu %}
+<p class="v-lu">{{ _("Nombre lu : %(x)s", x=lu_txt) }}{% if th %} · {{ th.t }}{% endif %}{% if mot %} · {{ _("mot : « %(m)s »", m=mot) }}{% endif %}{% if a %} · {{ _("année : %(a)s", a=a) }}{% endif %}</p>
+{% if ignores %}<p class="v-lu">{{ _("Aucun libellé publié ne contient « %(m)s » : aucune valeur n'est montrée, pour ne pas en proposer sans rapport. Choisissez un thème ci-dessus, ou essayez un autre mot.", m=ignores|join(" ")) }} <a href="/{{ lang }}/recherche?q={{ ignores|join(' ')|urlencode }}">{{ _("Chercher ce mot ailleurs") }} →</a></p>
+{% elif resultats %}
+<p class="caption">{{ regle }} <span class="muted">({{ _("choix du site") }})</span></p>
+<figure class="v-res">
+  <ol>{% for r in resultats %}
+    <li>
+      <p class="v-fig"><strong>{{ r.fig }}</strong>{{ provisoire(r.provisoire) }} <a class="src" href="/{{ lang }}/montant/{{ r.id }}">{{ _("source") }}</a></p>
+      <p class="v-quoi"><span{% if r.label.fr_only %} lang="fr"{% endif %}>{{ r.label.texte }}</span>{% if r.mesure_nom %}, {{ r.mesure_nom }}{% endif %}</p>
+      <p class="v-meta">{{ nom_entite(r.entite_nom) }} · {{ r.exercice }} · {{ r.unite_nom }} · {{ r.stade_nom }}</p>
+      <p class="v-ecart">{{ r.ecart }} <span class="muted">({{ _("calcul du site") }})</span></p>
+    </li>
+  {% endfor %}</ol>
+  {{ fig_src(lang, sources, "figcaption") }}
+</figure>
+{% elif loin %}
+<p>{{ loin }}</p>
+{% else %}
+<p>{{ _("Aucune valeur publiée dans cette unité pour ces critères.") }}</p>
+{% endif %}
+{% endif %}
+
+{% endblock %}

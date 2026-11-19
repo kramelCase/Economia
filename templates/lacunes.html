@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Données non disponibles") }}{% endblock %}
+{% from "_macros.html" import fig_src with context %}
+{% block content %}
+{% set types = {"non_publie": _("Non publié"), "non_chiffre": _("Non chiffré"), "sous_seuil": _("Sous le seuil de chiffrage"),
+  "sans_definition": _("Sans définition officielle"), "publication_reportee": _("Publication reportée"),
+  "donnee_inexploitable": _("Publié mais inexploitable")} %}
+<header class="page">
+  <p class="kicker">{{ _("Transparence") }}</p>
+  <h1>{{ _("Données non disponibles") }}</h1>
+  <p class="lede">{{ _("Les données absentes, non chiffrées ou inexploitables relevées lors de la collecte, avec l'organisme qui les produit et la date du constat.") }}</p>
+</header>
+
+<section>
+  <h2>{{ _("Jeux de données manquants ou inutilisables") }}</h2>
+  <ul class="gap-cards">
+  {% for l in catalogue %}
+    <li>
+      <p class="tag">{{ types[l.type] }}</p>
+      <h3 lang="fr">{{ l.titre }}</h3>
+      <p lang="fr">{{ l.description }}</p>
+      <p class="meta"><strong>{{ _("Organisme producteur :") }}</strong> {{ l.responsable }} · <strong>{{ _("Constat :") }}</strong> <span lang="fr">{{ l.constat }}</span>{% if l.source_id %} · <a href="/{{ lang }}/source/{{ l.source_id }}">{{ _("jeu concerné") }}</a>{% endif %}</p>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+
+<section>
+  <h2>{{ _("Lacunes ligne à ligne") }}</h2>
+  <ul class="stats">{% for t, n in par_type.items() %}<li><strong>{{ integer(n) }}</strong> {{ types[t] | lower }}</li>{% endfor %}</ul>
+  <details><summary>{{ _("Voir les %(n)s lignes", n=lignes|length) }}</summary>
+    <div class="table-wrap"><table>
+      {{ fig_src(lang, sources_lignes, "caption") }}
+      <thead><tr><th scope="col">{{ _("Type") }}</th><th scope="col">{{ _("Lacune") }}</th><th scope="col">{{ _("Organisme producteur") }}</th><th scope="col">{{ _("Source") }}</th></tr></thead>
+      <tbody>{% for l in lignes %}<tr><td>{{ types[l.type] }}</td><td lang="fr">{{ l.description }}</td><td>{{ l.responsable }}</td>
+        <td><a href="/{{ lang }}/source/{{ l.source_id }}">{{ l.source_titre }}</a>, {{ _("ligne") }} {{ l.ligne_source }}</td></tr>{% endfor %}</tbody>
+    </table></div>
+  </details>
+</section>
+{% endblock %}

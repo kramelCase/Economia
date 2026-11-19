@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, lbl, provisoire, donut, courbe, description with context %}
+{% block title %}{{ _("Où va l'argent public ?") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Toutes administrations publiques") }}</p>
+  <h1>{{ _("Où va l'argent public ?") }}</h1>
+  <p class="lede">{{ _("Les dépenses des administrations publiques par fonction (COFOG), d'après Eurostat.") }}</p>
+</header>
+
+<form class="filters" method="get">
+  <label>{{ _("Qui dépense") }}
+    <select name="secteur">{% for s in secteurs %}<option value="{{ s.code }}" {% if s.code == secteur %}selected{% endif %}>{{ nom_entite(s.nom) }}</option>{% endfor %}</select>
+  </label>
+  <label>{{ _("Année") }}
+    <select name="annee">{% for a in annees|reverse %}<option {% if a == annee %}selected{% endif %}>{{ a }}</option>{% endfor %}</select>
+  </label>
+  <input type="hidden" name="fonction" value="{{ fonction }}">
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+
+<p class="big">
+  {% if tot %}<strong>{{ money(tot.valeur, "MIO_EUR") }}</strong> {{ src(lang, tot.id) }}{{ provisoire(tot.provisoire) }}{% endif %}
+  <span>{{ _("de dépenses en %(annee)s", annee=annee) }}</span>
+</p>
+
+<section>
+  <h2>{{ _("Répartition par fonction") }}</h2>
+  <p class="caption">{{ _("Cliquez sur une fonction pour voir son détail et son évolution. Les parts sont publiées par Eurostat (en %% de la dépense totale).") }}</p>
+  {{ description(lang, source_info("eurostat_cofog_fr")) }}
+  {{ donut(lang, camembert, "MIO_EUR", _("en %(annee)s", annee=annee), _("Répartition par fonction")) }}
+</section>
+
+<section id="zoom" class="zoom">
+  <p class="kicker">{{ _("Zoom") }}</p>
+  <h2>{{ lbl(fonction_label) }}</h2>
+  {% if fonction_m %}<p class="big small"><strong>{{ money(fonction_m.valeur, "MIO_EUR") }}</strong> {{ src(lang, fonction_m.id) }}{{ provisoire(fonction_m.provisoire) }} <span>{{ _("en %(annee)s", annee=annee) }}</span></p>{% endif %}
+  {% set fc = fiche_cofog(fonction) %}{% if fc %}<p><a href="/{{ lang }}/theme/{{ fc }}">{{ _("Fiche thématique : tout ce que le site sait de ce sujet") }} →</a></p>{% endif %}
+  <div class="duo">
+    <div>
+      <h3>{{ _("Ce que recouvre cette fonction") }}</h3>
+      <p class="caption">{{ _("Sous-fonctions COFOG. Parts calculées par ce site : sous-fonction ÷ total de la fonction (les sous-fonctions publiées s'additionnent exactement à la fonction).") }}</p>
+      {% if zoom.featured %}{{ donut(lang, zoom, "MIO_EUR", _("en %(annee)s", annee=annee), _("Sous-fonctions")) }}
+      {% else %}<p class="muted">{{ _("Aucune sous-fonction publiée pour cette sélection.") }}</p>{% endif %}
+    </div>
+    <div>
+      <h3>{{ _("Évolution de sa part") }}</h3>
+      <p class="caption">{{ _("Part dans la dépense totale du secteur, en %%, publiée par Eurostat.") }}</p>
+      {{ courbe(lang, evolution, _("Série annuelle")) }}
+    </div>
+  </div>
+</section>
+
+<aside class="note">
+  <h2>{{ _("À savoir pour bien lire") }}</h2>
+  <ul>
+    {% if tot_s13 %}
+    <li>{{ _("La somme des trois sous-secteurs (%(somme)s, calcul du site) dépasse le total publié pour l'ensemble des administrations (%(total)s) : ce site n'additionne donc jamais les sous-secteurs.", somme=money(somme_sous_secteurs, "MIO_EUR"), total=money(tot_s13.valeur, "MIO_EUR")) }}</li>
+    {% endif %}
+    <li>{{ _("« Provisoire » : valeur marquée provisoire dans la source.") }}</li>
+    <li>{{ _("Les couleurs restent attachées à une fonction quelle que soit l'année affichée : les cinq fonctions mises en avant sont celles dont le montant est le plus élevé pour ce secteur la dernière année publiée.") }}</li>
+  </ul>
+</aside>
+{% endblock %}

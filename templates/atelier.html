@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Atelier de graphique") }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/atelier.css?v=4">{% endblock %}
+{% block content %}
+<header class="page at-tete">
+  <p class="kicker">{{ _("Explorer · atelier") }}</p>
+  <h1>{{ _("Atelier de graphique") }}</h1>
+  <p class="lede">{{ _("Composez votre graphique à partir des séries publiées, annotez-le, puis partagez-le : l'image porte sa source, le lien rouvre la même vue.") }}</p>
+</header>
+<noscript><p class="ko">{{ _("L'atelier a besoin de JavaScript. Le constructeur de vues fonctionne sans.") }} <a href="/{{ lang }}/serie">{{ _("Construire une vue") }} →</a></p></noscript>
+
+<div class="at" id="atelier" hidden>
+  {# Barre d'options au-dessus du graphique : le document, puis les choix qui le précisent, puis la forme. #}
+  <form class="at-barre" id="at-form" autocomplete="off">
+    <div class="at-ligne at-docs" data-nom="doc" role="radiogroup" aria-label="{{ _("Document") }}"></div>
+
+    <div class="at-ligne at-outils">
+      <details class="at-pop" data-pop="n"><summary><span>{{ _("Indicateurs") }}</span> <b class="at-nb" data-nb="n"></b></summary>
+        <div class="at-pop-corps">
+          <input type="search" class="at-filtre" data-pour="n" placeholder="{{ _("Filtrer les indicateurs") }}" aria-label="{{ _("Filtrer les indicateurs") }}">
+          <div class="at-choix" data-nom="n"></div>
+        </div></details>
+      <details class="at-pop" data-pop="e"><summary><span>{{ _("Périmètres") }}</span> <b class="at-nb" data-nb="e"></b></summary>
+        <div class="at-pop-corps">
+          <input type="search" class="at-filtre" data-pour="e" placeholder="{{ _("Filtrer les périmètres") }}" aria-label="{{ _("Filtrer les périmètres") }}">
+          <div class="at-choix" data-nom="e"></div>
+        </div></details>
+      <div class="at-groupe" role="radiogroup" aria-label="{{ _("Unité") }}"><span class="at-eti">{{ _("Unité") }}</span><div class="at-puces" data-nom="u"></div></div>
+      <div class="at-groupe at-annees"><span class="at-eti">{{ _("Période") }}</span>
+        <label><span class="sr">{{ _("De") }}</span><select name="a0" aria-label="{{ _("De") }}"></select></label>
+        <span aria-hidden="true">–</span>
+        <label><span class="sr">{{ _("à") }}</span><select name="a1" aria-label="{{ _("à") }}"></select></label>
+      </div>
+      <details class="at-pop at-pop-droite" data-pop="o"><summary><span>{{ _("Options") }}</span></summary>
+        <div class="at-pop-corps">
+          <label class="at-mesure" hidden>{{ _("Mesure") }}<select name="m"></select></label>
+          <label class="at-case"><input type="checkbox" name="z" checked> {{ _("Axe à partir de zéro") }}</label>
+          <label>{{ _("Base 100 (année)") }}<select name="b"><option value="">{{ _("non") }}</option></select></label>
+        </div></details>
+      <details class="at-pop at-pop-droite" data-pop="x"><summary><span>{{ _("Texte et annotations") }}</span></summary>
+        <div class="at-pop-corps">
+          <label>{{ _("Titre") }}<input name="titre" maxlength="120"></label>
+          <label>{{ _("Sous-titre") }}<input name="st" maxlength="160"></label>
+          <label>{{ _("Annotations (année : texte, une par ligne)") }}<textarea name="an" rows="3" maxlength="400" placeholder="2008 : …&#10;2020 : …"></textarea></label>
+          <fieldset><legend>{{ _("Format de l'image") }}</legend><div class="at-tuiles at-formats" data-nom="fmt"></div></fieldset>
+        </div></details>
+    </div>
+
+    <div class="at-ligne at-types" data-nom="t" role="radiogroup" aria-label="{{ _("Forme") }}"></div>
+    <div class="at-raisons" id="at-raisons"></div>
+    <ul class="at-selection" id="at-selection" aria-label="{{ _("Séries choisies") }}"></ul>
+  </form>
+
+  <section class="at-vue" aria-live="polite">
+    <div class="at-cadre" data-format="carre">
+      <p class="at-titre" id="at-titre-v"></p>
+      <p class="at-sous" id="at-sous-v"></p>
+      <ul class="at-leg" id="at-leg"></ul>
+      <div class="at-plot" id="at-plot"></div>
+      <p class="at-note" id="at-note"></p>
+      <p class="at-src" id="at-src"></p>
+    </div>
+    <div class="at-actions">
+      <button type="button" data-act="partager" hidden><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8 15.8 6.2M8.2 13.2l7.6 4.6"/></svg><span>{{ _("Partager") }}</span></button>
+      <button type="button" data-act="png"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/></svg><span>{{ _("Image PNG") }}</span></button>
+      <button type="button" data-act="lien"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span>{{ _("Copier le lien") }}</span></button>
+      <button type="button" data-act="svg"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg><span>SVG</span></button>
+      <button type="button" data-act="csv"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 10h18M3 15h18M10 4v16"/></svg><span>CSV</span></button>
+    </div>
+  </section>
+
+  <details class="at-table"><summary>{{ _("Voir les données, chacune avec sa source") }}</summary>
+    <div class="table-wrap" id="at-table"></div>
+  </details>
+</div>
+
+<script type="application/json" id="at-l">{{ L|tojson }}</script>
+<script type="application/json" id="at-c">{{ citations|tojson }}</script>
+<script type="application/json" id="at-d">{{ docs|list|tojson }}</script>
+<script src="/static/vendor/d3-7.9.0.min.js" defer></script>
+<script src="/static/vendor/plot-0.6.16.umd.min.js" defer></script>
+<script src="/static/atelier.js?v=14" defer></script>
+{% endblock %}

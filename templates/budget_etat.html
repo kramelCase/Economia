@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, lbl, donut, fig_src, description with context %}
+{% block title %}{{ _("Budget de l'État") }}{% endblock %}
+{% macro vue_nom(v) %}{% if v.stade == "execution" %}{{ _("Exécution %(a)s", a=v.annee) }}{% elif v.stade == "lfi" %}{{ _("LFI %(a)s", a=v.annee) }}{% else %}{{ _("PLF %(a)s", a=v.annee) }}{% endif %}{% endmacro %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("État seul") }}</p>
+  <h1>{{ _("Que finance le budget de l'État ?") }}</h1>
+  <p class="lede">{{ _("Les crédits de paiement par mission, dans les trois colonnes publiées par la source : exécution 2024, loi de finances initiale 2025, projet de loi de finances 2026.") }}</p>
+</header>
+
+<form class="filters" method="get">
+  <label>{{ _("Moment du budget") }}
+    <select name="vue">{% for v in vues %}<option value="{{ v.i }}" {% if v.i == vue %}selected{% endif %}>{{ vue_nom(v) }}</option>{% endfor %}</select>
+  </label>
+  {% if zoom %}<input type="hidden" name="mission" value="{{ zoom.mission.id }}">{% endif %}
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+
+<p class="big"><strong>{{ money(total[vue].v) }}</strong> {{ src(lang, href=total[vue].href) }}
+  <span>{{ _("de crédits de paiement, %(vue)s", vue=vue_nom(vues[vue])) }}</span></p>
+
+<section>
+  <h2>{{ _("Répartition par mission") }}</h2>
+  <p class="caption">{{ _("Cliquez sur une mission pour voir ses programmes. Parts calculées par ce site : mission ÷ total des crédits budgétaires.") }}</p>
+  {% if camembert.exclus %}<p class="caption">{{ _("L'anneau ne peut montrer que des montants positifs. Il laisse de côté, et le total au centre aussi :") }}
+    {% for e in camembert.exclus %}{{ lbl(e.label) }} ({{ money(e.v) }}{% if e.href %} {{ src(lang, href=e.href) }}{% endif %}){% if not loop.last %}, {% endif %}{% endfor %}.
+    {{ _("Avec ces lignes, on retrouve le total de %(t)s.", t=money(total[vue].v)) }}</p>{% endif %}
+  {{ donut(lang, camembert, "EUR", _("hors montants négatifs") if camembert.exclus else vue_nom(vues[vue]), _("Répartition par mission")) }}
+</section>
+
+{% if zoom %}
+<section id="zoom" class="zoom">
+  <p class="kicker">{{ _("Zoom") }} · <a href="?vue={{ vue }}">{{ _("fermer") }}</a></p>
+  <h2>{{ lbl(zoom.mission.label) }}</h2>
+  <p class="big small"><strong>{{ money(zoom.mission.v) }}</strong> {% if zoom.mission.href %}{{ src(lang, href=zoom.mission.href) }}{% endif %} <span>{{ vue_nom(vues[vue]) }}</span></p>
+  <p class="caption">{{ _("Programmes de la mission. Parts calculées par ce site : programme ÷ total de la mission.") }}</p>
+  {% if zoom.parts.featured %}{{ donut(lang, zoom.parts, "EUR", _("hors montants négatifs") if zoom.parts.exclus else vue_nom(vues[vue]), _("Programmes de la mission")) }}{% endif %}
+  <div class="table-wrap">
+  <table class="sortable">
+    {{ fig_src(lang, zoom.parts.sources, "caption") }}
+    <thead><tr><th scope="col" data-sort>{{ _("Programme") }}</th>
+      {% for v in vues %}<th scope="col" class="num" data-sort>{{ vue_nom(v) }}</th>{% endfor %}</tr></thead>
+    <tbody>{% for p in zoom.progs %}<tr><th scope="row">{{ lbl(p.label) }}</th>
+      {% for c in p.cols %}<td class="num" data-v="{{ c.v if c.v is not none else -1e18 }}">{{ money(c.v) }} {{ src(lang, href=c.href) if c.n }}</td>{% endfor %}</tr>{% endfor %}</tbody>
+  </table>
+  </div>
+</section>
+{% endif %}
+
+<section>
+  <h2>{{ _("Toutes les missions") }}</h2>
+  <p class="caption">{{ _("Crédits budgétaires, en euros courants. Cliquez sur un en-tête pour trier.") }}</p>
+  <div class="table-wrap">
+  <table class="budget sortable">
+    {{ fig_src(lang, camembert.sources, "caption") }}
+    <thead><tr>
+      <th scope="col" data-sort>{{ _("Mission") }}</th>
+      {% for v in vues %}<th scope="col" class="num" data-sort {% if v.i == vue %}aria-sort="descending"{% endif %}>{{ vue_nom(v) }}</th>{% endfor %}
+    </tr></thead>
+    <tbody>
+    {% set vmax = missions[0].v or 1 %}
+    {% for m in missions %}
+    <tr><th scope="row"><a href="{{ m.drill }}">{{ lbl(m.label) }}</a></th>
+      {% for c in m.cols %}<td class="num" data-v="{{ c.v if c.v is not none else -1e18 }}">{{ money(c.v) }} {{ src(lang, href=c.href) if c.n }}
+        {%- if loop.index0 == vue and c.v and c.v > 0 %}<span class="cell-bar" style="--w: {{ (c.v / vmax * 100)|round(1) }}%" aria-hidden="true"></span>{% endif %}</td>{% endfor %}
+    </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot><tr class="total"><th scope="row">{{ _("Total des crédits budgétaires") }}</th>
+      {% for c in total %}<td class="num">{{ money(c.v) }} {{ src(lang, href=c.href) }}</td>{% endfor %}</tr></tfoot>
+  </table>
+  </div>
+</section>
+
+<p class="big small">
+  <span>{{ _("En plus des crédits : taxes affectées plafonnées, publiées dans la même source.") }}</span>
+  {% for c in taxes %}<strong>{{ money(c.v) }}</strong> {{ src(lang, href=c.href) }}{% if not loop.last %} · {% endif %}{% endfor %}
+</p>
+
+<aside class="note">
+  <h2>{{ _("À savoir pour bien lire") }}</h2>
+  <ul>
+    {{ description(lang, source_info("etat_budget_vert_plf2026"), "li") }}
+    <li>{{ _("%(n)s lignes n'ont pas un code d'action ou de dépense ; leurs libellés publiés : « Mesure de périmètre/transfert », « Fonds de concours et attributions de produits », « contribution au CAS ». Elles sont comptées dans les totaux, comme dans la source.", n=techniques) }}</li>
+    <li>{{ _("Le budget vert publie aussi une cotation environnementale de chaque dépense : elle figure sur la fiche source de chaque ligne.") }}</li>
+    <li>{{ _("Les couleurs restent attachées à une mission quel que soit le moment affiché : les cinq missions mises en avant sont celles dont le montant est le plus élevé dans le PLF 2026.") }}</li>
+  </ul>
+</aside>
+{% endblock %}

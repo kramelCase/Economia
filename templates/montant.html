@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% from "_macros.html" import lbl, provisoire, fig_src, titre_source, licence with context %}
+{% block title %}{{ _("Source d'un chiffre") }}{% endblock %}
+{% block content %}
+{% set stades = {"plf": _("Projet de loi de finances"), "lfi": _("Loi de finances initiale"), "execution": _("Exécution budgétaire"), "compte": _("Comptes publiés")} %}
+<header class="page">
+  <p class="kicker">{{ _("Source d'un chiffre") }}</p>
+  <h1>{{ money(m.valeur, m.unite) }}{{ provisoire(m.provisoire) }}</h1>
+  <p class="lede">{{ lbl(label) }} · {{ nom_entite(m.entite_nom) }} · {{ m.exercice }} · {{ stades[m.stade] }}</p>
+</header>
+
+{% set si = source_info(m.source_id) %}
+{# Le chemin du chiffre, en quatre étapes lisibles ; le détail technique est replié plus bas. #}
+<ol class="chaine">
+  <li>{{ icone("etat", 24) }}<div><p class="chaine-t">{{ _("Publié par %(e)s", e=m.editeur) }}</p>
+    <p>{{ _("dans le jeu de données") }} <a href="/{{ lang }}/source/{{ m.source_id }}">{{ titre_source(lang, si) }}</a>{% if si.maj %}, {{ _("mise à jour du %(d)s", d=si.maj) }}{% endif %}</p>
+    {% set cadre = cadre_comptable(m.source_id, lang) %}{% if cadre %}<p>{{ _("Cadre comptable : %(c)s", c=cadre) }}</p>{% endif %}</div></li>
+  <li>{{ icone("calendrier", 24) }}<div><p class="chaine-t">{{ _("Téléchargé par ce site le %(d)s", d=m.collecte[:10]) }}</p>
+    <p>{{ _("depuis") }} <a class="url" href="{{ m.url }}" rel="noopener">{{ _("l'adresse officielle du fichier") }}</a>, {{ _("copie conservée telle quelle") }}</p></div></li>
+  <li>{{ icone("liste", 24) }}<div><p class="chaine-t">{{ _("Ligne %(n)s du fichier", n=m.ligne_source) }}</p>
+    <p>{{ _("valeur écrite :") }} <code>{{ m.valeur }}</code> {{ unite_brute }}</p></div></li>
+  <li>{{ icone("point", 24) }}<div><p class="chaine-t">{{ _("Affiché ici : %(v)s", v=money(m.valeur, m.unite)) }}</p>
+    <p>{{ _("la même valeur, arrondie pour la lecture") }}</p></div></li>
+</ol>
+{% if attributs %}<dl class="facts">
+  {% for k, v in attributs.items() %}<dt>{{ k }}</dt><dd><span lang="fr">{{ v }}</span>{% if k == "statut du compte (Insee)" %} · <a href="/{{ lang }}/source/insee_note_revisions">{{ _("d'après la note de révision de l'INSEE") }}</a>{% endif %}</dd>{% endfor %}
+</dl>{% endif %}
+
+<details class="technique">
+<summary>{{ _("Détails techniques : licence, fichier, empreinte, description de l'éditeur") }}</summary>
+<dl class="facts">
+  <dt>{{ _("Source") }}</dt><dd><a href="/{{ lang }}/source/{{ m.source_id }}">{{ titre_source(lang, si) }}</a> (<code>{{ si.identifiant }}</code>{% if si.maj %}, {{ _("mise à jour du %(d)s", d=si.maj) }}{% endif %})</dd>
+  <dt>{{ _("Éditeur") }}</dt><dd>{{ m.editeur }}</dd>
+  {% if si.extrait %}<dt>{{ _("Description publiée par l'éditeur") }}</dt><dd>« <span lang="{{ si.extrait_lang }}">{{ si.extrait }}</span> »</dd>{% endif %}
+  <dt>{{ _("Licence") }}</dt><dd>{{ licence(lang, si.licence) }}</dd>
+  <dt>{{ _("Fichier collecté") }}</dt><dd><code>{{ m.chemin }}</code></dd>
+  <dt>{{ _("Adresse exacte") }}</dt><dd><a class="url" href="{{ m.url }}" rel="noopener">{{ m.url }}</a></dd>
+  <dt>{{ _("Collecte") }}</dt><dd>{{ m.collecte }}</dd>
+  <dt>sha256</dt><dd><code class="hash">{{ m.sha256 }}</code></dd>
+  <dt>{{ _("Ligne du fichier") }}</dt><dd>{{ m.ligne_source }}</dd>
+  <dt>{{ _("Valeur brute") }}</dt><dd><code>{{ m.valeur }}</code> ({{ m.unite }})</dd>
+</dl>
+</details>
+
+<section>
+  <h2>{{ _("La ligne d'origine, relue dans le fichier brut") }}</h2>
+  {% if rec %}
+  <div class="table-wrap"><table class="raw" data-nolink>
+    {{ fig_src(lang, [m.source_id], "caption") }}
+    <thead><tr><th scope="col">{{ _("Colonne") }}</th><th scope="col">{{ _("Valeur") }}</th></tr></thead>
+    <tbody>{% for k, v in rec.items() %}<tr><td><code>{{ k }}</code></td><td lang="fr">{{ v }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% else %}<p class="ko">{{ _("Ligne introuvable dans le fichier brut : la base est désynchronisée, relancer la construction.") }}</p>{% endif %}
+</section>
+{% endblock %}

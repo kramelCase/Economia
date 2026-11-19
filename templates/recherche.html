@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Recherche") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Recherche") }}</p>
+  <h1>{{ _("« %(q)s »", q=q) }}</h1>
+</header>
+<form method="get" class="filters">
+  <label>{{ _("Rechercher un département, une région, une mission, une dépense fiscale, un terme") }}
+    <input type="search" name="q" value="{{ q }}"></label>
+  <button type="submit">{{ _("Chercher") }}</button>
+</form>
+{% if resultats %}
+<ul class="qlist">{% for o in resultats %}
+  <li><a href="{{ o.href }}"><span class="q">{{ o.t }}</span>
+    <span class="a">{{ o.g }}{% if o.fig %} · {{ o.fig }}{% if o.an %} ({{ o.an }}){% endif %}{% elif o.gap %} · {{ o.gap }}{% endif %}</span></a></li>
+{% endfor %}</ul>
+{% elif q %}<p>{{ _("Rien de publié sous ce nom dans les sources collectées.") }}</p>{% endif %}
+{% endblock %}

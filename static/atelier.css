@@ -1,0 +1,109 @@
+/* Atelier de graphique (W1) : une barre d'options au-dessus du graphique, le graphique sur toute la largeur. */
+.at { display: grid; gap: 16px; margin: 0 0 32px; }
+.at [hidden] { display: none !important; }
+
+/* --- Barre d'options --- */
+.at-barre { display: grid; gap: 10px; border: 1px solid var(--rule); border-radius: 10px; padding: 10px; background: var(--paper);
+  position: relative; min-width: 0; }
+.at-ligne { display: flex; gap: 6px; min-width: 0; }
+/* Documents et formes : une rangée qui défile au doigt sur téléphone, sans barre de défilement de page. */
+.at-docs, .at-types { overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; }
+.at-outils { flex-wrap: wrap; align-items: center; gap: 8px 10px; padding: 8px 0; border-block: 1px solid var(--rule); }
+.at-groupe { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+.at-eti { font: 500 .7rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.at-barre select, .at-barre input:not([type=checkbox]):not([type=radio]), .at-barre textarea {
+  font: 400 .9rem/1.3 var(--sans); padding: 7px 9px; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--ink-2); border-radius: 6px; min-width: 0; box-sizing: border-box; }
+.at-annees select { padding-right: 4px; }
+
+/* Tuiles (documents, formes, formats) : le bouton radio reste dans le DOM (clavier, lecteur d'écran) mais invisible. */
+.at-tuile { display: flex; align-items: center; gap: 8px; flex: none; margin: 0; padding: 6px 12px 6px 8px; min-height: 44px;
+  border: 1px solid var(--rule); border-radius: 8px; cursor: pointer; font-size: .8rem; line-height: 1.2; color: var(--ink-2);
+  position: relative; box-sizing: border-box; }
+.at-docs .at-tuile { max-width: 13rem; }
+.at-tuile svg { color: var(--ink-2); flex: none; }
+.at-tuile.is-on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--ink); }
+.at-tuile.is-on svg { color: var(--accent); }
+.at-tuile.is-off { opacity: .35; cursor: not-allowed; }
+.at-tuile:hover:not(.is-off) { border-color: var(--ink-2); }
+/* Formes : icône au-dessus, libellé court dessous, toutes de même largeur. */
+.at-types .at-tuile { flex-direction: column; justify-content: center; gap: 2px; width: 76px; padding: 6px 4px; text-align: center; font-size: .7rem; }
+.at-tuile input, .at-puce input, .at-choix.is-pastilles input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.at-tuile:has(input:focus-visible), .at-puce:has(input:focus-visible), .at-choix.is-pastilles label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+.at-raisons { font-size: .75rem; color: var(--muted); }
+.at-raisons:empty { display: none; }
+.at-raisons p { margin: 0 0 2px; }
+.at-raisons strong { color: var(--ink-2); font-weight: 600; }
+
+/* Unité : un sélecteur segmenté. */
+.at-puces { display: inline-flex; flex-wrap: wrap; gap: 4px; }
+.at-puce { display: inline-flex; align-items: center; margin: 0; padding: 7px 11px; border: 1px solid var(--rule); border-radius: 999px;
+  cursor: pointer; font-size: .82rem; position: relative; white-space: nowrap; }
+.at-puce.is-on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+
+/* Menus déroulants (indicateurs, périmètres, options, texte) : un <details>, ouvert sous son bouton. */
+.at-pop { position: static; }
+.at-pop > summary { list-style: none; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; padding: 8px 12px;
+  border: 1px solid var(--ink-2); border-radius: 6px; font-size: .88rem; white-space: nowrap; }
+.at-pop > summary::-webkit-details-marker { display: none; }
+.at-pop > summary::after { content: ""; width: 7px; height: 7px; border: solid currentColor; border-width: 0 1.5px 1.5px 0;
+  transform: translateY(-2px) rotate(45deg); margin-left: 2px; }
+.at-pop[open] > summary { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.at-pop[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.at-nb { font: 600 .75rem/1 var(--mono); padding: 3px 6px; border-radius: 999px; background: var(--accent); color: var(--paper); }
+.at-nb:empty { display: none; }
+.at-pop-corps { position: absolute; z-index: 20; left: 8px; right: 8px; margin-top: 6px; padding: 12px; background: var(--paper);
+  border: 1px solid var(--ink-2); border-radius: 8px; box-shadow: 0 12px 32px rgb(0 0 0 / .35); display: grid; gap: 10px;
+  max-height: min(70vh, 32rem); overflow: auto; }
+.at-pop-corps label { display: grid; gap: 4px; font-size: .85rem; min-width: 0; }
+.at-pop-corps input:not([type=checkbox]):not([type=radio]), .at-pop-corps textarea, .at-pop-corps select { width: 100%; }
+.at-pop-corps fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.at-pop-corps legend { font-size: .85rem; margin-bottom: 6px; }
+.at-case { display: flex !important; align-items: center; gap: 8px; }
+@media (min-width: 760px) {
+  .at-docs { flex-wrap: wrap; overflow: visible; }
+  .at-pop-corps { left: auto; right: auto; width: min(34rem, calc(100vw - 48px)); }
+  .at-pop-droite .at-pop-corps { right: 8px; width: 24rem; }
+}
+
+/* Listes d'indicateurs et de périmètres. */
+.at-choix { display: grid; }
+.at-choix label { display: flex; align-items: flex-start; gap: 8px; margin: 0; padding: 6px 4px; font-size: .86rem; border-radius: 4px;
+  overflow-wrap: anywhere; cursor: pointer; }
+.at-choix label:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.at-choix label input { margin-top: 3px; flex: none; }
+.at-choix label[hidden] { display: none; }
+.at-choix.is-pastilles { display: flex; flex-wrap: wrap; gap: 6px; }
+.at-choix.is-pastilles label { padding: 6px 10px !important; border: 1px solid var(--rule); border-radius: 999px; position: relative; }
+.at-choix.is-pastilles label:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+
+/* Ce qui est tracé : des étiquettes qu'on retire d'un geste. */
+.at-selection { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.at-selection:empty { display: none; }
+.at-selection li { display: inline-flex; align-items: center; gap: 4px; padding: 3px 4px 3px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent); font-size: .8rem; max-width: 100%; }
+.at-selection li > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.at-selection li.is-e { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.at-selection button { flex: none; width: 26px; height: 26px; border: 0; border-radius: 999px; background: transparent; color: var(--ink-2);
+  cursor: pointer; font-size: 1rem; line-height: 1; }
+.at-selection button:hover, .at-selection button:focus-visible { background: color-mix(in srgb, var(--ink) 14%, transparent); color: var(--ink); }
+
+/* --- Le graphique --- */
+.at-cadre { border: 1px solid var(--rule); border-radius: 10px; padding: 16px; background: var(--paper); min-width: 0; }
+@media (min-width: 760px) { .at-cadre { padding: 24px 28px; } }
+.at-titre { font: 700 1.35rem/1.25 var(--serif, var(--sans)); margin: 0 0 4px; overflow-wrap: anywhere; }
+.at-sous { color: var(--ink-2); font-size: .85rem; margin: 0 0 10px; overflow-wrap: anywhere; }
+.at-leg { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: .85rem; }
+.at-leg li { display: inline-flex; align-items: center; gap: 6px; }
+.at-sw { width: 12px; height: 12px; border-radius: 2px; flex: none; }
+.at-plot { min-height: 200px; overflow-x: auto; }
+.at-plot svg { max-width: 100%; height: auto; display: block; }
+.at-note { color: var(--ink-2); font-size: .8rem; margin: 8px 0 0; }
+.at-note:empty { display: none; }
+.at-src { color: var(--muted); font-size: .75rem; margin: 6px 0 0; overflow-wrap: anywhere; }
+.at-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.at-actions button { display: inline-flex; align-items: center; gap: 6px; font: 600 .9rem/1 var(--sans); padding: 10px 14px;
+  border-radius: 6px; border: 1px solid var(--ink-2); background: var(--paper); color: var(--ink); cursor: pointer; }
+.at-actions button[data-act="png"] { background: var(--accent); color: var(--paper); border-color: var(--accent); }
+.at-tuiles { display: flex; flex-wrap: wrap; gap: 6px; }
+.at-table summary { cursor: pointer; color: var(--accent); }

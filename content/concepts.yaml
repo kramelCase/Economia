@@ -1,0 +1,234 @@
+# Lexique : chaque définition est une CITATION EXACTE d'un texte officiel, jamais une rédaction maison.
+#
+# Trois provenances possibles :
+#   insee: <code>   -> page https://www.insee.fr/{fr,en}/metadonnees/definition/<code>, collectée par
+#                      `make fetch` (raw/insee_definitions/), texte extrait automatiquement. FR et EN officiels.
+#   releve: {...}   -> texte relevé à la main dans un navigateur quand le site bloque les robots
+#                      (Légifrance). On garde l'URL, la date, la méthode et le texte exact.
+#   (rien)          -> statut « a_sourcer » : le terme existe, la définition officielle reste à trouver.
+#                      L'interface le dit au lieu d'inventer.
+#
+# Les agrégats OFGL (dépenses de fonctionnement, encours de dette...) sont ajoutés automatiquement
+# depuis la source ofgl_definitions_agregats : ils ne figurent pas ici.
+#
+# alias : formes à relier automatiquement dans les textes de l'interface (la plus longue gagne).
+# mesure : le poste publié que la définition citée nomme elle-même (utilisé par /verifier pour lire « déficit »).
+# en (releve) : traduction NON officielle, signalée comme telle ; l'original français reste affiché.
+
+concepts:
+  # --- Comptabilité nationale (INSEE) ---
+  - id: apu
+    insee: c1244
+    terme: {fr: "Administrations publiques (APU)", en: "General government"}
+    alias:
+      fr: ["administrations publiques", "APU"]
+      en: ["general government"]
+
+  - id: apul
+    insee: c1540
+    terme: {fr: "Administrations publiques locales (APUL)", en: "Local government"}
+    alias:
+      fr: ["administrations publiques locales", "administrations locales", "APUL"]
+      en: ["local government"]
+
+  - id: odac
+    insee: c1451
+    terme: {fr: "Organismes divers d'administration centrale (ODAC)", en: "Miscellaneous central government bodies"}
+    alias:
+      fr: ["organismes divers d'administration centrale", "ODAC"]
+      en: ["miscellaneous central government bodies"]
+
+  - id: cofog
+    insee: c1064
+    terme: {fr: "Classification des fonctions des administrations publiques (COFOG)", en: "Classification of the functions of government (COFOG)"}
+    alias:
+      fr: ["COFOG", "classification des fonctions des administrations publiques"]
+      en: ["COFOG", "classification of the functions of government"]
+
+  - id: depenses_publiques
+    insee: c2125
+    terme: {fr: "Dépenses publiques", en: "Public expenditure"}
+    alias:
+      fr: ["dépense publique", "dépenses publiques"]
+      en: ["public expenditure", "public spending"]
+
+  - id: pib
+    insee: c1365
+    terme: {fr: "Produit intérieur brut (PIB)", en: "Gross domestic product (GDP)"}
+    alias:
+      fr: ["produit intérieur brut", "PIB"]
+      en: ["gross domestic product", "GDP"]
+
+  - id: dette_maastricht
+    insee: c1091
+    terme: {fr: "Dette au sens de Maastricht", en: "Maastricht debt"}
+    # La définition citée : dette « brute, consolidée » de « l'ensemble des administrations publiques ».
+    mesure: {nomenclature: apu_agregats, code: GD, entite: APU-S13}
+    alias:
+      fr: ["dette au sens de Maastricht", "dette publique"]
+      en: ["Maastricht debt", "public debt"]
+
+  - id: deficit_public
+    insee: c1750
+    terme: {fr: "Déficit public", en: "Public deficit"}
+    # La définition citée : « besoin de financement (B9NF) des administrations publiques ».
+    mesure: {nomenclature: apu_agregats, code: B9, entite: APU-S13}
+    alias:
+      fr: ["déficit public"]
+      en: ["public deficit"]
+
+  - id: prelevements_obligatoires
+    insee: c1571
+    terme: {fr: "Prélèvements obligatoires", en: "Compulsory levies"}
+    alias:
+      fr: ["prélèvements obligatoires"]
+      en: ["compulsory levies"]
+
+  - id: population_totale
+    insee: c1270
+    terme: {fr: "Population totale", en: "Total population"}
+    alias:
+      fr: ["population totale"]
+      en: ["total population"]
+
+  - id: depenses_fonctionnement_locales
+    insee: c1680
+    terme: {fr: "Dépenses de fonctionnement (finances locales)", en: "Operating expenditure (local finances)"}
+    alias:
+      fr: ["dépenses de fonctionnement"]
+      en: ["operating expenditure"]
+
+  - id: depenses_investissement_locales
+    insee: c1848
+    terme: {fr: "Dépenses d'investissement (finances locales)", en: "Investment expenditure (local finances)"}
+    alias:
+      fr: ["dépenses d'investissement"]
+      en: ["investment expenditure"]
+
+  - id: dgf
+    insee: c2075
+    terme: {fr: "Dotation globale de fonctionnement (DGF)", en: "Global operating grant (DGF)"}
+    alias:
+      fr: ["dotation globale de fonctionnement", "DGF"]
+      en: ["global operating grant"]
+
+  # --- Loi organique relative aux lois de finances (LOLF), Légifrance ---
+  - id: loi_de_finances
+    terme: {fr: "Loi de finances", en: "Finance act"}
+    alias:
+      fr: ["loi de finances", "lois de finances"]
+      en: ["finance act", "finance acts"]
+    releve:
+      url: https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000044612392
+      titre: "Loi organique n° 2001-692 du 1er août 2001 relative aux lois de finances, article 1er (version en vigueur au 26/10/2026)"
+      date: "2026-10-26"
+      methode: "Texte relevé dans un navigateur (Légifrance refuse les téléchargements automatiques, HTTP 403)."
+      fr: "Dans les conditions et sous les réserves prévues par la présente loi organique, les lois de finances déterminent, pour un exercice, la nature, le montant et l'affectation des ressources et des charges de l'Etat, ainsi que l'équilibre budgétaire et financier qui en résulte. Elles tiennent compte d'un équilibre économique défini, ainsi que des objectifs et des résultats des programmes qu'elles déterminent."
+      en: "Under the conditions and subject to the reservations laid down in this organic law, finance acts determine, for a financial year, the nature, amount and allocation of the State's resources and expenditure, as well as the resulting budgetary and financial balance. They take into account a defined economic balance, as well as the objectives and results of the programmes they determine."
+
+  - id: mission
+    terme: {fr: "Mission (budget de l'État)", en: "Mission (State budget)"}
+    alias:
+      fr: ["mission", "missions"]
+      en: ["mission", "missions"]
+    releve:
+      url: https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006321025
+      titre: "LOLF, article 7, I (extrait, version en vigueur au 26/10/2026)"
+      date: "2026-10-26"
+      methode: "Texte relevé dans un navigateur (Légifrance refuse les téléchargements automatiques, HTTP 403)."
+      fr: "Les crédits ouverts par les lois de finances pour couvrir chacune des charges budgétaires de l'Etat sont regroupés par mission relevant d'un ou plusieurs services d'un ou plusieurs ministères. Une mission comprend un ensemble de programmes concourant à une politique publique définie."
+      en: "Appropriations opened by finance acts to cover each of the State's budgetary charges are grouped by mission under one or more departments of one or more ministries. A mission comprises a set of programmes contributing to a defined public policy."
+
+  - id: programme
+    terme: {fr: "Programme (budget de l'État)", en: "Programme (State budget)"}
+    alias:
+      fr: ["programme", "programmes"]
+      en: ["programme", "programmes"]
+    releve:
+      url: https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006321025
+      titre: "LOLF, article 7, I (extrait, version en vigueur au 26/10/2026)"
+      date: "2026-10-26"
+      methode: "Texte relevé dans un navigateur (Légifrance refuse les téléchargements automatiques, HTTP 403)."
+      fr: "Un programme regroupe les crédits destinés à mettre en oeuvre une action ou un ensemble cohérent d'actions relevant d'un même ministère et auquel sont associés des objectifs précis, définis en fonction de finalités d'intérêt général, ainsi que des résultats attendus et faisant l'objet d'une évaluation."
+      en: "A programme groups the appropriations intended to implement an action or a coherent set of actions under the same ministry, with which precise objectives are associated, defined according to purposes of general interest, as well as expected results subject to evaluation."
+
+  - id: ae
+    terme: {fr: "Autorisation d'engagement (AE)", en: "Commitment authorisation (AE)"}
+    alias:
+      fr: ["autorisations d'engagement", "autorisation d'engagement", "AE"]
+      en: ["commitment authorisations", "commitment authorisation"]
+    releve:
+      url: https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006321027
+      titre: "LOLF, article 8 (extrait, version en vigueur au 26/10/2026)"
+      date: "2026-10-26"
+      methode: "Texte relevé dans un navigateur (Légifrance refuse les téléchargements automatiques, HTTP 403)."
+      fr: "Les crédits ouverts sont constitués d'autorisations d'engagement et de crédits de paiement. Les autorisations d'engagement constituent la limite supérieure des dépenses pouvant être engagées."
+      en: "Opened appropriations consist of commitment authorisations and payment appropriations. Commitment authorisations are the upper limit of expenditure that may be committed."
+
+  - id: cp
+    terme: {fr: "Crédit de paiement (CP)", en: "Payment appropriation (CP)"}
+    alias:
+      fr: ["crédits de paiement", "crédit de paiement", "CP"]
+      en: ["payment appropriations", "payment appropriation"]
+    releve:
+      url: https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006321027
+      titre: "LOLF, article 8 (extrait, version en vigueur au 26/10/2026)"
+      date: "2026-10-26"
+      methode: "Texte relevé dans un navigateur (Légifrance refuse les téléchargements automatiques, HTTP 403)."
+      fr: "Les crédits de paiement constituent la limite supérieure des dépenses pouvant être ordonnancées ou payées pendant l'année pour la couverture des engagements contractés dans le cadre des autorisations d'engagement."
+      en: "Payment appropriations are the upper limit of expenditure that may be authorised or paid during the year to cover commitments entered into under commitment authorisations."
+
+  # --- À sourcer : la définition officielle n'est pas encore relevée (affiché comme tel) ---
+  - id: plf
+    insee: c1628
+    terme: {fr: "Projet de loi de finances (PLF)", en: "Draft finance bill (PLF)"}
+    alias:
+      fr: ["projet de loi de finances", "PLF"]
+      en: ["draft finance bill"]
+
+  - id: lfi
+    insee: c1418
+    terme: {fr: "Loi de finances initiale (LFI)", en: "Initial finance act (LFI)"}
+    alias:
+      fr: ["loi de finances initiale", "LFI"]
+      en: ["initial finance act"]
+
+  - id: execution
+    terme: {fr: "Exécution budgétaire", en: "Budget execution"}
+    alias:
+      fr: ["exécution budgétaire", "exécution"]
+      en: ["budget execution", "outturn"]
+
+  - id: depense_fiscale
+    terme: {fr: "Dépense fiscale", en: "Tax expenditure"}
+    alias:
+      fr: ["dépenses fiscales", "dépense fiscale", "niches fiscales", "niche fiscale"]
+      en: ["tax expenditures", "tax expenditure"]
+
+  - id: taxe_affectee
+    terme: {fr: "Taxe affectée", en: "Earmarked tax"}
+    alias:
+      fr: ["taxes affectées", "taxe affectée"]
+      en: ["earmarked taxes", "earmarked tax"]
+
+  - id: budget_vert
+    terme: {fr: "Budget vert", en: "Green budget"}
+    alias:
+      fr: ["budget vert"]
+      en: ["green budget"]
+
+  - id: euros_par_habitant
+    # Description publiée du champ euros_par_habitant (dataset.json, fields), relue à chaque build.
+    metadonnees: {source: ofgl_departements, champ: euros_par_habitant, debut: "Valeur de l'agrégat"}
+    terme: {fr: "Euros par habitant (OFGL)", en: "Euros per capita (OFGL)"}
+    alias:
+      fr: ["par habitant"]
+      en: ["per capita"]
+
+  - id: consolidation
+    # Phrase des métadonnées publiées du jeu (dataset.json, metas.default.description), relue à chaque build.
+    metadonnees: {source: ofgl_regions, debut: "La consolidation correspond"}
+    terme: {fr: "Consolidation (comptes publics)", en: "Consolidation (public accounts)"}
+    alias:
+      fr: ["consolidés", "consolidé", "consolidation"]
+      en: ["consolidated", "consolidation"]

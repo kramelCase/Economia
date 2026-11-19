@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, courbe, fig_src with context %}
+{% block title %}{{ _("Construire une vue") }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/explorer.css?v=4">
+{% endblock %}
+{% block bodyattr %} class="x"{% endblock %}
+{% macro garde(params) -%}
+  {#- Champs cachés : l'état courant, pour les formulaires qui n'en changent qu'une partie. -#}
+  {%- for k in ("dom", "ind", "unite", "forme") if k not in params %}
+  <input type="hidden" name="{{ k }}" value="{{ e[k]|join(',') if e[k] is not string and e[k] is iterable else e[k] }}">
+  {%- endfor %}
+  {%- if "qui" not in params %}<input type="hidden" name="qui" value="{{ e.qui_lien|join(',') }}">{% endif %}
+  {%- if e.quand == "annee" %}<input type="hidden" name="quand" value="annee">{% if "annee" not in params %}<input type="hidden" name="annee" value="{{ e.annee }}">{% endif %}
+  {%- else %}{% for k in ("de", "a") if k not in params %}<input type="hidden" name="{{ k }}" value="{{ e[k] }}">{% endfor %}{% endif %}
+  {%- if e.reperes %}<input type="hidden" name="reperes" value="1">{% endif %}
+{%- endmacro %}
+{% macro choix(items, courant, cle="key") -%}
+  <ul class="chips">{% for it in items %}
+    <li>{% if it.raison %}<span class="chip is-off" title="{{ it.raison }}" aria-disabled="true">{{ it.nom }}</span>
+    {% else %}<a class="chip{% if it[cle] == courant %} is-on{% endif %}" href="{{ it.href }}"{% if it[cle] == courant %} aria-current="true"{% endif %}>{{ it.nom }}</a>{% endif %}</li>
+  {% endfor %}</ul>
+  {#- Les raisons sont écrites, pas seulement en infobulle : sur téléphone, il n'y a pas de survol. -#}
+  {%- set off = items|selectattr("raison")|list %}
+  {%- if off %}<ul class="s-off">{% for r, its in off|groupby("raison") %}<li>{{ its|map(attribute="nom")|join(", ") }} : {{ r }}</li>{% endfor %}</ul>{% endif %}
+{%- endmacro %}
+{% block content %}
+<header class="s-head">
+  <p class="x-kicker">{{ _("Obtenir les chiffres d'un indicateur") }} · {{ e.d.nom }}</p>
+  <h1>{{ titre }}</h1>
+  <p class="s-note"><a href="/{{ lang }}/atelier">{{ _("Atelier de graphique : tous les types de graphiques, annotations, image prête pour les réseaux") }} →</a></p>
+  <nav class="s-depart" aria-label="{{ _("Points de départ") }}"><span>{{ _("Points de départ") }}</span>
+    <ul class="chips">{% for d in depart %}<li><a class="chip" href="{{ d.href }}">{{ d.t }}</a></li>{% endfor %}</ul>
+  </nav>
+  <p class="s-sub">{% if e.qui|length == 1 %}{{ e.geos[e.qui[0]].texte }} · {% elif e.ind|length == 1 %}{{ e.inds[e.ind[0]].texte }} · {% endif %}{% if e.quand == "annee" %}{{ e.annee }}{% else %}{{ e.de }}–{{ e.a }}{% endif %} · {{ unite_nom }}</p>
+</header>
+
+<div class="s-grid">
+  <aside class="s-panel" id="reglages" aria-label="{{ _("Réglages") }}">
+    <section>
+      <h2 class="s-h"><span class="s-n">1</span> {{ _("Quoi") }}</h2>
+      <ul class="chips">{% for k, d in doms.items() %}
+        <li><a class="chip{% if k == e.dom %} is-on{% endif %}" href="/{{ lang }}/serie?dom={{ k }}{% if e.quand == 'annee' %}&amp;quand=annee{% endif %}"{% if k == e.dom %} aria-current="true"{% endif %}>{{ icone({"cofog": "sortie", "apu": "balance", "ofgl": "lieu"}.get(k, "liste"), 15) }}{{ d.nom }}</a></li>
+      {% endfor %}</ul>
+      <p class="s-note">{{ _("Données : %(j)s", j=e.d.jeu) }}</p>
+      <p class="s-h s-h2">{{ _("Indicateurs") }} <span>{{ _("%(n)s séries au plus sur un graphique", n=5) }}</span></p>
+      {% set groupes = [] %}{% for i in pastilles_ind %}{% if i.groupe not in groupes %}{% set _x = groupes.append(i.groupe) %}{% endif %}{% endfor %}
+      {% for g in groupes %}
+      {% if g and groupes|length > 1 %}<p class="s-g">{{ g }}</p>{% endif %}
+      <ul class="chips">{% for i in pastilles_ind if i.groupe == g %}
+        <li><a class="chip{% if i.on %} is-on{% endif %}" href="{{ i.href }}" aria-pressed="{{ 'true' if i.on else 'false' }}" role="button">{{ i.texte }}</a></li>
+      {% endfor %}</ul>
+      {% endfor %}
+    </section>
+
+    <section>
+      <h2 class="s-h"><span class="s-n">2</span> {{ _("Qui") }} <span>{{ _("Périmètre") if e.dom != "ofgl" else _("Territoires") }}</span></h2>
+      {% if e.dom != "ofgl" %}
+      <ul class="chips">{% for t in pastilles_qui %}
+        <li><a class="chip{% if t.on %} is-on{% endif %}" href="{{ t.href }}" aria-pressed="{{ 'true' if t.on else 'false' }}" role="button">{{ t.texte }}</a></li>
+      {% endfor %}</ul>
+      {% else %}
+      <ul class="chips">{% for t in tous %}
+        <li><a class="chip{% if t.on %} is-on{% endif %}" href="{{ t.href }}" aria-pressed="{{ 'true' if t.on else 'false' }}" role="button">{{ t.texte }}</a></li>
+      {% endfor %}</ul>
+      {% if not tous|selectattr("on")|list %}
+      <ul class="chips">{% for t in pastilles_qui if t.on %}
+        <li><a class="chip is-on" href="{{ t.href }}" title="{{ _("Retirer") }}">{{ t.texte }}{% if e.qui|length > 1 %} <span aria-hidden="true">×</span><span class="sr">{{ _("Retirer") }}</span>{% endif %}</a></li>
+      {% endfor %}</ul>
+      {% endif %}
+      <form class="filters s-add" method="get" action="/{{ lang }}/serie">
+        {{ garde(["qui"]) }}
+        <label>{{ _("Ajouter un territoire") }}
+          <select name="qui">
+            <option value="{{ e.qui_lien|join(',') }}" selected>—</option>
+            {% set base = e.qui_lien|reject("in", ["@region", "@departement"])|list %}
+            {% for g, items in pastilles_qui|rejectattr("on")|groupby("groupe") %}
+            <optgroup label="{{ g }}">{% for t in items %}<option value="{{ (base + [t.key])|join(',') }}">{{ t.texte }}</option>{% endfor %}</optgroup>
+            {% endfor %}
+          </select></label>
+        <noscript><button type="submit">{{ _("Ajouter") }}</button></noscript>
+      </form>
+      {% endif %}
+    </section>
+
+    <section>
+      <h2 class="s-h"><span class="s-n">3</span> {{ _("Quand") }}</h2>
+      <ul class="chips">
+        <li><a class="chip{% if e.quand == 'annee' %} is-on{% endif %}" href="{{ lien(quand='annee') }}"{% if e.quand == 'annee' %} aria-current="true"{% endif %}>{{ _("Une année") }}</a></li>
+        <li><a class="chip{% if e.quand == 'periode' %} is-on{% endif %}" href="{{ lien(quand='periode') }}"{% if e.quand == 'periode' %} aria-current="true"{% endif %}>{{ _("Une période") }}</a></li>
+      </ul>
+      {% if e.quand == "annee" %}
+      <form class="filters s-periode" method="get" action="/{{ lang }}/serie">
+        {{ garde(["annee"]) }}
+        <label><span class="sr">{{ _("Année") }}</span><select name="annee">{% for y in e.annees|reverse %}<option {% if y == e.annee %}selected{% endif %}>{{ y }}</option>{% endfor %}</select></label>
+        <noscript><button type="submit">{{ _("Afficher") }}</button></noscript>
+      </form>
+      {% else %}
+      <form class="filters s-periode" method="get" action="/{{ lang }}/serie">
+        {{ garde(["de", "a"]) }}
+        <label><span class="sr">{{ _("Début") }}</span><select name="de">{% for y in e.annees %}<option {% if y == e.de %}selected{% endif %}>{{ y }}</option>{% endfor %}</select></label>
+        <span aria-hidden="true">→</span>
+        <label><span class="sr">{{ _("Fin") }}</span><select name="a">{% for y in e.annees %}<option {% if y == e.a %}selected{% endif %}>{{ y }}</option>{% endfor %}</select></label>
+        <noscript><button type="submit">{{ _("Afficher") }}</button></noscript>
+      </form>
+      <ul class="chips">
+        <li><a class="chip{% if e.de == e.annees[0] and e.a == e.annees[-1] %} is-on{% endif %}" href="{{ lien(de=e.annees[0], a=e.annees[-1]) }}">{{ _("Toute la période") }}</a></li>
+        {% if e.annees|length > 10 %}<li><a class="chip{% if e.de == e.annees[-10] and e.a == e.annees[-1] %} is-on{% endif %}" href="{{ lien(de=e.annees[-10], a=e.annees[-1]) }}">{{ _("10 dernières années") }}</a></li>{% endif %}
+        <li><a class="chip{% if e.reperes %} is-on{% endif %}" href="{{ lien(reperes='1' if not e.reperes else '') }}" role="button" aria-pressed="{{ 'true' if e.reperes else 'false' }}">{{ _("Repères : débuts de présidence") }}</a></li>
+      </ul>
+      {% endif %}
+    </section>
+
+    <details class="s-pli">
+      <summary><h2 class="s-h"><span class="s-n">4</span> {{ _("Unité") }} <span>{{ unite_nom }}</span></h2></summary>
+      {% set us = [] %}{% for u in unites_p %}{% set _x = us.append(dict(u, href=lien(unite=u.key))) %}{% endfor %}
+      {{ choix(us, e.unite) }}
+      <p class="s-note">{{ _("Euros constants et indice base 100 : pas encore disponibles (indice des prix non collecté).") }}</p>
+    </details>
+
+    <details class="s-pli">
+      <summary><h2 class="s-h"><span class="s-n">5</span> {{ _("Forme") }} <span>{{ (formes|selectattr("key", "equalto", forme)|first).nom }}</span></h2></summary>
+      {% set fs = [] %}{% for f in formes %}{% set _x = fs.append(dict(f, href=lien(forme=f.key))) %}{% endfor %}
+      {{ choix(fs, forme) }}
+      {% if e.quand == "annee" %}<p class="s-note"><a href="{{ comparer }}">{{ _("Tableau de travail : plusieurs colonnes, écart entre deux années, filtres") }} →</a></p>{% endif %}
+    </details>
+  </aside>
+
+  <div class="s-main">
+    <p class="s-goto"><a href="#reglages">{{ _("Modifier les choix") }} ↓</a></p>
+    <div class="s-phrase" aria-live="polite">{% for p in phrases %}<p>{{ p }}</p>{% endfor %}</div>
+    {% if ecartees %}<p class="s-note">{{ _("%(n)s combinaison(s) non affichée(s) : 5 séries au plus par graphique.", n=ecartees) }}</p>{% endif %}
+
+    <div class="s-tools" role="toolbar" aria-label="{{ _("Export") }}">
+      <ul class="chips">
+        <li><a class="chip" href="/{{ lang }}/serie.csv?{{ query }}" download>CSV</a></li>
+        <li><a class="chip" href="/{{ lang }}/serie.json?{{ query }}">JSON</a></li>
+        {% if e.quand == "periode" %}
+        <li><button type="button" class="chip" data-export="svg">SVG</button></li>
+        <li><button type="button" class="chip" data-export="png">PNG</button></li>
+        {% endif %}
+        <li><button type="button" class="chip" data-copy="{{ base_url }}{{ lien() }}" data-done="{{ _("Lien copié") }}">{{ _("Copier le lien") }}</button></li>
+      </ul>
+    </div>
+
+    {% if e.quand == "periode" %}
+    <ul class="s-cards">{% for s in ss %}{% set r = resumes[loop.index0] %}
+      <li><p class="s-card-n"><span class="sw" style="background: var(--s{{ s.slot }})" aria-hidden="true"></span><span>{{ s.nom }}</span></p>
+        {% if r %}
+        <p class="s-card-v"><strong>{{ r.f }}</strong> {{ src(lang, r.dernier.id) }}{% if r.dernier.provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</p>
+        <p class="s-card-a">{{ r.dernier.exercice }}{% if r.ecart %} · {{ _("%(e)s depuis %(a)s", e=r.ecart, a=r.premier.exercice) }} <abbr title="{{ _("Écart calculé par ce site entre la première et la dernière valeur de la période.") }}">{{ _("calcul du site") }}</abbr>{% endif %}</p>
+        {% else %}<p class="s-card-a">{{ _("Pas de valeur publiée sur la période.") }}</p>{% endif %}
+      </li>
+    {% endfor %}</ul>
+    {% set _f = data.update({"forme": forme}) %}
+    <div class="s-chart" data-titre="{{ titre }} ({{ unite_nom }}, {{ e.de }}–{{ e.a }})"
+         data-source="{{ _("Source") }} : {{ ss[0].rows[0].editeur if ss and ss[0].rows else '' }} · {{ base_url }}{{ lien() }}">
+      {{ courbe(lang, data, titre, extra) }}
+    </div>
+
+    {% elif forme == "chiffre" %}
+    {% set s = ss[0] %}
+    <figure class="s-chiffre">
+      {% if s.rows %}<p><strong>{{ money(s.rows[0].valeur, e.unite) }}</strong> {{ src(lang, s.rows[0].id) }}{% if s.rows[0].provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</p>
+      {% else %}<p>{{ _("Pas de valeur publiée pour cette année.") }}</p>{% endif %}
+      <figcaption>{{ s.nom }} · {{ e.annee }} · {{ unite_nom }}</figcaption>
+      {% if sources %}{{ fig_src(lang, sources, "p") }}{% endif %}
+    </figure>
+
+    {% elif forme == "classement" %}
+    <figure class="s-rank" aria-label="{{ titre }}">
+      <ol>{% for l in classement.lignes %}
+        <li><span class="s-rank-n">{{ l.rang }}. {{ l.s.geo.texte if e.ind|length == 1 else l.s.nom }}</span>
+          <span class="s-rank-bar" aria-hidden="true"><span style="left: {{ '%.2f'|format(l.g) }}%; width: {{ '%.2f'|format(l.w) }}%"{% if l.r.valeur < 0 %} class="neg"{% endif %}></span>{% if classement.zero > 0 %}<i style="left: {{ '%.2f'|format(classement.zero) }}%"></i>{% endif %}</span>
+          <span class="s-rank-v">{{ money(l.r.valeur, e.unite) }} {{ src(lang, l.r.id) }}{% if l.r.provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</span></li>
+      {% endfor %}</ol>
+      {% if sources %}{{ fig_src(lang, sources, "figcaption") }}{% endif %}
+    </figure>
+    {% endif %}
+
+    {% if e.quand == "annee" %}
+    {% set rows = ss|map(attribute="geo")|map(attribute="key")|unique|list %}
+    <figure class="s-table">
+    <details class="twin"{% if forme == "tableau" %} open{% endif %}><summary>{{ _("Voir les données en tableau") }}</summary>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">{{ _("Territoires") if e.dom == "ofgl" else _("Périmètre") }}</th>{% for i in e.ind %}<th scope="col" class="num">{{ e.inds[i].texte }}</th>{% endfor %}</tr></thead>
+        <tbody>{% for g in rows %}<tr><th scope="row">{{ e.geos[g].texte }}</th>
+          {% for i in e.ind %}{% set s = ss|selectattr("ind.key", "equalto", i)|selectattr("geo.key", "equalto", g)|first %}
+          <td class="num">{% if s and s.rows %}{{ money(s.rows[0].valeur, e.unite) }} <a class="src" href="/{{ lang }}/montant/{{ s.rows[0].id }}">{{ _("source") }}</a>{% if s.rows[0].provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}{% else %}—{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody>
+      </table></div>
+    </details>
+    {% if sources %}{{ fig_src(lang, sources, "figcaption") }}{% endif %}
+    </figure>
+    {% endif %}
+
+    {% if notes %}<ul class="s-notes">{% for n in notes %}<li>{{ n }}</li>{% endfor %}</ul>{% endif %}
+
+    <nav class="s-pistes" aria-label="{{ _("Pistes") }}">
+      <p class="x-kicker">{{ _("Pistes") }}</p>
+      <ul>
+        <li><a href="/{{ lang }}/contexte?de={{ e.de }}&amp;a={{ e.a }}">{{ _("Fonctions et votes budgétaires de %(de)s à %(a)s", de=e.de, a=e.a) }} →</a></li>
+        {% if e.dom == "apu" %}
+        <li><a href="{{ lien(qui=['S13', 'S1311', 'S1313', 'S1314'], ind=[e.ind[0]]) }}">{{ _("Le même indicateur pour chaque périmètre") }} →</a></li>
+        <li><a href="/{{ lang }}/recettes-publiques?secteur={{ e.qui[0] }}">{{ _("Les recettes par catégorie") }} →</a></li>
+        {% elif e.dom == "cofog" %}
+        <li><a href="{{ lien(qui=['S13', 'S1311', 'S1313', 'S1314'], ind=[e.ind[0]]) }}">{{ _("Le même indicateur pour chaque périmètre") }} →</a></li>
+        <li><a href="/{{ lang }}/depenses-publiques?secteur={{ e.qui[0] }}{% if e.ind[0] != 'TOTAL' %}&amp;fonction={{ e.ind[0] }}{% endif %}#zoom">{{ _("Le détail par sous-fonction") }} →</a></li>
+        {% else %}
+        <li><a href="/{{ lang }}/territoires/{{ e.qui[0] }}">{{ _("La fiche de %(t)s", t=e.geos[e.qui[0]].texte) }} →</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="/static/serie.js" defer></script>{% endblock %}

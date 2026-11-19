@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ e.titre }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="p-tete"><span class="h-ico">{{ icone(e.ico, 18) }}</span><span class="kicker">{{ e.t }}</span></p>
+  <h1>{{ e.titre }}</h1>
+  <p class="lede">{{ e.lede }}</p>
+</header>
+{% if e.recherche %}
+<form class="porte-cherche" method="get" action="/{{ lang }}/recherche" role="search">
+  <label class="sr" for="porte-q">{{ _("Rechercher") }}</label>
+  <input id="porte-q" name="q" type="search" autocomplete="off" placeholder="{{ _("Un mot, un territoire, un chiffre : dette, Gironde, TVA…") }}">
+  <button type="submit">{{ _("Chercher") }}</button>
+</form>
+{% endif %}
+{% if etapes %}
+<section class="pc-liste" aria-labelledby="pc-lh">
+  <h2 id="pc-lh" class="a-h">{{ _("Le parcours, en %(n)s étapes", n=etapes|length) }}</h2>
+  <ol class="portes pc-ol">{% for x in etapes %}
+    <li><a href="/{{ lang }}/comprendre/{{ x.n }}"><span class="portes-t"><span class="pc-num">{{ x.n }}</span> {{ x.q }}</span><span class="portes-d">{{ x.d }}</span></a></li>
+  {% endfor %}</ol>
+  <p><a class="pc-commencer" href="/{{ lang }}/comprendre/1">{{ _("Commencer le parcours") }} →</a></p>
+</section>
+<h2 class="a-h">{{ _("Les pages détaillées") }}</h2>
+{% endif %}
+{% if e.outils %}
+<ul class="outils">{% for p in e.pages %}
+  <li class="outil">
+    <a class="outil-a" href="{{ p.href }}">
+      {{ icone(p.ico, 30) }}
+      <span class="outil-je">{{ _("Je veux") }}</span>
+      <span class="outil-t">{{ p.t }}</span>
+      <span class="outil-d">{{ p.d }}</span>
+      <span class="outil-pied"><span class="outil-donne">{{ _("Résultat :") }} {{ p.donne }}</span><span class="outil-nom">{{ p.outil }} →</span></span>
+    </a>
+    {% if p.ex %}<a class="outil-ex" href="{{ p.ex.href }}">{{ p.ex.t }}</a>{% endif %}
+  </li>
+{% endfor %}</ul>
+{% else %}
+<ul class="portes">{% for p in e.pages %}
+  <li><a href="{{ p.href }}">{% if p.ico %}<span class="h-ico">{{ icone(p.ico, 18) }}</span>{% endif %}<span class="portes-t">{{ p.t }}</span>{% if p.d %}<span class="portes-d">{{ p.d }}</span>{% endif %}</a></li>
+{% endfor %}</ul>
+{% endif %}
+{% endblock %}

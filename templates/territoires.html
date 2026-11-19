@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, lbl, fig_src with context %}
+{% block title %}{{ _("Ma région, mon département") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Collectivités territoriales") }}</p>
+  <h1>{{ _("Que dépense ma région, mon département ?") }}</h1>
+  <p class="lede">{{ _("Les comptes des collectivités publiés par l'OFGL sur data.ofgl.fr.") }}</p>
+</header>
+
+<form class="porte-cherche t-cherche" method="get" action="/{{ lang }}/territoires" role="search">
+  <label class="sr" for="t-nom">{{ _("Ma région ou mon département") }}</label>
+  <input id="t-nom" name="nom" value="{{ nom }}" list="t-liste" autocomplete="off" placeholder="{{ _("Nom ou numéro : Gironde, 33, Bretagne…") }}">
+  <datalist id="t-liste">{% for e in toutes %}<option value="{{ e.nom }}">{% endfor %}</datalist>
+  <button type="submit">{{ _("Ouvrir la fiche") }}</button>
+</form>
+{% if trouves is not none %}
+<div class="t-trouves">
+  {% if trouves %}<p>{{ _("%(n)s collectivités correspondent à « %(q)s » :", n=trouves|length, q=nom) }}</p>
+  <ul class="plain cols-2">{% for e in trouves %}<li><a href="/{{ lang }}/territoires/{{ e.code }}">{% if e.code_insee %}<span class="code">{{ e.code_insee }}</span> {% endif %}{{ e.nom }}</a></li>{% endfor %}</ul>
+  {% else %}<p>{{ _("Aucune région ni aucun département ne correspond à « %(q)s ».", q=nom) }}</p>{% endif %}
+</div>
+{% endif %}
+<p class="t-communes muted">{{ _("Les communes et les intercommunalités ne sont pas encore chargées sur ce site : seules les régions et les départements y sont.") }}</p>
+
+<form class="filters" method="get">
+  <label>{{ _("Niveau") }}
+    <select name="niveau">
+      <option value="departement" {% if niveau == "departement" %}selected{% endif %}>{{ _("Départements") }}</option>
+      <option value="region" {% if niveau == "region" %}selected{% endif %}>{{ _("Régions") }}</option>
+    </select>
+  </label>
+  <label>{{ _("Ce qu'on compare") }}
+    <select name="indicateur">
+      <optgroup label="{{ _("Agrégats financiers") }}">
+        {% for i in inds if i.groupe == "agregat" %}<option value="{{ i.key }}" {% if i.key == ind.key %}selected{% endif %}>{{ i.label.texte }}</option>{% endfor %}
+      </optgroup>
+      {% for g, nom in (("f57", "M57"), ("f52", "M52")) %}{% if inds|selectattr("groupe", "equalto", g)|list %}
+      <optgroup label="{{ _("Dépenses par fonction (nomenclature %(n)s)", n=nom) }}">
+        {% for i in inds if i.groupe == g %}<option value="{{ i.key }}" {% if i.key == ind.key %}selected{% endif %}>{{ i.label.texte }}</option>{% endfor %}
+      </optgroup>{% endif %}{% endfor %}
+    </select>
+  </label>
+  <label>{{ _("Année") }}
+    <select name="annee">{% for a in annees|reverse %}<option {% if a == annee %}selected{% endif %}>{{ a }}</option>{% endfor %}</select>
+  </label>
+  <label>{{ _("Unité") }}
+    <select name="unite">
+      <option value="EUR_HAB" {% if unite == "EUR_HAB" %}selected{% endif %}>{{ _("Par habitant") }}</option>
+      <option value="EUR" {% if unite == "EUR" %}selected{% endif %}>{{ _("En euros") }}</option>
+    </select>
+  </label>
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+
+<section class="rank-wrap">
+  <h2>{{ lbl(ind.label) }}{% if ind.groupe != "agregat" %} <span class="code">{{ ind.groupe[1:]|replace("5", "M5") }}</span>{% endif %}</h2>
+  <p class="caption">
+    {% if ind.groupe == "agregat" %}{{ _("Agrégat financier officiel de l'OFGL, comptes consolidés %(annee)s.", annee=annee) }}
+    {% else %}{{ _("Dépenses totales hors remboursements de dette, budget principal, présentation fonctionnelle %(annee)s.", annee=annee) }}{% endif %}
+    <span class="median-key" aria-hidden="true"></span>{{ _("médiane : %(m)s (calculée par ce site sur les %(n)s collectivités affichées sans statut particulier).", m=money(mediane, unite), n=n_mediane) }}
+  </p>
+  <div class="rank-tools">
+    <input type="search" placeholder="{{ _("Rechercher une collectivité…") }}" aria-label="{{ _("Rechercher une collectivité") }}">
+    <span class="seg-btns" role="group" aria-label="{{ _("Trier") }}">
+      <button type="button" data-sort="desc" aria-pressed="true">{{ _("Plus élevé") }}</button>
+      <button type="button" data-sort="asc" aria-pressed="false">{{ _("Plus bas") }}</button>
+      <button type="button" data-sort="name" aria-pressed="false">{{ _("A → Z") }}</button>
+    </span>
+    <span class="muted"><span class="rank-count">{{ lignes|length }}</span> / {{ lignes|length }}</span>
+  </div>
+  <ol class="rank">
+  {% for l in lignes %}
+    <li data-v="{{ l.v }}" data-name="{{ l.code_insee or '' }} {{ l.nom }}">
+      <a class="rk-name" href="/{{ lang }}/territoires/{{ l.code }}{% if annee %}?annee={{ annee }}{% endif %}">{% if niveau == "departement" %}<span class="code">{{ l.code_insee }}</span> {% endif %}{{ l.nom }}</a>
+      <span class="rk-val">{{ money(l.v, unite) }} {{ src(lang, l.m) }}</span>
+      {%- if l.statut %}<span class="rk-statut" title="{{ statuts[l.statut] }}">{{ _("statut particulier") }}</span>{% endif %}
+      <span class="rk-track" aria-hidden="true"><span class="{% if l.v < 0 %}neg{% endif %}" style="--w: {{ (l.v|abs / vmax * 100)|round(1) if vmax else 0 }}%"></span>
+        {%- if mediane is not none and vmax and mediane >= 0 %}<i style="--m: {{ (mediane / vmax * 100)|round(1) }}%"></i>{% endif %}</span>
+    </li>
+  {% endfor %}
+  </ol>
+  {{ fig_src(lang, sources) }}
+</section>
+
+{% if multiples %}
+<section class="gaps">
+  <h2>{{ _("Plusieurs budgets publiés sous un même code") }}</h2>
+  <p>{{ _("Le fichier publie plusieurs lignes pour ces collectivités en %(annee)s. Ce site ne choisit pas entre elles et ne les additionne pas : elles ne sont pas classées.", annee=annee) }}</p>
+  <ul class="plain">{% for x in multiples %}<li><a href="/{{ lang }}/territoires/{{ x.e.code }}">{{ x.e.nom }}</a> : {% for r in x.rows %}{{ src(lang, r.id) }} {% endfor %}</li>{% endfor %}</ul>
+</section>
+{% endif %}
+{% if absents %}
+<section class="gaps">
+  <h2>{{ _("Sans donnée pour cette sélection") }}</h2>
+  <p>{% if ind.groupe != "agregat" %}{{ _("Ces départements n'ont pas de montant dans cette nomenclature pour %(annee)s : ils tiennent leurs comptes dans l'autre nomenclature, ou la donnée n'est pas publiée.", annee=annee) }}
+  {% else %}{{ _("Aucun montant publié par l'OFGL pour ces collectivités en %(annee)s.", annee=annee) }}{% endif %}</p>
+  <ul class="plain cols-2">{% for e in absents %}<li><a href="/{{ lang }}/territoires/{{ e.code }}">{% if e.code_insee %}<span class="code">{{ e.code_insee }}</span> {% endif %}{{ e.nom }}</a></li>{% endfor %}</ul>
+</section>
+{% endif %}
+
+<aside class="note">
+  <h2>{{ _("À savoir pour bien lire") }}</h2>
+  <ul>
+    <li>{{ _("Les agrégats sont emboîtés : les dépenses de fonctionnement font partie des dépenses totales. Ils ne s'additionnent pas entre eux.") }}</li>
+    <li>{{ _("Selon l'année, un département tient ses comptes en nomenclature M52 ou M57 (indiqué dans la source) : les fonctions n'y sont pas numérotées de la même façon et ne se comparent pas directement.") }}</li>  </ul>
+</aside>
+{% endblock %}

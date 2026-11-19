@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Lexique") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Définitions officielles, citées mot pour mot") }}</p>
+  <h1>{{ _("Lexique") }}</h1>
+  <p class="lede">{{ _("Chaque définition est une citation exacte d'un texte officiel (loi organique relative aux lois de finances, INSEE, OFGL), avec son lien. Quand la définition officielle n'a pas encore été relevée, le lexique le dit au lieu d'en inventer une.") }}</p>
+  {% if a_sourcer %}<p class="gap-mark">{{ _("%(n)s termes attendent encore leur définition officielle.", n=a_sourcer|length) }}</p>{% endif %}
+</header>
+
+<dl class="lexique" data-nolink>
+{% for c in items %}
+  <div class="entry" id="{{ c.id }}">
+    <dt>{{ c.terme }}</dt>
+    <dd data-nolink>
+      {% if c.definition %}
+        <blockquote {% if c.langue_def != lang %}lang="{{ c.langue_def }}"{% endif %}>
+          {% for p in c.definition.split("\n\n") %}<p>{{ p }}</p>{% endfor %}
+        </blockquote>
+        {% if not c.officielle %}<p class="warn">{{ _("Traduction non officielle. Texte original :") }}</p>
+          <blockquote lang="fr" class="orig">{% for p in (c.original_fr or "").split("\n\n") %}<p>{{ p }}</p>{% endfor %}</blockquote>{% endif %}
+        {% if c.langue_def != lang %}<p class="warn">{{ _("Définition disponible en français uniquement.") }}</p>{% endif %}
+        <p class="cite">{{ _("Source :") }} <a href="{{ c.source_url }}" rel="noopener">{{ c.source_titre }}</a>
+          {% if c.releve %}<br><span class="muted">{{ _("Relevé :") }} {{ c.releve }}</span>{% endif %}</p>
+      {% else %}
+        <p class="gap-mark">{{ _("Définition officielle pas encore relevée.") }}</p>
+      {% endif %}
+    </dd>
+  </div>
+{% endfor %}
+</dl>
+{% endblock %}

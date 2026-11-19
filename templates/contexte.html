@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, provisoire, fig_src with context %}
+{% block title %}{{ _("Contexte institutionnel") }}{% endblock %}
+{% macro jour(d) -%}
+{%- if not d %}{{ _("en fonction") }}{% elif lang == "fr" %}{{ d[8:10] }}/{{ d[5:7] }}/{{ d[:4] }}{% else %}{{ d }}{% endif -%}
+{%- endmacro %}
+{% macro qui(f) -%}
+<li><p class="ctx-n"><strong>{{ f.nom }}</strong>{% if f.qualite %} · {{ f.qualite }}{% endif %}</p>
+  {% if f.libelle and f.qualite != "Premier ministre" %}<p class="ctx-l" lang="fr">{{ f.libelle }}</p>{% endif %}
+  <p class="meta">{{ jour(f.debut) }} → {{ jour(f.fin) }} <a class="src" href="/{{ lang }}/preuve/{{ f.preuve }}">{{ _("source") }}</a>{% if f.parti %} · {{ _("parti de rattachement publié : %(p)s", p=f.parti.nom) }} <a class="src" href="/{{ lang }}/preuve/{{ f.parti.preuve }}">{{ _("source") }}</a>{% endif %}</p></li>
+{%- endmacro %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Contexte institutionnel") }}</p>
+  <h1>{{ _("Fonctions et votes budgétaires, %(de)s–%(a)s", de=de, a=a) }}</h1>
+  <p class="lede">{{ _("Qui exerçait la présidence, la direction du gouvernement et les ministères chargés des finances ; quels textes budgétaires ont été soumis au vote de l'Assemblée nationale et comment chaque groupe a voté ; et, pour chaque exercice, le solde et la dette publiés.") }}</p>
+  <p class="warn">{{ _("Ce sont des faits datés, publiés par l'Assemblée nationale et par Eurostat. Ce site les rapproche dans le temps ; il n'établit aucun lien de cause entre une fonction, un vote et un montant.") }}</p>
+</header>
+
+<form class="filters" method="get" action="/{{ lang }}/contexte">
+  <label>{{ _("Début") }} <select name="de">{% for y in range(lo, hi + 1) %}<option {% if y == de %}selected{% endif %}>{{ y }}</option>{% endfor %}</select></label>
+  <label>{{ _("Fin") }} <select name="a">{% for y in range(lo, hi + 1) %}<option {% if y == a %}selected{% endif %}>{{ y }}</option>{% endfor %}</select></label>
+  <button type="submit">{{ _("Afficher") }}</button>
+</form>
+<ul class="ctx-periodes">{% for t, x, y in periodes %}
+  <li><a class="chip{% if x == de and y == a %} is-on{% endif %}" href="/{{ lang }}/contexte?de={{ x }}&amp;a={{ y }}">{{ t }}</a></li>
+{% endfor %}</ul>
+<p class="meta"><a href="/{{ lang }}/serie?dom=apu&amp;de={{ de }}&amp;a={{ a }}&amp;reperes=1">{{ _("Recettes, dépenses et solde sur la même période") }} →</a>
+  · <a href="/{{ lang }}/comparer?jeu=fonctions&amp;annee={{ a }}&amp;ref={{ de }}&amp;tri=d:S13">{{ _("Évolution de chaque fonction de dépense entre %(de)s et %(a)s", de=de, a=a) }} →</a></p>
+
+<section>
+  <h2>{{ _("Fonctions exercées") }}</h2>
+  <div class="ctx-cols">
+    <div><h3>{{ _("Présidence de la République") }}</h3>
+      {% if presidences %}<ul class="ctx-list">{% for p in presidences %}{{ qui({"nom": p.nom, "debut": p.debut, "fin": p.fin, "preuve": p.preuve}) }}{% endfor %}</ul>{{ fig_src(lang, ["an_acteurs_organes"]) }}
+      {% else %}<p class="muted">{{ _("Aucune donnée publiée pour cette période.") }}</p>{% endif %}</div>
+    <div><h3>{{ _("Premiers ministres") }}</h3>
+      {% if premiers %}<ul class="ctx-list">{% for f in premiers %}{{ qui(f) }}{% endfor %}</ul>{{ fig_src(lang, ["an_acteurs_organes"]) }}
+      {% else %}<p class="muted">{{ _("Aucune donnée publiée pour cette période.") }}</p>{% endif %}</div>
+    <div><h3>{{ _("Ministres chargés des finances, du budget ou des comptes publics") }}</h3>
+      {% if ministres %}<ul class="ctx-list">{% for f in ministres %}{{ qui(f) }}{% endfor %}</ul>{{ fig_src(lang, ["an_acteurs_organes"]) }}
+      {% else %}<p class="muted">{{ _("Aucune donnée publiée pour cette période.") }}</p>{% endif %}</div>
+  </div>
+  {% if de < 2007 %}<p class="warn">{{ _("Avant mai 2007, le référentiel de l'Assemblée nationale ne publie ni la présidence ni les gouvernements.") }} <a href="/{{ lang }}/lacunes">{{ _("Voir les données non disponibles") }}</a></p>{% endif %}
+  <p class="caption">{{ _("Ministères retenus selon leur intitulé publié : ceux dont l'objet porte sur les finances, le budget ou les comptes publics. Un secrétariat d'État rattaché au ministre des finances mais chargé d'un autre domaine n'est pas retenu. Source : Assemblée nationale, acteurs, mandats et organes.") }}</p>
+</section>
+
+<section>
+  <h2>{{ _("Par exercice") }}</h2>
+  <p class="caption">{{ _("Exercice : l'année inscrite dans le titre publié du texte (« loi de finances pour 2019 » : exercice 2019).") }}</p>
+  {% for x in annees %}{% set c = comptes.get(x, {}) %}
+  <article class="ctx-an" id="ex-{{ x }}">
+    <h3>{{ _("Exercice %(a)s", a=x) }}</h3>
+    <ul class="ctx-chiffres">{% for code in ("B9", "GD") %}{% if code in c %}
+      <li><span>{{ c[code].nom }}</span> <strong>{{ c[code].f }}</strong> <span class="muted">{{ _("du PIB") }}</span> {{ src(lang, c[code].id) }}{{ provisoire(c[code].prov) }}</li>
+    {% endif %}{% endfor %}</ul>
+    {% if x < premier_vote %}
+      <p class="muted">{{ _("Scrutins sur les textes budgétaires de cet exercice : non publiés dans les données ouvertes de l'Assemblée nationale.") }} <a href="/{{ lang }}/lacunes">{{ _("Voir les données non disponibles") }}</a></p>
+    {% else %}
+      {% if x in lf_sans_vote %}<p class="muted">{{ _("Loi de finances pour %(a)s : aucun scrutin public sur l'ensemble du texte dans les données de l'Assemblée nationale.", a=x) }}</p>{% endif %}
+      {% for v in votes.get(x, []) %}
+      <div class="ctx-vote">
+        <p><span class="code">{{ jour(v.date) }}</span> <span lang="fr">{{ v.titre[0]|upper }}{{ v.titre[1:] }}</span></p>
+        <p class="meta"><strong>{{ v.sort }}</strong> · {{ _("%(p)s pour, %(c)s contre, %(a)s abstentions", p=v.pour, c=v.contre, a=v.abstentions) }}
+          · {% if v.href %}<a href="{{ v.href }}" rel="external">{{ _("scrutin n° %(n)s", n=v.numero) }}</a>{% else %}{{ _("scrutin n° %(n)s", n=v.numero) }}{% endif %} <a class="src" href="/{{ lang }}/preuve/scrutin/{{ v.uid }}">{{ _("source") }}</a></p>
+        {% if v.dossier_uid %}
+        <p class="meta ctx-loi">{{ _("Dossier législatif :") }} <span lang="fr">{{ v.titre_dossier }}</span>
+          {%- if v.code_loi %} · <span lang="fr">{% if v.titre_loi[:3]|lower == "loi" %}{{ v.titre_loi }}{% else %}{{ _("Loi n° %(n)s", n=v.code_loi) }} {{ v.titre_loi }}{% endif %}</span>,
+          {{ _("JO n° %(n)s du %(d)s", n=v.num_jo, d=jour(v.date_jo)) }} · NOR <code>{{ v.nor }}</code>{% if v.url_legifrance %} · <a href="{{ v.url_legifrance }}" rel="external noopener">Légifrance</a>{% endif %}
+          {%- else %} · {{ _("aucune promulgation publiée dans le dossier") }}{% endif %}
+          <a class="src" href="/{{ lang }}/preuve/loi/{{ v.dossier_uid }}">{{ _("source") }}</a></p>
+        {% else %}
+        <p class="meta ctx-loi">{{ _("Aucun dossier législatif publié ne cite ce scrutin.") }} <a href="/{{ lang }}/lacunes">{{ _("Voir les données non disponibles") }}</a></p>
+        {% endif %}
+        <details><summary>{{ _("Vote des groupes") }}</summary>
+          <div class="table-wrap"><table>
+            {{ fig_src(lang, [v.source_id], "caption") }}
+            <thead><tr><th scope="col">{{ _("Groupe") }}</th><th scope="col" class="num">{{ _("Membres") }}</th><th scope="col" class="num">{{ _("Pour") }}</th><th scope="col" class="num">{{ _("Contre") }}</th><th scope="col" class="num">{{ _("Abstention") }}</th><th scope="col">{{ _("Position majoritaire") }}</th></tr></thead>
+            <tbody>{% for g in v.groupes %}<tr><th scope="row" lang="fr">{{ g.libelle }}</th><td class="num">{{ g.membres }}</td><td class="num">{{ g.pour }}</td><td class="num">{{ g.contre }}</td><td class="num">{{ g.abstentions }}</td><td>{{ g.position or "—" }}</td></tr>{% endfor %}</tbody>
+          </table></div>
+        </details>
+      </div>
+      {% endfor %}
+    {% endif %}
+  </article>
+  {% endfor %}
+  <p class="caption">{{ _("Scrutins publics de l'Assemblée nationale sur l'ensemble d'un texte budgétaire (loi de finances, loi de financement de la sécurité sociale, lois rectificatives, de fin de gestion, de règlement ou d'approbation des comptes). Les votes du Sénat ne sont pas encore chargés.") }}</p>
+  {% if sources_votes %}{{ fig_src(lang, sources_votes + ["eurostat_apu_principaux", "eurostat_dette_maastricht"]) }}{% endif %}
+</section>
+{% endblock %}

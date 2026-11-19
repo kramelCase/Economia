@@ -1,0 +1,227 @@
+/* La machine des comptes publics : scène 3D, étiquettes posées sur la scène, listes des montants dessous. */
+/* Niveau de lecture (Découverte / Exploration / Analyse). */
+.mc-niv { flex: 1 1 100%; margin: 0; padding: 0; border: 0; min-width: 0; }
+.mc-niv legend { font: 600 .82rem/1.2 var(--sans); color: var(--ink-2); margin-bottom: 6px; }
+.mc-niv-o { display: inline-flex; align-items: center; gap: 6px; margin: 0 14px 6px 0; font-size: .88rem; cursor: pointer; }
+.mc-niv-o.is-bientot { color: var(--muted); cursor: not-allowed; }
+.mc-niv-d { margin: 4px 0 0; flex: 1 1 100%; }
+.mc-an { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 14px; }
+.mc-an input[type=range] { flex: 1 1 160px; accent-color: var(--accent); }
+.mc-an-o { font: 600 1.3rem/1 var(--sans); font-variant-numeric: tabular-nums; min-width: 3ch; }
+.mc-fig { margin: 0 0 22px; }
+/* La scène prend toute la largeur de la fenêtre (marge de 12 px), au-delà de la colonne de texte. */
+.mc-fig.has-3d { width: calc(100vw - 24px); max-width: 1900px; position: relative; left: 50%; transform: translateX(-50%); }
+.mc-stage { position: relative; height: min(max(560px, calc(100svh - 150px)), max(480px, 128vw)); overflow: hidden; touch-action: pan-y; cursor: grab;
+  border: 1px solid var(--v-bord); border-radius: var(--v-r); background: var(--v-bg); box-shadow: var(--v-ombre); }
+.mc-stage canvas { display: block; width: 100%; height: 100%; }
+/* La scène gère elle-même le glissé et le pincement ; sur écran étroit elle laisse de la place pour faire défiler la page. */
+.mc-fig.has-3d .mc-stage { touch-action: none; }
+@media (max-width: 699px) { .mc-fig.has-3d .mc-stage { height: 58svh; min-height: 360px; } }
+.mc-zoom { position: absolute; right: 10px; bottom: 10px; z-index: 3; display: flex; flex-direction: column; gap: 6px; }
+.mc-zoom button { width: 40px; height: 40px; border-radius: 12px; border: 1px solid var(--v-bord); background: var(--v-bg);
+  color: var(--ink); font: 600 1.25rem/1 var(--sans); cursor: pointer; box-shadow: var(--v-ombre); backdrop-filter: blur(8px); }
+.mc-zoom button:hover { border-color: var(--accent); }
+/* Étiquettes posées sur la scène : pastille = pictogramme + nom court ; sur écran étroit, le pictogramme seul. */
+.mc-lab { position: absolute; left: 0; top: 0; pointer-events: none; white-space: nowrap; font: 600 .76rem/1.2 var(--sans);
+  color: var(--ink); display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 3px; border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 86%, transparent); border: 1px solid var(--v-bord);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 6px 18px -10px rgb(0 0 0 / .45); }
+.mc-lab b { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.mc-i { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 999px; flex: none; color: var(--paper); }
+.mc-lab.is-src .mc-i { background: var(--accent); }
+.mc-lab.is-emp .mc-i { background: var(--gap); }
+.mc-lab.is-exc .mc-i { background: var(--ok); }
+.mc-lab.is-fn .mc-i { background: var(--ink-2); }
+.mc-lab.is-a0 .mc-i { background: var(--s1); }
+.mc-lab.is-a1 .mc-i { background: var(--s2); }
+.mc-lab.is-a2 .mc-i { background: var(--s3); }
+/* Emblème d'un acteur : grand pictogramme à sa couleur, nom, recettes et dépenses publiées du sous-secteur. */
+.mc-lab.is-emb { padding: 5px 12px 5px 5px; border-radius: 16px; gap: 8px; }
+.mc-lab.is-emb .mc-i { width: 34px; height: 34px; }
+.mc-emb { display: grid; gap: 1px; }
+.mc-emb .mc-t { font-size: .84rem; }
+.mc-emb small { display: flex; align-items: center; gap: 3px; font: 500 .68rem/1.2 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums; }
+.mc-emb small svg { margin-left: 4px; }
+.mc-emb small svg:first-child { margin-left: 0; }
+.mc-lab.is-det { padding: 2px 8px; font-size: .7rem; }
+.mc-lab.is-etalon { padding: 2px 8px; font: 500 .68rem/1.2 var(--sans); color: var(--muted); }
+.mc-lab.is-titre { font-weight: 600; color: var(--ink-2); }
+.mc-stage.is-etroit .mc-lab.is-pastille b, .mc-stage.is-etroit .mc-emb small, .mc-stage.is-etroit .mc-lab.is-grad:not(.is-titre) { display: none; }
+.mc-stage.is-etroit .mc-lab.is-emb .mc-t { font-size: .7rem; }
+.mc-stage.is-etroit .mc-lab.is-emb .mc-i { width: 26px; height: 26px; }
+.mc-lab.is-group { font-size: .85rem; padding: 4px 12px 4px 4px; }
+.mc-lab.is-group .mc-i { width: 28px; height: 28px; }
+.mc-lab.is-grad { padding: 1px 6px; font: 500 .66rem/1.2 var(--mono, var(--sans)); color: var(--muted); background: transparent;
+  border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.mc-lab.is-apu { flex-direction: column; align-items: flex-end; gap: 4px; padding: 8px 10px; border-radius: 14px; }
+.mc-acteurs { display: grid; gap: 3px; }
+.mc-acteur { display: flex; align-items: center; justify-content: flex-end; gap: 6px; font-weight: 500; font-size: .72rem; color: var(--ink-2); }
+.mc-acteur svg { color: var(--accent); flex: none; }
+.mc-stage.is-etroit .mc-lab.is-pastille { padding: 2px; gap: 0; }
+.mc-stage.is-etroit .mc-lab.is-pastille .mc-t, .mc-stage.is-etroit .mc-acteur span { display: none; }
+.mc-stage.is-etroit .mc-acteurs { display: flex; gap: 6px; }
+.mc-stage.is-etroit .mc-lab.is-group { font-size: .74rem; }
+.mc-tip .mc-i { float: left; margin: 0 8px 0 0; background: var(--accent); }
+.mc-li { display: inline-flex; align-items: center; gap: 8px; }
+.mc-li svg { color: var(--accent); flex: none; }
+.mc-tip { position: absolute; z-index: 2; transform: translate(-50%, calc(-100% - 12px)); margin: 0; padding: 8px 12px;
+  max-width: 220px; white-space: normal; font-size: .82rem; line-height: 1.35; border-radius: 12px; pointer-events: none;
+  background: var(--paper); border: 1px solid var(--v-bord); box-shadow: var(--v-ombre); }
+.mc-tip b { display: block; font-variant-numeric: tabular-nums; }
+.mc-aide { margin: 8px 0 0; font-size: .8rem; color: var(--muted); }
+.mc-cap { margin-top: 10px; font-size: .85rem; color: var(--ink-2); }
+.mc-leg { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0 0 18px; }
+@media (min-width: 760px) { .mc-leg { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mc-col { padding: 18px 20px; }
+.mc-h { display: flex; align-items: center; gap: 10px; font-size: 1.05rem; margin: 0 0 8px; }
+.mc-an-t { margin-left: auto; font: 500 .8rem/1 var(--mono, var(--sans)); color: var(--muted); }
+.mc-sw { width: 12px; height: 12px; border-radius: 999px; flex: none; }
+.mc-sw.is-rec { background: var(--s1); }
+.mc-sw.is-emp { background: var(--gap); }
+.mc-sw.is-dep { background: var(--s2); }
+.mc-sw.is-det { background: var(--s3); }
+.mc-tot { margin: 0 0 8px; }
+.mc-v { font-variant-numeric: tabular-nums; }
+.mc-l { list-style: none; margin: 0 0 8px; padding: 0; font-size: .88rem; }
+.mc-l li { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-top: 1px solid var(--v-bord); }
+.mc-l li > span:first-child { min-width: 0; overflow-wrap: anywhere; }
+.mc-l li > span:last-child { text-align: right; white-space: nowrap; }
+.mc-col .caption { margin: 6px 0 0; }
+/* Étages de la tour de dette : tons de l'encre, du plus foncé (en bas) au plus clair ; dernier = dette non ventilée. */
+:root { --det-0: #3d4a52; --det-1: #5b6a72; --det-2: #7d8b92; --det-3: #a2adb2; --det-4: #c6cdd0; --det-5: #8f9aa0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --det-0: #c9d3d8; --det-1: #a7b3b9; --det-2: #86939a; --det-3: #66737a; --det-4: #4b565c; --det-5: #7d8a90; }
+}
+/* Traits de rappel : du bandeau au point nommé. */
+.mc-traits { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.mc-trait { fill: none; stroke: var(--muted); stroke-width: 1; opacity: .55; }
+.mc-point { fill: var(--ink-2); }
+/* Bandeau du haut : recettes (et qui paie), besoin de financement. */
+.mc-lab.is-rail-h { flex-direction: column; align-items: flex-start; gap: 2px; padding: 6px 10px 7px; border-radius: 12px; max-width: 168px; white-space: normal; }
+.mc-tete { display: flex; align-items: center; gap: 6px; }
+.mc-tete .mc-t { font-size: .76rem; line-height: 1.15; }
+.mc-lab .mc-m { font-size: .95rem; color: var(--ink); padding-left: 30px; }
+.mc-dont { display: grid; gap: 1px; margin-top: 3px; padding-top: 4px; border-top: 1px solid var(--v-bord); width: 100%;
+  font: 500 .68rem/1.25 var(--sans); color: var(--ink-2); }
+.mc-dont em { font-style: normal; color: var(--muted); }
+.mc-dont > span { display: grid; grid-template-columns: 12px 1fr auto; align-items: start; gap: 4px; }
+.mc-dont svg { color: var(--muted); flex: none; }
+.mc-dont b { padding-left: 4px; font-weight: 600; white-space: nowrap; }
+.mc-dont svg { margin-top: 1px; }
+.mc-lab.is-rail-h.is-emp { border-color: color-mix(in srgb, var(--gap) 55%, var(--v-bord)); }
+.mc-lab.is-rail-h.is-emp .mc-m { color: var(--gap); }
+/* Bandeau du bas : fonctions, pictogramme au-dessus du nom. */
+.mc-lab.is-rail-b { flex-direction: column; gap: 2px; padding: 5px 6px 6px; border-radius: 12px; width: 104px; white-space: normal;
+  text-align: center; font-size: .7rem; line-height: 1.15; }
+.mc-lab.is-rail-b .mc-i { width: 22px; height: 22px; }
+.mc-lab.is-rail-b b { font-size: .72rem; }
+/* Bandeau de droite : détenteurs de la dette, à côté de leur étage. */
+.mc-lab.is-rail-d { padding: 3px 9px 3px 4px; font-size: .72rem; gap: 5px; }
+.mc-lab.is-rail-d .mc-i { width: 20px; height: 20px; background: var(--ink-2); }
+.mc-lab.is-rail-d .mc-sw { background: var(--c); width: 10px; height: 10px; border-radius: 3px; margin-left: 2px; }
+.mc-lab.is-tour { flex-direction: row; align-items: center; padding: 4px 10px 4px 4px; border-radius: 14px; white-space: normal; max-width: 200px; }
+.mc-lab.is-tour .mc-i { background: var(--ink-2); width: 28px; height: 28px; }
+.mc-tour { display: grid; gap: 0; }
+.mc-tour b { font-size: .92rem; color: var(--ink); }
+.mc-tour small { font: 500 .66rem/1.2 var(--sans); color: var(--muted); }
+.mc-lab.is-sous { background: transparent; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+/* Repères des notions (1 flux, 2 solde, 3 stock), expliquées sous le schéma. */
+.mc-lab.is-num { width: 22px; height: 22px; padding: 0; justify-content: center; font: 700 .74rem/1 var(--sans);
+  color: var(--paper); background: var(--ink); border: 2px solid var(--paper); }
+.mc-notions { list-style: none; display: grid; gap: 10px; margin: 12px 0 0; padding: 0; counter-reset: n; }
+@media (min-width: 760px) { .mc-notions { grid-template-columns: repeat(3, 1fr); } }
+.mc-notions li { display: grid; grid-template-columns: 26px 1fr; gap: 2px 10px; font-size: .86rem; color: var(--ink-2); }
+.mc-notions li::before { counter-increment: n; content: counter(n); grid-row: span 2; display: grid; place-items: center;
+  width: 24px; height: 24px; border-radius: 999px; background: var(--ink); color: var(--paper); font: 700 .74rem/1 var(--sans); }
+.mc-notions strong { color: var(--ink); }
+/* Écran étroit : pictogramme et montant seulement dans les bandeaux. */
+.mc-stage.is-etroit .mc-lab.is-rail-h { max-width: 74px; padding: 4px 6px; }
+.mc-stage.is-etroit .mc-lab.is-rail-h .mc-t, .mc-stage.is-etroit .mc-dont { display: none; }
+.mc-stage.is-etroit .mc-lab .mc-m { font-size: .72rem; padding-left: 0; }
+.mc-stage.is-etroit .mc-lab.is-rail-b { width: 30px; padding: 3px; }
+.mc-stage.is-etroit .mc-lab.is-rail-b .mc-t, .mc-stage.is-etroit .mc-lab.is-rail-b b { display: none; }
+.mc-stage.is-etroit .mc-lab.is-rail-d { padding: 2px 6px 2px 2px; font-size: .64rem; }
+.mc-stage.is-etroit .mc-lab.is-rail-d .mc-t, .mc-stage.is-etroit .mc-lab.is-rail-d .mc-sw { display: none; }
+.mc-stage.is-etroit .mc-lab.is-tour small, .mc-stage.is-etroit .mc-lab.is-etalon { display: none; }
+.mc-h3 { font-size: .92rem; margin: 16px 0 4px; }
+.mc-sous { margin: 8px 0 2px; font-size: .85rem; color: var(--ink-2); }
+.mc-stage.is-etroit .mc-lab.is-rail-h { align-items: center; max-width: 56px; padding: 4px 4px 5px; gap: 1px; }
+.mc-stage.is-etroit .mc-lab.is-rail-h .mc-i { width: 22px; height: 22px; }
+.mc-stage.is-etroit .mc-lab .mc-m { font-size: .62rem; white-space: nowrap; }
+.mc-stage.is-etroit .mc-lab.is-emb { padding: 3px; }
+.mc-stage.is-etroit .mc-lab.is-emb .mc-emb { display: none; }
+.mc-stage.is-etroit .mc-lab.is-tour { padding: 2px 6px 2px 2px; }
+.mc-stage.is-etroit .mc-lab.is-tour .mc-t { display: none; }
+.mc-stage.is-etroit .mc-lab.is-tour b { font-size: .7rem; }
+.mc-stage.is-etroit .mc-lab.is-tour .mc-i { width: 22px; height: 22px; }
+/* Le besoin de financement renvoie aux prêteurs (repère 3) ; écart annuel par détenteur, calculé par le site. */
+.mc-vers { display: flex; align-items: center; gap: 4px; margin-top: 3px; font: 500 .66rem/1.2 var(--sans); color: var(--ink-2); }
+.mc-vers i { display: inline-grid; place-items: center; width: 16px; height: 16px; border-radius: 999px; flex: none;
+  background: var(--ink); color: var(--paper); font: 700 .6rem/1 var(--sans); font-style: normal; }
+.mc-var { font: italic 500 .66rem/1 var(--sans); color: var(--muted); }
+.mc-stage.is-etroit .mc-vers, .mc-stage.is-etroit .mc-var { display: none; }
+/* Écran large : le nom des réservoirs est peint sur leur bande ; l'étiquette flottante ne sert qu'au petit écran. */
+/* bandeau des sous-secteurs : visible partout */
+/* Repères 1-2-3 : un toucher ouvre la bulle de la notion ; la liste sert de source aux bulles (et de repli sans 3D). */
+.mc-lab.is-num { pointer-events: auto; cursor: pointer; width: 26px; height: 26px; font-size: .8rem;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink) 18%, transparent); }
+.mc-lab.is-num:hover, .mc-lab.is-num:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mc-lab.is-num.is-ouvert { background: var(--accent); }
+.mc-fig.has-3d .mc-notions { display: none; }
+.mc-tip.is-notion { max-width: 300px; pointer-events: auto; transform: translate(-50%, 14px); font-size: .8rem; }
+.mc-tip.is-notion strong { display: block; margin-bottom: 3px; color: var(--ink); }
+/* Montant sous chaque maquette de fonction (le nom est dans la maquette et au toucher). */
+.mc-lab.is-val { padding: 1px 7px; font-size: .72rem; background: color-mix(in srgb, var(--paper) 80%, transparent); border: 0; box-shadow: none; }
+.mc-stage.is-etroit .mc-lab.is-val { display: none; }
+.mc-lab.is-val { flex-direction: column; gap: 0; width: 84px; padding: 0; white-space: normal; text-align: center;
+  background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.mc-lab.is-val .mc-t { font: 700 .72rem/1.15 var(--sans); color: var(--ink); }
+.mc-lab.is-val b { font: 500 .7rem/1.3 var(--sans); color: var(--ink-2); }
+.mc-lab.is-val { width: 78px; -webkit-hyphens: auto; hyphens: auto; overflow-wrap: anywhere; }
+.mc-lab.is-val .mc-t { font-size: .68rem; }
+.mc-lab.is-val { width: 104px; }
+
+/* Plateau à plat : étiquettes posées sur les bâtiments du fond, cartes sous les fonctions, bandeau des sous-secteurs. */
+.mc-lab.is-pose { max-width: 176px; }
+.mc-lab.is-val.is-carte { background: color-mix(in srgb, var(--paper) 92%, transparent); border: 1px solid var(--v-bord);
+  border-radius: 10px; box-shadow: 0 2px 8px rgb(0 0 0 / .08); padding: 4px 6px 5px; width: 98px; }
+.mc-stage:not(.is-etroit) .mc-lab.is-emb { color: #fff; border: 0; box-shadow: 0 4px 14px rgb(0 0 0 / .18); }
+.mc-stage:not(.is-etroit) .mc-lab.is-emb.is-a0 { background: var(--s1); }
+.mc-stage:not(.is-etroit) .mc-lab.is-emb.is-a1 { background: var(--s2); }
+.mc-stage:not(.is-etroit) .mc-lab.is-emb.is-a2 { background: var(--s3); }
+.mc-stage:not(.is-etroit) .mc-lab.is-emb .mc-i { background: rgb(255 255 255 / .22); }
+.mc-stage:not(.is-etroit) .mc-lab.is-emb b, .mc-stage:not(.is-etroit) .mc-lab.is-emb small, .mc-stage:not(.is-etroit) .mc-lab.is-emb .mc-t { color: #fff; }
+.mc-tip small { display: block; font-weight: 500; color: var(--muted); }
+
+/* Fiche d'une zone touchée : tout le détail publié, sources comprises. */
+.mc-tip.is-fiche { pointer-events: auto; padding: 12px 16px 14px; font-size: .84rem; }
+/* La fiche s'ouvre au centre de l'écran, entière, défilable si elle est longue (elle est alors posée dans body). */
+body > .mc-tip.is-fiche { position: fixed; z-index: 60; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(calc(100vw - 32px), 400px); max-width: none; max-height: min(84svh, 680px); overflow: auto; overscroll-behavior: contain;
+  box-shadow: 0 24px 60px rgb(0 0 0 / .45); }
+.mc-f-x { float: right; margin: -4px -6px 4px 8px; width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--v-bord);
+  background: transparent; color: var(--ink); font: 400 1.3rem/1 var(--sans); cursor: pointer; }
+.mc-f-x:hover, .mc-f-x:focus-visible { border-color: var(--accent); }
+.mc-f-t { margin: 0; font: 700 .95rem/1.2 var(--sans); color: var(--ink); }
+.mc-f-o { margin: 2px 0 0; color: var(--muted); font-size: .74rem; }
+.mc-f-v { margin: 6px 0 0; }
+.mc-f-v b { display: inline; font-size: 1.15rem; }
+.mc-f-h { margin: 10px 0 3px; font-size: .72rem; font-weight: 600; color: var(--ink-2); }
+.mc-f-l { list-style: none; margin: 0; padding: 0; display: grid; gap: 3px; }
+.mc-f-l li { display: grid; grid-template-columns: auto 1fr auto auto auto; align-items: baseline; gap: 6px; }
+.mc-f-l li:not(:has(.mc-sw)) { grid-template-columns: 1fr auto auto auto; }
+.mc-f-l li:not(:has(.prov)) { grid-template-columns: auto 1fr auto auto; }
+.mc-f-l li:not(:has(.mc-sw)):not(:has(.prov)) { grid-template-columns: 1fr auto auto; }
+.mc-tip.is-fiche .prov { font-size: .62rem; padding: 0 4px; }
+.mc-f-l b { display: inline; font-weight: 600; }
+.mc-f-l .mc-sw { width: 9px; height: 9px; border-radius: 3px; background: var(--c); }
+.mc-f-l .src, .mc-f-v .src { font-size: .68rem; }
+.mc-f-cta { display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 0; padding: 6px 12px; border: 0; border-radius: 999px;
+  background: var(--ink); color: var(--paper); font: 600 .76rem/1 var(--sans); cursor: pointer; }
+.mc-f-cta:hover, .mc-f-cta:focus-visible { background: var(--accent); }
+.mc-f-pie { margin-top: 8px; }
+.mc-pie svg { display: block; width: 132px; height: 132px; margin: 0 auto 8px; }
+.mc-pie .mc-f-l li { grid-template-columns: auto 1fr auto auto auto; }
+.mc-pie .mc-f-l li:not(:has(.src)) { grid-template-columns: auto 1fr auto auto; }
+.mc-pc { font-style: normal; color: var(--muted); font-size: .7rem; font-variant-numeric: tabular-nums; }
+:root { --pie-0: #2a5fa8; --pie-1: #e07a2e; --pie-2: #2f9e6f; --pie-3: #b54a8a; --pie-4: #c9a23f; --pie-5: #5b7c99; --pie-6: #9a9488; }

@@ -1,0 +1,29 @@
+# Depuis un clone neuf : collecte des sources officielles, construction de la base (contrôles de bouclage compris),
+# traductions, puis tous les tests, parcours navigateur à 320 px compris. Chaque semaine aussi, pour voir tôt
+# qu'une source a changé de format.
+name: ci
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 5 * * 1"
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - run: make install
+      - name: Collecte des sources officielles
+        run: make fetch
+      - name: Construction de la base
+        run: make build
+      - run: make i18n
+      - name: Navigateur des parcours
+        run: uv run playwright install --with-deps chromium
+      - run: make test

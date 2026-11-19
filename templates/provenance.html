@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "_macros.html" import lbl, fig_src with context %}
+{% block title %}{{ _("Source d'un total") }}{% endblock %}
+{% block content %}
+<header class="page">
+  <p class="kicker">{{ _("Source d'un total") }}</p>
+  <h1>{{ money(total, f.unite if f else "EUR") }}</h1>
+  <p class="lede">{{ lbl(label) }}{% if ent %} · {{ nom_entite(ent.nom) }}{% endif %}{% if f %} · {{ f.exercice }}{% endif %}</p>
+</header>
+<p>{{ _("Ce total est la somme de %(n)s montants publiés dans la source, ligne par ligne. Chacun renvoie à sa ligne d'origine.", n=integer(nb)) }}
+  {% if nb > rows|length %}{{ _("Seuls les %(k)s montants les plus élevés sont listés.", k=rows|length) }}{% endif %}</p>
+<div class="table-wrap"><table>
+  {{ fig_src(lang, rows|map(attribute="source_id")|unique|list, "caption") }}
+  <thead><tr><th scope="col">{{ _("Ligne budgétaire") }}</th><th scope="col">{{ _("Fichier, ligne") }}</th><th scope="col" class="num">{{ _("Montant") }}</th></tr></thead>
+  <tbody>{% for r in rows %}
+  <tr><td lang="fr">{{ r.libelle }}</td><td><code>{{ r.source_id }}</code>, {{ r.ligne_source }}</td>
+    <td class="num">{{ money(r.valeur, r.unite) }} <a class="src" href="/{{ lang }}/montant/{{ r.id }}">{{ _("source") }}</a></td></tr>
+  {% endfor %}</tbody>
+</table></div>
+{% endblock %}

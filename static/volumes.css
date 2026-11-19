@@ -1,0 +1,57 @@
+/* Comprendre : maquettes en volumes. Couleurs et typo viennent des jetons de style.css (une seule autorité). */
+.vol-head { display: grid; gap: 6px; padding-block: 24px 8px; }
+.vol-head h1 { font: 700 clamp(1.9rem, 6vw, 3rem)/1.05 var(--serif); margin: 0; letter-spacing: -.015em; text-wrap: balance; }
+.vol-head .lede { margin: 4px 0 0; }
+
+/* Sélecteur d'année : collé en haut pendant la lecture des trois maquettes. */
+.vol-an { position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: 12px 0 8px; padding: 10px 14px; background: color-mix(in oklab, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--rule); border-radius: 12px; }
+.vol-an label { font-weight: 600; font-size: .85rem; color: var(--ink-2); }
+.vol-an input[type="range"] { flex: 1 1 140px; min-width: 0; accent-color: var(--accent); }
+.vol-an-o { font: 700 1.35rem/1 var(--serif); font-variant-numeric: tabular-nums; min-width: 3.2ch; color: var(--ink); }
+.vol-play { font: 600 .85rem/1 var(--sans); color: var(--paper); background: var(--accent); border: 0; border-radius: 999px;
+  padding: 9px 16px; cursor: pointer; }
+.vol-play[aria-pressed="true"] { background: var(--ink-2); }
+
+.vol { padding-block: 28px 8px; border-top: 1px solid var(--rule); margin-top: 20px; }
+.vol h2 { font: 600 clamp(1.3rem, 3.6vw, 1.7rem)/1.2 var(--serif); margin: 0; text-wrap: balance; }
+.vol-sub { margin: 4px 0 12px; color: var(--muted); font-size: .92rem; max-width: 60ch; }
+.vol-fig { margin: 0; }
+
+/* La scène : un plateau clair, l'ombre portée des colonnes donne le volume. */
+.vol-stage { position: relative; height: clamp(300px, 52vw, 440px); border-radius: 16px; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 0%, var(--paper) 0%, var(--paper-2) 100%);
+  border: 1px solid var(--rule); touch-action: pan-y; cursor: grab; }
+.vol-stage-l { height: clamp(280px, 44vw, 400px); }
+.vol-stage:active { cursor: grabbing; }
+.vol-stage canvas { display: block; width: 100%; height: 100%; }
+.vol-stage.is-static { cursor: default; }
+
+/* Étiquettes HTML posées sur la scène (texte net, traduit, lisible par les lecteurs d'écran via la légende). */
+.vol-lab { position: absolute; left: 0; top: 0; transform: translate(-50%, -100%); pointer-events: none; white-space: nowrap;
+  font: 600 .78rem/1.2 var(--sans); color: var(--ink); text-align: center; text-shadow: 0 1px 0 var(--paper), 0 0 6px var(--paper); }
+.vol-lab small { display: block; font-weight: 400; color: var(--ink-2); font-size: .7rem; }
+.vol-lab.is-tick { transform: translate(0, -50%); font-weight: 400; color: var(--muted); font-size: .68rem; }
+.vol-lab.is-hot { color: var(--accent); font-size: .9rem; }
+
+.vol-cap { display: grid; gap: 4px; margin-top: 10px; font-size: .9rem; line-height: 1.45; color: var(--ink-2); }
+@media (min-width: 720px) { .vol-cap { grid-template-columns: auto repeat(auto-fit, minmax(14rem, 1fr)); align-items: baseline; gap: 4px 20px; } }
+.vol-an-t { font: 700 1rem/1 var(--serif); color: var(--ink); font-variant-numeric: tabular-nums; }
+.vol-k { display: block; }
+.vol-k .sw { margin-right: 6px; vertical-align: .05em; }
+.vol-v { color: var(--ink); font-variant-numeric: tabular-nums; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; }
+.sw-0 { background: var(--ink-2); }
+.sw-1 { background: var(--s1); }
+.sw-2 { background: var(--s2); }
+.sw-3 { background: var(--s3); }
+.sw-gap { background: var(--gap); }
+.sw-ghost { border: 1.5px solid var(--ink-2); background: transparent; }
+.vol-more { margin: 28px 0 8px; font-size: .92rem; }
+
+@media (max-width: 480px) {
+  .vol-an { gap: 8px 10px; padding: 8px 12px; }
+  .vol-lab { font-size: .7rem; }
+  .vol-lab small { font-size: .64rem; }
+}

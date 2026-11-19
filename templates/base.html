@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Economia{% endblock %} · Economia</title>
+<meta name="description" content="{{ _("Les finances publiques françaises, chaque chiffre relié à sa source officielle.") }}">
+<link rel="preload" href="/static/vendor/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link href="/static/fonts.css?v=1" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css?v=20">
+<link rel="stylesheet" href="/static/theme.css?v=5">
+{% block head %}{% endblock %}
+{% for l in langs %}<link rel="alternate" hreflang="{{ l }}" href="{{ other[l] }}">{% endfor %}
+</head>
+<body{% block bodyattr %}{% endblock %}>
+<div class="h-fond" aria-hidden="true"></div>
+<a class="skip" href="#contenu">{{ _("Aller au contenu") }}</a>
+<header class="site">
+  <div class="wrap topbar">
+    <a class="brand" href="/{{ lang }}/">Economia</a>
+    <a class="cmd-open" href="/{{ lang }}/recherche" data-cmd-open aria-haspopup="dialog">
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span class="cmd-open-t">{{ _("Rechercher") }}</span><kbd class="cmd-kbd" aria-hidden="true">Ctrl K</kbd></a>
+    <nav aria-label="{{ _("Langue") }}" class="langs">
+      {% for l, name in langs.items() %}
+        {% if l == lang %}<span aria-current="true">{{ l | upper }}</span>
+        {% else %}<a href="{{ other[l] }}{% if query %}?{{ query }}{% endif %}" hreflang="{{ l }}" lang="{{ l }}">{{ l | upper }}</a>{% endif %}
+      {% endfor %}
+    </nav>
+  </div>
+  <nav class="wrap menu" id="nav" aria-label="{{ _("Navigation principale") }}">
+    {% for x in menu %}<a href="{{ x.href }}"{% if x.cle == menu_courant %} aria-current="page"{% endif %}>{{ icone(x.ico, 16) }}{{ x.t }}</a>{% endfor %}
+  </nav>
+</header>
+<main id="contenu" class="wrap">
+{% if ariane is not none %}<nav class="ariane" aria-label="{{ _("Fil d'Ariane") }}"><ol>
+  <li><a href="/{{ lang }}/">{{ _("Accueil") }}</a></li>
+  {% for a in ariane %}<li><a href="{{ a.href }}">{{ a.t }}</a></li>{% endfor %}
+  <li aria-current="page">{{ self.title() }}</li>
+</ol></nav>{% endif %}
+{% block content %}{% endblock %}
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p>{{ _("Aucun chiffre n'est saisi à la main : tout provient de fichiers officiels collectés automatiquement. Cliquez sur « source » à côté d'un chiffre pour remonter jusqu'à la ligne du fichier d'origine.") }}</p>
+    <p><a href="/{{ lang }}/methode">{{ _("Méthode et sources") }}</a> · <a href="/{{ lang }}/lacunes">{{ _("Données non disponibles") }}</a> · <a href="/{{ lang }}/mentions">{{ _("Mentions et licences") }}</a></p>
+  </div>
+</footer>
+<div id="tip" role="tooltip" class="tip" hidden data-nolink></div>
+<dialog id="cmd" class="cmd" aria-label="{{ _("Rechercher") }}">
+  <form method="get" action="/{{ lang }}/recherche" class="cmd-f">
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    <input id="cmd-q" name="q" type="search" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true"
+      aria-controls="cmd-list" aria-autocomplete="list" placeholder="{{ _("Une collectivité, une fonction, une mission, un terme…") }}"
+      data-src="/{{ lang }}/suggest">
+    <button type="button" class="cmd-x" data-cmd-close><span class="sr">{{ _("Fermer") }}</span><kbd aria-hidden="true">Échap</kbd></button>
+  </form>
+  <ul id="cmd-list" role="listbox" class="cmd-list" aria-label="{{ _("Résultats") }}"></ul>
+  <p class="cmd-aide" aria-hidden="true"><kbd>↑</kbd><kbd>↓</kbd> {{ _("choisir") }} · <kbd>←</kbd><kbd>→</kbd> {{ _("action") }} · <kbd>Entrée</kbd> {{ _("ouvrir") }}</p>
+  <script type="application/json" id="cmd-data">{{ {
+    "recents": _("Récents"), "aller": _("Aller à"), "vide": _("Aucun résultat. Entrée : voir la page de recherche."),
+    "pages": cmd_pages } | tojson }}</script>
+</dialog>
+<!--TIPS-->
+<script>window.I18N = {{ {"voir": _("Voir dans le lexique"), "asourcer": _("Définition officielle pas encore relevée."), "nonoff": _("Traduction non officielle."), "fr": _("Définition disponible en français uniquement.")} | tojson }};</script>
+<script src="/static/app.js" defer></script>
+<script src="/static/cmd.js?v=1" defer></script>
+<script src="/static/charts.js?v=3" defer></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

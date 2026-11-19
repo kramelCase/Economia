@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, donut, courbe, fig_src with context %}
+{% block title %}{{ t.q }}{% endblock %}
+{% block content %}
+<nav class="pc-etapes" aria-label="{{ _("Étapes du parcours") }}">
+  <ol>{% for x in etapes %}
+    <li><a href="/{{ lang }}/comprendre/{{ x.n }}"{% if x.n == n %} aria-current="step"{% endif %} title="{{ x.q }}"><span>{{ x.n }}</span><span class="sr"> {{ x.q }}</span></a></li>
+  {% endfor %}</ol>
+</nav>
+
+<header class="page pc-tete">
+  <p class="kicker">{{ _("Comprendre · étape %(n)s sur %(t)s", n=n, t=total) }}</p>
+  <h1>{{ t.q }}</h1>
+  <p class="lede">{{ t.intro }}</p>
+</header>
+
+<section class="pc-fig">
+  {% if e.forme == "barres" %}
+  <figure class="pc-barres" aria-label="{{ t.q }}">
+    <ul>{% for l in e.lignes %}
+      <li{% if l.total %} class="is-total"{% endif %}>
+        <span class="pc-bn">{{ l.nom }}</span>
+        <span class="pc-bb" aria-hidden="true"><span style="width: {{ '%.2f'|format(l.w) }}%"></span></span>
+        <span class="pc-bv">{{ money(l.r.valeur, e.unite) }} {{ src(lang, l.r.id) }}{% if l.r.provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</span>
+      </li>
+    {% endfor %}</ul>
+    <p class="pc-note">{{ _("Dépenses de l'année %(a)s, en euros courants. Chaque barre est un chiffre publié ; la première est le total publié, pas une somme.", a=e.annee) }}</p>
+    {{ fig_src(lang, e.sources, "figcaption") }}
+  </figure>
+  {% elif e.forme == "courbe" %}
+  {{ courbe(lang, e.data, t.q) }}
+  {% elif e.forme == "anneau" %}
+  {{ donut(lang, e.anneau, e.unite, _("en %(annee)s", annee=e.annee), t.q) }}
+  {% elif e.forme == "chiffres" %}
+  <div class="pc-chiffres">{% for c in e.chiffres %}
+    <figure>
+      <p class="pc-cv"><strong>{{ c.f }}</strong> <a class="src" href="{{ c.href }}">{{ _("source") }}</a></p>
+      <p class="pc-ct">{{ c.t }}</p>
+      {{ fig_src(lang, [c.src], "figcaption") }}
+    </figure>
+  {% endfor %}</div>
+  {% endif %}
+</section>
+
+<div class="pc-phrase">{% for p in e.phrases %}<p>{{ p }}{% if loop.last and e.solde %} {{ src(lang, e.solde.id) }}{% endif %}</p>{% endfor %}</div>
+
+{% if concepts %}
+<section class="pc-mots" aria-labelledby="pc-mh">
+  <h2 id="pc-mh">{{ _("Les mots employés, et leur définition officielle") }}</h2>
+  <dl>{% for c in concepts %}
+    <div><dt><a href="/{{ lang }}/lexique#{{ c.id }}" data-nolink>{{ c.terme }}</a></dt>
+      <dd>{% if c.definition %}<blockquote>{{ c.definition.split("\n\n")[0] }}</blockquote>
+        <p class="pc-src">{% if c.source_url %}<a href="{{ c.source_url }}" rel="noopener">{{ c.source_titre }}</a>{% else %}{{ c.source_titre }}{% endif %}{% if not c.officielle %} · {{ _("traduction non officielle") }}{% endif %}</p>
+        {% else %}<p class="muted">{{ _("Définition officielle non encore relevée.") }}</p>{% endif %}</dd></div>
+  {% endfor %}</dl>
+</section>
+{% endif %}
+
+<nav class="pc-suite" aria-label="{{ _("Suite") }}">
+  <a class="pc-explorer" href="{{ e.suite }}">{{ _("Explorer ces chiffres en détail") }} →</a>
+  <p class="pc-pn">
+    {% if n > 1 %}<a href="/{{ lang }}/comprendre/{{ n - 1 }}">← {{ etapes[n - 2].q }}</a>{% endif %}
+    {% if n < total %}<a class="pc-next" href="/{{ lang }}/comprendre/{{ n + 1 }}">{{ _("Étape suivante") }} : {{ etapes[n].q }} →</a>
+    {% else %}<a class="pc-next" href="/{{ lang }}/">{{ _("Retour à l'accueil") }} →</a>{% endif %}
+  </p>
+</nav>
+{% endblock %}

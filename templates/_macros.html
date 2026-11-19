@@ -1,0 +1,93 @@
+{# Mention de source d'une figure ou d'un tableau : éditeur, jeu, date de collecte, lien vers la fiche de la source
+   (qui mène à la page officielle et au fichier exact). `tag` : figcaption, caption ou p. #}
+{% macro fig_src(lang, ids, tag="p", note=None) -%}
+{%- set ss = src_info(ids) -%}
+<{{ tag }} class="fig-src">{{ _("Source") if ss|length == 1 else _("Sources") }} :
+{% for s in ss %}<a href="/{{ lang }}/source/{{ s.id }}" data-source="{{ s.id }}">{{ s.editeur_court }}, {{ titre_source(lang, s) }}</a> <span class="fig-src-d">(<code>{{ s.identifiant }}</code>, {% if s.maj %}{{ _("mise à jour du %(d)s", d=s.maj) }}{% else %}{{ _("collecte du %(d)s", d=s.collecte[:10]) }}{% endif %})</span>{% if not loop.last %} ; {% endif %}{% endfor %}
+{%- if note %} · {{ note }}{% endif %}</{{ tag }}>
+{%- endmacro %}
+
+{# Titre officiel du jeu, dans la langue de la page quand l'éditeur le publie (Eurostat : FR et EN). #}
+{% macro titre_source(lang, s) -%}
+{%- if lang == "en" and s.titre_en %}<span lang="en">{{ s.titre_en }}</span>{% else %}<span lang="fr">{{ s.titre }}</span>{% endif -%}
+{%- endmacro %}
+
+{# Description du jeu, citée telle que l'éditeur la publie. #}
+{% macro description(lang, s, tag="p") -%}
+{%- if s and s.extrait %}<{{ tag }} class="caption">{{ _("Description publiée par l'éditeur :") }} « <span lang="{{ s.extrait_lang }}">{{ s.extrait }}</span> » <a href="/{{ lang }}/source/{{ s.id }}">{{ _("fiche de la source") }}</a></{{ tag }}>{% endif -%}
+{%- endmacro %}
+
+{# Licence telle que l'éditeur la publie, avec son lien. #}
+{% macro licence(lang, l) -%}{% if l %}<a href="{{ l.url }}" rel="external noopener" lang="{{ "en" if l.editeur == "Eurostat" else "fr" }}">{{ l.titre }}</a>{% else %}{{ _("licence non publiée dans les métadonnées du jeu") }}{% endif %}{%- endmacro %}
+
+{# Badge de provenance : chaque chiffre affiché porte le sien. #}
+{% macro src(lang, montant_id=None, href=None) -%}
+{%- if montant_id -%}<a class="src" href="/{{ lang }}/montant/{{ montant_id }}" title="{{ _("Voir la source de ce chiffre") }}">{{ _("source") }}</a>
+{%- elif href -%}<a class="src" href="/{{ lang }}/{{ href }}" title="{{ _("Voir les lignes sources de ce total") }}">{{ _("source") }}</a>
+{%- endif -%}
+{%- endmacro %}
+
+{# Libellé officiel ; s'il n'existe qu'en français, on le dit. #}
+{% macro lbl(l) -%}
+{%- if l.fr_only -%}<span lang="fr">{{ l.texte }}</span> <abbr class="fr-only" title="{{ _("Libellé officiel publié en français uniquement") }}">FR</abbr>
+{%- else -%}{{ l.texte }}{%- endif -%}
+{%- endmacro %}
+
+{% macro provisoire(flag) -%}
+{%- if flag %} <span class="prov" title="{{ _("Valeur marquée provisoire dans la source") }}">{{ _("provisoire") }}</span>{% endif -%}
+{%- endmacro %}
+
+{# Montant d'une part : badge vers le montant unique (it.m) ou vers les lignes sommées (it.href / it.ids). #}
+{% macro part_src(lang, it) -%}
+{%- if it.m -%}{{ src(lang, it.m) }}{%- elif it.href -%}{{ src(lang, href=it.href) }}
+{%- elif it.ids -%}{{ src(lang, href="provenance?ids=" ~ it.ids|join(',')) }}{%- endif -%}
+{%- endmacro %}
+
+{# Anneau : la légende est la version lisible (et le tableau) ; static/charts.js en dessine les segments.
+   d = parts(...) côté serveur ; unit = unité des montants ; titre = ce que mesure le total. #}
+{% macro donut(lang, d, unit, titre, aria, sources=None) -%}
+<figure class="chart donut-chart" aria-label="{{ aria }}">
+  <div class="donut"><p class="donut-center"><strong>{{ money(d.total, unit) }}</strong><span>{{ titre }}</span></p></div>
+  <ul class="legend">
+  {%- for it in d.featured %}
+    <li data-v="{{ it.v }}" data-slot="{{ it.slot }}"><span class="sw" aria-hidden="true"></span>
+      <span class="lg-text">
+        {%- if it.drill %}<a class="lg-label" href="{{ it.drill }}"><span class="lg-name">{{ lbl(it.label) }}</span></a>
+        {%- else %}<span class="lg-name">{{ lbl(it.label) }}</span>{% endif %}
+        <span class="lg-nums">{% if it.p %}<a class="lg-share" href="/{{ lang }}/montant/{{ it.p.id }}" title="{{ _("Voir la source de ce chiffre") }}">{{ money(it.p.valeur, "PC_TOT") }}</a>{% else %}<strong class="lg-share">{{ share(it.v, d.total) }}</strong>{% endif %}
+          <span class="lg-amount">{{ money(it.v, unit) }}</span> {{ part_src(lang, it) }}</span>
+      </span></li>
+  {%- endfor %}
+  {%- if d.other %}
+    <li data-v="{{ d.other.v }}" data-slot="0"><span class="sw" aria-hidden="true"></span>
+      <span class="lg-text"><span class="lg-name">{{ _("Autres (%(n)s postes)", n=d.other.liste|length) }}</span>
+        <span class="lg-nums"><strong class="lg-share">{{ share(d.other.v, d.total) }}</strong> <span class="lg-amount">{{ money(d.other.v, unit) }}</span></span>
+        <details class="lg-more"><summary>{{ _("Détail") }}</summary>
+          <ul>{% for it in d.other.liste %}
+            <li>{% if it.drill %}<a href="{{ it.drill }}">{{ lbl(it.label) }}</a>{% else %}<span>{{ lbl(it.label) }}</span>{% endif %}
+              <span class="num">{% if it.p %}<a href="/{{ lang }}/montant/{{ it.p.id }}">{{ money(it.p.valeur, "PC_TOT") }}</a> · {% else %}{{ share(it.v, d.total) }} · {% endif %}{{ money(it.v, unit) }} {{ part_src(lang, it) }}</span></li>
+          {% endfor %}</ul>
+        </details>
+      </span></li>
+  {%- endif %}
+  </ul>
+  {{ fig_src(lang, sources or d.sources, "figcaption") }}
+</figure>
+{%- endmacro %}
+
+{# Courbe : données JSON pour static/charts.js, et le même contenu en tableau (lisible sans graphique). #}
+{% macro courbe(lang, data, aria, extra=None) -%}
+<figure class="chart line-chart" aria-label="{{ aria }}">
+  {% if data.series|length > 1 %}<ul class="legend inline">{% for s in data.series %}<li data-slot="{{ s.slot }}"><span class="sw line" aria-hidden="true"></span>{{ s.name }}</li>{% endfor %}</ul>{% endif %}
+  <div class="plot"></div>
+  <script type="application/json">{{ data|tojson }}</script>
+  <details class="twin"><summary>{{ _("Voir les données en tableau") }}</summary>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">{{ _("Année") }}</th>{% for s in data.series %}<th scope="col" class="num">{{ s.name }}</th>{% endfor %}</tr></thead>
+      <tbody>{% for x in data.x|reverse %}{% set i = data.x|length - loop.index %}<tr><th scope="row">{{ x }}</th>
+        {% for s in data.series %}{% set p = s.points[i] %}<td class="num">{% if p %}{{ p.f }}{% if p.href %} <a class="src" href="{{ p.href }}">{{ _("source") }}</a>{% endif %}{% if p.prov %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}{% else %}—{% endif %}</td>{% endfor %}</tr>{% endfor %}</tbody>
+    </table></div>
+  </details>
+  {{ fig_src(lang, data.sources + (extra or []), "figcaption") }}
+</figure>
+{%- endmacro %}

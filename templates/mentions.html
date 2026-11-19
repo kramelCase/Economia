@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Mentions et licences") }}{% endblock %}
+{% macro champ(v) %}{% if v %}{{ v }}{% else %}<span class="muted">{{ _("à compléter") }}</span>{% endif %}{% endmacro %}
+{% block content %}
+<header class="page">
+  <h1>{{ _("Mentions et licences") }}</h1>
+  <p class="lede">{{ _("Qui publie ce site, sous quelles licences sont réutilisés les données et les éléments qu'il affiche, et ce qu'il garde dans votre navigateur.") }}</p>
+</header>
+
+<section>
+  <h2>{{ _("Éditeur") }}</h2>
+  <dl class="mentions">
+    <dt>{{ _("Éditeur du site") }}</dt><dd>{{ champ(ed.editeur) }}</dd>
+    <dt>{{ _("Directeur de la publication") }}</dt><dd>{{ champ(ed.directeur_publication) }}</dd>
+    <dt>{{ _("Contact") }}</dt><dd>{% if ed.contact %}<a href="mailto:{{ ed.contact }}">{{ ed.contact }}</a>{% else %}{{ champ("") }}{% endif %}</dd>
+    <dt>{{ _("Hébergeur") }}</dt><dd>{{ champ(ed.hebergeur) }}</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>{{ _("Licences des données") }}</h2>
+  <p>{{ _("Chaque chiffre vient d'un jeu de données publié par son éditeur, sous la licence qu'il indique. La fiche de chaque source donne le lien vers le jeu et vers sa licence.") }}</p>
+  <ul>{% for lic, ss in licences.items() %}
+    <li><strong>{{ lic }}</strong> : {% for s in ss %}<a href="/{{ lang }}/source/{{ s.id }}">{{ s.editeur }} <code>{{ s.id }}</code></a>{% if not loop.last %}, {% endif %}{% endfor %}</li>
+  {% endfor %}</ul>
+  <dl class="mentions">
+    <dt>{{ _("Fichiers publiés par ce site (/data/)") }}</dt><dd>{{ champ(ed.licence_donnees_derivees) }}</dd>
+    <dt>{{ _("Code source du site") }}</dt><dd>{{ champ(ed.licence_code) }}</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>{{ _("Éléments réutilisés") }}</h2>
+  <ul>{% for nom, lic, url in tiers %}
+    <li><a href="{{ url }}" rel="noopener">{{ nom }}</a> : {{ lic }}</li>
+  {% endfor %}</ul>
+  <p>{{ _("Les polices sont servies par ce site : aucune requête n'est envoyée à un service de polices.") }}</p>
+</section>
+
+<section>
+  <h2>{{ _("Ce que le site garde") }}</h2>
+  <p>{{ _("Le site ne dépose aucun cookie et ne mesure pas l'audience. Il garde dans votre navigateur vos dernières recherches et un réglage d'affichage ; ces informations restent sur votre appareil et ne sont pas envoyées au serveur.") }}</p>
+</section>
+{% endblock %}

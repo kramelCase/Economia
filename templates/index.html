@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% from "_macros.html" import src, lbl, courbe, fig_src with context %}
+{% block title %}{{ _("Les comptes publics, tels que publiés") }}{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/carte.css?v=3"><link rel="stylesheet" href="/static/hero.css?v=9">{% endblock %}
+{% block bodyattr %} class="c"{% endblock %}
+{% block content %}
+{# Accueil : une question (où va l'argent public ?), les grands équilibres publiés, la recherche, puis la carte des
+   fonctions. Le reste du site est dans le menu (api/portes.py). #}
+<section class="h-hero" aria-labelledby="a-h">
+  <div class="h-in">
+    <h1 id="a-h" class="h-titre">Economia</h1>
+    <p class="h-lede">{{ _("Où va l'argent public ? Chaque chiffre vient d'un fichier officiel.") }}</p>
+    <form class="h-cherche verre" method="get" action="/{{ lang }}/recherche" role="search">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <label class="sr" for="a-q">{{ _("Rechercher") }}</label>
+      <input id="a-q" name="q" type="search" autocomplete="off" placeholder="{{ _("Rechercher un sujet, un territoire ou un chiffre") }}">
+      <button type="submit"><span class="sr">{{ _("Chercher") }}</span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+    </form>
+    <a class="h-parcours verre" href="/{{ lang }}/comprendre/1"><span class="h-ico">{{ icone("livre", 16) }}</span>
+      <span>{{ _("Débutant ?") }} <b>{{ _("Commencer par le parcours guidé") }} →</b></span></a>
+
+    <div class="a-reperes" aria-labelledby="a-rh">
+      <h2 id="a-rh" class="sr">{{ _("L'ensemble des administrations publiques en %(a)s, en part du PIB", a=reperes.annee) }}</h2>
+      <ul class="h-cartes" data-nolink>{% for r in reperes.postes %}
+        <li class="h-carte verre h-t{{ loop.index0 }}">
+          <span class="h-ico">{{ icone(r.ico, 18) }}</span>
+          <a class="h-carte-t" href="{{ r.href }}">{{ r.nom }}</a>
+          <p class="h-carte-v"><strong>{{ money(r.m.valeur, "PC_GDP") }}</strong> {{ _("du PIB en %(a)s", a=reperes.annee) }}</p>
+          <p class="h-carte-o">{{ lbl(r.officiel) }}</p>
+          <p class="h-carte-s">{{ src(lang, r.m.id) }}{% if r.m.provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</p>
+        </li>
+      {% endfor %}</ul>
+    </div>
+
+    <a class="h-3d verre" href="/{{ lang }}/machine">
+      <img src="/static/machine-apercu.jpg" width="1614" height="1127" loading="lazy" alt="">
+      <span class="h-3d-t"><b>{{ _("Tout le système en 3D") }}</b>
+        <span>{{ _("D'où vient l'argent, qui le gère, où il va : sur un seul schéma.") }}</span></span>
+      <span class="h-3d-go">{{ _("Ouvrir la machine") }} →</span>
+    </a>
+  </div>
+</section>
+
+<section id="carte" class="c-carte" aria-labelledby="c-h" data-annee="{{ c.annee }}">
+  <p class="a-h">{{ _("Où va l'argent public ?") }}</p>
+  <p class="c-lede">{{ _("Plus la case est grande, plus la part est élevée. Touchez une case pour entrer dedans.") }} <a href="/{{ lang }}/machine">{{ _("Voir en 3D") }} →</a></p>
+  <details class="c-plus"{% if c.secteur != "S13" or c.unite != "PC_TOT" %} open{% endif %}><summary>{{ _("Changer d'administration ou d'unité") }}</summary>
+  <div class="c-reglages">
+    <nav aria-label="{{ _("Qui dépense ?") }}">
+      <p class="c-label">{{ _("Qui dépense ?") }}</p>
+      <ul class="c-chips">{% for k, nom in noms.items() %}
+        <li><a class="c-chip{% if k == c.secteur %} is-on{% endif %}" href="{{ lk(secteur=k if k != 'S13' else None) }}" data-carte{% if k == c.secteur %} aria-current="true"{% endif %}>{{ nom }}</a></li>
+      {% endfor %}</ul>
+    </nav>
+    <nav aria-label="{{ _("Unité") }}">
+      <p class="c-label">{{ _("Unité") }}</p>
+      <ul class="c-chips">{% for k, nom in unites.items() %}
+        <li><a class="c-chip{% if k == c.unite %} is-on{% endif %}" href="{{ lk(unite=k if k != 'PC_TOT' else None) }}" data-carte{% if k == c.unite %} aria-current="true"{% endif %}>{{ nom }}</a></li>
+      {% endfor %}</ul>
+    </nav>
+  </div>
+  </details>
+
+  <form class="c-temps" method="get" action="/{{ lang }}/#carte">
+    {% for k, v in c.base.items() if v and k != "annee" %}<input type="hidden" name="{{ k }}" value="{{ v }}">{% endfor %}
+    {% if c.zoom %}<input type="hidden" name="f" value="{{ c.zoom }}">{% endif %}
+    <button type="button" class="c-play" data-play hidden aria-pressed="false"><span class="sr">{{ _("Faire défiler les années") }}</span></button>
+    <label class="c-annee"><span class="sr">{{ _("Année") }}</span>
+      <input type="range" name="annee" min="{{ c.annees[0] }}" max="{{ c.annees[-1] }}" step="1" value="{{ c.annee }}" list="c-ans">
+    </label>
+    <output class="c-an" aria-live="polite">{{ c.annee }}</output>
+    <datalist id="c-ans">{% for a in c.annees %}<option value="{{ a }}"></option>{% endfor %}</datalist>
+    <noscript><button type="submit">{{ _("Afficher") }}</button></noscript>
+    <span class="c-bornes" aria-hidden="true"><span>{{ c.annees[0] }}</span><span>{{ c.annees[-1] }}</span></span>
+  </form>
+
+  <header class="c-tete">
+    <nav class="c-fil" aria-label="{{ _("Niveau de la carte") }}">
+      {% if c.zoom %}<a href="{{ lk(f=None) }}" data-carte>← {{ _("Toutes les fonctions") }}</a>{% else %}<span>{{ _("Toutes les fonctions") }}</span>{% endif %}
+    </nav>
+    {% if c.zoom %}
+    <h2 id="c-h">{{ lbl(c.parent.label) }}, {{ c.annee }}</h2>
+    {% if c.parent.PC_TOT %}<p class="c-phrase">{{ _("Sur 100 € de dépense publique, %(v)s vont à cette fonction. Voici leur détail.", v=valeur(c.parent.PC_TOT.valeur, "PC_TOT")) }} {{ src(lang, c.parent.PC_TOT.id) }}</p>{% endif %}
+    {% else %}
+    <h2 id="c-h">{{ noms[c.secteur] }}, {{ c.annee }}</h2>
+    {% if c.total %}<p class="c-phrase">{{ _("Dépense totale : %(t)s.", t=money(c.total.valeur, "MIO_EUR")) }} {{ src(lang, c.total.id) }}{% if c.total.provisoire %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</p>{% endif %}
+    {% endif %}
+  </header>
+
+  <div class="c-cadre"{% if c.zoom %} style="view-transition-name: c-{{ c.zoom }}"{% endif %}>
+    {% for k in c.cases %}
+    {% set st = "--x:%.4f;--y:%.4f;--w:%.4f;--h:%.4f;--px:%.4f;--py:%.4f;--pw:%.4f;--ph:%.4f;--t:%d"|format(k.l[0], k.l[1], k.l[2], k.l[3], k.p[0], k.p[1], k.p[2], k.p[3], k.t) %}
+    {% set inner %}
+      <span class="c-v">{{ k.f }}{% if k.prov %}<span class="c-prov" title="{{ _("provisoire") }}">*</span>{% endif %}</span>
+      <span class="c-n">{{ k.label.texte }}</span>
+      {% if k.dont %}<span class="c-d">{{ _("dont") }} {{ k.dont|join(", ") }}</span>{% endif %}
+    {% endset %}
+    {% if k.href %}<a class="c-case" href="{{ k.href }}" data-carte style="{{ st }};view-transition-name:c-{{ k.code }}" title="{{ k.label.texte }} : {{ k.f }}">{{ inner }}</a>
+    {% else %}<div class="c-case is-feuille" style="{{ st }};view-transition-name:c-{{ k.code }}" title="{{ k.label.texte }} : {{ k.f }}">{{ inner }}</div>{% endif %}
+    {% endfor %}
+  </div>
+  <p class="c-legende">{{ _("Surface : montant publié en euros. Teinte : même information, pour l'œil.") }}
+    {% if c.cases|selectattr("prov")|list %}{{ _("* valeur provisoire.") }}{% endif %}</p>
+  {{ fig_src(lang, c.sources) }}
+
+  {% if c.zoom %}
+  <aside class="c-fiche" aria-label="{{ _("La fonction en chiffres") }}">
+    <ul class="c-trois">
+      {% for u in ("PC_TOT", "MIO_EUR", "PC_GDP") if c.parent[u] %}
+      <li><strong>{{ valeur(c.parent[u].valeur, u) }}</strong> {{ src(lang, c.parent[u].id) }}
+        <span>{{ {"PC_TOT": _("pour 100 € de dépense publique"), "MIO_EUR": _("en euros courants"), "PC_GDP": _("du PIB")}[u] }}</span></li>
+      {% endfor %}
+    </ul>
+    <h3>{{ _("Part dans la dépense publique, depuis %(a)s", a=c.annees[0]) }}</h3>
+    {{ courbe(lang, c.evolution, c.parent.label.texte) }}
+    <p class="c-suite">
+      {% set fc = fiche_cofog(c.zoom) %}{% if fc %}<a href="/{{ lang }}/theme/{{ fc }}">{{ _("Tout sur ce thème") }} →</a>{% endif %}
+      <a href="/{{ lang }}/serie?dom=cofog&amp;ind={{ c.zoom }}&amp;qui={{ c.secteur }}">{{ _("Comparer, changer d'unité, exporter") }} →</a>
+      <a href="/{{ lang }}/depenses-publiques?secteur={{ c.secteur }}&amp;annee={{ c.annee }}&amp;fonction={{ c.zoom }}#zoom">{{ _("Tableau détaillé") }} →</a>
+    </p>
+  </aside>
+  {% endif %}
+
+  <details class="c-tableau">
+    <summary>{{ _("Le détail, chiffre par chiffre") }}</summary>
+    <ol class="c-lignes">
+      {% for k in c.cases|sort(attribute="m", reverse=True) %}
+      <li style="--a:{{ '%.4f'|format(k.aire) }}">
+        <span class="c-ln">{% if k.href %}<a href="{{ k.href }}" data-carte>{{ lbl(k.label) }}</a>{% else %}{{ lbl(k.label) }}{% endif %}</span>
+        <span class="c-lv">{{ k.f }}{% if k.u %} {{ src(lang, k.u.id) }}{% endif %}{% if k.prov %} <span class="prov">{{ _("provisoire") }}</span>{% endif %}</span>
+        <span class="c-lb" aria-hidden="true"></span>
+      </li>
+      {% endfor %}
+      {% for k in c.absentes %}
+      <li class="is-absente"><span class="c-ln">{{ lbl(k.label) }}</span><span class="c-lv">{{ _("non publié") }}</span><span class="c-lb" aria-hidden="true"></span></li>
+      {% endfor %}
+    </ol>
+    {{ fig_src(lang, c.sources) }}
+  </details>
+</section>
+
+
+{% endblock %}
+{% block scripts %}<script src="/static/carte.js?v=2" defer></script>
+{% endblock %}
