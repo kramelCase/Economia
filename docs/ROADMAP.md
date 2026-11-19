@@ -59,9 +59,7 @@ Les fiches thématiques passent avant le modèle des flux : elles relient des pa
 ## 4. Prochaines tâches, dans l'ordre
 
 1. **En attente du user — identité et licences** : remplir `content/editeur.yaml` (éditeur, directeur de la publication, contact, hébergeur, licence du code, licence des fichiers `/data/`). La page `/fr/mentions` affiche « à compléter » d'ici là. → J
-2. **Construire et tester l'image** (`docker compose up --build` en local) : Docker Desktop doit être lancé sur le poste. → J
-3. **En attente du user — hébergeur et domaine** : choisir où héberger et sous quel nom de domaine, puis suivre `docs/EXPLOITATION.md`. → J
-4. **En attente du user — dépôt distant** : créer le dépôt (GitHub ou autre) et autoriser le premier envoi ; la CI (`.github/workflows/ci.yml`, clone neuf → collecte → base → tests) y sera vérifiée au premier passage. Archive datée de `raw/` (550 Mo) chez l'hébergeur choisi. → J
+2. **En attente du user — hébergeur et domaine** : choisir où héberger et sous quel nom de domaine ; archive datée de `raw/` (550 Mo) chez l'hébergeur choisi. → J
 
 ## 5. Matrice des dépendances
 
@@ -220,14 +218,14 @@ Une régression sur une tâche retirée redevient une tâche de cette liste.
 
 - **Objectif utilisateur.** Un site public stable, rapide, daté, dont les chiffres cités restent vérifiables dans le temps.
 - **État vérifié.**
-  - Le site tourne en local seulement (port 8790). Une démo statique figée (sélection de pages) existe à part.
-  - Pas de dépôt distant, pas de CI, pas de conteneur.
+  - Le site tourne en local seulement (port 8790).
+  - Dépôt GitHub et CI en place (`.github/workflows/ci.yml` : clone neuf → collecte → base → tests) ; pas de conteneur.
   - Les adresses inconnues renvoient la 404 de FastAPI, non traduite.
   - `raw/` fait 550 Mo, `data/` 65 Mo.
 - **À conserver.** Les fichiers par document avec empreinte dans le nom (cache illimité possible) ; aucune requête libre vers le serveur (WIDGETS.md §4 bis).
 - **Travaux** (ancien bloc « Mise en ligne », complété) :
-  - Dépôt distant (décision du user), CI vérifiée au premier envoi, archive datée des fichiers bruts
-  - Image construite et testée en local ; hébergeur et domaine choisis par le user, puis mise en ligne
+  - Archive datée des fichiers bruts
+  - Image (conteneur) à créer et tester ; hébergeur et domaine choisis par le user, puis mise en ligne
   - Identité de l'éditeur et licences du code et des fichiers `/data/` dans `content/editeur.yaml` (décision du user)
   - Partage : balises Open Graph, image d'aperçu par vue, lien court, version figée datée
   - Collecte planifiée : comparaison d'empreintes, fraîcheur affichée par source

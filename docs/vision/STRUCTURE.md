@@ -2,7 +2,7 @@
 
 Demande du user : « fais le tour du site et repense toute sa structure, en t'inspirant d'outils existants dans des
 domaines variés, pour des interfaces pratiques et intelligentes ». Ce document fait foi pour la navigation ; il
-complète `SYNTHESE.md` (vision) et `HANDOFF.md` (état).
+complète `SYNTHESE.md` (vision) et `../ROADMAP.md` (état).
 
 ## 1. Le tour : ce qui ne va pas
 
